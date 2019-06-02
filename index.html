@@ -286,7 +286,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/02/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/02/OpenGL学习笔记（六）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -306,7 +306,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/06/02/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
+                <a href="/2019/06/02/OpenGL学习笔记（六）/" class="post-title-link" itemprop="url">OpenGL学习笔记（六）</a>
               
             
           </h1>
@@ -331,9 +331,13 @@
                 
               
 
-              <time title="Created: 2019-06-02 11:27:12" itemprop="dateCreated datePublished" datetime="2019-06-02T11:27:12+08:00">2019-06-02</time>
+              <time title="Created: 2019-06-02 18:04:57 / Modified: 18:05:53" itemprop="dateCreated datePublished" datetime="2019-06-02T18:04:57+08:00">2019-06-02</time>
             
 
+            
+              
+
+              
             
           </span>
 
@@ -368,19 +372,1843 @@
       
         
           
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+            <p><strong>龙云尧个人博客，转载请注明出处。</strong></p>
+<p>CSDN地址：<a href="http://blog.csdn.net/michael753951/article/details/71407260" target="_blank" rel="noopener">http://blog.csdn.net/michael753951/article/details/71407260</a></p>
+<p>个人blog地址：<a href="http://yaoyl.cn/nehexue-xi-bi-ji-liu-2017-05-08-13-54/" target="_blank" rel="noopener">http://yaoyl.cn/nehexue-xi-bi-ji-liu-2017-05-08-13-54/</a></p>
+<hr>
+<h1 id="混合"><a href="#混合" class="headerlink" title="混合"></a>混合</h1><p>我们在很多场合都过这样的经历，在设置某些色块的颜色的时候，我们不光要设置它的RGB值，还可能需要设置它的Alpha值。一般理解上，我们都认为这个Alpha值代表了当前色块的透明度。这样只是最外在的理解，其实图像的透明是一个颜色的混合过程，当有两种颜色混叠的时候，这个Alpha是用来控制两种颜色的混色程度的一种值。</p>
+<p>颜色的混合公式为(Rs*As + Rd (1 - As), Gs*As + Gd (1 - As), Bs*As + Bs (1 - As), As*As + Ad (1 - As))。其中As表示前景色的Alpha值，Rs表示前景色的R值，Rd表示背景色的R值，Gs &amp; Gd，Bs &amp; Bd类似。最终计算出来的RGB值就是混合之后显示出来的RGB值。</p>
+<p>举个例子，我们已经知道背景色是（255,255,255），现在有一个（128,128,128）的色块需要层叠在背景色块之上，并且我们先假设Alpha值为1.0，那我们很容易计算出来最终的显示的RGB值为（128,128,128），这个时候我们就从直观上认为前景色完全不透明。而如果Alpha为0.0，计算结果显然为（255,255,255），这个时候我们就认为前景色完全透明。其他的Alpha值类似。</p>
+<p>当我们有多张图片需要层叠的时候，并且每一层都有一个Alpha值的时候，我们需要怎么计算呢？</p>
+<p>从我们的直观上可以想象出来，当我们在看一堆颜色混合而成的颜色的时候，首先是离我们最近的pic1作为前景，其后面的pic2-picn糊混合结果作为背景，混合出来的结果。而pic2-picn是如何混合的呢？它是由pic2作为前景，pic3-picn混合结果作为背景混合出来的结果。如此递归下去知道最后两张图片混合完成。</p>
+<p>好了，到这里我们应该很了解在OpenGL中颜色混合的原理了。接下来动手试试。</p>
+<p>首先需要修改LoadGLTextures方法中的文件名，因为本次实验使用的是一张新的位图。将<code>&quot;Data/Crate.bmp&quot;</code>改成<code>&quot;Data/glass.bmp&quot;</code>即可。</p>
+<p>然后我们需要修改InitGL方法。在使用glEnable(GL_LIGHT1);激活光源之后，我们添加新的两行glColor4f和glBlendFunc方法。</p>
+<p>不过需要注意的是，在使用glColor4f以全亮度进行绘制的时候，它会和光照系统glLightfv产生的效果互相排斥。具体的排斥方式请参看<a href="http://blog.csdn.net/tmljs1988/article/details/6445100" target="_blank" rel="noopener">【 opengl纹理,光照,glColor4f(),混合】</a>.</p>
+<p>另外在glBlendFunc中，为什么会取GL_SRC_ALPHA,GL_ONE，以及GL_SRC_ALPHA,GL_ONE这两个参数会对最终的效果产生什么影响。我们可以参考<a href="http://blog.csdn.net/aurora_mylove/article/details/1700540" target="_blank" rel="noopener">【 颜色混合opengl】</a></p>
+<p>最后，我们修改WinMain就能够结束本次实验。接着上一次实验的代码.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (keys[VK_LEFT])    <span class="comment">// Left方向键按下了么?</span></span><br><span class="line">&#123;</span><br><span class="line"> yspeed-=<span class="number">0.01f</span>;    <span class="comment">// 若是, 减少yspeed </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>我们增加如下的代码。这几行监视B键是否按下。如果是的话，计算机检查混合选项是否已经打开。然后将其置为相反的状态。  </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Blending Code Starts Here</span></span><br><span class="line">            <span class="keyword">if</span> (keys[<span class="string">'B'</span>] &amp;&amp; !bp)</span><br><span class="line">            &#123;</span><br><span class="line">                bp = TRUE;</span><br><span class="line">                blend = !blend;</span><br><span class="line">                <span class="keyword">if</span> (blend)</span><br><span class="line">                &#123;</span><br><span class="line">                    glEnable(GL_BLEND);         <span class="comment">// Turn Blending On</span></span><br><span class="line">                    glDisable(GL_DEPTH_TEST);   <span class="comment">// Turn Depth Testing Off</span></span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    glDisable(GL_BLEND);        <span class="comment">// Turn Blending Off</span></span><br><span class="line">                    glEnable(GL_DEPTH_TEST);    <span class="comment">// Turn Depth Testing On</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (!keys[<span class="string">'B'</span>])</span><br><span class="line">            &#123;</span><br><span class="line">                bp = FALSE;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// Blending Code Ends Here</span></span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>到这里本次课程就结束了，我们试着按下B键查看透视效果怎样，另外我们还可以看看当前代码下，打开光源和不打开光源下，按下B键查看透视效果会有什么区别。思考为什么（光源和glColor4f的冲突）。</p>
+<p><img src="http://img.blog.csdn.net/20170516074703833?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="section6.1"></p>
+<p>如果我们将InitGL中的glBlendFunc(GL_SRC_ALPHA,GL_ONE);改成glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);又会有什么效果。同样请思考为什么（注意混合方式glBlendFunc中，不同参数下，图像混合的计算方式）。</p>
 
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
 
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/23/RFID实验三总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/23/RFID实验三总结/" class="post-title-link" itemprop="url">RFID实验三总结</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-23 01:19:42" itemprop="dateCreated datePublished" datetime="2019-05-23T01:19:42+08:00">2019-05-23</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-06-02 17:53:40" itemprop="dateModified" datetime="2019-06-02T17:53:40+08:00">2019-06-02</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>一次debug到哭泣的经历。</p>
+</blockquote>
+<p><strong>龙云尧个人博客，转载请注明出处。</strong></p>
+<p>CSDN地址：</p>
+<p>个人blog地址：<a href="http://123.207.243.115:81/rfidshi-yan-san-zong-jie/" target="_blank" rel="noopener">http://123.207.243.115:81/rfidshi-yan-san-zong-jie/</a></p>
+<p>在实验过程中，需要不断翻阅实验课PPT之<strong>《04 电子钱包的功能》</strong>，word之<strong>《实验3文档》</strong>，以及不知名大佬的<a href="http://www.tqcto.com/article/software/83894.html" target="_blank" rel="noopener">课程总代码</a>，CSDN大佬吕浪的<a href="http://blog.csdn.net/lv_victor/article/details/51028930" target="_blank" rel="noopener">Java card开发系列文章</a>。</p>
+<p>本次实验和前两次实验相比，代码量多<strong>很多</strong>，并且<strong>实验思路稍有区别</strong>。实验之前可以不太懂实验流程（主要是因为流程本身就太复杂了），但是一定要<strong>一遍又一遍阅读源代码</strong>，只有在读源码的过程中，才能体会整个验证过程，对项目中涉及到的函数方法的使用才能有一个更加深入的了解。接着自己不断重写代码，理解整个实现过程，才能对这个课程实验有较为深入的了解。</p>
+<p>最终的代码地址：<a href="https://github.com/LongyunYao/RFID_lab/" target="_blank" rel="noopener">https://github.com/LongyunYao/RFID_lab/</a></p>
+<p><strong>代码在未征得本人同意之前，请勿直接Ctrl+C，Ctrl+V，谢谢。</strong></p>
+<h1 id="正式实验"><a href="#正式实验" class="headerlink" title="正式实验"></a>正式实验</h1><h2 id="实验分析"><a href="#实验分析" class="headerlink" title="实验分析"></a>实验分析</h2><p>首先我们在PPT中知道本次实验的主要需要实现的功能是：</p>
+<ul>
+<li>圈存</li>
+<li>消费</li>
+<li>余额查询</li>
+</ul>
+<p>接下来我们开始看ppt《04 电子钱包的功能》和《实验3文档》。</p>
+<p>首先是圈存功能的流程图。</p>
+<p><img src="http://img.blog.csdn.net/20170423014034933?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="圈存流程"></p>
+<p>流程图中我们可以分析出圈存一共有4个步骤：</p>
+<ul>
+<li><strong>终端发送消息初始化</strong></li>
+<li><strong>IC响应初始化，并且发送MAC1验证</strong></li>
+<li><strong>终端验证MAC1，确认IC卡是否合法，然后发送包含MAC2的圈存命令</strong></li>
+<li><strong>IC卡验证终端机的合法性，执行完成以后返回TAC响应操作完成</strong></li>
+</ul>
+<p>接下来我们将一步一步仔细分析圈存是如何实现的。</p>
+<p><img src="http://img.blog.csdn.net/20170423013823877?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="圈存初始化命令"></p>
+<p>step1：圈存机发送的初始信息如下所示。消息中包含了<strong>秘钥标识符</strong>，<strong>交易金额</strong>，<strong>终端机编号</strong>。</p>
+<p><img src="http://img.blog.csdn.net/20170423014006004?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="IC卡响应圈存初始化命令"></p>
+<p><img src="http://img.blog.csdn.net/20170423020343856?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="IC卡处理圈存初始化信息流程"></p>
+<p>step2：</p>
+<ul>
+<li><strong>IC卡根据秘钥标识符寻找圈存秘钥</strong></li>
+<li><strong>生成过程秘钥。输入数据为[伪随机数||电子钱包联机交易序号||8000]，秘钥为圈存秘钥，使用3DES加密算法。</strong></li>
+<li><strong>生成MAC1。输入数据为[电子钱包余额（交易前）||交易金额||交易类型标识||终端机编号]，秘钥为过程秘钥，使用我们在上一次实现的MAC生成函数gmac4，计算出MAC1用来表明身份。</strong></li>
+<li><strong>IC卡返回[余额||联机交易序列号||秘钥版本号||算法标识||伪随机数||MAC1]。</strong></li>
+</ul>
+<p><img src="http://img.blog.csdn.net/20170423014058551?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="圈存指令"></p>
+<p><img src="http://img.blog.csdn.net/20170423025731193?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="圈存指令流程"></p>
+<p>step3：</p>
+<ul>
+<li><strong>圈存机对IC卡发挥的MAC1信息进行校验，如果正确就说明IC卡信息合法。</strong></li>
+<li><strong>计算MAC2。输入信息为[交易金额||交易类型标识||终端机编号||交易日期（主机）||交易时间（主机）]，秘钥为过程秘钥，加密算法为依然为gmac4。用来表明自己的身份。</strong></li>
+<li><strong>发送圈存指令。消息中包含[交易日期||交易时间||MAC2]。</strong></li>
+</ul>
+<p><img src="http://img.blog.csdn.net/20170423030729769?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="圈存TAC"></p>
+<p><img src="http://img.blog.csdn.net/20170423124717634?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="TAC"></p>
+<p>step4：<strong>IC使用同样的算法计算MAC2，如果计算结果和终端返回的MAC2一致，就说明终端的身份合法。IC卡就会执行圈存命令。同时返回TAC。其中TAC计算时，输入数据为[电子钱包余额（交易后）||电子钱包联机交易序号（加１前）||交易金额||交易类型标识||终端机编号||交易日期（主机）||交易时间（主机）]，密钥为TAC密码最左8个字节与TAC密码最右8个字节异或的结果。</strong></p>
+<p>到这里整个圈存过程就结束了。消费以及查询和圈存的实现原理一致，这里就不赘述了。</p>
+<h2 id="读代码"><a href="#读代码" class="headerlink" title="读代码"></a>读代码</h2><p>前面的分析中，我们已经对本次实验有了大致的了解，接下来就是开始<strong>读源码</strong>的过程了。不过本次实验中，因为我们只需要对IC卡的系统进行编程实现，而对终端机需要靠人脑完成，所以我们重心就会放在圈存的初始化和圈存的执行上面了。</p>
+<h3 id="圈存初始化"><a href="#圈存初始化" class="headerlink" title="圈存初始化"></a>圈存初始化</h3><p>还是老样子，我们<strong>先读项目给的源码中的<code>Purse</code>部分</strong>，里面有圈存初始化和圈存确认信息的处理函数。</p>
+<p>在TA给的源代码中，<code>init_load</code>和<code>load</code>方法是已经给好了的，我们先读这两部分的源代码，理解整个设计思路。</p>
+<p>首先我们需要<strong>修改Purse类</strong>，让其<code>process</code>方法里面增执行<strong>圈存初始化，圈存，消费初始化，消费，以及查询的入口</strong>。</p>
+<p><img src="http://img.blog.csdn.net/20170423105626634?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="handleEvent"></p>
+<p>因为圈存和消费的init方法的ins都一样，所以我们还需要<strong>增加一个判断方法，利用两者p1参数不一样，来判断是<code>init_load</code>还是<code>init _purchase</code>。</strong></p>
+<p><img src="http://img.blog.csdn.net/20170423105924050?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="init_load_purchase"></p>
+<p>好了，入口写好了。我们开始看<code>init_load</code>的实现方法。</p>
+<p><img src="http://img.blog.csdn.net/20170423110115765?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="init_load"></p>
+<p>前面还是和读写数据时一样的操作，进行参数校对，这个部分已经很简单了。我们看到有一个<code>findkey</code>方法。点进去查看函数的具体内容。</p>
+<p><img src="http://img.blog.csdn.net/20170423110323737?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="find_key"></p>
+<p>查找方法比较简单，从Key数组中获取秘钥，存进pbuf中，如果存在就返回秘钥标识符，否则返回0。</p>
+<p>回到<code>init_load</code>，在执行<code>fendkey</code>之后，是异常处理，验证是否查找失败。然后执行<code>init4load</code>方法。继续点进去查看。（<strong>前方高能预警</strong>）</p>
+<p><img src="http://img.blog.csdn.net/20170423110857476?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="init4load"></p>
+<p>回忆一下初始化的过程中，IC的操作部分是怎么操作的。</p>
+<ul>
+<li><strong>IC卡根据秘钥标识符寻找圈存秘钥</strong></li>
+<li><strong>生成过程秘钥。输入数据为[伪随机数||电子钱包联机交易序号||8000]，秘钥为圈存秘钥，使用3DES加密算法。</strong></li>
+<li><strong>生成MAC1。输入数据为[电子钱包余额（交易前）||交易金额||交易类型标识||终端机编号]，秘钥为过程秘钥，使用我们在上一次实现的MAC生成函数gmac4，计算出MAC1用来表明身份。</strong></li>
+<li><strong>IC卡返回[余额||联机交易序列号||秘钥版本号||算法标识||伪随机数||MAC1]。</strong></li>
+</ul>
+<p>按照这个思路看源代码。（看代码的时候<strong>一定要对着ppt的流程读</strong>，我第一次读源代码就是单纯对着IDE读，结果读的很爽，但是读完了只知道每个基本操作在干嘛，但是整个操作流程还是一脸懵逼。）</p>
+<p>开始看代码。</p>
+<p>首先从<code>data</code>中提取交易金额，终端编号，存进<code>pTemp42</code>和<code>pTemp81</code>。</p>
+<p>然后判断是否超额。我们继续点进去看一下<code>increase</code>的源代码。</p>
+<p><img src="http://img.blog.csdn.net/20170423112034624?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="increase"></p>
+<p>从<code>EP_ balance</code>中和<code>data</code>中依次取出一个字节，将其相加再和一个<code>ads</code>(进位标志符)相加，如果<code>flag</code>为真，就改写<code>EP _balance</code>中的值，然后更新<code>ads</code>。最终返回进位标志位<code>ads</code>。整个就是大数加法的思想方法。但是<code>EP _balance</code>是啥？？？我们再点进去看源代码。</p>
+<p><img src="http://img.blog.csdn.net/20170423112922909?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="EPFile参数"></p>
+<p>是当前电子钱包的余额。因此<strong>整个<code>increase</code>就是判断当前余额加上一个圈存值，如果超额（结果超过4bytes），就会返回1（那个进位标志位<code>ads</code>）。否则返回0。如果传入的第二个参数为false，就不会更新余额，否则会执行余额更新操</strong>作。</p>
+<p>好，到这里我们知道了<code>rc = increase(pTemp42, false);</code>部分的意义了。再往下看密码取位部分。</p>
+<p>首先使用<code>readkey</code>方法。点进去查看。</p>
+<p><img src="http://img.blog.csdn.net/20170423113526567?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="readkey"></p>
+<p>这里需要对<code>Key</code>的结构有一定的了解了。我们点进去查看<code>Key</code>这个类定义和实现。</p>
+<p><img src="http://img.blog.csdn.net/20170423113915210?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="Key"></p>
+<p><strong>所以<code>Key</code>中存放的结构</strong>为<strong>2bytes信息位</strong>（分别为1byte的<code>pbuf</code>，1byte的<code>length</code>），<strong>5bytes的秘钥头</strong>，<strong>以及16bytes的秘钥值</strong>。其中<strong>length是addKey传入value的长度，为表头+秘钥的长度。</strong></p>
+<p>回到<code>readkey</code>，<code>readkey</code>就是将秘钥取出来，然后将秘钥表头中的<code>value</code>值取出来（5bytes表头+16bytes秘钥），<strong>返回长度为秘钥的实际长度（减掉了表头长度）</strong>。</p>
+<p>回到init4load，所以这4行代码的意义就是</p>
+<ul>
+<li><strong>按照秘钥获取部分就是按照秘钥标识符获取bytes秘钥头+16bytes秘钥存进pTemp32</strong></li>
+<li><strong>从秘钥头第4个bytes获取秘钥版本号，从第5个bytes获取算法标识符</strong></li>
+<li><strong>从获取pTemp32中将秘钥的实际值（从第5位开始读取秘钥长度个bytes），取出来存进pTemp16。</strong></li>
+</ul>
+<p>再往下读随机数产生的代码。</p>
+<p><img src="http://img.blog.csdn.net/20170423115943237?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="GenerateSecureRnd"></p>
+<p>调用<code>rd.generateData</code>方法，对传入的参数进行操作。我们在查看generateData的实现方法的时候，已经进入.class文件，没有发现有意义的信息。于是折返查看<strong>v和size的信息</strong>。</p>
+<p><img src="http://img.blog.csdn.net/20170423120253285?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="v的意义"></p>
+<p>根据注释，我们可以大概知道<code>GenerateSecureRnd</code>的意义就是<strong>根据特定的随机数产生机制产生随机数，然后写进v</strong>。</p>
+<p><img src="http://img.blog.csdn.net/20170423120545489?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="getRndValue"></p>
+<p><code>getRndValue</code>方法就是<strong>将随机数v写入参数bf中，偏移位为bOff</strong>。</p>
+<p>回到<code>init4load</code>，产生随机数这两行的意义就是<strong>产生随机数</strong>，然后将随机数写进<code>pTemp32</code>的[0:3]位。</p>
+<p>接下来，将<code>EP_online</code>(电子钱包脱机交易序号，之前分析图片中出现过)写入<code>pTemp32[4:5]</code>，将<code>0x8000</code>写入<code>pTemp32[6:7]</code>，调用上一次实验中实现的<code>3des</code>加密算法，秘钥为上面得到的圈存秘钥（存在<code>pTemp16</code>中）<strong>产生过程秘钥</strong>，写入<code>pTemp82</code>。</p>
+<p>回看前面分析的圈存初始化的第一步和第二步，<strong>①IC卡根据秘钥标识符寻找圈存秘钥；②生成过程秘钥。输入数据为[伪随机数||电子钱包联机交易序号||8000]，秘钥为圈存秘钥，使用3DES加密算法。</strong>是不是一模一样？</p>
+<p>好，我们再往下看。</p>
+<p>产生<code>MAC1</code>。首先分别往<code>pTemp32</code>中写入<code>EP_balance</code>（余额），<code>data[1:4]</code>（交易金融，对着那一页PPT找<code>data</code>结构就知道了），0x02，<code>data[5:10]（</code>终端机编号，一样看ppt中的<code>data</code>结构），然后将<code>pTemp32</code>中的内容复制到<code>data</code>（不知道这里写入data有什么意义，因为在响应数据部分又会被写一次。）。然后<strong>使用上次实验实现的<code>gmac4</code>，输入数据为<code>pTemp32</code>，秘钥为上一步得到的存在<code>pTemp82</code>的过程秘钥，得到的<code>mac1</code>存在<code>pTemp41</code>中</strong>。</p>
+<p>同样回看前面分析的圈存初始化的第三步。<strong>生成MAC1。输入数据为[电子钱包余额（交易前）||交易金额||交易类型标识||终端机编号]，秘钥为过程秘钥，使用我们在上一次实现的MAC生成函数gmac4，计算出MAC1用来表明身份</strong>。是不是对上了？</p>
+<p>然后将<strong><code>EP_balance</code>（余额），<code>EP _online</code>(电子钱包脱机交易序号），<code>keyID</code>（秘钥版本号），<code>algID</code>（算法标识符），随机数，以及mac1写进data</strong>。</p>
+<p>回看圈存初始化的第四步，<strong>IC卡返回[余额||联机交易序列号||秘钥版本号||算法标识||伪随机数||MAC1]</strong>。一模一样。</p>
+<p>到这里<code>init4load</code>也结束了，往上回到<code>init_load</code>，<code>papdu.pdata</code>已经在<code>init4load</code>中设置完成，在<code>papdu.le</code>（理想的下一次指令中的数据长度）写为<code>0x10</code>。然后<code>purse.init _load</code>结束。</p>
+<p>光分析这一步我写了一个半钟，当时在读源代码的时候花的时间更久。<strong>但是这个步骤不能跳过，它让我们对整个IC卡的业务逻辑和方法实现以及调用打下了基础。我们在实现其他方法的时候，才能更加得心应手。</strong></p>
+<p>再看<code>purse.load</code>方法吧。这一步实现了<strong>圈存</strong>。</p>
+<p><img src="http://img.blog.csdn.net/20170423123727349?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="purse.load"></p>
+<p>前面的就不详说了，它调用了<code>EPfile.load</code>方法，我们点进去查看。</p>
+<p><img src="http://img.blog.csdn.net/20170423123641864?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="load实现"></p>
+<p>回想在一开始分析的时候，<strong>step4中，IC卡对接收到的终端机指令是怎么处理的</strong>。</p>
+<p><strong>step4：IC使用同样的算法计算MAC2，如果计算结果和终端返回的MAC2一致，就说明终端的身份合法。IC卡就会执行圈存命令。同时返回TAC。</strong></p>
+<p><strong>查看MAC2的产生方法：输入信息为[交易金额||交易类型标识||终端机编号||交易日期（主机）||交易时间（主机）]，秘钥为过程秘钥，加密算法为为gmac4。</strong></p>
+<p><strong>查看TAC的产生方法：输入数据为[电子钱包余额（交易后）||电子钱包联机交易序号（加１前）||交易金额||交易类型标识||终端机编号||交易日期（主机）||交易时间（主机）]，密钥为TAC密码最左8个字节与TAC密码最右8个字节异或的结果。</strong></p>
+<p>通过源代码和步骤分析我们可以得出，<code>EPFile.load</code>整个过程就是将step4实现的过程，不过需要注意的是，<strong><code>EPFile.load</code>中不少参数使用的是<code>EPFile.init4load</code>中存下来放在<code>pTemp</code>中的值，这也就从逻辑上说明为什么我们在执行消费命令前必须执行消费初始化命令，保证了安全性</strong>。返回<code>purse.load</code>，校验异常，设置<code>papdu.le</code>，<code>purse.load</code>也就结束了。</p>
+<p><strong>整个阅读过程需要不断跳转代码，也需要不断在代码和PPT《04 电子钱包的功能》和word《实验3文档》。同时因为pTemp实在太多，我们最好能够在一旁做笔记，记录下来每一个pTemp存放了哪些值，以及它们的作用，这样我们才能在实现消费和查询的时候，使用起来更加方便。</strong></p>
+<p>附上我记录的在init4load和load中各种变量的变化情况以及pTemp们的存在意义。</p>
+<p><img src="http://img.blog.csdn.net/20170423130443504?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="load中pTemp的意义"></p>
+<p><strong>大部分pTemp其实是有固定意义的</strong>（结合PPT中传入的各种数据长度，我们就不难理解为什么了）。<strong>pTemp32一般作为中间变量，用来进行3des加密或者gmac加密。</strong></p>
+<p>谨记这一点，结合我们在上一步中总结下来的经验。我们就可以着手实现init_purchase和purchase以及get _balance了。</p>
+<p>查看消费的流程图。</p>
+<p><img src="http://img.blog.csdn.net/20170423014144435?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="消费流程"></p>
+<p>我们可以总结出消费的如下流程</p>
+<ul>
+<li><strong>终端发送消息初始化</strong></li>
+<li><strong>IC响应初始化，发回随机数</strong></li>
+<li><strong>终端产生MAC1，证明自己的身份，将交易信息发给IC卡</strong></li>
+<li><strong>IC卡验证终端机的合法性，计算MAC2和TAC，返回给终端作为身份凭证和消费凭证</strong></li>
+</ul>
+<p>然后一步一步详细分析。</p>
+<p><img src="http://img.blog.csdn.net/20170423014121833?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="消费初始化命令"></p>
+<p>step1：圈存机发送的初始信息如下所示。消息中包含了<strong>密钥标识符</strong>，<strong>交易金额</strong>，<strong>终端机编号</strong>。（整个消息串中，除了p1、le对比圈存初始化指令有区别以外，并没有其他区别）。</p>
+<p><img src="http://img.blog.csdn.net/20170423013855815?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="IC卡处理消费初始化信息"></p>
+<p><img src="http://img.blog.csdn.net/20170423141716336?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="IC卡处理消费初始化指令流程"></p>
+<p>step2：</p>
+<ul>
+<li><strong>IC卡根据秘钥标识符寻找圈存秘钥</strong></li>
+<li><strong>生成随机数</strong></li>
+<li><strong>检查余额是否足够支付本次交易</strong></li>
+<li><strong>返回[余额||脱机交易序号||透支限额||秘钥版本号||算法标识||伪随机数]</strong></li>
+</ul>
+<p><img src="http://img.blog.csdn.net/20170423014207170?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="消费指令"></p>
+<p>step3: <strong>终端将命令响应数据传送给主机，主机利用消费主密钥产生消费子密钥，并生成MAC1。然后终端向IC发送[交易序列号||交易日期||交易时间||MAC1]。（和圈存中发送的信息中多了一个交易序列号）。</strong></p>
+<p><img src="http://img.blog.csdn.net/20170423144717148?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="IC卡处理消费"></p>
+<p><img src="http://img.blog.csdn.net/20170423144743555?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="IC卡处理消费流程"></p>
+<p>step4：</p>
+<ul>
+<li><strong>IC卡根据消费秘钥生成过程秘钥</strong></li>
+<li><strong>利用过程秘钥生成MAC1</strong></li>
+<li><strong>交易序列号+1，将消费金额从卡中扣除。</strong></li>
+<li><strong>IC卡生成MAC2（证明自己身份），和TAC（证明工作完成）。</strong></li>
+<li><strong>返回TAC和MAC2给终端</strong></li>
+</ul>
+<p><strong>首先我们填<code>purse</code>中的<code>init_purchase</code>函数。</strong>（这一步可以先从<code>init _load</code>中复制下来，然后稍微修改一下<code>p1</code>和<code>le</code>的值，以及调用的函数改成<code>init4purchase</code>，原因我刚刚在<code>step1</code>中说过了）。</p>
+<p><img src="http://img.blog.csdn.net/20170423145736310?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="init_purchase"></p>
+<p><strong>接着我们需要实现<code>EPFile.init4purchase</code></strong>。同样的，我们只需要按照step2步骤，从<code>init4load</code>中，按需复制代码就行。</p>
+<p><img src="http://img.blog.csdn.net/20170423150940801?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="EPFile_init4purchase"></p>
+<p><strong>同时我们需要对照并且记录下来，每一个pTemp使用是否正确，还要记录init4purchase中每一步执行完成以后pTemp中数据对应的值。</strong></p>
+<p><img src="http://img.blog.csdn.net/20170423151241922?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="EPFile_init4purchase_参数"></p>
+<p><strong>然后我们再实现<code>EPFile.purchase</code>方法。</strong>实现过程比较复杂，但是每执行一步，就更新所有参数的状态，<strong>按照我们之前整理出来的<code>pTemp</code>用法，使用复制粘贴大法，从<code>EPFile.init4load</code>和<code>EPFile.load</code>中可以提取大量的重复代码下来。</strong></p>
+<p>需要注意的是，<code>load</code>中是余额加上交易金额，<code>purchase</code>中就应该是减去交易金额。因此<strong>我们必须手动实现<code>decrease</code>方法。</strong></p>
+<p><img src="http://img.blog.csdn.net/20170423152007887?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="decrease"></p>
+<p>实现方法和<code>increase</code>类似，从后向前，一次取1byte，进行减法，同时更新借位，最后返回借位即可。</p>
+<p>这里有一个小插曲，在计算MAC2的时候，一般不会出什么问题，但是在计算TAC的时候，就会出问题，这个坑在我最后debug的时候才发现（为了找这个bug整整debug了一个多钟= =）。于是我重新改变策略，使用在MAC2生成并且存进data中以后，将pTemp32新开一个数组（JCSystem.makeTransientByteArray），然后重新作为中间变量进行操作，但是不知道为什么，这样操作的结果还是错误的。于是就按照网上流传的代码，在计算TAC的时候，新申明了一个temp数组用来作为临时变量。</p>
+<p>最终实现的代码如图。</p>
+<p><img src="http://img.blog.csdn.net/20170423152859418?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="EPFile_purchase_part1"><br><img src="http://img.blog.csdn.net/20170423152925637?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="EPFile_purchase_part2"></p>
+<p>参数变化的记录如图。</p>
+<p><img src="http://img.blog.csdn.net/20170423153748861?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="EPFile_purchase_参数"></p>
+<p>最后一个就是<code>get_balance</code>了。</p>
+<p><img src="http://img.blog.csdn.net/20170423014320552?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="余额查询指令"></p>
+<p>直接从<code>EP_balance</code>里面读出来就行了，一行代码搞定。</p>
+<p><img src="http://img.blog.csdn.net/20170423153423563?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="EPFile_get_balance"></p>
+<p><strong>到这里，整个实验中需要我们填写的功能函数全部填写完成了。试验过程中，了解业务逻辑是一个很重要的过程，阅读源码，了解源码中每一个函数的具体意义，以及每一个参数中，存放的信息有哪些，这些都最好都在一个txt或者什么地方器记录下来，方便自己查阅和提取（毕竟一个没有debug的IDE，你不能要求什么，只能人脑debug），另一方面，每实现一个功能，就尽可能写清楚这个部分的功能，同时写清楚那些信息在哪些位置，这样你在实现的过程中才不会头晕脑胀。也能够方便你最后debug找错误信息从哪来。</strong></p>
+<h1 id="验证实验"><a href="#验证实验" class="headerlink" title="验证实验"></a>验证实验</h1><p>验证之前，我们还需要添加新的参数信息。</p>
+<p><img src="http://img.blog.csdn.net/20170423154411458?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="condef新添加"></p>
+<p><strong>以及一个的天坑的地方</strong>。。。。。。。这个地方我用throw 0x1234大法，从init_purchase的return 0之前，一直回退到Purse中的if(papdu.APDUContainData())才找到问题。</p>
+<p><img src="http://img.blog.csdn.net/20170423154457374?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="Papdu新增"></p>
+<p>其他的地方应该没什么需要添加或者修改了，按照之前上一次的试验方法，我们可以开始进行debug了。</p>
+<p>首先还是新建一个txt，因为我们需要人脑担任终端机的角色，所以<strong>提前将必要的操作流程和模板写下来存在txt里面</strong>，写指令的时候也能迅速一点。</p>
+<p><img src="http://img.blog.csdn.net/20170423155806313?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="实验3脚本"></p>
+<p>首先实验一中的初始化脚本。</p>
+<p>然后模仿终端机输入圈存初始化指令。<code>/send 805000020B080000100000112233445510</code></p>
+<p>使用<strong>[伪随机数||电子钱包联机交易序号||8000]</strong>作为数据，<strong>圈存秘钥</strong>作为秘钥，使用<strong>3DES</strong>获得<strong>过程秘钥</strong>。</p>
+<p><img src="http://img.blog.csdn.net/20170423160609340?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="init4load过程秘钥"></p>
+<p>然后<strong>使用过程秘药作为秘钥</strong>，输入自定义好的初始向量，以及数据<strong>[电子钱包余额（交易前）||交易金额||交易类型标识(0x02)||终端机编号]</strong>作为输入，生成<strong>mac1</strong>，和<strong>IC卡返回的mac1校对，发现一致</strong>。</p>
+<p><img src="http://img.blog.csdn.net/20170423161353741?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="验证mac1"></p>
+<p>接着使用<strong>[电子钱包余额（交易前）||交易金额||交易类型标识(0x02)||终端机编号]</strong>作为数据，<strong>过程秘钥</strong>作为秘钥，生成mac2。夹杂其他信息一起发出去。</p>
+<p><img src="http://img.blog.csdn.net/20170423162142821?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="init_load发送mac2"></p>
+<p>返回<code>TAC+9000</code>，所以我们认为<code>init_load</code>和<code>load</code>成功。</p>
+<p>接下来执行查询指令，返回<code>00 00 10 00 90 00</code>。说明卡里面已经有了<code>00001000</code>，我们圈存确实成功了。查询也成功了。</p>
+<p><img src="http://img.blog.csdn.net/20170423162321041?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="查询结果"></p>
+<p>接下来执行消费指令，<code>/send 805001020B07000010000011223344550F</code></p>
+<p><img src="http://img.blog.csdn.net/20170423162639620?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="消费初始化"></p>
+<p>返回得到伪随机数。接着我们将<strong>[伪随机数||电子钱包脱机交易序号||终端交易序号的最右两个字节]</strong>作为数据，<strong>消费秘钥</strong>作为秘钥，使用<strong>3DES</strong>得到<strong>圈存秘钥</strong>。</p>
+<p>使用<strong>[交易金额||交易类型标识(0x06)||终端机编号||交易日期（主机）||交易时间（主机）]</strong>作为数据，<strong>过程秘钥</strong>最为秘钥生成<strong>mac1</strong>。</p>
+<p><img src="http://img.blog.csdn.net/20170423163133686?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="消费发送mac1"></p>
+<p>返回<code>MAC2+TAC+9000</code>。故而我们认为本次<code>init_purchase</code>和<code>purchase</code>成功。</p>
+<p>为了防止意外，我们再次执行查询余额的指令。</p>
+<p><img src="http://img.blog.csdn.net/20170423163641985?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="再次查询余额"></p>
+<p>结果显示余额为<code>00000000</code>，返回<code>9000</code>。故而我们认为，查询消费圈存三大功能都已经能够正确执行了。</p>
+<p><img src="http://img.blog.csdn.net/20170423165827715?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="多次圈存两次冲入00001000+消费测试一次消费00000001"></p>
+<p>最后测试一下<strong>多次存取操作</strong>。没什么问题，故而我们认为，本次实验成功。</p>
+<p>2017/4/25更新</p>
+<p>线下已校验多次存取（复杂数据），以及TAC码（我喜欢称其工单码）检验。经检验，不存在明显问题。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/21/利用Ghost作为图床/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/21/利用Ghost作为图床/" class="post-title-link" itemprop="url">利用Ghost作为图床</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-21 03:39:31" itemprop="dateCreated datePublished" datetime="2019-05-21T03:39:31+08:00">2019-05-21</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-06-02 17:48:23" itemprop="dateModified" datetime="2019-06-02T17:48:23+08:00">2019-06-02</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>龙云尧个人博客，转载请注明出处。</strong></p>
+<p>CSDN地址：<a href="http://blog.csdn.net/Michael753951/article/details/70307694" target="_blank" rel="noopener">http://blog.csdn.net/Michael753951/article/details/70307694</a></p>
+<p>个人博客地址：<a href="http://123.207.243.115:81/li-yong-ghostzuo-wei-tu-chuang/" target="_blank" rel="noopener">http://123.207.243.115:81/li-yong-ghostzuo-wei-tu-chuang/</a></p>
+<h1 id="起源"><a href="#起源" class="headerlink" title="起源"></a>起源</h1><p>图床一直是一个很让我头疼的问题，在去年开始，我就有用markdown写项目总结的习惯，贴图的时候，怎么找一个好用的图床这个问题却一直没有解决。</p>
+<p>目前我是用过的图床包括网易<code>LOFTER</code>，<code>github</code>，<code>CSDN</code>以及自己搭建的<code>Ghost博客服务器</code>。</p>
+<p>前三种方式中，<code>LOFTER</code>和<code>github</code>直接将图片拖进去，然后右键图片，复制源地址就行了。但是美中不足的是<code>LOFTER</code>的源在其他网站上显示并不是很友好，<code>github</code>在虽然图片显示很清楚，但是上传图片的时候总是会出问题。<code>CSDN</code>和<code>github</code>一样，上传文件时总是会出问题。</p>
+<p>这迫使我有了再重新寻找一个图床的想法。</p>
+<h1 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h1><p>今晚（2017/4/21）凌晨在写项目总结的时候，我突然意识到我<strong>可以利用自己的博客服务器</strong>作为图床。而且服务器ip地址在公网中，地理地质位于华南，作为图床应该会比较稳定。</p>
+<p>果然，在稍微折腾一下之后，我在ghost官网中找到一篇<a href="https://help.ghost.org/hc/en-us/articles/223237408-Upload-Images" target="_blank" rel="noopener">【Upload Images】</a>的教程，有告诉我们怎么向服务器传文件并且在博客中显示。</p>
+<p>我就可以利用这个原理，将Ghost服务器作为图床啦。</p>
+<h1 id="实际操作"><a href="#实际操作" class="headerlink" title="实际操作"></a>实际操作</h1><p>操作过程比较简单。</p>
+<p>首先我们进入后台新建一篇文章(<code>New Post</code>)。然后在正文空白部分输入<code>![]()</code>，右侧就会出现一个提示框。如下图所示。</p>
+<p><img src="http://123.207.243.115:81/content/images/2017/04/temp.png" alt></p>
+<p>点击<code>Update an image</code>，我们就能从本地文件中选取一张图片上传上服务器，同时之前<code>![]()</code>中的括号中出现了一个相对路径，比如我的就是<code>/content/images/2017/04/temp.png</code>。</p>
+<p><strong>注意，相对路径是不能在其他地方打开的，只能在本服务器才能打开</strong>。</p>
+<p>但是<strong>我们的目的是将该图片用在其他</strong>，将本服务器作为图床。所以我们这是就需要<strong>右键单击右侧显示的图片</strong>，选择<strong><code>“复制图片地址”</code></strong>，然后将这个地址粘贴到其他地方，这样这张图片在其他地方也就能够正常显示啦。</p>
+<p><em>本篇博客就是使用这个原理实现的图像显示。</em></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/13/虚拟驾驶环境搭建（一）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/07/13/虚拟驾驶环境搭建（一）/" class="post-title-link" itemprop="url">虚拟驾驶环境搭建（一）</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2017-07-13 16:14:11" itemprop="dateCreated datePublished" datetime="2017-07-13T16:14:11+08:00">2017-07-13</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-06-02 18:23:55" itemprop="dateModified" datetime="2019-06-02T18:23:55+08:00">2019-06-02</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>龙云尧个人博客，转载请注明出处。</strong></p>
+<p>CSDN地址：<a href="http://blog.csdn.net/michael753951/article/details/75073333" target="_blank" rel="noopener">http://blog.csdn.net/michael753951/article/details/75073333</a></p>
+<p>个人blog地址：<a href="http://yaoyl.cn/huan_jing_da_jian_yi/" target="_blank" rel="noopener">http://yaoyl.cn/huan_jing_da_jian_yi/</a></p>
+<hr>
+<h1 id="综述"><a href="#综述" class="headerlink" title="综述"></a>综述</h1><p>本篇博客将对整个虚拟环境的搭建进行一个综述,后续将会对环境中各个功能的实现进行一一解释分析.</p>
+<h1 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h1><p>整个pro实现了模仿一辆车在街道上进行奔驰的场景(目前实现的是在直道上行驶,后续会加入转弯功能).项目的运行效果如图所示.</p>
+<p><img src="http://img.blog.csdn.net/20170713161253561?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="驾驶状态"></p>
+<h1 id="简单描述"><a href="#简单描述" class="headerlink" title="简单描述"></a>简单描述</h1><p>为了实现上述功能,我将整个项目大致分为如下几块.</p>
+<ul>
+<li>基本素材和环境的准备</li>
+<li>草地环境的搭建</li>
+<li>两侧楼房的搭建</li>
+<li>实现前进动作</li>
+<li>完成障碍物的出现动作</li>
+<li>其他系统优化</li>
+</ul>
+<p>其中,本次项目是基于OpenGL学习(十)的项目代码进行的修改扩充,库头文件依然一致.</p>
+<p>纹理渲染等方式和以前如出一辙.为了提高渲染速度,我使用纹理列表将图片在程序编译的时候提前进行传渲染,以达到最快的渲染速度,提高程序时间控制的稳定性.</p>
+<p>事物移动方式和以前一致,通过在DrawGLScene中绘笔的起点位置,来实现物体的移动.</p>
+<p>后续章节我将进行详细的解释说明.</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/17/nehe学习笔记（一）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/06/17/nehe学习笔记（一）/" class="post-title-link" itemprop="url">nehe学习笔记（一）</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2017-06-17 10:10:22" itemprop="dateCreated datePublished" datetime="2017-06-17T10:10:22+08:00">2017-06-17</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-06-02 17:55:42" itemprop="dateModified" datetime="2019-06-02T17:55:42+08:00">2019-06-02</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>龙云尧个人博客，转载请注明出处。</p>
+<p>CSDN地址：<a href="http://blog.csdn.net/michael753951/article/details/70254340" target="_blank" rel="noopener">http://blog.csdn.net/michael753951/article/details/70254340</a></p>
+<p>个人blog地址：<a href="http://123.207.243.115:81/rfidshi-yan-yi-zong-jie-2/" target="_blank" rel="noopener">http://123.207.243.115:81/rfidshi-yan-yi-zong-jie-2/</a></p>
+<p>因为实验需要，我要使用OpenGL搭建一个仿真驾驶环境。因为之前没有接触过OpenGL的相关知识，淦哥推荐通过NEHE来进行学习，之后会零零散散做一些笔记用来进行记录。学习的博客参见<a href="http://blog.51cto.com/zt/186/1" target="_blank" rel="noopener">【地址】</a>。</p>
+<h2 id="创建新的C"><a href="#创建新的C" class="headerlink" title="创建新的C++"></a>创建新的C++</h2><p>因为实验需要，我需要使用C++进行整个项目的编写。实验之前，我们需要先知道怎么用VS搭建一个窗口程序，这里我参考了<a href="http://blog.csdn.net/yongh701/article/details/54896321" target="_blank" rel="noopener">【这篇博客】</a>。</p>
+<p>需要注意的是，在实验中，不推荐直接按照博客中使用L对字符串直接进行强制转换的方式，这种方法在之后学习NEHE过程中会出现很多不可避免的问题。同时这种方式在输出中文的时候也会出翔错误，这个不是我们想看到的。所以我们还需要进行相关的设置。</p>
+<p>设置方法这里我们参考<a href="http://blog.csdn.net/ccf19881030/article/details/7967514" target="_blank" rel="noopener">【这篇博客】</a>。</p>
+<p>设置完成以后，我们就能很正常的输出字符串了，也不再需要在字符串前面加上L进行强制转换，之后进行NEHE学习的时候也能更加简单。</p>
+<h2 id="实验环境搭建"><a href="#实验环境搭建" class="headerlink" title="实验环境搭建"></a>实验环境搭建</h2><p>我在实验开发中使用的是VS2015专业版进行开发。需要使用到的所有库文件和环境搭建可以参考<a href="http://www.cnblogs.com/zpcdbky/p/6724772.html" target="_blank" rel="noopener">【这里】</a>，环境搭建完成之后，尝试include某些库头，如果没有报错，那就说明环境搭建成功。</p>
+<h2 id="可能出现的问题"><a href="#可能出现的问题" class="headerlink" title="可能出现的问题"></a>可能出现的问题</h2><p>实验过程中，最好从教程中，一个函数一个函数向你的项目中添加，如果一次性添加太多的话，报错太多可能会让你很崩溃。</p>
+<p>在添加函数的过程中，在开始调用PDB文件之后，可能会出现很多的“无法查找或打开PDB文件”错误信息，为了解决这个问题，你可以参考<a href="http://blog.163.com/qimo601@126/blog/static/1582209320143410125543/" target="_blank" rel="noopener">【这篇博客】</a>。</p>
+<p>如果在环境搭建过程中还出现了其他问题，试着参照<a href="http://www.cnblogs.com/clairvoyant/p/5453551.html" target="_blank" rel="noopener">【这篇博客】</a>进行解决。</p>
+<h2 id="逻辑图"><a href="#逻辑图" class="headerlink" title="逻辑图"></a>逻辑图</h2><p>经过仔细阅读源码以及理解，整个NEHE第一课的代码框架结构如下。</p>
+<p>理解过程中，我们其他的目前可以不用很掌握，但是一定要清楚，在本次项目中，作者将<strong>OpenGL的着色描述表定义为 hRC **。要让您的程序能够绘制窗口的话，还需要创建一个设备描述表</strong>。Windows的设备描述表被定义为 hDC <strong>。</strong>DC将窗口连接到GDI<strong>(Graphics Device Interface图形设备接口)。</strong>而RC将OpenGL连接到DC<strong>。</strong>变量 hWnd 将保存由Windows给我们的窗口指派的句柄<strong>。最后，</strong>程序的实例保存在hInstance中(实例)**。</p>
+<p>通过上面的关系，我们能够更加容易的理解窗口的建立与注销的过程中，作者代码中每一步所做的目的和意义。</p>
+<p><img src="http://123.207.243.115:81/content/images/2017/05/session1.png" alt></p>
+<h2 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h2><p>在读完代码之后，我们知道本次实验中仅仅只是建立一个640*480的窗口。并没有任何内容显示，另外因为我们在初始化设置中(InitGL这个方法中定义的)将屏幕的初始RGB值设置为（0.0f, 0.0f, 0.0f, 0.5f），所以程序运行的结果如图所示。</p>
+<p><img src="http://123.207.243.115:81/content/images/2017/05/--1--.png" alt="实验一截图"></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/10/Socket编程小结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/06/10/Socket编程小结/" class="post-title-link" itemprop="url">Socket编程小结</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2017-06-10 15:36:19" itemprop="dateCreated datePublished" datetime="2017-06-10T15:36:19+08:00">2017-06-10</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-06-02 18:21:47" itemprop="dateModified" datetime="2019-06-02T18:21:47+08:00">2019-06-02</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>龙云尧个人博客，转载请注明出处。</strong></p>
+<p>CSDN地址：<a href="http://blog.csdn.net/Michael753951/article/details/72990141" target="_blank" rel="noopener">http://blog.csdn.net/Michael753951/article/details/72990141</a></p>
+<p>个人blog地址：<a href="http://yaoyl.cn/socketbian-cheng-xiao-jie/" target="_blank" rel="noopener">http://yaoyl.cn/socketbian-cheng-xiao-jie/</a></p>
+<hr>
+<p>本部分内容是对之前博客<a href="http://blog.csdn.net/michael753951/article/details/72553287" target="_blank" rel="noopener">【 Ubuntu下进行Socket编程】</a>中的补充说明，在这篇博客中，我将详细解释Socket编程的代码，分析编程的流程和思想。</p>
+<p><strong>声明：</strong>本部分代码分别引用自<a href="http://www.cnblogs.com/xudong-bupt/archive/2013/12/29/3483059.html" target="_blank" rel="noopener">【Linux C Socket编程原理及简单实例】</a>以及<a href="http://blog.csdn.net/lisonglisonglisong/article/details/22699675" target="_blank" rel="noopener">【Linux网络编程：socket文件传输范例】</a>。</p>
+<p>首先我们先分析第一份较为简单的代码，使用Socket编程完成一个两个控制台窗口之间通信的demo。</p>
+<h1 id="简单通信"><a href="#简单通信" class="headerlink" title="简单通信"></a>简单通信</h1><p>在分析之前，我推荐你先看一下这篇博客<a href="http://www.cnblogs.com/dolphinX/p/3460545.html" target="_blank" rel="noopener">【简单理解Socket】</a>，上面很详细的解释说明了Socket编程的过程中，服务器端和客户端分别需要调用的函数和调用流程。比如博客中下面这张图，很重要也很直观的。</p>
+<p><img src="http://images.cnitblog.com/blog/349217/201312/05232335-fb19fc7527e944d4845ef40831da4ec2.png" alt="流程图"></p>
+<p>接下来我们开始分析代码，看代码的过程中，我们需要不断回头看看上面这张流程图，方便对整个代码进行理解剖析。</p>
+<p>服务器端代码如下。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/socket.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;netinet/in.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;arpa/inet.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fcntl.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/shm.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MYPORT  8887</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> QUEUE   20</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> BUFFER_SIZE 1024</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">///获得sockfd</span></span><br><span class="line">    <span class="comment">// SOCK_STREAM 表明使用TCP协议（有序，流）</span></span><br><span class="line">    <span class="comment">// 参考地址 http://baike.baidu.com/link?url=msvzh3jij6QHrqSMUVsst9P7o0wCNRJFS2qwZ_G5uu0hBL090wOB-4Nfgv7ye2-ZlQ3ZnnR4tqueYg6ThnqXSNP6aRe371EX2dhl5uYZ_jm</span></span><br><span class="line">    <span class="keyword">int</span> server_sockfd = socket(AF_INET,SOCK_STREAM, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">///定义sockaddr_in，用来表示接受方的IP地址</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span> <span class="title">server_sockaddr</span>;</span></span><br><span class="line">    server_sockaddr.sin_family = AF_INET; <span class="comment">// 设置地址家族</span></span><br><span class="line">    <span class="comment">// htons是将整型变量从主机字节顺序转变成网络字节顺序， 就是整数在地址空间存储方式变为：高位字节存放在内存的低地址处。 参考地址：http://baike.baidu.com/link?url=QUJ7h2uCP-Fag7xTlSgVCsZyGFr-hqJuaO-L5wRHbH7ODChk-vsHwsiipqVqIiJeNf1dCz4aeJ7SEvC-324Hfa</span></span><br><span class="line">    <span class="comment">// 绑定端口号至8887号</span></span><br><span class="line">    server_sockaddr.sin_port = htons(MYPORT); <span class="comment">// 设置端口</span></span><br><span class="line">    <span class="comment">// htonl将主机数转换成无符号长整型的网络字节顺序。本函数将一个32位数从主机字节顺序转换成网络字节顺序。</span></span><br><span class="line">    <span class="comment">// INADDR_ANY就是指定地址为0.0.0.0的地址，这个地址事实上表示不确定地址，或“所有地址”、“任意地址”。 一般来说，在各个系统中均定义成为0值。 参考地址：http://baike.baidu.com/link?url=UnkEXjpR6yhwsqWJ9d_77IzqsbEPaiO_e8WI355TORvFwpgf9zO4sQcBLilHuKxTYEOanDCWxGedtp_8-7BfVDZwyjN8ZDJDLrXitPwr49Bf5E7OwvEKHQj6EjZQHGcPU8DpDDsdeixUmYnZxgJMya</span></span><br><span class="line">    server_sockaddr.sin_addr.s_addr = htonl(INADDR_ANY); <span class="comment">// 设置地址</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">///bind，成功返回0，出错返回-1</span></span><br><span class="line">    <span class="keyword">if</span>(bind(server_sockfd,(struct sockaddr *)&amp;server_sockaddr,<span class="keyword">sizeof</span>(server_sockaddr))==<span class="number">-1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        perror(<span class="string">"bind"</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">///listen，成功返回0，出错返回-1</span></span><br><span class="line">    <span class="comment">// 消息队列长度为20</span></span><br><span class="line">    <span class="keyword">if</span>(listen(server_sockfd, QUEUE) == <span class="number">-1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        perror(<span class="string">"listen"</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">///客户端套接字</span></span><br><span class="line">    <span class="keyword">char</span> buffer[BUFFER_SIZE];</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span> <span class="title">client_addr</span>;</span></span><br><span class="line">    <span class="keyword">socklen_t</span> length = <span class="keyword">sizeof</span>(client_addr);</span><br><span class="line"></span><br><span class="line">    <span class="comment">///成功返回非负描述字，出错返回-1</span></span><br><span class="line">    <span class="keyword">int</span> conn = accept(server_sockfd, (struct sockaddr*)&amp;client_addr, &amp;length);</span><br><span class="line">    <span class="keyword">if</span>(conn&lt;<span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        perror(<span class="string">"connect"</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">memset</span>(buffer,<span class="number">0</span>,<span class="keyword">sizeof</span>(buffer));</span><br><span class="line">        <span class="keyword">int</span> len = recv(conn, buffer, <span class="keyword">sizeof</span>(buffer),<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">strcmp</span>(buffer,<span class="string">"exit\n"</span>)==<span class="number">0</span>)</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="built_in">fputs</span>(buffer, <span class="built_in">stdout</span>);</span><br><span class="line">        send(conn, buffer, len, <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    close(conn);</span><br><span class="line">    close(server_sockfd);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>仔细查看代码，各种参数的设置原因我已经写在注释中了，就不再赘述。稍加注意我们便可以发现服务器端代码中，依次调用了socket, bind, listen, accept, recv, close。整个流程是符合我们之前放出来的那张图的，我们在计算机网络中也学习过，5层网络模型中，socket套接字担任了应用层和网络层之间通信的任务，我们也知道了每个socket套接字会绑定一个特定的端口，从而接受这个端口传入的讯息。</p>
+<h2 id="详细分析"><a href="#详细分析" class="headerlink" title="详细分析"></a>详细分析</h2><p>代码中，首先使用socket函数定义消息使用IPv4网络，建立一个面向连接的稳定数据传输，即TCP传输。</p>
+<p>然后作者定义了一个sockaddr_in结构体，用来存放服务器的信息。sockaddr_in中存放了客户端的网络通信方式——IPv4，TCP，以及监听的ip地址。（这里监听的0.0.0.0，表示监听本机上所有的ip地址，这里的ip地址是指5层网络中的第4层网络层的ip地址，即服务器端自身的ip地址，这部分资料可以参考<a href="http://blog.csdn.net/bloghome/article/details/3342076" target="_blank" rel="noopener">【关于socket绑定INADDR_ANY】</a>）。上面有比较详细的解释。</p>
+<p>接下来调用bind函数绑定socket，同时调用listen开始监听，使用accept接收消息队列中的消息内容，监听的ip和端口号已经在sockaddr_in中已经定义好了。</p>
+<p>接着使用一个while循环忙等待，等待调用recv让服务端收到从其他客户端发来的消息。send表示将消息发送出去。</p>
+<p>只要将服务端的代码看懂，类似的，我们也能够很简单的看懂客户端的代码内容。请自行对着那张流程图和代码进行比对阅读。</p>
+<h2 id="demo2分析"><a href="#demo2分析" class="headerlink" title="demo2分析"></a>demo2分析</h2><p>仔细查看demo2使用TCP传输文件的例子，其实和上一个demo没什么本质上的区别，流程的关键代码都一致。不过稍微注意的是，在这一份demo中多了一行代码。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setsockopt(server_socket_fd, SOL_SOCKET, SO_REUSEADDR, &amp;opt, <span class="keyword">sizeof</span>(opt));</span><br></pre></td></tr></table></figure>
+
+<p>关于这一行代码的解释，我在这里就不多说了，因为我也并没有很看明白，如果你有兴趣的话，可以参考这篇博客，上面有很详尽的解释以及说明。<a href="http://blog.csdn.net/chary8088/article/details/2486377" target="_blank" rel="noopener">【setsockopt()用法（参数详细说明）】</a></p>
+<p>到这里其实想不出还有什么需要在解释的了，代码很简单，因为这两份demo都很纯粹，简单几行代码便能够展示清楚使用TCP变成的操作方法和顺序（如果你想使用UDP编程的话，方法类似）。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/03/nehe学习笔记（三）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/06/03/nehe学习笔记（三）/" class="post-title-link" itemprop="url">nehe学习笔记（三）</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2017-06-03 14:59:13" itemprop="dateCreated datePublished" datetime="2017-06-03T14:59:13+08:00">2017-06-03</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-06-02 17:59:03" itemprop="dateModified" datetime="2019-06-02T17:59:03+08:00">2019-06-02</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>第二课和第三课内容为三角形和矩形的颜色渲染内容，通过实例告诉我们如何给实现的样例进行上色。</p>
+<p>我们已经知道任何在OpenGL中，任何形状都将最终被分解成矩形和三角形两种形状，所以在这两课中我们将对三角形和矩形的构建和渲染进行学习。</p>
+<h2 id="三角形和矩形构造"><a href="#三角形和矩形构造" class="headerlink" title="三角形和矩形构造"></a>三角形和矩形构造</h2><p>构建三角形或者矩形的方法在DrawGLScene方法中实现。</p>
+<p>绘制图像之前我们需要先将屏幕缓存清理掉，即调用glClear和glLoadIdentity。这个时候屏幕上的定位点将被重置于窗口的正中间。</p>
+<p>整个屏幕按照空间直角坐标系的形式进行坐标划分，分为X轴，Y轴和Z轴，其中<strong>X轴正方向为右方，Y轴正方向为上方，Z轴正方向为屏幕外侧，原点为你的窗口中央。</strong></p>
+<p>开始绘制图形的之前，我们首先需要使用glTranslatef对绘制的点进行偏移，将其移到适当的位置之后开始进行图像绘制（记住绘制点初始值位于屏幕正中央。）</p>
+<p>绘制图形之前，我们需要调用glBegin(GL_TRIANGLES)来决定绘制图形。GL_TRIANGLES表示绘制一个三角形，GL_QUADS表示绘制一个矩形。如果需要绘制更多点组成的图形的话，可以使用GL_POLYGON。</p>
+<p>下面以三角形的绘制为例，通过调用glVertex3f方法设置三个顶点的坐标我们就可以画出一个简单的三角形。如果需要绘制多个三角形，可以在glBegin之后添加3*n行glVertex3f方法，就能绘制出n个三角形。</p>
+<p>绘制结束之后，我们将调用glEnd();表示本次绘制结束。</p>
+<p>下面将展示第二课的代码及其实现效果。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">DrawGLScene</span><span class="params">(GLvoid)</span>                                 <span class="comment">// Here's Where We Do All The Drawing</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); <span class="comment">// Clear Screen And Depth Buffer</span></span><br><span class="line">    glLoadIdentity();                                   <span class="comment">// Reset The Current Modelview Matrix</span></span><br><span class="line">    glTranslatef(<span class="number">-1.5f</span>,<span class="number">0.0f</span>,<span class="number">-6.0f</span>);                     <span class="comment">// Move Left 1.5 Units And Into The Screen 6.0</span></span><br><span class="line">    glBegin(GL_TRIANGLES);                              <span class="comment">// Drawing Using Triangles</span></span><br><span class="line">        glVertex3f( <span class="number">0.0f</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span>);                  <span class="comment">// Top</span></span><br><span class="line">        glVertex3f(<span class="number">-1.0f</span>,<span class="number">-1.0f</span>, <span class="number">0.0f</span>);                  <span class="comment">// Bottom Left</span></span><br><span class="line">        glVertex3f( <span class="number">1.0f</span>,<span class="number">-1.0f</span>, <span class="number">0.0f</span>);                  <span class="comment">// Bottom Right</span></span><br><span class="line">    glEnd();                                            <span class="comment">// Finished Drawing The Triangle</span></span><br><span class="line">    glTranslatef(<span class="number">3.0f</span>,<span class="number">0.0f</span>,<span class="number">0.0f</span>);                       <span class="comment">// Move Right 3 Units</span></span><br><span class="line">    glBegin(GL_QUADS);                                  <span class="comment">// Draw A Quad</span></span><br><span class="line">        glVertex3f(<span class="number">-1.0f</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span>);                  <span class="comment">// Top Left</span></span><br><span class="line">        glVertex3f( <span class="number">1.0f</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span>);                  <span class="comment">// Top Right</span></span><br><span class="line">        glVertex3f( <span class="number">1.0f</span>,<span class="number">-1.0f</span>, <span class="number">0.0f</span>);                  <span class="comment">// Bottom Right</span></span><br><span class="line">        glVertex3f(<span class="number">-1.0f</span>,<span class="number">-1.0f</span>, <span class="number">0.0f</span>);                  <span class="comment">// Bottom Left</span></span><br><span class="line">    glEnd();                                            <span class="comment">// Done Drawing The Quad</span></span><br><span class="line">    <span class="keyword">return</span> TRUE;                                        <span class="comment">// Keep Going</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>绘制出来的效果图如下所示。<br><img src="http://123.207.243.115/content/images/2017/05/section1.png" alt></p>
+<h2 id="图像着色"><a href="#图像着色" class="headerlink" title="图像着色"></a>图像着色</h2><p>第三课内容为图像着色部分，这部分内容很简单，我们只需调用glColor3f便可以进行颜色着色。<strong>值得注意的是，我们一旦调用glColor3f之后，在下一次调用glColor3f之前，着色的颜色不会改变。</strong>比如下一段代码展示的这样。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">DrawGLScene</span><span class="params">(GLvoid)</span>                                 <span class="comment">// 从这里开始进行所有的绘制</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); <span class="comment">// 清除屏幕和深度缓存</span></span><br><span class="line">    glLoadIdentity();                                   <span class="comment">// 重置当前的模型观察矩阵</span></span><br><span class="line">    <span class="comment">//当您调用glLoadIdentity()之后，您实际上将当前点移到了屏幕中心，X坐标轴从左至右，Y坐标轴从下至上，Z坐标轴从里至外。</span></span><br><span class="line">    <span class="comment">//中心左面的坐标值是负值，右面是正值。移向屏幕顶端是正值，移向屏幕底端是负值。移入屏幕深处是负值，移出屏幕则是正值。 </span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//glTranslatef(x, y, z)沿着 X, Y 和 Z 轴移动。</span></span><br><span class="line">    <span class="comment">//根据前面的次序，下面的代码沿着X轴左移1.5个单位，Y轴不动(0.0f)，最后移入屏幕6.0f个单位。</span></span><br><span class="line">    <span class="comment">//注意在glTranslatef(x, y, z)中当您移动的时候，您并不是相对屏幕中心移动，而是相对与当前所在的屏幕位置。</span></span><br><span class="line">    glTranslatef(<span class="number">-1.5f</span>, <span class="number">0.0f</span>, <span class="number">-6.0f</span>);                   <span class="comment">// 左移 1.5 单位，并移入屏幕 6.0</span></span><br><span class="line">    <span class="comment">//glBegin(GL_TRIANGLES)的意思是开始绘制三角形，glEnd() 告诉OpenGL三角形已经创建好了。</span></span><br><span class="line">    <span class="comment">//本节的简单示例中，我们只画一个三角形。如果要画第二个三角形的话，可以在这三点之后，再加三行代码(3点)。</span></span><br><span class="line">    glBegin(GL_TRIANGLES);                              <span class="comment">// Drawing Using Triangles</span></span><br><span class="line">    <span class="comment">//接下来的一行代码设置三角形的第一个顶点(三角形的上顶点)，并使用当前颜色(红色)来绘制。</span></span><br><span class="line">    glColor3f(<span class="number">1.0f</span>, <span class="number">0.0f</span>, <span class="number">0.0f</span>);                        <span class="comment">// 设置当前色为红色</span></span><br><span class="line">    glVertex3f(<span class="number">0.0f</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span>);                       <span class="comment">// Top</span></span><br><span class="line">    glColor3f(<span class="number">0.0f</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span>);                        <span class="comment">// 设置当前色为绿色</span></span><br><span class="line">    glVertex3f(<span class="number">-1.0f</span>, <span class="number">-1.0f</span>, <span class="number">0.0f</span>);                     <span class="comment">// Bottom Left</span></span><br><span class="line">    glColor3f(<span class="number">0.0f</span>, <span class="number">0.0f</span>, <span class="number">1.0f</span>);                        <span class="comment">// 设置当前色为蓝色</span></span><br><span class="line">    glVertex3f(<span class="number">1.0f</span>, <span class="number">-1.0f</span>, <span class="number">0.0f</span>);                      <span class="comment">// Bottom Right</span></span><br><span class="line">    glEnd();                                            <span class="comment">// Finished Drawing The Triangle</span></span><br><span class="line">    <span class="comment">//在屏幕的左半部分画完三角形后，我们要移到右半部分来画正方形。为此要再次使用glTranslate。</span></span><br><span class="line">    glTranslatef(<span class="number">3.0f</span>, <span class="number">0.0f</span>, <span class="number">0.0f</span>);                     <span class="comment">// Move Right 3 Units</span></span><br><span class="line">    <span class="comment">//现在使用GL_QUADS绘制正方形。</span></span><br><span class="line">    glBegin(GL_QUADS);                                  <span class="comment">// Draw A Quad</span></span><br><span class="line">    glVertex3f(<span class="number">-1.0f</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span>);                      <span class="comment">// Top Left</span></span><br><span class="line">    glVertex3f(<span class="number">1.0f</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span>);                       <span class="comment">// Top Right</span></span><br><span class="line">    glVertex3f(<span class="number">1.0f</span>, <span class="number">-1.0f</span>, <span class="number">0.0f</span>);                      <span class="comment">// Bottom Right</span></span><br><span class="line">    glVertex3f(<span class="number">-1.0f</span>, <span class="number">-1.0f</span>, <span class="number">0.0f</span>);                     <span class="comment">// Bottom Left</span></span><br><span class="line">    glEnd();                                            <span class="comment">// Done Drawing The Quad</span></span><br><span class="line">    <span class="keyword">return</span> TRUE;                                        <span class="comment">// Everything Went OK</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出的图像如下所示。</p>
+<p><img src="http://123.207.243.115/content/images/2017/05/section2.2-1.png" alt></p>
+<p>我们注意到在三角形的三个点分别设置成三个颜色之后，OpenGL自动给我们设置好了过渡色，同时我们在绘制三角形的时候，最后一个点设置为蓝色。而在绘制矩形的时候，我们并没有设置颜色，结果矩形仍然变成了蓝色，就说明glColor3f的着色具有持久性，同时这个即便是跨glBegin和glEnd也能够保持那种持久性。</p>
+<p>接着，我们将探究OpenGL中过渡色是怎么操作的。（这个部分教程中没有详细讲述）</p>
+<p>对DrawGLScene稍作修改，在矩形中前两个点着红色，后两个点着绿色，我们查看着色情况如何。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//现在使用GL_QUADS绘制正方形。</span></span><br><span class="line">glBegin(GL_QUADS);                                  <span class="comment">// Draw A Quad</span></span><br><span class="line"><span class="comment">//glColor3f(1.0f, 0.0f, 0.0f);                      // 将当前色设置为蓝色</span></span><br><span class="line">glVertex3f(<span class="number">-1.0f</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span>);                      <span class="comment">// Top Left</span></span><br><span class="line">glVertex3f(<span class="number">1.0f</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span>);                       <span class="comment">// Top Right</span></span><br><span class="line"><span class="comment">//glColor3f(0.0f, 0.1f, 0.0f);                      // 将当前色设置为蓝色</span></span><br><span class="line">glVertex3f(<span class="number">1.0f</span>, <span class="number">-1.0f</span>, <span class="number">0.0f</span>);                      <span class="comment">// Bottom Right</span></span><br><span class="line">glVertex3f(<span class="number">-1.0f</span>, <span class="number">-1.0f</span>, <span class="number">0.0f</span>);                     <span class="comment">// Bottom Left</span></span><br><span class="line">glEnd();</span><br></pre></td></tr></table></figure>
+
+<p>图像显示将从前两个点绘成的直线向另外两个点组成的直线进行过渡。</p>
+<p><img src="http://123.207.243.115/content/images/2017/05/section2.4.png" alt></p>
+<p>所以我们能够</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/02/nehe学习笔记（二）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/06/02/nehe学习笔记（二）/" class="post-title-link" itemprop="url">nehe学习笔记（二）</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2017-06-02 21:41:29" itemprop="dateCreated datePublished" datetime="2017-06-02T21:41:29+08:00">2017-06-02</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-06-02 17:57:34" itemprop="dateModified" datetime="2019-06-02T17:57:34+08:00">2019-06-02</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>其实这个和nehe学习没太多关系，纯粹知识记录一下VS的注释和反注释的快捷键而已。</p>
+<p>注释：        先CTRL+K，然后CTRL+C<br>取消注释： 先CTRL+K，然后CTRL+U</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/30/OpenGL学习笔记（十）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/05/30/OpenGL学习笔记（十）/" class="post-title-link" itemprop="url">OpenGL学习笔记（十）</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2017-05-30 16:49:22" itemprop="dateCreated datePublished" datetime="2017-05-30T16:49:22+08:00">2017-05-30</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-06-02 18:19:52" itemprop="dateModified" datetime="2019-06-02T18:19:52+08:00">2019-06-02</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>龙云尧个人博客，转载请注明出处。</strong></p>
+<p>CSDN地址：<a href="http://blog.csdn.net/michael753951/article/details/72810534" target="_blank" rel="noopener">http://blog.csdn.net/michael753951/article/details/72810534</a></p>
+<p>个人blog地址：<a href="http://yaoyl.cn/nehexue-xi-bi-ji-shi/" target="_blank" rel="noopener">http://yaoyl.cn/nehexue-xi-bi-ji-shi/</a></p>
+<hr>
+<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>本部分博客将以nehe教程第2课，笔记（三）为蓝本，将Windows中完成的基础实验在Ubuntu中进行实现。</p>
+<p>在<a href="http://yaoyl.cn/ubuntu-huan-jing-pei-zhi/" target="_blank" rel="noopener">【Ubuntu环境配置】</a>中我们已经对Ubuntu中的OpenGL环境进行了配置，并且完成了最基础的茶壶demo，接下来我们将进行实验相关的后续开发。</p>
+<h1 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h1><p>因为实验中我们需要终端接收到的数据能够在图形界面中实时显示出来，这里我们使用nehe教程的第二课内容，绘制一个矩形作为进度条，起始为0%，最高为100%。接着我们将让这个进度条能够对传输过来的信号产生反馈。将整个过程进行拆分，我们可以按照如下步骤进行实现。</p>
+<ol>
+<li>构建一个OpenGL窗口，能够根据本地按键实现进度条控制</li>
+<li>让OpenGL的窗口能够接收其他终端发送过来的消息</li>
+<li>让OpenGL窗口对接收到的信息进行一定的实时反馈（比如进度条变换）</li>
+</ol>
+<h1 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h1><h2 id="OpenGL窗口搭建"><a href="#OpenGL窗口搭建" class="headerlink" title="OpenGL窗口搭建"></a>OpenGL窗口搭建</h2><p>本次使用的代码是以nehe教程第二课中，Linux代码为蓝本，进行修改实现的。<a href="http://nehe.gamedev.net/data/lessons/linux/lesson02.tar.gz" target="_blank" rel="noopener">【代码链接】</a></p>
+<p>首先我们将窗口显示中的三角形去掉，留下一个长方形，同时将长方形的右边两个点和左边两个点重合以做出进度条为0%的感觉。代码如下：</p>
+<p><img src="http://img.blog.csdn.net/20170530163934393?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="进度条代码"></p>
+<h3 id="按钮控制的实现"><a href="#按钮控制的实现" class="headerlink" title="按钮控制的实现"></a>按钮控制的实现</h3><p>我在初始化InitGL的时候，将square_len初始化为0，当有按键触发的时候，square_len++，这样就能够完成进度条的前进工作。</p>
+<p>在原始代码中，我们可以看到main函数中，有一个<code>glutKeyboardFunc</code>方法，传入了<code>keyPressed</code>的地址，在<code>keyPressed</code>中，定义了使用<code>ESC</code>按钮进行退出的方法。我们将在这里进行尝试，试试方向键左和方向键右能不能让窗口出现一些反馈。</p>
+<p>在经过不短的一段时间的寻找之后，我终于找到了在OpenGL中，各种按键的键值是在<code>glut.h</code>中预定义好的。</p>
+<p><img src="http://img.blog.csdn.net/20170530164000862?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="键值"></p>
+<p>参考一片CSDN博客<a href="http://blog.csdn.net/andy20081251/article/details/38922295" target="_blank" rel="noopener">【pengl键盘控制一】</a>，我们可以发现在本次程序中，ESC按键确实也刚好是27，这是不是也就意味着我们可以直接按照上面的方法进行修改了？首先我们将ESC的宏定义值修改为102(十进制，对应0x66)，尝试使用左键退出窗体程序。</p>
+<p>但是很意外的，没有成功。是不是按键本身的键值并不是102？</p>
+<p>我对代码进行进一步修改，当有按键活动的时候，记录下来当前按键的键值，将其存进本地文件中。（亲测不能直接printf，因为根本不会显示出来，至于原因待会会有解释）代码如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* The function called whenever a key is pressed. */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">keyPressed</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">char</span> key, <span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">    <span class="comment">/* avoid thrashing this procedure */</span></span><br><span class="line">    <span class="comment">//usleep(100);</span></span><br><span class="line"></span><br><span class="line">    fp = fopen(<span class="string">"key_value.txt"</span>, <span class="string">"a+"</span>); <span class="comment">// a+意味着在文本最后追加</span></span><br><span class="line">    <span class="built_in">fprintf</span>(fp, <span class="string">"%d\n"</span>, key);</span><br><span class="line">    fclose(fp);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* If escape is pressed, kill everything. */</span></span><br><span class="line">    <span class="keyword">if</span> (key == ESCAPE) &#123;</span><br><span class="line">        <span class="comment">/* shut down our window */</span></span><br><span class="line">        glutDestroyWindow(window);</span><br><span class="line"></span><br><span class="line">        <span class="comment">/* exit the program...normal termination. */</span></span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>尝试按下F1~F12的按键，以及上下左右等按键，以及数字按键之后，我们发现txt文档中只记录下来了数字键值，根本没有其他的键值。</p>
+<p>为了解决这个问题，我特地打开了nehe的lesson10的linux代码（因为这一课会用到方向键进行控制）。发现原来上下左右这类按键需要在main函数中使用<code>glutSpecialFunc</code>方法，传入一个操作函数进行操作。这里我定义了一个<code>specialKeyPressed</code>方法。在尝试获取键值，并且成功之后，我开始在这里进行进度条的控制。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">specialKeyPressed</span><span class="params">(<span class="keyword">int</span> key, <span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//usleep(100);</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    fp = fopen("key_value.txt", "a+");</span></span><br><span class="line"><span class="comment">    fprintf(fp, "%d\n", key);</span></span><br><span class="line"><span class="comment">    fclose(fp);</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="keyword">switch</span>(key) &#123;</span><br><span class="line">    <span class="keyword">case</span> GLUT_KEY_LEFT:</span><br><span class="line">        square_len--;</span><br><span class="line">        <span class="keyword">if</span>(square_len &lt;= <span class="number">0</span>) square_len = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> GLUT_KEY_RIGHT:</span><br><span class="line">        square_len++;</span><br><span class="line">        <span class="keyword">if</span>(square_len &gt;= <span class="number">100</span>) square_len = <span class="number">100</span>;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>为了避免越界，我们需要将square_len控制在0-100之间。同时我们直接使用glut中宏定义的键值，进行按键判断（我已经对键值进行过测试。发现和宏定义的键值确实一致）。</p>
+<p>到这里，我们完成了本次demo的step1，一个使用按键进行进度条控制的OpenGL窗口已经构建成功。</p>
+<h3 id="在OpenGL创建的控制台窗口中使用网络协议传输"><a href="#在OpenGL创建的控制台窗口中使用网络协议传输" class="headerlink" title="在OpenGL创建的控制台窗口中使用网络协议传输"></a>在OpenGL创建的控制台窗口中使用网络协议传输</h3><p>首先，我们需要知道，在之前的Socket编程中，我们使用的一直都是控制台窗口程序进行的测试，但是在本次实验中，我的理想状态是使用OpenGL建立的窗口作为server，新建一个控制台作为client，然后实验中使用client对server进行控制。</p>
+<p>我先定义了一个tcp_server.h头文件。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/socket.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;netinet/in.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;arpa/inet.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fcntl.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/shm.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MYPORT  8887</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> QUEUE   20</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">tcp_server_init</span><span class="params">(<span class="keyword">int</span> &amp;server_sockfd, <span class="keyword">int</span> &amp;conn)</span> </span>&#123;</span><br><span class="line">    <span class="comment">///定义sockfd</span></span><br><span class="line">    server_sockfd = socket(AF_INET,SOCK_STREAM, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">///定义sockaddr_in</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span> <span class="title">server_sockaddr</span>;</span></span><br><span class="line">    server_sockaddr.sin_family = AF_INET;</span><br><span class="line">    server_sockaddr.sin_port = htons(MYPORT);</span><br><span class="line">    server_sockaddr.sin_addr.s_addr = htonl(INADDR_ANY);</span><br><span class="line"></span><br><span class="line">    <span class="comment">///bind，成功返回0，出错返回-1</span></span><br><span class="line">    <span class="keyword">if</span>(bind(server_sockfd,(struct sockaddr *)&amp;server_sockaddr,<span class="keyword">sizeof</span>(server_sockaddr))==<span class="number">-1</span>) &#123;</span><br><span class="line">        perror(<span class="string">"bind"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">///listen，成功返回0，出错返回-1</span></span><br><span class="line">    <span class="keyword">if</span>(listen(server_sockfd,QUEUE) == <span class="number">-1</span>) &#123;</span><br><span class="line">        perror(<span class="string">"listen"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">///客户端套接字</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span> <span class="title">client_addr</span>;</span></span><br><span class="line">    <span class="keyword">socklen_t</span> length = <span class="keyword">sizeof</span>(client_addr);</span><br><span class="line"></span><br><span class="line">    <span class="comment">///成功返回非负描述字，出错返回-1</span></span><br><span class="line">    conn = accept(server_sockfd, (struct sockaddr*)&amp;client_addr, &amp;length);</span><br><span class="line">    <span class="keyword">if</span>(conn&lt;<span class="number">0</span>) &#123;</span><br><span class="line">        perror(<span class="string">"connect"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//printf("before_conn\n");</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">tcp_server_close</span><span class="params">(<span class="keyword">int</span> &amp;server_sockfd, <span class="keyword">int</span> &amp;conn)</span> </span>&#123;</span><br><span class="line">    close(conn);</span><br><span class="line">    close(server_sockfd);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="方法一，DrawGLScene中接收消息"><a href="#方法一，DrawGLScene中接收消息" class="headerlink" title="方法一，DrawGLScene中接收消息"></a>方法一，DrawGLScene中接收消息</h4><p>首先我尝试直接在main函数中没有进入glutMainLoop之前，建立tcp连接。（<code>tcp_server_init(server_sockfd, conn);</code>方法在上面已经给出来了）然后在DrawGLScene中接受消息，代码如下。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* The main drawing function. */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DrawGLScene</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);     <span class="comment">// Clear The Screen And The Depth Buffer</span></span><br><span class="line">    glLoadIdentity();               <span class="comment">// Reset The View</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">memset</span>(buffer,<span class="number">0</span>,<span class="keyword">sizeof</span>(buffer));</span><br><span class="line">    <span class="keyword">int</span> len = recv(conn, buffer, <span class="keyword">sizeof</span>(buffer),<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i&lt;len; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span>(buffer[<span class="number">0</span>] == <span class="number">0x66</span>) &#123;</span><br><span class="line">            square_len++;</span><br><span class="line">            <span class="keyword">if</span>(square_len &gt;= <span class="number">100</span>) square_len = <span class="number">100</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span>(buffer[<span class="number">0</span>] == <span class="number">0x64</span>) &#123;</span><br><span class="line">            square_len--;</span><br><span class="line">            <span class="keyword">if</span>(square_len &lt;= <span class="number">0</span>) square_len = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">fputs</span>(buffer, <span class="built_in">stdout</span>);</span><br><span class="line">    send(conn, buffer, len, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    glTranslatef(<span class="number">-1.5f</span>,<span class="number">0.0f</span>,<span class="number">-6.0f</span>);             <span class="comment">// Move Right 3 Units</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// draw a square (quadrilateral)</span></span><br><span class="line">    glBegin(GL_QUADS);              <span class="comment">// start drawing a polygon (4 sided)</span></span><br><span class="line">    glVertex3f(<span class="number">-1.0f</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span>);      <span class="comment">// Top Left</span></span><br><span class="line">    glVertex3f(<span class="number">-1.0f</span>+square_len*<span class="number">0.05</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span>);      <span class="comment">// Top Right</span></span><br><span class="line">    glVertex3f(<span class="number">-1.0f</span>+square_len*<span class="number">0.05</span>,<span class="number">-1.0f</span>, <span class="number">0.0f</span>);      <span class="comment">// Bottom Right</span></span><br><span class="line">    glVertex3f(<span class="number">-1.0f</span>,<span class="number">-1.0f</span>, <span class="number">0.0f</span>);      <span class="comment">// Bottom Left</span></span><br><span class="line">    glEnd();                    <span class="comment">// done with the polygon</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// swap buffers to display, since we're double buffered.</span></span><br><span class="line">    glutSwapBuffers();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://img.blog.csdn.net/20170530164246694?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="初次尝试"></p>
+<p>运行结果如图。</p>
+<p><img src="http://img.blog.csdn.net/20170530164310861?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="初次尝试-运行"></p>
+<p>刚看到这种情况的时候我以为是程序运行出错，于是经过很长一段时间的搜索才找到了一种解决办法，这个办法我待会会说，这里先说目前的这个问题的解决办法。</p>
+<p>首先我们要知道，为什么会出现这个问题，它其实是TCP_\server_init函数中，执行到<code>conn = accept(server_sockfd, (struct sockaddr*)&amp;client\_addr, &amp;length);</code>的时候，在那里停止了，结果导致glut没有继续绘制窗口，最终造成我们看到的窗口很奇怪。对accept稍作了解便知道，这个方法是提取出所监听套接字的等待连接队列中第一个连接请求，创建一个新的套接字，并返回指向该套接字的文件描述符。（参见<a href="http://blog.csdn.net/david_xtd/article/details/7087843" target="_blank" rel="noopener">【socket编程之accept()函数】</a>）这个时候，所以，OpenGL中绘制的窗口会这么奇怪，其实就只是因为server在等待客户端的连接，所以才会继续没有往下执行而已。</p>
+<p>我们打开之前的tcp编程中，tcp_client_demo2项目，编译并且运行，和server成功建立上连接成功，理想中，这个时候应该是没有问题了，但是运行以后，显示依然有问题。</p>
+<p><img src="http://img.blog.csdn.net/20170530164342970?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="问题2"></p>
+<p>这里我猜测是因为recv阻塞了整个进程，造成后续画笔绘制没办法绘制。因为当我在client中发送一个f之后，server中的窗口就立刻能够正常移动进度条了。</p>
+<p><img src="http://img.blog.csdn.net/20170530164408102?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="解决1"></p>
+<p>最终的代码如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// This code was created by Jeff Molofee '99 (ported to Linux/GLUT by Richard Campbell '99)</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// If you've found this code useful, please let me know.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// Visit me at www.demonews.com/hosted/nehe</span></span><br><span class="line"><span class="comment">// (email Richard Campbell at ulmont@bellsouth.net)</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;GL/glut.h&gt;    // Header File For The GLUT Library</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;GL/gl.h&gt;  // Header File For The OpenGL32 Library</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;GL/glu.h&gt; // Header File For The GLu32 Library</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;     // Header File For sleeping.</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"tcp_server.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* ASCII code for the escape key. */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ESCAPE 27</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> VK_LEFT 37</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> VK_RIGHT 39</span></span><br><span class="line"></span><br><span class="line">FILE *fp = <span class="literal">NULL</span>;<span class="comment">//需要注意</span></span><br><span class="line"><span class="keyword">int</span> square_len;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* TCP 链接  */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> BUFFER_SIZE 1024</span></span><br><span class="line"><span class="keyword">int</span> server_sockfd, conn;</span><br><span class="line"><span class="keyword">char</span> buffer[BUFFER_SIZE];</span><br><span class="line"><span class="keyword">bool</span> server_init_flag;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* The number of our GLUT window */</span></span><br><span class="line"><span class="keyword">int</span> window;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* A general OpenGL initialization function.  Sets all of the initial parameters. */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InitGL</span><span class="params">(<span class="keyword">int</span> Width, <span class="keyword">int</span> Height)</span> </span>&#123;        <span class="comment">// We call this right after our OpenGL window is created.</span></span><br><span class="line">    glClearColor(<span class="number">0.0f</span>, <span class="number">0.0f</span>, <span class="number">0.0f</span>, <span class="number">0.0f</span>);       <span class="comment">// This Will Clear The Background Color To Black</span></span><br><span class="line">    glClearDepth(<span class="number">1.0</span>);              <span class="comment">// Enables Clearing Of The Depth Buffer</span></span><br><span class="line">    glDepthFunc(GL_LESS);               <span class="comment">// The Type Of Depth Test To Do</span></span><br><span class="line">    glEnable(GL_DEPTH_TEST);            <span class="comment">// Enables Depth Testing</span></span><br><span class="line">    glShadeModel(GL_SMOOTH);            <span class="comment">// Enables Smooth Color Shading</span></span><br><span class="line"></span><br><span class="line">    glMatrixMode(GL_PROJECTION);</span><br><span class="line">    glLoadIdentity();               <span class="comment">// Reset The Projection Matrix</span></span><br><span class="line"></span><br><span class="line">    gluPerspective(<span class="number">45.0f</span>,(GLfloat)Width/(GLfloat)Height,<span class="number">0.1f</span>,<span class="number">100.0f</span>);   <span class="comment">// Calculate The Aspect Ratio Of The Window</span></span><br><span class="line"></span><br><span class="line">    glMatrixMode(GL_MODELVIEW);</span><br><span class="line"></span><br><span class="line">    square_len = <span class="number">0</span>;</span><br><span class="line">    server_init_flag = <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* The function called when our window is resized (which shouldn't happen, because we're fullscreen) */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ReSizeGLScene</span><span class="params">(<span class="keyword">int</span> Width, <span class="keyword">int</span> Height)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (Height==<span class="number">0</span>)              <span class="comment">// Prevent A Divide By Zero If The Window Is Too Small</span></span><br><span class="line">        Height=<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    glViewport(<span class="number">0</span>, <span class="number">0</span>, Width, Height);        <span class="comment">// Reset The Current Viewport And Perspective Transformation</span></span><br><span class="line"></span><br><span class="line">    glMatrixMode(GL_PROJECTION);</span><br><span class="line">    glLoadIdentity();</span><br><span class="line"></span><br><span class="line">    gluPerspective(<span class="number">45.0f</span>,(GLfloat)Width/(GLfloat)Height,<span class="number">0.1f</span>,<span class="number">100.0f</span>);</span><br><span class="line">    glMatrixMode(GL_MODELVIEW);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* The main drawing function. */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DrawGLScene</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);     <span class="comment">// Clear The Screen And The Depth Buffer</span></span><br><span class="line">    glLoadIdentity();               <span class="comment">// Reset The View</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">memset</span>(buffer,<span class="number">0</span>,<span class="keyword">sizeof</span>(buffer));</span><br><span class="line">    <span class="keyword">int</span> len = recv(conn, buffer, <span class="keyword">sizeof</span>(buffer),<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i&lt;len; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span>(buffer[<span class="number">0</span>] == <span class="number">0x66</span>) &#123;</span><br><span class="line">            square_len++;</span><br><span class="line">            <span class="keyword">if</span>(square_len &gt;= <span class="number">100</span>) square_len = <span class="number">100</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span>(buffer[<span class="number">0</span>] == <span class="number">0x64</span>) &#123;</span><br><span class="line">            square_len--;</span><br><span class="line">            <span class="keyword">if</span>(square_len &lt;= <span class="number">0</span>) square_len = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">fputs</span>(buffer, <span class="built_in">stdout</span>);</span><br><span class="line">    send(conn, buffer, len, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    glTranslatef(<span class="number">-1.5f</span>,<span class="number">0.0f</span>,<span class="number">-6.0f</span>);             <span class="comment">// Move Right 3 Units</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// draw a square (quadrilateral)</span></span><br><span class="line">    glBegin(GL_QUADS);              <span class="comment">// start drawing a polygon (4 sided)</span></span><br><span class="line">    glVertex3f(<span class="number">-1.0f</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span>);      <span class="comment">// Top Left</span></span><br><span class="line">    glVertex3f(<span class="number">-1.0f</span>+square_len*<span class="number">0.05</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span>);      <span class="comment">// Top Right</span></span><br><span class="line">    glVertex3f(<span class="number">-1.0f</span>+square_len*<span class="number">0.05</span>,<span class="number">-1.0f</span>, <span class="number">0.0f</span>);      <span class="comment">// Bottom Right</span></span><br><span class="line">    glVertex3f(<span class="number">-1.0f</span>,<span class="number">-1.0f</span>, <span class="number">0.0f</span>);      <span class="comment">// Bottom Left</span></span><br><span class="line">    glEnd();                    <span class="comment">// done with the polygon</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// swap buffers to display, since we're double buffered.</span></span><br><span class="line">    glutSwapBuffers();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* The function called whenever a key is pressed. */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">keyPressed</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">char</span> key, <span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* If escape is pressed, kill everything. */</span></span><br><span class="line">    <span class="keyword">if</span> (key == ESCAPE) &#123;</span><br><span class="line">        <span class="comment">/* shut down our window */</span></span><br><span class="line">        glutDestroyWindow(window);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(!tcp_server_close(server_sockfd, conn)) &#123;</span><br><span class="line">            <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">/* exit the program...normal termination. */</span></span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">specialKeyPressed</span><span class="params">(<span class="keyword">int</span> key, <span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//usleep(100);</span></span><br><span class="line">    <span class="keyword">switch</span>(key) &#123;</span><br><span class="line">    <span class="keyword">case</span> GLUT_KEY_LEFT:</span><br><span class="line">        square_len--;</span><br><span class="line">        <span class="keyword">if</span>(square_len &lt;= <span class="number">0</span>) square_len = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> GLUT_KEY_RIGHT:</span><br><span class="line">        square_len++;</span><br><span class="line">        <span class="keyword">if</span>(square_len &gt;= <span class="number">100</span>) square_len = <span class="number">100</span>;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> **argv)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Initialize GLUT state - glut will take any command line arguments that pertain to it or</span></span><br><span class="line"><span class="comment">       X Windows - look at its documentation at http://reality.sgi.com/mjk/spec3/spec3.html */</span></span><br><span class="line">    glutInit(&amp;argc, argv);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Select type of Display mode:</span></span><br><span class="line"><span class="comment">       Double buffer</span></span><br><span class="line"><span class="comment">       RGBA color</span></span><br><span class="line"><span class="comment">       Alpha components supported</span></span><br><span class="line"><span class="comment">       Depth buffer */</span></span><br><span class="line">    glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_ALPHA | GLUT_DEPTH);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* get a 640 x 480 window */</span></span><br><span class="line">    glutInitWindowSize(<span class="number">640</span>, <span class="number">480</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* the window starts at the upper left corner of the screen */</span></span><br><span class="line">    glutInitWindowPosition(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Open a window */</span></span><br><span class="line">    window = glutCreateWindow(<span class="string">"我的第一个长方形进度条demo"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Register the function to do all our OpenGL drawing. */</span></span><br><span class="line">    glutDisplayFunc(&amp;DrawGLScene);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 全屏</span></span><br><span class="line">    <span class="comment">/* Go fullscreen.  This is the soonest we could possibly go fullscreen. */</span></span><br><span class="line">    <span class="comment">//glutFullScreen();</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Even if there are no events, redraw our gl scene. */</span></span><br><span class="line">    glutIdleFunc(&amp;DrawGLScene);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Register the function called when our window is resized. */</span></span><br><span class="line">    glutReshapeFunc(&amp;ReSizeGLScene);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Register the function called when the keyboard is pressed. */</span></span><br><span class="line">    glutKeyboardFunc(&amp;keyPressed);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Register the function called when special keys (arrows, page down, etc) are pressed. */</span></span><br><span class="line">    glutSpecialFunc(&amp;specialKeyPressed);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Initialize our window. */</span></span><br><span class="line">    InitGL(<span class="number">640</span>, <span class="number">480</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 尝试在glutMainLoop之外建立tcp连接</span></span><br><span class="line">    tcp_server_init(server_sockfd, conn);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Start Event Processing Engine */</span></span><br><span class="line">    glutMainLoop();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="方法二，在空闲回调函数中接受消息"><a href="#方法二，在空闲回调函数中接受消息" class="headerlink" title="方法二，在空闲回调函数中接受消息"></a>方法二，在空闲回调函数中接受消息</h4><p>使用空闲回调函数<code>glutIdleFunc</code>。参考博客<a href="http://blog.csdn.net/wuxinliulei/article/details/9103249" target="_blank" rel="noopener">【Idle回调函数的使用】</a>（原出处未知），以及一篇很有用的博客<a href="http://blog.163.com/tfn2008@yeah/blog/static/110321319201271153932982/" target="_blank" rel="noopener">【OpenGL下图形的交互控制[转]】</a></p>
+<p>在nehe的所有教程中，图像的转变均是在<code>DrawGLScene</code>实现的，这种方法在单纯的图像变换，不存在任何等待的时候，是没有问题的。但是一旦需要等待的时候，就会出现之前截图中那样，图片绘制上出现问题，画面显示会很不流畅，我刚开始接触的时候也以为是自己的代码写的有问题。为了解决这个问题，我们可以试试其他的方法。</p>
+<p>在博客中我们也知道，一般更新场景数据的时候，使用的就是Idle Callback。刚好符合我们的需求。下面我将说明一下代码的编写。</p>
+<p>首先在main函数中已经定义好的部分回调函数后面加上一行空闲回调函数。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//tcp_server_init(server_sockfd, conn);</span></span><br><span class="line">glutIdleFunc(&amp;IdleFun);  <span class="comment">// idle 回调函数</span></span><br></pre></td></tr></table></figure>
+
+<p>有趣的是，我们发现，<code>DrawGLScene</code>方法也是在空闲回调函数中执行的。不过在main函数中出现两个DrawGLScene函数的时候，对程序的执行并不影响。</p>
+<p>接下来我们定义<code>IdleFun</code>。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">IdleFun</span><span class="params">()</span> </span>&#123; <span class="comment">// 回调函数，在控制台中的一些操作，需要在本部分进行控制</span></span><br><span class="line">    <span class="comment">//printf("test\n");</span></span><br><span class="line">    <span class="keyword">if</span>(!server_init_flag) &#123;</span><br><span class="line">        <span class="comment">//square_len++;</span></span><br><span class="line">        <span class="comment">//if(square_len &gt;= 100) square_len = 0;</span></span><br><span class="line">        <span class="comment">//printf("init\n");</span></span><br><span class="line">        <span class="keyword">if</span>(tcp_server_init(server_sockfd, conn)) <span class="built_in">printf</span>(<span class="string">"success\n"</span>);</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"false\n"</span>);</span><br><span class="line">        server_init_flag = <span class="literal">true</span>;</span><br><span class="line">        glutPostRedisplay();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">memset</span>(buffer,<span class="number">0</span>,<span class="keyword">sizeof</span>(buffer));</span><br><span class="line">        <span class="keyword">int</span> len = recv(conn, buffer, <span class="keyword">sizeof</span>(buffer),<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i&lt;len; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span>(buffer[<span class="number">0</span>] == <span class="number">0x66</span>) &#123;</span><br><span class="line">                square_len++;</span><br><span class="line">                <span class="keyword">if</span>(square_len &gt;= <span class="number">100</span>) square_len = <span class="number">100</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span>(buffer[<span class="number">0</span>] == <span class="number">0x64</span>) &#123;</span><br><span class="line">                square_len--;</span><br><span class="line">                <span class="keyword">if</span>(square_len &lt;= <span class="number">0</span>) square_len = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">fputs</span>(buffer, <span class="built_in">stdout</span>);</span><br><span class="line">        send(conn, buffer, len, <span class="number">0</span>);</span><br><span class="line">    glutPostRedisplay();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>为了避免反复创建tcp连接，我们使用一个全局bool变量来标志是否已经创建连接。并且我们在刷新完场景数据之后，<strong>一定</strong>要调用<code>glutPostRedisplay</code>刷新当前屏幕，否则当前屏幕不会自动刷新，你也将看不到场景变化。具体参考可见<a href="http://www.cnblogs.com/live41/p/3395899.html" target="_blank" rel="noopener">【[译]GLUT教程 - glutPostRedisplay函数】</a>。（这是一篇很好的博客）最终的参考代码如下。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;GL/glut.h&gt;    // Header File For The GLUT Library</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;GL/gl.h&gt;  // Header File For The OpenGL32 Library</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;GL/glu.h&gt; // Header File For The GLu32 Library</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;     // Header File For sleeping.</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"tcp_server.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* ASCII code for the escape key. */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ESCAPE 27</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> VK_LEFT 37</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> VK_RIGHT 39</span></span><br><span class="line"></span><br><span class="line">FILE *fp = <span class="literal">NULL</span>;<span class="comment">//需要注意</span></span><br><span class="line"><span class="keyword">int</span> square_len;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* TCP 链接  */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> BUFFER_SIZE 1024</span></span><br><span class="line"><span class="keyword">int</span> server_sockfd, conn;</span><br><span class="line"><span class="keyword">char</span> buffer[BUFFER_SIZE];</span><br><span class="line"><span class="keyword">bool</span> server_init_flag;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* The number of our GLUT window */</span></span><br><span class="line"><span class="keyword">int</span> window;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* A general OpenGL initialization function.  Sets all of the initial parameters. */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InitGL</span><span class="params">(<span class="keyword">int</span> Width, <span class="keyword">int</span> Height)</span> </span>&#123;        <span class="comment">// We call this right after our OpenGL window is created.</span></span><br><span class="line">    glClearColor(<span class="number">0.0f</span>, <span class="number">0.0f</span>, <span class="number">0.0f</span>, <span class="number">0.0f</span>);       <span class="comment">// This Will Clear The Background Color To Black</span></span><br><span class="line">    glClearDepth(<span class="number">1.0</span>);              <span class="comment">// Enables Clearing Of The Depth Buffer</span></span><br><span class="line">    glDepthFunc(GL_LESS);               <span class="comment">// The Type Of Depth Test To Do</span></span><br><span class="line">    glEnable(GL_DEPTH_TEST);            <span class="comment">// Enables Depth Testing</span></span><br><span class="line">    glShadeModel(GL_SMOOTH);            <span class="comment">// Enables Smooth Color Shading</span></span><br><span class="line"></span><br><span class="line">    glMatrixMode(GL_PROJECTION);</span><br><span class="line">    glLoadIdentity();               <span class="comment">// Reset The Projection Matrix</span></span><br><span class="line"></span><br><span class="line">    gluPerspective(<span class="number">45.0f</span>,(GLfloat)Width/(GLfloat)Height,<span class="number">0.1f</span>,<span class="number">100.0f</span>);   <span class="comment">// Calculate The Aspect Ratio Of The Window</span></span><br><span class="line"></span><br><span class="line">    glMatrixMode(GL_MODELVIEW);</span><br><span class="line"></span><br><span class="line">    square_len = <span class="number">0</span>;</span><br><span class="line">    server_init_flag = <span class="literal">false</span>;</span><br><span class="line">    <span class="comment">//if(!tcp_server_init(server_sockfd, conn)) exit(1);</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* The function called when our window is resized (which shouldn't happen, because we're fullscreen) */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ReSizeGLScene</span><span class="params">(<span class="keyword">int</span> Width, <span class="keyword">int</span> Height)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (Height==<span class="number">0</span>)              <span class="comment">// Prevent A Divide By Zero If The Window Is Too Small</span></span><br><span class="line">        Height=<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    glViewport(<span class="number">0</span>, <span class="number">0</span>, Width, Height);        <span class="comment">// Reset The Current Viewport And Perspective Transformation</span></span><br><span class="line"></span><br><span class="line">    glMatrixMode(GL_PROJECTION);</span><br><span class="line">    glLoadIdentity();</span><br><span class="line"></span><br><span class="line">    gluPerspective(<span class="number">45.0f</span>,(GLfloat)Width/(GLfloat)Height,<span class="number">0.1f</span>,<span class="number">100.0f</span>);</span><br><span class="line">    glMatrixMode(GL_MODELVIEW);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* The main drawing function. */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DrawGLScene</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);     <span class="comment">// Clear The Screen And The Depth Buffer</span></span><br><span class="line">    glLoadIdentity();               <span class="comment">// Reset The View</span></span><br><span class="line"></span><br><span class="line">    glTranslatef(<span class="number">-1.5f</span>,<span class="number">0.0f</span>,<span class="number">-6.0f</span>);             <span class="comment">// Move Right 3 Units</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// draw a square (quadrilateral)</span></span><br><span class="line">    glBegin(GL_QUADS);              <span class="comment">// start drawing a polygon (4 sided)</span></span><br><span class="line">    glVertex3f(<span class="number">-1.0f</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span>);      <span class="comment">// Top Left</span></span><br><span class="line">    glVertex3f(<span class="number">-1.0f</span>+square_len*<span class="number">0.05</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span>);      <span class="comment">// Top Right</span></span><br><span class="line">    glVertex3f(<span class="number">-1.0f</span>+square_len*<span class="number">0.05</span>,<span class="number">-1.0f</span>, <span class="number">0.0f</span>);      <span class="comment">// Bottom Right</span></span><br><span class="line">    glVertex3f(<span class="number">-1.0f</span>,<span class="number">-1.0f</span>, <span class="number">0.0f</span>);      <span class="comment">// Bottom Left</span></span><br><span class="line">    glEnd();                    <span class="comment">// done with the polygon</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// swap buffers to display, since we're double buffered.</span></span><br><span class="line">    glutSwapBuffers();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* The function called whenever a key is pressed. */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">keyPressed</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">char</span> key, <span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">    <span class="comment">/* avoid thrashing this procedure */</span></span><br><span class="line">    <span class="comment">//usleep(100);</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/* If escape is pressed, kill everything. */</span></span><br><span class="line">    <span class="keyword">if</span> (key == ESCAPE) &#123;</span><br><span class="line">        <span class="comment">/* shut down our window */</span></span><br><span class="line">        glutDestroyWindow(window);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(!tcp_server_close(server_sockfd, conn)) &#123;</span><br><span class="line">            <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">/* exit the program...normal termination. */</span></span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">specialKeyPressed</span><span class="params">(<span class="keyword">int</span> key, <span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//usleep(100);</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">switch</span>(key) &#123;</span><br><span class="line">    <span class="keyword">case</span> GLUT_KEY_LEFT:</span><br><span class="line">        square_len--;</span><br><span class="line">        <span class="keyword">if</span>(square_len &lt;= <span class="number">0</span>) square_len = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> GLUT_KEY_RIGHT:</span><br><span class="line">        square_len++;</span><br><span class="line">        <span class="keyword">if</span>(square_len &gt;= <span class="number">100</span>) square_len = <span class="number">100</span>;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">IdleFun</span><span class="params">()</span> </span>&#123; <span class="comment">// 回调函数，在控制台中的一些操作，需要在本部分进行控制</span></span><br><span class="line">    <span class="comment">//printf("test\n");</span></span><br><span class="line">    <span class="keyword">if</span>(!server_init_flag) &#123;</span><br><span class="line">        <span class="comment">//square_len++;</span></span><br><span class="line">        <span class="comment">//if(square_len &gt;= 100) square_len = 0;</span></span><br><span class="line">        <span class="comment">//printf("init\n");</span></span><br><span class="line">        <span class="keyword">if</span>(tcp_server_init(server_sockfd, conn)) <span class="built_in">printf</span>(<span class="string">"success\n"</span>);</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"false\n"</span>);</span><br><span class="line">        server_init_flag = <span class="literal">true</span>;</span><br><span class="line">        glutPostRedisplay();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">memset</span>(buffer,<span class="number">0</span>,<span class="keyword">sizeof</span>(buffer));</span><br><span class="line">        <span class="keyword">int</span> len = recv(conn, buffer, <span class="keyword">sizeof</span>(buffer),<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i&lt;len; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span>(buffer[<span class="number">0</span>] == <span class="number">0x66</span>) &#123;</span><br><span class="line">                square_len++;</span><br><span class="line">                <span class="keyword">if</span>(square_len &gt;= <span class="number">100</span>) square_len = <span class="number">100</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span>(buffer[<span class="number">0</span>] == <span class="number">0x64</span>) &#123;</span><br><span class="line">                square_len--;</span><br><span class="line">                <span class="keyword">if</span>(square_len &lt;= <span class="number">0</span>) square_len = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">fputs</span>(buffer, <span class="built_in">stdout</span>);</span><br><span class="line">        send(conn, buffer, len, <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    glutPostRedisplay();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> **argv)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Initialize GLUT state - glut will take any command line arguments that pertain to it or</span></span><br><span class="line"><span class="comment">       X Windows - look at its documentation at http://reality.sgi.com/mjk/spec3/spec3.html */</span></span><br><span class="line">    glutInit(&amp;argc, argv);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Select type of Display mode:</span></span><br><span class="line"><span class="comment">       Double buffer</span></span><br><span class="line"><span class="comment">       RGBA color</span></span><br><span class="line"><span class="comment">       Alpha components supported</span></span><br><span class="line"><span class="comment">       Depth buffer */</span></span><br><span class="line">    glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_ALPHA | GLUT_DEPTH);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* get a 640 x 480 window */</span></span><br><span class="line">    glutInitWindowSize(<span class="number">640</span>, <span class="number">480</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* the window starts at the upper left corner of the screen */</span></span><br><span class="line">    glutInitWindowPosition(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Open a window */</span></span><br><span class="line">    window = glutCreateWindow(<span class="string">"我的第一个长方形进度条demo"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Register the function to do all our OpenGL drawing. */</span></span><br><span class="line">    glutDisplayFunc(&amp;DrawGLScene);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 全屏</span></span><br><span class="line">    <span class="comment">/* Go fullscreen.  This is the soonest we could possibly go fullscreen. */</span></span><br><span class="line">    <span class="comment">//glutFullScreen();</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Even if there are no events, redraw our gl scene. */</span></span><br><span class="line">    glutIdleFunc(&amp;DrawGLScene);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Register the function called when our window is resized. */</span></span><br><span class="line">    glutReshapeFunc(&amp;ReSizeGLScene);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Register the function called when the keyboard is pressed. */</span></span><br><span class="line">    glutKeyboardFunc(&amp;keyPressed);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//tcp_server_init(server_sockfd, conn);</span></span><br><span class="line">    glutIdleFunc(&amp;IdleFun);  <span class="comment">// idle 回调函数</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Register the function called when special keys (arrows, page down, etc) are pressed. */</span></span><br><span class="line">    glutSpecialFunc(&amp;specialKeyPressed);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Initialize our window. */</span></span><br><span class="line">    InitGL(<span class="number">640</span>, <span class="number">480</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Start Event Processing Engine */</span></span><br><span class="line">    glutMainLoop();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>完成这一步之后，基本上你就能够完成一个能够通过网络通信控制窗口界面的小demo了。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/22/网易初面（技术面）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/05/22/网易初面（技术面）/" class="post-title-link" itemprop="url">网易初面（技术面）</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2017-05-22 23:23:02" itemprop="dateCreated datePublished" datetime="2017-05-22T23:23:02+08:00">2017-05-22</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-06-02 17:51:44" itemprop="dateModified" datetime="2019-06-02T17:51:44+08:00">2019-06-02</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>昨天我正在怼RFID第三次实验的圈存，消费和查询功能，丝毫没注意有短信，直到我出门准备拿快递查短信的时候才发现。。。</p>
+<p>于是今天什么都没准备的去猪场（网易）面试，不过还好对面两个面试官人比较好，并没有怼我什么。</p>
+<h1 id="笔试"><a href="#笔试" class="headerlink" title="笔试"></a>笔试</h1><p>上周四，网易在中大场的宣讲结束以后，便同时进行了一场笔试。<strong>笔试题目较难</strong>。题目<strong>满分一百分，前60分选择以及计算填空题，后40分编程</strong>。</p>
+<h2 id="前60分"><a href="#前60分" class="headerlink" title="前60分"></a>前60分</h2><p>前面60分里面主要是<strong>理论算法题</strong>，还夹杂一些<strong>操作系统题目</strong>和<strong>计算机网络题目</strong>，以及部分<strong>和岗位有关的内容</strong>（比如我面试的是直播开发，试卷上就有问视频格式不包括下面中的哪一个），另外选择题里面<strong>少量数据库</strong>。</p>
+<p>现在还记得的比如很经典的<strong>2017!的结构末尾有多少个0</strong>, <strong>7^2017%5结果为多少</strong>啊，<strong>第一趟快排结果</strong>怎样，<strong>堆排调整结果怎样</strong>，<strong>OS的内存置换算法</strong>，还有一些暂时想不起来的题目。</p>
+<p>题目<strong>难度有点大</strong>，对<strong>基础的算法</strong>要求比较高，同时还要求被试者记得<strong>OS</strong>，<strong>计网</strong>知识等。如果以后有人打算去网易的话，遇到笔试前最好去<a href="https://www.nowcoder.com/" target="_blank" rel="noopener"><strong>牛客网</strong></a>刷一套或者几套网易的笔试题感受一下。笔试的时候才更加适应网易的套路，<strong>运气好的话还有可能遇到原题</strong>。（我遇到一个比较简单的原题，还有一个一起考试的碰到了移到算法计算题的原题）。</p>
+<p>这部分答题过程中，我思路比较清楚。可能因为不少题目在以前上机测试或者其他算法书中遇到过，所以不是特别偏的算法还是会的（比如有一道三进制的题，当时怎么都不会，现在时间太久也忘了）。经常打算法的人应该完成难度不大。</p>
+<h2 id="后40分"><a href="#后40分" class="headerlink" title="后40分"></a>后40分</h2><p>40分一共<strong>有两道手写编程题</strong>，<strong>第一题10分比较简单</strong>，<strong>第二题会难一点30分</strong>。</p>
+<p>在这次考试中，第一题是<strong>求最大公因数和最小公倍数</strong>。第一题题目要求数据大小在1~2^32-1之间。这两个算法的实现我就不说了，因为已经算是算法入门级的代码了。但是很傻的是，我在计算最大公倍数时，return的结果只开到了undesigned int，这个估计会扣不少分。其实应该开到long long才能不溢出。</p>
+<p>第二题，是一道<strong>0-1背包问题，DP可解</strong>。但是因为时间不够，加上笔试前没有准备关于DP和背包问题，所以空出来了。题目大概意思是，在线直播平台上有各种打赏，比如打赏1（分数100）、打赏2（200）、打赏3（300），每种打赏收费标准不一样。相当于背包问题中的物品。一个用户想给主播发礼品，怎样做才能既将手中的钱花完，主播收到的积分也能最多。（题目大致应该是这样的，时间有点久了，记不是很清楚。）</p>
+<p>然后在面试过程中，我瞟到了我的试卷，前面60分拿了36。这个能理解，我在那天回寝室，回想题目的时候，就发想算法填空题里面，有几道题手算出错了。页面置换的题目里面，将LRU（Least Recently Used, 最近最久未使用，可以实际应用），错用成了OPT（Optimal，最佳置换，理论上的置换方法）。其他的错在哪就可能自己事后都没发现吧。</p>
+<p><strong>编程只拿到了4分</strong>（还是6分？）。羞耻= =，全是在那一道10分题中拿到的，除了long long之外不知道其他分数扣在哪，有可能是因为我当时图快使用的是递归求解，效率赶不上迭代，也有可能是犯了其他某些错误。30分的DP一分没拿到，毕竟我一行代码都没写= =。只有一行注释说“背包问题，可以用DP求解”。</p>
+<p>总的来说，当时笔试完自我感觉并不好。本来以为不会过，等了快一周还没收到短信，所以都已经准备放弃希望了。直到昨天翻快递短信的时候，看到了网易的短信通知，说我笔试过了，可以参加初面了。</p>
+<h1 id="初面"><a href="#初面" class="headerlink" title="初面"></a>初面</h1><h2 id="裸面"><a href="#裸面" class="headerlink" title="裸面"></a>裸面</h2><p>初面来的猝不及防，没有一点点心理准备的我，在收到短信的当天都还在淡定撸RFID的课程项目代码。结果一下午都在debug，晚上10点才搞完。当时觉得，“完了完了，明天得裸面了”。</p>
+<p>半夜看了一会<a href="http://chenbowen.baijia.baidu.com/article/472127" target="_blank" rel="noopener">直播相关的技术帖</a>，白天精力消耗太大，爬上床睡了。</p>
+<p>第二天早上7点多就爬起来继续看了一会，毕竟自己以前没怎么学过这一块，就按照计网知识，再加上自己以前学图像处理时对音频的知识，勉强硬啃下来了。</p>
+<p><strong>但是我忘记了，校招一般不会问太多和工作岗位相关的工作，他们往往问的比较基础。比如最经典的8排序3搜索，比如OOP的虚类，虚函数，继承之类的基础知识。尤其是我简历里面还说了我主力代码是C/C++，之后是Java。</strong></p>
+<p>抱着裸面的心态去的网易大厦。今天的人还不少，不过脸熟的没多少，可能我们院（指我们软件工程（移动信息工程），而不是整个数据科学院啦）的人有的上午就面过了，或者没什么人投这边。整场面试下来就碰到一个认识的人。</p>
+<p>进去之后人挺多了，我们在网易大厦一楼一个放映室等待，然后被一波一波叫出去等待面试。等不多一会，一个应该是HR的小姐姐带我们上了四楼（直播平台开发所在的楼层），十几个人在一个会议室等着被喊去面试。</p>
+<p>全是中大人，我们这一波十几个人就仨本科生，其他都是研究生，我开始有点怂了。。。。那个时候，对面一个研二师姐说上次面试就是手写搜索算法，我才突然想到，我光看直播技术贴，排序搜索什么的都没看= =</p>
+<p>临时用手机翻了一点关于排序和搜索的算法，看了一下时间复杂度，被叫去面试。</p>
+<h2 id="面试"><a href="#面试" class="headerlink" title="面试"></a>面试</h2><p>面试环境还好，空间虽然小了点，但是因为是透明玻璃墙，所以也就没有显得拥挤，房间里面有<strong>两个面试官</strong>。年轻的面试官主要提问算法和其他工程上的问题，另一位大叔感觉像是HR或者主管之类的管理者。</p>
+<p>首先是自我介绍啦，稍微讲一下自己的情况就好（我就讲了讲我来自哪，目前情况怎么样之类的，半分钟就没词了= =）。</p>
+<p>之后试官首先问我兴趣点，因为这个岗位进去之后还是有很多方向，比如<strong>前端 ，服务器，移动端</strong>之类。我说的是服务器，一方面是因为自己确实对前段没什么兴趣，另一方面去年和今年项目做得多了，就越来越觉得服务器挺重要的，毕竟很多前端的动态处理，移动端的服务，都得靠服务器端进行处理。</p>
+<p>接着面试开始问我的项目经验。年轻面试官从我的简历里面抽了大二时候做的用哈希表实现词典查询的项目进行提问。</p>
+<p>一脸懵逼，两脸茫然，猝不及防。我以为会问我直播技术有哪些瓶颈，我以为会问我怎么降低网络延迟，我以为会问我直播使用什么协议，分别有哪些优缺点，我以为会问我云计算课程实现的利用MapReduce分布式项目，我以为。。。</p>
+<p>然而，他竟然问我大二的项目= =</p>
+<p>还好当时自己在那个项目上折腾了好几天，依稀记得使用<strong>Map方法+链表</strong>实现的查询功能。然后我开始<strong>在草稿上回忆项目思路，一边回忆一遍和面试官口述</strong>（虽然一开始有点紧张还回忆错了，面试官仔细听了以后，对我查询方式提了一点质疑，我才重新想起来当时的项目内容。）口述完自己当时的项目之后，考官问我对这个项目有什么<strong>改进的想法</strong>。</p>
+<p>改进的想法？？？刚刚回忆完整个项目的我又开始陷入了沉思。我开始吧这个项目和这个岗位可能需要的地方开始考虑。</p>
+<p>这个岗位不是应该对分布式要求对点么，那就分布式搜索？？<strong>没听说过，不能瞎说</strong>。自己唯一写过的分布式架构的也就<strong>MapReduce实现的线性回归</strong>，自己也暂时没想带怎么使用分布式进行搜索的方法。突然我想到，提问过程中，面试官似乎问过我<strong>处理的信息量</strong>，<strong>我那种实现方法需要将所有数据写进内存，很费空间，这一点似乎可以优化</strong>。于是我就根据操作系统里面内存的的<strong>多级检索</strong>，大致讲了一下在大量数据情况下，减少内存消耗的方法。</p>
+<p>接下来面试官又从我项目经验中挑了一个二维码识别的项目。这个虽然是团队项目，但是前半部分我和队友一人一半，后半部分一人单挑，再加上是上个学期的项目，所以讲起来比较轻松。大致讲了一下自己当时实现的原理（直线在极坐标中的表示，点光源影响去除之类的）。</p>
+<p>又谈了一点项目经验，面试官开始问我主要擅长的领域。</p>
+<p>擅长的领域？？？又开始茫然，大学3年下来，基本都是按照课程项目走过来的，学的很散，也没有做过很成熟的项目。知识面有点广度，但是没有几个领域有深度，开始打算个人项目也是在上周四被网易理论试题打击以后，突然开始搞的。</p>
+<p>那就<strong>算法</strong>吧，再加个<strong>计网</strong>。仔细想了想自己的两年半多，算法自己从大一下怼到大二下，一年半下来，<strong>比赛奖项也集中在算法比赛上</strong>，就提了下自己的比较擅长算法。然后又想到我们上学期我<strong>计网理论</strong>学的还行，实验课怼交换机也贡献了大部分力气。这两个合起来对我拿到这份offer会不会有帮助。</p>
+<p>面试官开始问我关于<strong>网络编程的问题</strong>（当时的问题是，<strong>tcp编程的时候，什么时候会有time_ wait</strong>）。但是我没经历过网络编程啊，上个学期交换器和路由器的实验全部重在配置，在控制台输指令的那种。网络编程这一块我就没接触过啊，我就试探了一下说是不是在网络用塞的时候，因为听到这个变量我以为是TCP的连接超时。面试官否决了我的回答，我只能如实说自己没做过相关项目，面试官说了真确答案是断开连接的时候。（<strong>回来查了一下相关知识，time _wait确实是在TCP的四次挥手的时候用到的，拥塞控制是tcp _timestamps，</strong><a href="http://blog.csdn.net/qq100440110/article/details/52267708" target="_blank" rel="noopener"><strong>知识来源</strong></a>）</p>
+<p>接着面试官开始问我<strong>算法题</strong>，比如<strong>堆排和快排的对比，两种算法的应用场景之类</strong>。我大致分析了一下快排的缺点是<strong>最坏情况时间复杂度</strong>是(On^2), 堆排整理需要(Onlgn)，但是忘记分析堆排和快拍的<strong>空间消耗</strong>（自己平时从来没注意过），<strong>是否乱序</strong>方面也忘记分析了（其实两者都会乱序）。终究还是自己平时项目做得少了，算法也看的少了。。。。</p>
+<p>然后面试官问了我<strong>快排的实现方法</strong>，我在纸上大致说了一种刚刚在网上看到，回忆起来的教科书上的快排。这种方法对最后的标志位在一开始是不明确的。我看考官没怎么说话，就默默在纸上再说了一下整个整理过程。看完考官提问，没有标志位的么。我就又说了在大一的时候学的预先定位标志位进行快排整理的方法，考官这次就似乎比较满意。</p>
+<p>再接着面试官问了一下<strong>STL中Map是用什么实现的</strong>。因为我第一个项目中，就是使用的标准STL Map，而不是自己实现。我答了<strong>红黑树</strong>，这个在很久以前某篇文章中看到过。</p>
+<p>最后就是大叔面试官问，<strong>我还想说些什么</strong>。（大叔面试官全程比较少提问，感觉他应该是坐在主管位置，年轻的小哥面试官则应该是主要带项目什么的了）我大致说了一下<strong>自己在投简历和面试过程中对这个岗位产生的疑问，以及问了下我能够学到什么</strong>，基本面试也就结束了。</p>
+<h2 id="面试总结"><a href="#面试总结" class="headerlink" title="面试总结"></a>面试总结</h2><p>总的来说，网易的<strong>笔试确实有难度，面试关反而没有那么难了</strong>，主要重在<strong>项目</strong>和你<strong>擅长的方向</strong>的了解。</p>
+<p>在准备方面</p>
+<ul>
+<li><strong>我笔试40分都有机会拿到面试机会，如果有机会参加笔试机会的人可以有信心了。</strong></li>
+<li><strong>简历上的项目一定要是你有参与或者主持或者独自完成的项目。混水的项目就不要写上去了，以免面试官问起来自己一脸茫然。</strong></li>
+<li><strong>面试前最好准备一下基础的算法知识。因为自己面的是开发岗，所以对算法要求还是比较高的。基本的8大查找，3大搜索要知道。</strong></li>
+<li><strong>网易的面试方面不会太难。提前对自己的项目做好整理，看一下自己的项目报告什么的帮助回忆，也就不会像我这样裸面，在面试的时候一边面试一边回忆了。</strong></li>
+<li><strong>有些问题还是流程化的，比如对这个工作有什么期待，自我评价（本次面试没有提到），自我介绍什么的。在准备前都好好准备下。</strong></li>
+<li><strong>网易技术岗的技术面一共有两轮。我目前只经历了第一轮，希望有机会能够接触到第二轮（并不知道会问什么内容），以及最终的HR面。</strong></li>
+<li><strong>面试官不会很严，技术面也不会压力面试什么的，面试环节还是比较轻松的，不用紧张。</strong></li>
+</ul>
+<p><strong><em>最后，希望我还有机会写一个二面以及终面总结吧。</em></strong></p>
 
           
         
@@ -425,6 +2253,10 @@
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+  </nav>
+
 
 
           </div>
@@ -464,7 +2296,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-count">24</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -472,6 +2304,53 @@
 
               
 
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
               
             </nav>
           

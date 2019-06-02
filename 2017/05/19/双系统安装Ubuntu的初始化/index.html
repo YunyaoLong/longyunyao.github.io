@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="龙云尧个人博客，转载请注明出处。 CSDN地址：http://blog.csdn.net/michael753951/article/details/72547775 个人blog地址：http://http://yaoyl.cn/ubuntu-huan-jing-pei-zhi/  起源一方面由于实验室开发的要求，另一方面由于自己想搞Linux服务器，于是在自己的电脑上装了双系统——Ubuntu">
+<meta name="keywords" content="Ubuntu 环境配置">
+<meta property="og:type" content="article">
+<meta property="og:title" content="双系统安装Ubuntu的初始化">
+<meta property="og:url" content="http://yoursite.com/2017/05/19/双系统安装Ubuntu的初始化/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="龙云尧个人博客，转载请注明出处。 CSDN地址：http://blog.csdn.net/michael753951/article/details/72547775 个人blog地址：http://http://yaoyl.cn/ubuntu-huan-jing-pei-zhi/  起源一方面由于实验室开发的要求，另一方面由于自己想搞Linux服务器，于是在自己的电脑上装了双系统——Ubuntu">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://img.blog.csdn.net/20170519170710308?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170519170411570?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170519170436258?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2019-06-02T10:13:39.865Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="双系统安装Ubuntu的初始化">
+<meta name="twitter:description" content="龙云尧个人博客，转载请注明出处。 CSDN地址：http://blog.csdn.net/michael753951/article/details/72547775 个人blog地址：http://http://yaoyl.cn/ubuntu-huan-jing-pei-zhi/  起源一方面由于实验室开发的要求，另一方面由于自己想搞Linux服务器，于是在自己的电脑上装了双系统——Ubuntu">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20170519170710308?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2017/05/19/双系统安装Ubuntu的初始化/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>双系统安装Ubuntu的初始化 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/19/双系统安装Ubuntu的初始化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">双系统安装Ubuntu的初始化
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2017-05-19 17:05:42" itemprop="dateCreated datePublished" datetime="2017-05-19T17:05:42+08:00">2017-05-19</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-06-02 18:13:39" itemprop="dateModified" datetime="2019-06-02T18:13:39+08:00">2019-06-02</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>龙云尧个人博客，转载请注明出处。</strong></p>
+<p>CSDN地址：<a href="http://blog.csdn.net/michael753951/article/details/72547775" target="_blank" rel="noopener">http://blog.csdn.net/michael753951/article/details/72547775</a></p>
+<p>个人blog地址：<a href="http://http://yaoyl.cn/ubuntu-huan-jing-pei-zhi/" target="_blank" rel="noopener">http://http://yaoyl.cn/ubuntu-huan-jing-pei-zhi/</a></p>
+<hr>
+<h1 id="起源"><a href="#起源" class="headerlink" title="起源"></a>起源</h1><p>一方面由于实验室开发的要求，另一方面由于自己想搞Linux服务器，于是在自己的电脑上装了双系统——Ubuntu 16.04 + Windows10。其中Win10是PC自身的系统，Ubuntu为后期装入，本篇博客将稍微记录一下我对整个系统的UI优化以及部分必要的软件配置。</p>
+<h1 id="必要软件安装"><a href="#必要软件安装" class="headerlink" title="必要软件安装"></a>必要软件安装</h1><h2 id="输入法"><a href="#输入法" class="headerlink" title="输入法"></a>输入法</h2><p>首先需要安装的最最重要的当然是输入法了，这里我选用的是搜狗输入法，直接从官网下载安装包即可。（Ubuntu 版本的 搜狗输入法翻页是用 - 和 = 而不是 { 和 }）另外，在Ubuntu中切换输入法的快捷键是 Ctrl + Space 。</p>
+<h2 id="编辑器"><a href="#编辑器" class="headerlink" title="编辑器"></a>编辑器</h2><p>然后是编辑器，我依然选用的是Sublime，这个网上教程很多，上官网下载安装包，激活，配置环境教程太多了。</p>
+<h2 id="IDE"><a href="#IDE" class="headerlink" title="IDE"></a>IDE</h2><p>另外，考虑到我有C++的开发需求，我是用了网上比较推荐的 CodeBlocks ，软件安装教程网上很多。</p>
+<h2 id="上网"><a href="#上网" class="headerlink" title="上网"></a>上网</h2><p>再然后就是上网了。毕竟我们不可能永远待在实验室或者图书馆或者蹭别人的WiFi，但是很可惜的是，学校的iNode 64位版本并不好用，官方也没有相对应的安装教程，网上有一些教程，但是都是讲如何在64位Ubuntu系统中使用32位iNode进行上网验证。这种方法并不推荐，因为库依赖太多，而且很难成功，教程也是很多年以前的教程，现如今并不太适用。在和网络中心交流几天之后，他们给我推荐了一款非官方的软件 YaH3C 。详见 <a href="https://github.com/humiaozuzu/YaH3C" target="_blank" rel="noopener">https://github.com/humiaozuzu/YaH3C</a> 。上面有安装教程。</p>
+<p>需要注意的是，安装教程中，默认的网卡为 eth0 ，但是在我的电脑上其实并不是，这个问题在一开始直接导致我一直配置不好环境。后面发现应该按照控制台中显示的网卡名称进行配置，否则会出现登录异常。</p>
+<p>如下图所示，左边控制台中显示，我的默认网卡其实是 “enp4s0f2” ，所以在配置的时候，我就需要在网卡上填写 “enp4s0f2” 而不是教程中的 “eth0”。</p>
+<p><img src="http://img.blog.csdn.net/20170519170710308?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="网卡"></p>
+<p>配置完成以后，执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yah3c</span><br></pre></td></tr></table></figure>
+
+<p>然后选择正确的网卡（我是按1），验证成功以后就能够正常上网了。</p>
+<h2 id="WiFi"><a href="#WiFi" class="headerlink" title="WiFi"></a>WiFi</h2><p>在WiFi开启这个问题上，Ubuntu下面还是很好解决的，因为系统本身就支持直接进行无线网络共享，我们就不再需要安装各种乱七八糟的WiFi共享软件啦。这里我推荐一个比较靠谱的配置教程<a href="http://www.cnblogs.com/weiweisuhe/p/5635298.html" target="_blank" rel="noopener">【ubuntu 16.04 设置位wifi热点 方法】</a>。其他的网络教程在我的系统中并不能够配置出一个靠谱的WiFi。</p>
+<h1 id="UI设置"><a href="#UI设置" class="headerlink" title="UI设置"></a>UI设置</h1><h2 id="Tweak"><a href="#Tweak" class="headerlink" title="Tweak"></a>Tweak</h2><p>UI方面，我使用的网上普遍推荐的 Ubuntu Tweak 进行优化，安装教程网上很多，也忘记保存书签，安装的时候可以自行搜索。</p>
+<p>主题方面，“GTK主题”我选择的是“Radiance”，“图标主题”我选择的是“Ultra-Flat”，“光标主题”我选择的是“DMZ-Black”，“窗口主题”我选择的是“Radiance”。</p>
+<p>字体方面，我的设置为，“默认字体”为“Ubuntu Regular”，“桌面字体”为“Sans Regular”，“等宽字体”为“Ubuntu Mono Regular”，“文档字体”为“Sans Regular”，“窗口标题字体”为“FreeSans Bold”，其他的可以自行调整。</p>
+<p>另外，我还安装了Unity Tweak Tool，安装方法同样网上就有，操作上和 Ubuntu Tweak 类似。稍微调整了系统时钟显示和触控板设置以后，稍微修改壁纸，整个系统看上去就舒服很多了。</p>
+<h1 id="浏览器"><a href="#浏览器" class="headerlink" title="浏览器"></a>浏览器</h1><p>Ubuntu内嵌的默认浏览器是火狐浏览器，其实也挺好用的，但是因为我在Windows中刷网页都是使用Chrome，书签和必要的插件也在里面，所以我在Ubuntu中从官网中下载了Chrome，登录账号成功之后，Chrome将我所有的书签全部同步过来，密码也能同步过来。同时，因为Chrome内嵌了 flash ，所以在刷视频的时候，就会比火狐方便很多。</p>
+<h1 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h1><p>配置完上面内容，然后换一个桌面，整个Ubuntu界面就不再是丑丑的样子啦，用起来也神清气爽了。稍微po两张我的桌面和浏览器。</p>
+<p><img src="http://img.blog.csdn.net/20170519170411570?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="浏览器"></p>
+<p><img src="http://img.blog.csdn.net/20170519170436258?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="桌面"></p>
+<p>接下来就是要开始进行环境配置了，因为我需要在Ubuntu中进行OpenGL开发，所以我们需要进行一些环境上的配置。</p>
+<p>环境配置上，我找了不少博客，但是都没有很完美的解决方案，知道后面在CSDN上面找到一个小哥的<a href="http://blog.csdn.net/jarvischu/article/details/8226938" target="_blank" rel="noopener">【Ubuntu 下使用OpenGL/GLUT的配置以及在Codeblocks中使用GLUT 】</a>。小哥在博客中很详细的讲述了环境配置的过程和方法以及一些错误的尝试和正确的打开方式。看完基本就能够使用CodeBlocks进行OpenGL开发了。</p>
+<p>最后附上茶壶demo的代码。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;GL/glut.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    glClearColor(<span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>);</span><br><span class="line">    glMatrixMode(GL_PROJECTION);</span><br><span class="line">    glOrtho(<span class="number">-5</span>, <span class="number">5</span>, <span class="number">-5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">15</span>);</span><br><span class="line">    glMatrixMode(GL_MODELVIEW);</span><br><span class="line">    gluLookAt(<span class="number">0</span>, <span class="number">0</span>, <span class="number">10</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    glClear(GL_COLOR_BUFFER_BIT);</span><br><span class="line">    glColor3f(<span class="number">1.0</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">    glutWireTeapot(<span class="number">3</span>);</span><br><span class="line">    glFlush();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    glutInit(&amp;argc, argv);</span><br><span class="line">    glutInitDisplayMode(GLUT_RGB | GLUT_SINGLE);</span><br><span class="line">    glutInitWindowPosition(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">    glutInitWindowSize(<span class="number">300</span>, <span class="number">300</span>);</span><br><span class="line">    glutCreateWindow(<span class="string">"OpenGL 3D View"</span>);</span><br><span class="line">    init();</span><br><span class="line">    glutDisplayFunc(display);</span><br><span class="line">    glutMainLoop();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果能够正常显示，就说明你的Linux目前已经能够进行OpenGL开发了。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Ubuntu-环境配置/" rel="tag"># Ubuntu 环境配置</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/19/GhostBlog的文件迁移/" rel="next" title="blog的文件迁移">
+                <i class="fa fa-chevron-left"></i> blog的文件迁移
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/19/Ubuntu下进行Socket编程/" rel="prev" title="Ubuntu下进行Socket编程">
+                Ubuntu下进行Socket编程 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">John Doe</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">24</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#起源"><span class="nav-number">1.</span> <span class="nav-text">起源</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#必要软件安装"><span class="nav-number">2.</span> <span class="nav-text">必要软件安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#输入法"><span class="nav-number">2.1.</span> <span class="nav-text">输入法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编辑器"><span class="nav-number">2.2.</span> <span class="nav-text">编辑器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IDE"><span class="nav-number">2.3.</span> <span class="nav-text">IDE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#上网"><span class="nav-number">2.4.</span> <span class="nav-text">上网</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WiFi"><span class="nav-number">2.5.</span> <span class="nav-text">WiFi</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#UI设置"><span class="nav-number">3.</span> <span class="nav-text">UI设置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Tweak"><span class="nav-number">3.1.</span> <span class="nav-text">Tweak</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#浏览器"><span class="nav-number">4.</span> <span class="nav-text">浏览器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#环境配置"><span class="nav-number">5.</span> <span class="nav-text">环境配置</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.1.2</div>
+<div class="BbeiAn-info">
+姚云龙 版权所有 粤ICP备 -
+<a target="_blank" href="http://www.miitbeian.gov.cn/">17050867-1号</a>
+
+</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.2"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

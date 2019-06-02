@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="龙云尧个人博客，转载请注明出处。 CSDN地址：http://blog.csdn.net/michael753951/article/details/71316089 个人blog地址：http://yaoyl.cn/nehexue-xi-bi-ji-si/  图像旋转接下来我们将学习图像旋转。图像的旋转通过调用glRotatef(Angle,Xvector,Yvector,Zvector)实现。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OpenGL学习笔记（四）">
+<meta property="og:url" content="http://yoursite.com/2017/05/07/OpenGL学习笔记（四）/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="龙云尧个人博客，转载请注明出处。 CSDN地址：http://blog.csdn.net/michael753951/article/details/71316089 个人blog地址：http://yaoyl.cn/nehexue-xi-bi-ji-si/  图像旋转接下来我们将学习图像旋转。图像的旋转通过调用glRotatef(Angle,Xvector,Yvector,Zvector)实现。">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://img.blog.csdn.net/20170516074122918?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170516074144544?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170507122003199?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2019-06-02T10:03:16.156Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OpenGL学习笔记（四）">
+<meta name="twitter:description" content="龙云尧个人博客，转载请注明出处。 CSDN地址：http://blog.csdn.net/michael753951/article/details/71316089 个人blog地址：http://yaoyl.cn/nehexue-xi-bi-ji-si/  图像旋转接下来我们将学习图像旋转。图像的旋转通过调用glRotatef(Angle,Xvector,Yvector,Zvector)实现。">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20170516074122918?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2017/05/07/OpenGL学习笔记（四）/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>OpenGL学习笔记（四） | Hexo</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/07/OpenGL学习笔记（四）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">OpenGL学习笔记（四）
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2017-05-07 12:20:57" itemprop="dateCreated datePublished" datetime="2017-05-07T12:20:57+08:00">2017-05-07</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-06-02 18:03:16" itemprop="dateModified" datetime="2019-06-02T18:03:16+08:00">2019-06-02</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>龙云尧个人博客，转载请注明出处。</strong></p>
+<p>CSDN地址：<a href="http://blog.csdn.net/michael753951/article/details/71316089" target="_blank" rel="noopener">http://blog.csdn.net/michael753951/article/details/71316089</a></p>
+<p>个人blog地址：<a href="http://yaoyl.cn/nehexue-xi-bi-ji-si/" target="_blank" rel="noopener">http://yaoyl.cn/nehexue-xi-bi-ji-si/</a></p>
+<hr>
+<h2 id="图像旋转"><a href="#图像旋转" class="headerlink" title="图像旋转"></a>图像旋转</h2><p>接下来我们将学习图像旋转。图像的旋转通过调用glRotatef(Angle,Xvector,Yvector,Zvector)实现。Angle表示旋转角度（注意是角度不是弧度），Xvector表示沿X轴旋转，Yvector表示沿着Y轴旋转，Zvector表示沿着Z轴旋转。注意旋转角度和RGB设置不一样，RGB的范围是0.0f-1.0f，而角度旋转的范围是0.0f-360.0f(其实可以超过360.0f，不过为了避免溢出我们应该将其做一个约束)。</p>
+<p>图像的旋转方向遵循右手定则，即右手握住旋转的轴，右手大拇指朝向轴的正方向，那么你右手其他手指所朝的方向便为正方向。</p>
+<p>为了实现图像的旋转，我们将尝试调用一个glRotatef方法。</p>
+<p>首先我们还是在DrawGLScene方法中，通过glTranslatef确定绘点以后，我们就可以插入glRotatef(rtri, 0.0f, 0.0f, 1.0f)来绕着Z轴旋转。为此我们需要定义一个GLfloat类型的全局变量rtri。同时在DrawGLScene方法结束之前我们需要不断改变rtri的值来实现图像的旋转工作。</p>
+<p>最终的参考代码如下（注意需要自己定义一个全局变量rtri）。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">DrawGLScene</span><span class="params">(GLvoid)</span>                                 <span class="comment">// 从这里开始进行所有的绘制</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); <span class="comment">// 清除屏幕和深度缓存</span></span><br><span class="line">    glLoadIdentity();                                   <span class="comment">// 重置当前的模型观察矩阵</span></span><br><span class="line">    <span class="comment">//当您调用glLoadIdentity()之后，您实际上将当前点移到了屏幕中心，X坐标轴从左至右，Y坐标轴从下至上，Z坐标轴从里至外。</span></span><br><span class="line">    <span class="comment">//中心左面的坐标值是负值，右面是正值。移向屏幕顶端是正值，移向屏幕底端是负值。移入屏幕深处是负值，移出屏幕则是正值。 </span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//glTranslatef(x, y, z)沿着 X, Y 和 Z 轴移动。</span></span><br><span class="line">    <span class="comment">//根据前面的次序，下面的代码沿着X轴左移1.5个单位，Y轴不动(0.0f)，最后移入屏幕6.0f个单位。</span></span><br><span class="line">    <span class="comment">//注意在glTranslatef(x, y, z)中当您移动的时候，您并不是相对屏幕中心移动，而是相对与当前所在的屏幕位置。</span></span><br><span class="line">    glTranslatef(<span class="number">-1.5f</span>, <span class="number">0.0f</span>, <span class="number">-6.0f</span>);                   <span class="comment">// 左移 1.5 单位，并移入屏幕 6.0</span></span><br><span class="line">    glRotatef(rtri, <span class="number">0.0f</span>, <span class="number">0.0f</span>, <span class="number">1.0f</span>);                      <span class="comment">// Rotate The Triangle On The Y axis ( NEW )</span></span><br><span class="line">    <span class="comment">//glBegin(GL_TRIANGLES)的意思是开始绘制三角形，glEnd() 告诉OpenGL三角形已经创建好了。</span></span><br><span class="line">    <span class="comment">//本节的简单示例中，我们只画一个三角形。如果要画第二个三角形的话，可以在这三点之后，再加三行代码(3点)。</span></span><br><span class="line">    glBegin(GL_TRIANGLES);                              <span class="comment">// Drawing Using Triangles</span></span><br><span class="line">    <span class="comment">//接下来的一行代码设置三角形的第一个顶点(三角形的上顶点)，并使用当前颜色(红色)来绘制。</span></span><br><span class="line">    glColor3f(<span class="number">1.0f</span>, <span class="number">0.0f</span>, <span class="number">0.0f</span>);                        <span class="comment">// 设置当前色为红色</span></span><br><span class="line">    glVertex3f(<span class="number">0.0f</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span>);                       <span class="comment">// Top</span></span><br><span class="line">    glColor3f(<span class="number">0.0f</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span>);                        <span class="comment">// 设置当前色为绿色</span></span><br><span class="line">    glVertex3f(<span class="number">-1.0f</span>, <span class="number">-1.0f</span>, <span class="number">0.0f</span>);                     <span class="comment">// Bottom Left</span></span><br><span class="line">    glColor3f(<span class="number">0.0f</span>, <span class="number">0.0f</span>, <span class="number">1.0f</span>);                        <span class="comment">// 设置当前色为蓝色</span></span><br><span class="line">    glVertex3f(<span class="number">1.0f</span>, <span class="number">-1.0f</span>, <span class="number">0.0f</span>);                      <span class="comment">// Bottom Right</span></span><br><span class="line">    glEnd();                                            <span class="comment">// Finished Drawing The Triangle</span></span><br><span class="line">    <span class="comment">//在屏幕的左半部分画完三角形后，我们要移到右半部分来画正方形。为此要再次使用glTranslate。</span></span><br><span class="line">    glTranslatef(<span class="number">3.0f</span>, <span class="number">0.0f</span>, <span class="number">0.0f</span>);                     <span class="comment">// Move Right 3 Units</span></span><br><span class="line">    <span class="comment">//现在使用GL_QUADS绘制正方形。</span></span><br><span class="line">    glBegin(GL_QUADS);                                  <span class="comment">// Draw A Quad</span></span><br><span class="line">    <span class="comment">//glColor3f(1.0f, 0.0f, 0.0f);                      // 将当前色设置为蓝色</span></span><br><span class="line">    glVertex3f(<span class="number">-1.0f</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span>);                      <span class="comment">// Top Left</span></span><br><span class="line">    glVertex3f(<span class="number">1.0f</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span>);                       <span class="comment">// Top Right</span></span><br><span class="line">    <span class="comment">//glColor3f(0.0f, 0.1f, 0.0f);                      // 将当前色设置为蓝色</span></span><br><span class="line">    glVertex3f(<span class="number">1.0f</span>, <span class="number">-1.0f</span>, <span class="number">0.0f</span>);                      <span class="comment">// Bottom Right</span></span><br><span class="line">    glVertex3f(<span class="number">-1.0f</span>, <span class="number">-1.0f</span>, <span class="number">0.0f</span>);                     <span class="comment">// Bottom Left</span></span><br><span class="line">    glEnd();                                            <span class="comment">// Done Drawing The Quad</span></span><br><span class="line">    rtri += <span class="number">0.2f</span>;                                           <span class="comment">// Increase The Rotation Variable For The Triangle ( NEW )</span></span><br><span class="line">    <span class="keyword">return</span> TRUE;                                        <span class="comment">// Everything Went OK</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>实现的效果如下图所示。</p>
+<p><img src="http://img.blog.csdn.net/20170516074122918?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="section3.1"></p>
+<p>上述方法实现了整个画面绕着Z轴旋转的情况，我们接下来将实现两个图像分别旋转的场景。</p>
+<p>首先我们尝试直接在绘制矩形之前，直接开始对矩形矩形旋选，旋转结果如下所示。</p>
+<p><img src="http://img.blog.csdn.net/20170516074144544?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="section3.2"></p>
+<p>这个时候我们发现矩形的旋转很异常，他并不是按照我们理想的情况下绕着自己的X轴旋转。这是因为在之前的三角形旋转过程中，实际在旋转的是整个坐标系（这样做是很有道理里的，它能让我们很方便的画出这个三角形，而不用费心计算每个点在固定参考坐标系下旋转之后新的坐标位置）。</p>
+<p>为了解决这个问题，我们在三角形旋转完毕之后，应该重新调用glLoadIdentity进行坐标初始化。然后我们重新设置绘点glTranslatef，注意这个时候绘点的参数应该为(1.5f, 0.0f, -6.0f)，因为重置后绘点坐标为(0.0, 0.0, 0.0)，我们应该将矩形的绘点设置到和三角形相同的位置上。</p>
+<p>最终的两个图形的旋转的参考代码如下。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">DrawGLScene</span><span class="params">(GLvoid)</span>                                 <span class="comment">// 从这里开始进行所有的绘制</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); <span class="comment">// 清除屏幕和深度缓存</span></span><br><span class="line">    glLoadIdentity();                                   <span class="comment">// 重置当前的模型观察矩阵</span></span><br><span class="line">    <span class="comment">//当您调用glLoadIdentity()之后，您实际上将当前点移到了屏幕中心，X坐标轴从左至右，Y坐标轴从下至上，Z坐标轴从里至外。</span></span><br><span class="line">    <span class="comment">//中心左面的坐标值是负值，右面是正值。移向屏幕顶端是正值，移向屏幕底端是负值。移入屏幕深处是负值，移出屏幕则是正值。 </span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//glTranslatef(x, y, z)沿着 X, Y 和 Z 轴移动。</span></span><br><span class="line">    <span class="comment">//根据前面的次序，下面的代码沿着X轴左移1.5个单位，Y轴不动(0.0f)，最后移入屏幕6.0f个单位。</span></span><br><span class="line">    <span class="comment">//注意在glTranslatef(x, y, z)中当您移动的时候，您并不是相对屏幕中心移动，而是相对与当前所在的屏幕位置。</span></span><br><span class="line">    glTranslatef(<span class="number">-1.5f</span>, <span class="number">0.0f</span>, <span class="number">-6.0f</span>);                   <span class="comment">// 左移 1.5 单位，并移入屏幕 6.0</span></span><br><span class="line">    glRotatef(rtri, <span class="number">0.0f</span>, <span class="number">0.0f</span>, <span class="number">1.0f</span>);                  <span class="comment">// Rotate The Triangle On The Y axis ( NEW )</span></span><br><span class="line">    <span class="comment">//glBegin(GL_TRIANGLES)的意思是开始绘制三角形，glEnd() 告诉OpenGL三角形已经创建好了。</span></span><br><span class="line">    <span class="comment">//本节的简单示例中，我们只画一个三角形。如果要画第二个三角形的话，可以在这三点之后，再加三行代码(3点)。</span></span><br><span class="line">    glBegin(GL_TRIANGLES);                              <span class="comment">// Drawing Using Triangles</span></span><br><span class="line">    <span class="comment">//接下来的一行代码设置三角形的第一个顶点(三角形的上顶点)，并使用当前颜色(红色)来绘制。</span></span><br><span class="line">    glColor3f(<span class="number">1.0f</span>, <span class="number">0.0f</span>, <span class="number">0.0f</span>);                        <span class="comment">// 设置当前色为红色</span></span><br><span class="line">    glVertex3f(<span class="number">0.0f</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span>);                       <span class="comment">// Top</span></span><br><span class="line">    glColor3f(<span class="number">0.0f</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span>);                        <span class="comment">// 设置当前色为绿色</span></span><br><span class="line">    glVertex3f(<span class="number">-1.0f</span>, <span class="number">-1.0f</span>, <span class="number">0.0f</span>);                     <span class="comment">// Bottom Left</span></span><br><span class="line">    glColor3f(<span class="number">0.0f</span>, <span class="number">0.0f</span>, <span class="number">1.0f</span>);                        <span class="comment">// 设置当前色为蓝色</span></span><br><span class="line">    glVertex3f(<span class="number">1.0f</span>, <span class="number">-1.0f</span>, <span class="number">0.0f</span>);                      <span class="comment">// Bottom Right</span></span><br><span class="line">    glEnd();                                            <span class="comment">// Finished Drawing The Triangle</span></span><br><span class="line">    <span class="comment">//在屏幕的左半部分画完三角形后，我们要移到右半部分来画正方形。为此要再次使用glTranslate。</span></span><br><span class="line">    glLoadIdentity();                                   <span class="comment">// 重置模型观察矩阵</span></span><br><span class="line">    glTranslatef(<span class="number">1.5f</span>, <span class="number">0.0f</span>, <span class="number">-6.0f</span>);                        <span class="comment">// Move Right 3 Units</span></span><br><span class="line">    glRotatef(rquad, <span class="number">1.0f</span>, <span class="number">0.0f</span>, <span class="number">0.0f</span>);                 <span class="comment">//  绕X轴旋转四边形</span></span><br><span class="line">    <span class="comment">//现在使用GL_QUADS绘制正方形。</span></span><br><span class="line">    glBegin(GL_QUADS);                                  <span class="comment">// Draw A Quad</span></span><br><span class="line">    <span class="comment">//glColor3f(1.0f, 0.0f, 0.0f);                      // 将当前色设置为蓝色</span></span><br><span class="line">    glVertex3f(<span class="number">-1.0f</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span>);                      <span class="comment">// Top Left</span></span><br><span class="line">    glVertex3f(<span class="number">1.0f</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span>);                       <span class="comment">// Top Right</span></span><br><span class="line">    <span class="comment">//glColor3f(0.0f, 0.1f, 0.0f);                      // 将当前色设置为蓝色</span></span><br><span class="line">    glVertex3f(<span class="number">1.0f</span>, <span class="number">-1.0f</span>, <span class="number">0.0f</span>);                      <span class="comment">// Bottom Right</span></span><br><span class="line">    glVertex3f(<span class="number">-1.0f</span>, <span class="number">-1.0f</span>, <span class="number">0.0f</span>);                     <span class="comment">// Bottom Left</span></span><br><span class="line">    glEnd();                                            <span class="comment">// Done Drawing The Quad</span></span><br><span class="line">    <span class="keyword">if</span> (rtri &gt;= <span class="number">360.0f</span>) rtri -= <span class="number">360.0</span>;                  <span class="comment">// control the range of the rtri</span></span><br><span class="line">    <span class="keyword">if</span> (rtri &lt;= <span class="number">0.0f</span>) rtri += <span class="number">360.0</span>;</span><br><span class="line">    rtri += <span class="number">0.2f</span>;                                       <span class="comment">// Increase The Rotation Variable For The Triangle ( NEW )</span></span><br><span class="line">    rquad -= <span class="number">0.15f</span>;      <span class="comment">// 减少四边形的旋转变量</span></span><br><span class="line">    <span class="keyword">return</span> TRUE;                                        <span class="comment">// Everything Went OK</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3D图像的旋转"><a href="#3D图像的旋转" class="headerlink" title="3D图像的旋转"></a>3D图像的旋转</h2><p>我们已经实现了对2D图像的构建着色以及选装，接下来我们将实现一个3D图像的构建以及旋转。</p>
+<p>我们在之前构建三角形的教程中已经知道，在glBegin和glEnd之间可以有很多次相同形状的绘制，所以我们将利用这个特点在实验中利用4个三角形绘制一个金字塔，用6个矩形绘制一个立方体。</p>
+<p>绘制过程我们就不再赘述了，旋转方式我们在上一次实验中也已经了解了，所以我们直接上代码和结果图。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">DrawGLScene</span><span class="params">(GLvoid)</span>                                 <span class="comment">// 从这里开始进行所有的绘制</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); <span class="comment">// 清除屏幕和深度缓存</span></span><br><span class="line">    glLoadIdentity();                                   <span class="comment">// 重置当前的模型观察矩阵</span></span><br><span class="line">    <span class="comment">//当您调用glLoadIdentity()之后，您实际上将当前点移到了屏幕中心，X坐标轴从左至右，Y坐标轴从下至上，Z坐标轴从里至外。</span></span><br><span class="line">    <span class="comment">//中心左面的坐标值是负值，右面是正值。移向屏幕顶端是正值，移向屏幕底端是负值。移入屏幕深处是负值，移出屏幕则是正值。 </span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//glTranslatef(x, y, z)沿着 X, Y 和 Z 轴移动。</span></span><br><span class="line">    <span class="comment">//根据前面的次序，下面的代码沿着X轴左移1.5个单位，Y轴不动(0.0f)，最后移入屏幕6.0f个单位。</span></span><br><span class="line">    <span class="comment">//注意在glTranslatef(x, y, z)中当您移动的时候，您并不是相对屏幕中心移动，而是相对与当前所在的屏幕位置。</span></span><br><span class="line">    glTranslatef(<span class="number">-1.5f</span>, <span class="number">0.0f</span>, <span class="number">-6.0f</span>);                   <span class="comment">// 左移 1.5 单位，并移入屏幕 6.0</span></span><br><span class="line">    glRotatef(rtri, <span class="number">1.0f</span>, <span class="number">0.0f</span>, <span class="number">0.0f</span>);                  <span class="comment">// Rotate The Triangle On The Y axis ( NEW )</span></span><br><span class="line">    <span class="comment">//glBegin(GL_TRIANGLES)的意思是开始绘制三角形，glEnd() 告诉OpenGL三角形已经创建好了。</span></span><br><span class="line">    <span class="comment">//本节的简单示例中，我们只画一个三角形。如果要画第二个三角形的话，可以在这三点之后，再加三行代码(3点)。</span></span><br><span class="line">    glBegin(GL_TRIANGLES);                              <span class="comment">// Drawing Using Triangles</span></span><br><span class="line">    <span class="comment">//接下来的一行代码设置三角形的第一个顶点(三角形的上顶点)，并使用当前颜色(红色)来绘制。</span></span><br><span class="line">    glColor3f(<span class="number">1.0f</span>, <span class="number">0.0f</span>, <span class="number">0.0f</span>);                        <span class="comment">// Red</span></span><br><span class="line">    glVertex3f(<span class="number">0.0f</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span>);                   <span class="comment">// Top Of Triangle (Front)</span></span><br><span class="line">    glColor3f(<span class="number">0.0f</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span>);                        <span class="comment">// Green</span></span><br><span class="line">    glVertex3f(<span class="number">-1.0f</span>, <span class="number">-1.0f</span>, <span class="number">1.0f</span>);                 <span class="comment">// Left Of Triangle (Front)</span></span><br><span class="line">    glColor3f(<span class="number">0.0f</span>, <span class="number">0.0f</span>, <span class="number">1.0f</span>);                        <span class="comment">// Blue</span></span><br><span class="line">    glVertex3f(<span class="number">1.0f</span>, <span class="number">-1.0f</span>, <span class="number">1.0f</span>);                  <span class="comment">// Right Of Triangle (Front)</span></span><br><span class="line">    glColor3f(<span class="number">1.0f</span>, <span class="number">0.0f</span>, <span class="number">0.0f</span>);                        <span class="comment">// Red</span></span><br><span class="line">    glVertex3f(<span class="number">0.0f</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span>);                   <span class="comment">// Top Of Triangle (Right)</span></span><br><span class="line">    glColor3f(<span class="number">0.0f</span>, <span class="number">0.0f</span>, <span class="number">1.0f</span>);                        <span class="comment">// Blue</span></span><br><span class="line">    glVertex3f(<span class="number">1.0f</span>, <span class="number">-1.0f</span>, <span class="number">1.0f</span>);                  <span class="comment">// Left Of Triangle (Right)</span></span><br><span class="line">    glColor3f(<span class="number">0.0f</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span>);                        <span class="comment">// Green</span></span><br><span class="line">    glVertex3f(<span class="number">1.0f</span>, <span class="number">-1.0f</span>, <span class="number">-1.0f</span>);                 <span class="comment">// Right Of Triangle (Right)</span></span><br><span class="line">    glColor3f(<span class="number">1.0f</span>, <span class="number">0.0f</span>, <span class="number">0.0f</span>);                        <span class="comment">// Red</span></span><br><span class="line">    glVertex3f(<span class="number">0.0f</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span>);                   <span class="comment">// Top Of Triangle (Back)</span></span><br><span class="line">    glColor3f(<span class="number">0.0f</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span>);                        <span class="comment">// Green</span></span><br><span class="line">    glVertex3f(<span class="number">1.0f</span>, <span class="number">-1.0f</span>, <span class="number">-1.0f</span>);                 <span class="comment">// Left Of Triangle (Back)</span></span><br><span class="line">    glColor3f(<span class="number">0.0f</span>, <span class="number">0.0f</span>, <span class="number">1.0f</span>);                        <span class="comment">// Blue</span></span><br><span class="line">    glVertex3f(<span class="number">-1.0f</span>, <span class="number">-1.0f</span>, <span class="number">-1.0f</span>);                    <span class="comment">// Right Of Triangle (Back)</span></span><br><span class="line">    glColor3f(<span class="number">1.0f</span>, <span class="number">0.0f</span>, <span class="number">0.0f</span>);                        <span class="comment">// Red</span></span><br><span class="line">    glVertex3f(<span class="number">0.0f</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span>);                   <span class="comment">// Top Of Triangle (Left)</span></span><br><span class="line">    glColor3f(<span class="number">0.0f</span>, <span class="number">0.0f</span>, <span class="number">1.0f</span>);                        <span class="comment">// Blue</span></span><br><span class="line">    glVertex3f(<span class="number">-1.0f</span>, <span class="number">-1.0f</span>, <span class="number">-1.0f</span>);                    <span class="comment">// Left Of Triangle (Left)</span></span><br><span class="line">    glColor3f(<span class="number">0.0f</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span>);                        <span class="comment">// Green</span></span><br><span class="line">    glVertex3f(<span class="number">-1.0f</span>, <span class="number">-1.0f</span>, <span class="number">1.0f</span>);                 <span class="comment">// Right Of Triangle (Left)</span></span><br><span class="line">    glEnd();                                            <span class="comment">// Finished Drawing The Triangle</span></span><br><span class="line">    <span class="comment">//在屏幕的左半部分画完三角形后，我们要移到右半部分来画正方形。为此要再次使用glTranslate。</span></span><br><span class="line">    glLoadIdentity();                                   <span class="comment">// 重置模型观察矩阵</span></span><br><span class="line">    glTranslatef(<span class="number">1.5f</span>, <span class="number">0.0f</span>, <span class="number">-6.0f</span>);                        <span class="comment">// Move Right 3 Units</span></span><br><span class="line">    glRotatef(rquad, <span class="number">1.0f</span>, <span class="number">0.0f</span>, <span class="number">0.0f</span>);                 <span class="comment">//  绕X轴旋转四边形</span></span><br><span class="line">    <span class="comment">//现在使用GL_QUADS绘制正方形。</span></span><br><span class="line">    glBegin(GL_QUADS);                                  <span class="comment">// Draw A Quad</span></span><br><span class="line">    glColor3f(<span class="number">0.0f</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span>);                        <span class="comment">// Set The Color To Green</span></span><br><span class="line">    glVertex3f(<span class="number">1.0f</span>, <span class="number">1.0f</span>, <span class="number">-1.0f</span>);                  <span class="comment">// Top Right Of The Quad (Top)</span></span><br><span class="line">    glVertex3f(<span class="number">-1.0f</span>, <span class="number">1.0f</span>, <span class="number">-1.0f</span>);                 <span class="comment">// Top Left Of The Quad (Top)</span></span><br><span class="line">    glVertex3f(<span class="number">-1.0f</span>, <span class="number">1.0f</span>, <span class="number">1.0f</span>);                  <span class="comment">// Bottom Left Of The Quad (Top)</span></span><br><span class="line">    glVertex3f(<span class="number">1.0f</span>, <span class="number">1.0f</span>, <span class="number">1.0f</span>);                   <span class="comment">// Bottom Right Of The Quad (Top)</span></span><br><span class="line">    glColor3f(<span class="number">1.0f</span>, <span class="number">0.5f</span>, <span class="number">0.0f</span>);                        <span class="comment">// Set The Color To Orange</span></span><br><span class="line">    glVertex3f(<span class="number">1.0f</span>, <span class="number">-1.0f</span>, <span class="number">1.0f</span>);                  <span class="comment">// Top Right Of The Quad (Bottom)</span></span><br><span class="line">    glVertex3f(<span class="number">-1.0f</span>, <span class="number">-1.0f</span>, <span class="number">1.0f</span>);                 <span class="comment">// Top Left Of The Quad (Bottom)</span></span><br><span class="line">    glVertex3f(<span class="number">-1.0f</span>, <span class="number">-1.0f</span>, <span class="number">-1.0f</span>);                    <span class="comment">// Bottom Left Of The Quad (Bottom)</span></span><br><span class="line">    glVertex3f(<span class="number">1.0f</span>, <span class="number">-1.0f</span>, <span class="number">-1.0f</span>);                 <span class="comment">// Bottom Right Of The Quad (Bottom)</span></span><br><span class="line">    glColor3f(<span class="number">1.0f</span>, <span class="number">0.0f</span>, <span class="number">0.0f</span>);                        <span class="comment">// Set The Color To Red</span></span><br><span class="line">    glVertex3f(<span class="number">1.0f</span>, <span class="number">1.0f</span>, <span class="number">1.0f</span>);                   <span class="comment">// Top Right Of The Quad (Front)</span></span><br><span class="line">    glVertex3f(<span class="number">-1.0f</span>, <span class="number">1.0f</span>, <span class="number">1.0f</span>);                  <span class="comment">// Top Left Of The Quad (Front)</span></span><br><span class="line">    glVertex3f(<span class="number">-1.0f</span>, <span class="number">-1.0f</span>, <span class="number">1.0f</span>);                 <span class="comment">// Bottom Left Of The Quad (Front)</span></span><br><span class="line">    glVertex3f(<span class="number">1.0f</span>, <span class="number">-1.0f</span>, <span class="number">1.0f</span>);                  <span class="comment">// Bottom Right Of The Quad (Front)</span></span><br><span class="line">    glColor3f(<span class="number">1.0f</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span>);                        <span class="comment">// Set The Color To Yellow</span></span><br><span class="line">    glVertex3f(<span class="number">1.0f</span>, <span class="number">-1.0f</span>, <span class="number">-1.0f</span>);                 <span class="comment">// Top Right Of The Quad (Back)</span></span><br><span class="line">    glVertex3f(<span class="number">-1.0f</span>, <span class="number">-1.0f</span>, <span class="number">-1.0f</span>);                    <span class="comment">// Top Left Of The Quad (Back)</span></span><br><span class="line">    glVertex3f(<span class="number">-1.0f</span>, <span class="number">1.0f</span>, <span class="number">-1.0f</span>);                 <span class="comment">// Bottom Left Of The Quad (Back)</span></span><br><span class="line">    glVertex3f(<span class="number">1.0f</span>, <span class="number">1.0f</span>, <span class="number">-1.0f</span>);                  <span class="comment">// Bottom Right Of The Quad (Back)</span></span><br><span class="line">    glColor3f(<span class="number">0.0f</span>, <span class="number">0.0f</span>, <span class="number">1.0f</span>);                        <span class="comment">// Set The Color To Blue</span></span><br><span class="line">    glVertex3f(<span class="number">-1.0f</span>, <span class="number">1.0f</span>, <span class="number">1.0f</span>);                  <span class="comment">// Top Right Of The Quad (Left)</span></span><br><span class="line">    glVertex3f(<span class="number">-1.0f</span>, <span class="number">1.0f</span>, <span class="number">-1.0f</span>);                 <span class="comment">// Top Left Of The Quad (Left)</span></span><br><span class="line">    glVertex3f(<span class="number">-1.0f</span>, <span class="number">-1.0f</span>, <span class="number">-1.0f</span>);                    <span class="comment">// Bottom Left Of The Quad (Left)</span></span><br><span class="line">    glVertex3f(<span class="number">-1.0f</span>, <span class="number">-1.0f</span>, <span class="number">1.0f</span>);                 <span class="comment">// Bottom Right Of The Quad (Left)</span></span><br><span class="line">    glColor3f(<span class="number">1.0f</span>, <span class="number">0.0f</span>, <span class="number">1.0f</span>);                        <span class="comment">// Set The Color To Violet</span></span><br><span class="line">    glVertex3f(<span class="number">1.0f</span>, <span class="number">1.0f</span>, <span class="number">-1.0f</span>);                  <span class="comment">// Top Right Of The Quad (Right)</span></span><br><span class="line">    glVertex3f(<span class="number">1.0f</span>, <span class="number">1.0f</span>, <span class="number">1.0f</span>);                   <span class="comment">// Top Left Of The Quad (Right)</span></span><br><span class="line">    glVertex3f(<span class="number">1.0f</span>, <span class="number">-1.0f</span>, <span class="number">1.0f</span>);                  <span class="comment">// Bottom Left Of The Quad (Right)</span></span><br><span class="line">    glVertex3f(<span class="number">1.0f</span>, <span class="number">-1.0f</span>, <span class="number">-1.0f</span>);                 <span class="comment">// Bottom Right Of The Quad (Right)</span></span><br><span class="line">    glEnd();                                            <span class="comment">// Done Drawing The Quad</span></span><br><span class="line">    <span class="keyword">if</span> (rtri &gt;= <span class="number">360.0f</span>) rtri -= <span class="number">360.0</span>;                  <span class="comment">// control the range of the rtri</span></span><br><span class="line">    <span class="keyword">if</span> (rtri &lt;= <span class="number">0.0f</span>) rtri += <span class="number">360.0</span>;</span><br><span class="line">    rtri += <span class="number">0.2f</span>;                                       <span class="comment">// Increase The Rotation Variable For The Triangle ( NEW )</span></span><br><span class="line">    rquad -= <span class="number">0.15f</span>;      <span class="comment">// 减少四边形的旋转变量</span></span><br><span class="line">    <span class="keyword">return</span> TRUE;                                        <span class="comment">// Everything Went OK</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://img.blog.csdn.net/20170507122003199?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="4.1"></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/14/囚笼/" rel="next" title="囚笼">
+                <i class="fa fa-chevron-left"></i> 囚笼
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/07/OpenGL学习笔记（五）/" rel="prev" title="OpenGL学习笔记（五）">
+                OpenGL学习笔记（五） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">John Doe</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">24</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#图像旋转"><span class="nav-number">1.</span> <span class="nav-text">图像旋转</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3D图像的旋转"><span class="nav-number">2.</span> <span class="nav-text">3D图像的旋转</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.1.2</div>
+<div class="BbeiAn-info">
+姚云龙 版权所有 粤ICP备 -
+<a target="_blank" href="http://www.miitbeian.gov.cn/">17050867-1号</a>
+
+</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.2"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

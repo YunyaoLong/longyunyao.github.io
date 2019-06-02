@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="刚接到这个课程项目的时候，是一脸懵逼的。毕竟是第一次接触JavaCard编程（其实就是自己没认真听课）。不过在围观各路大佬的博客之后，总算对整个项目有了较为深入的了解。 在实验过程中，需要不断翻阅实验课PPT之《01 Java智能卡之概述》，《02 电子钱包的文件系统》，《实验2文档》，以及不知名大佬的课程总代码，CSDN大佬吕浪的Java card开发系列文章。 然后再自己不断重写代码，理解整个">
+<meta name="keywords" content="RFID java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RFID实验一总结">
+<meta property="og:url" content="http://yoursite.com/2017/05/20/RFID实验一总结/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="刚接到这个课程项目的时候，是一脸懵逼的。毕竟是第一次接触JavaCard编程（其实就是自己没认真听课）。不过在围观各路大佬的博客之后，总算对整个项目有了较为深入的了解。 在实验过程中，需要不断翻阅实验课PPT之《01 Java智能卡之概述》，《02 电子钱包的文件系统》，《实验2文档》，以及不知名大佬的课程总代码，CSDN大佬吕浪的Java card开发系列文章。 然后再自己不断重写代码，理解整个">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/18045191/25203468/e80949d0-258b-11e7-96e2-89b3087741fc.png">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/18045191/25203457/e7b2830c-258b-11e7-8911-d2b7e7fc9d0d.png">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/18045191/25203452/e78315e0-258b-11e7-8c78-08555ef584ec.png">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/18045191/25203453/e78578a8-258b-11e7-803f-d095709449d4.png">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/18045191/25203672/a3f1f2b4-258c-11e7-8164-5433dd00f23e.png">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/18045191/25203467/e8051338-258b-11e7-8a65-057b6f6674bf.png">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/18045191/25203449/e77275e6-258b-11e7-9151-f608cfbd22c2.png">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/18045191/25203459/e7b60720-258b-11e7-9b37-fc3b22bbeea5.png">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/18045191/25203458/e7b4ac9a-258b-11e7-85fd-eebd1abdaa12.png">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/18045191/25203450/e77490ec-258b-11e7-9441-85f27e4f5d07.png">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/18045191/25203454/e785c484-258b-11e7-854c-f3997f5367b5.png">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/18045191/25203451/e7826c26-258b-11e7-8544-63fdf4409642.png">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/18045191/25203456/e7a85efe-258b-11e7-84b1-6bb6c2d49ccf.png">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/18045191/25203455/e7a68034-258b-11e7-9a9e-a8494f6d2a7b.png">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/18045191/25203463/e7e4e964-258b-11e7-990c-df075fef1118.png">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/18045191/25203466/e7e87840-258b-11e7-86b7-722360b8f7d2.png">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/18045191/25203464/e7e56e0c-258b-11e7-9d74-1412fc87cb50.png">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/18045191/25203465/e7e643a4-258b-11e7-8339-d275c98f63ad.png">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/18045191/25203460/e7b665ee-258b-11e7-9a4c-015bf6990e2c.png">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/18045191/25203461/e7d3d930-258b-11e7-8a01-701201525c4a.png">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/18045191/25203462/e7d74dfe-258b-11e7-9a1a-9eaef2499f31.png">
+<meta property="og:updated_time" content="2019-06-02T09:42:36.649Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="RFID实验一总结">
+<meta name="twitter:description" content="刚接到这个课程项目的时候，是一脸懵逼的。毕竟是第一次接触JavaCard编程（其实就是自己没认真听课）。不过在围观各路大佬的博客之后，总算对整个项目有了较为深入的了解。 在实验过程中，需要不断翻阅实验课PPT之《01 Java智能卡之概述》，《02 电子钱包的文件系统》，《实验2文档》，以及不知名大佬的课程总代码，CSDN大佬吕浪的Java card开发系列文章。 然后再自己不断重写代码，理解整个">
+<meta name="twitter:image" content="https://cloud.githubusercontent.com/assets/18045191/25203468/e80949d0-258b-11e7-96e2-89b3087741fc.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2017/05/20/RFID实验一总结/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>RFID实验一总结 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/20/RFID实验一总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">RFID实验一总结
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2017-05-20 14:11:32" itemprop="dateCreated datePublished" datetime="2017-05-20T14:11:32+08:00">2017-05-20</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-06-02 17:42:36" itemprop="dateModified" datetime="2019-06-02T17:42:36+08:00">2019-06-02</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>刚接到这个课程项目的时候，是一脸懵逼的。毕竟是第一次接触JavaCard编程（其实就是自己没认真听课）。不过在围观各路大佬的博客之后，总算对整个项目有了较为深入的了解。</p>
+<p>在实验过程中，需要不断翻阅实验课PPT之《01 Java智能卡之概述》，《02 电子钱包的文件系统》，《实验2文档》，以及不知名大佬的<a href="http://www.tqcto.com/article/software/83894.html" target="_blank" rel="noopener">课程总代码</a>，CSDN大佬吕浪的<a href="http://blog.csdn.net/lv_victor/article/details/51028930" target="_blank" rel="noopener">Java card开发系列文章</a>。</p>
+<p>然后再自己不断重写代码，理解整个实现过程，才能对这个课程实验有较为深入的了解。</p>
+<p>最终的代码地址：<a href="https://github.com/LongyunYao/RFID_lab/" target="_blank" rel="noopener">https://github.com/LongyunYao/RFID_lab/</a></p>
+<p>代码在未征得本人同意之前，请勿直接Ctrl+C，Ctrl+V，谢谢。</p>
+<h1 id="正式实验"><a href="#正式实验" class="headerlink" title="正式实验"></a>正式实验</h1><h2 id="实验分析"><a href="#实验分析" class="headerlink" title="实验分析"></a>实验分析</h2><p>首先我们要知道本次实验中需要修改哪些函数，实现那哪些功能。</p>
+<p>首先我们在PPT最后知道本次实验的主要目的是：</p>
+<ul>
+<li>创建文件</li>
+<li>写秘钥</li>
+<li>读写二进制文件</li>
+</ul>
+<p>再看详细内容，我们大概可以捋清如下关系：</p>
+<ul>
+<li>创建文件<ul>
+<li>卡片收到命令并且开始解析</li>
+<li>所谓的解析就是判断是何种文件，然后再进行创建</li>
+<li>异常处理</li>
+</ul>
+</li>
+<li>写秘钥<ul>
+<li>秘钥消息是一条一条接受的，每次只会写入一条秘钥</li>
+<li>卡片收到命令以后，取出数据，然后写入秘钥文件</li>
+</ul>
+</li>
+<li>读写二进制文件<ul>
+<li>写指令只需要一条</li>
+<li>根据指令内容获得需要的参数，然后将其写入持卡人文件或者应用文件中</li>
+<li>注意：写入之前需要检查数据时候超过限定大小</li>
+<li>读取和写类似</li>
+</ul>
+</li>
+</ul>
+<p>在有了大概思路以后，我们开始阅读源代码。经过简单寻找，我们发现本次实验涉及的代码大多集中在Purse.java中。</p>
+<p><img src="https://cloud.githubusercontent.com/assets/18045191/25203468/e80949d0-258b-11e7-96e2-89b3087741fc.png" alt="基本元素"></p>
+<p>上面四个元素指明了我们将要操作的几个对象。</p>
+<p><img src="https://cloud.githubusercontent.com/assets/18045191/25203457/e7b2830c-258b-11e7-8911-d2b7e7fc9d0d.png" alt="process"></p>
+<p>这个部分似乎用处不明。但是根据让我们填写的部分，可以看出这一块是卡片读取指令的地方，将其缓冲到papdu中，让我们得以进行后续分析。</p>
+<p><img src="https://cloud.githubusercontent.com/assets/18045191/25203452/e78315e0-258b-11e7-8c78-08555ef584ec.png" alt="handleEvent"></p>
+<p>注释已经说明了，在《01 Java智能卡之概述》P30也有讲到该部分的作用，这里就是我们分析指令的地方，通过这个地方我们可以知道卡片当前接收的指令目的是什么。</p>
+<p>将PPT上的操作内容先填进去，具体实现我们待会再说。</p>
+<p><img src="https://cloud.githubusercontent.com/assets/18045191/25203453/e78578a8-258b-11e7-803f-d095709449d4.png" alt="handleEventv1"></p>
+<p><img src="https://cloud.githubusercontent.com/assets/18045191/25203672/a3f1f2b4-258c-11e7-8164-5433dd00f23e.png" alt="添加INS_READ_BIN"></p>
+<p>我们发现这里还需要添加读二进制的常量。</p>
+<p>再往下读，就是创建文件部分。</p>
+<p><img src="https://cloud.githubusercontent.com/assets/18045191/25203467/e8051338-258b-11e7-8a65-057b6f6674bf.png" alt="create_file"></p>
+<p>注释和代码里已经说明，将会有4种文件可以被创建</p>
+<ul>
+<li>电子钱包文件(EP_file，这个部分已经给出)</li>
+<li>秘钥文件</li>
+<li>持卡人基本文件</li>
+<li>应用基本文件</li>
+</ul>
+<p>剩下的就是圈存指令获取，初始化，以及一些其他操作，不是本次试验需要关心的部分。</p>
+<h2 id="开始打码"><a href="#开始打码" class="headerlink" title="开始打码"></a>开始打码</h2><p>前面的分析中，我们已经对本次实验有了大致的了解，接下来就是开始打码的过程了。</p>
+<p>我们在PPT《01 Java智能卡之概述》中已经知道了cAPDU的结构。</p>
+<p><img src="https://cloud.githubusercontent.com/assets/18045191/25203449/e77275e6-258b-11e7-9151-f608cfbd22c2.png" alt="cAPDU结构"></p>
+<p>我们也在各种文件中知道了每个参数的意义：</p>
+<ul>
+<li>CLA，即class，指令的类，占2Bytes</li>
+<li>INS，instructions，指令编码，占2Bytes</li>
+<li>P1 - 第一个指令参数，2Bytes</li>
+<li>P2 - 第二个指令参数 (P1，P2 根据INS不同，也有不同的含义)，2Bytes</li>
+<li>LC，数据段的长度（多少个字节），2Bytes</li>
+<li>Data部分就是真正的数据了，最长可以是255个字节</li>
+<li>LE字节表示的是期望卡片发回来的字节长度，注意不包括9000等响应</li>
+</ul>
+<p>首先我们完善process。</p>
+<p><img src="https://cloud.githubusercontent.com/assets/18045191/25203459/e7b60720-258b-11e7-9b37-fc3b22bbeea5.png" alt="processv1part1"></p>
+<p>按照已知的结构，将缓冲中的数据取出来，并且依次按照对应的位置放进papdu中。</p>
+<p><img src="https://cloud.githubusercontent.com/assets/18045191/25203458/e7b4ac9a-258b-11e7-85fd-eebd1abdaa12.png" alt="processv1part2"></p>
+<p>因为新加入了数据，所以我们需要更新卡片当前的LE，以便和终端进行确认。</p>
+<p>handleEvent函数我们已经按照PPT改好了。接下来就是将它们一个一个实现。</p>
+<p><img src="https://cloud.githubusercontent.com/assets/18045191/25203450/e77490ec-258b-11e7-9441-85f27e4f5d07.png" alt="create_filev1"></p>
+<p>模仿提示的case，根据todo，我们可以列出其他3中情况，分别指向创建密钥文件，持卡人基本文件和应用基本文件。具体的对应条件在实验2文档中有详细说明。</p>
+<p><a href>文件类型</a></p>
+<p>仔细分析EP_file函数，这是一个钱包文件创建的样例，仔细阅读便可以对指令的解析过程有一个深入的了解。</p>
+<p><img src="https://cloud.githubusercontent.com/assets/18045191/25203454/e785c484-258b-11e7-854c-f3997f5367b5.png" alt="create_file_table"></p>
+<p>根据上图，我们对EP_file稍作修改，添加了ins校验，keyfile校验，p1p2校验。校验过程中，我们对cAPDU中所有参数进行全部确认一遍，然后确认EPfile目前为空，KEY文件已经建立，我们才能开始进行文件的读写，以免该函数在其他地方被误调用。</p>
+<p><img src="https://cloud.githubusercontent.com/assets/18045191/25203451/e7826c26-258b-11e7-8544-63fdf4409642.png" alt="EP_file"></p>
+<p>仿照这个模式，我们可以很快吧剩下3个文件建立实现出来。</p>
+<p>Person_ file和Card_file的实现在这里略过，和EP _file一模一样。Key _file则需要稍加注意。因为Key是最先创建的，所以这个时候，keyfile肯定还是null，所以和其他判定条件不太一样，其他条件一样。</p>
+<p><img src="https://cloud.githubusercontent.com/assets/18045191/25203456/e7a85efe-258b-11e7-84b1-6bb6c2d49ccf.png" alt="Key_file"></p>
+<p>最后就是write_key和write _read _bin的实现了。</p>
+<p>观察write_key表中的参数，以及p2的取值。</p>
+<p><img src="https://cloud.githubusercontent.com/assets/18045191/25203455/e7a68034-258b-11e7-9a9e-a8494f6d2a7b.png" alt="p2"></p>
+<p><img src="https://cloud.githubusercontent.com/assets/18045191/25203463/e7e4e964-258b-11e7-990c-df075fef1118.png" alt="write_key_table"></p>
+<p>我们可以类似于之前创建文件的操作，完成写key操作。</p>
+<p><img src="https://cloud.githubusercontent.com/assets/18045191/25203466/e7e87840-258b-11e7-86b7-722360b8f7d2.png" alt="write_key"></p>
+<p>再然后就不难了。根据实验2文档，我们可以顺利写完整个代码。</p>
+<p>首先是write_read _bin()实现。利用switch进行选择。</p>
+<p><img src="https://cloud.githubusercontent.com/assets/18045191/25203464/e7e56e0c-258b-11e7-9d74-1412fc87cb50.png" alt="write_read_bin"></p>
+<p>以及二进制的读和写操作函数。不过注意的是，写数据的时候，要注意数据data要在[1, 255]之间进行选择，否则会越界（因为LC不够长）。</p>
+<p><img src="https://cloud.githubusercontent.com/assets/18045191/25203465/e7e643a4-258b-11e7-8339-d275c98f63ad.png" alt="write_binary"></p>
+<p><img src="https://cloud.githubusercontent.com/assets/18045191/25203460/e7b665ee-258b-11e7-9a4c-015bf6990e2c.png" alt="read_binary"></p>
+<p>到这里，整个实验一就结束了。在填写完代码之后整个思绪都变得异常清晰，在操作中使用严格的控制能够良好的避免错误，也能够方便我们整理思路。让我们的撸代码的时候，思路更加清晰。</p>
+<h1 id="验证实验"><a href="#验证实验" class="headerlink" title="验证实验"></a>验证实验</h1><p>首先将脚本.txt文件转换成.jcsh文件，然后转码成UTF-8，不转码就会出现乱码，eclipse就无法正常读取脚本。</p>
+<p>然后在eclipse的控制台输入<code>/set-var path &quot;D:\Eclipse_cpp_workspace\purse&quot;</code>，注意文件路径填写的是你的.jcsh脚本文件所在的位置，然后输入你的脚本文件名就行了，如<code>purse_script</code>。（不需要加后缀）</p>
+<p><img src="https://cloud.githubusercontent.com/assets/18045191/25203461/e7d3d930-258b-11e7-8a01-701201525c4a.png" alt="run_part1"></p>
+<p><img src="https://cloud.githubusercontent.com/assets/18045191/25203462/e7d74dfe-258b-11e7-9a1a-9eaef2499f31.png" alt="run_part2"></p>
+<p>这个时候我们发现，所有指令已经能够<code>no error</code>。实验一成功了。</p>
+<p>2017/4/25 更新</p>
+<p>基于验收过程中，跑真机过程中出现0x6B00报错的情况。注释掉了create_file中关于P1参数的检验。注释掉了ins 检验（ins检验其实应该没问题）。可能原因是因为真机中运行时指令和之前给的测试样本中的指令不完全一致，或者在create _file中p1有某种特殊的意义而不一定比为0x00（这部分没有在ppt和word中找到）。</p>
+<p>另外，基于这个问题，在Purse.java（Java卡的入口类）编写的时候，不推荐按照我的实现方法进行实现。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/RFID-java/" rel="tag"># RFID java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/19/Ubuntu下进行Socket编程/" rel="next" title="Ubuntu下进行Socket编程">
+                <i class="fa fa-chevron-left"></i> Ubuntu下进行Socket编程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/21/RFID实验二总结/" rel="prev" title="RFID实验二总结">
+                RFID实验二总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">John Doe</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">24</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#正式实验"><span class="nav-number">1.</span> <span class="nav-text">正式实验</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#实验分析"><span class="nav-number">1.1.</span> <span class="nav-text">实验分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开始打码"><span class="nav-number">1.2.</span> <span class="nav-text">开始打码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#验证实验"><span class="nav-number">2.</span> <span class="nav-text">验证实验</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.1.2</div>
+<div class="BbeiAn-info">
+姚云龙 版权所有 粤ICP备 -
+<a target="_blank" href="http://www.miitbeian.gov.cn/">17050867-1号</a>
+
+</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.2"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
