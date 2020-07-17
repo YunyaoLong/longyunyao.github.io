@@ -1,0 +1,611 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>剑阁</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://yaoyl.cn/"/>
+  <updated>2020-07-17T19:51:34.555Z</updated>
+  <id>https://yaoyl.cn/</id>
+  
+  <author>
+    <name>Yunyao Long</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>OpenGL学习笔记（六）</title>
+    <link href="https://yaoyl.cn/2020/07/18/OpenGL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AD%EF%BC%89/"/>
+    <id>https://yaoyl.cn/2020/07/18/OpenGL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AD%EF%BC%89/</id>
+    <published>2020-07-17T16:51:20.182Z</published>
+    <updated>2020-07-17T19:51:34.555Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;strong&gt;龙云尧个人博客，转载请注明出处。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;CSDN地址：&lt;a href=&quot;http://blog.csdn.net/michael753951/article/details/71407260&quot; target=&quot;_blank&quot; rel
+      
+    
+    </summary>
+    
+    
+      <category term="C++" scheme="https://yaoyl.cn/categories/C/"/>
+    
+    
+      <category term="nehe" scheme="https://yaoyl.cn/tags/nehe/"/>
+    
+      <category term="OpenGL" scheme="https://yaoyl.cn/tags/OpenGL/"/>
+    
+      <category term="C++" scheme="https://yaoyl.cn/tags/C/"/>
+    
+      <category term="混合" scheme="https://yaoyl.cn/tags/%E6%B7%B7%E5%90%88/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>RFID实验三总结</title>
+    <link href="https://yaoyl.cn/2019/05/23/RFID%E5%AE%9E%E9%AA%8C%E4%B8%89%E6%80%BB%E7%BB%93/"/>
+    <id>https://yaoyl.cn/2019/05/23/RFID%E5%AE%9E%E9%AA%8C%E4%B8%89%E6%80%BB%E7%BB%93/</id>
+    <published>2019-05-22T17:19:42.000Z</published>
+    <updated>2020-07-17T19:58:34.448Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;一次debug到哭泣的经历。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;龙云尧个人博客，转载请注明出处。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;CSDN地址：&lt;/p&gt;
+&lt;p&gt;个人blog地址：&lt;a href=&quot;http://123.207
+      
+    
+    </summary>
+    
+    
+      <category term="Java" scheme="https://yaoyl.cn/categories/Java/"/>
+    
+    
+      <category term="RFID" scheme="https://yaoyl.cn/tags/RFID/"/>
+    
+      <category term="java" scheme="https://yaoyl.cn/tags/java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>利用Ghost作为图床</title>
+    <link href="https://yaoyl.cn/2019/05/21/%E5%88%A9%E7%94%A8Ghost%E4%BD%9C%E4%B8%BA%E5%9B%BE%E5%BA%8A/"/>
+    <id>https://yaoyl.cn/2019/05/21/%E5%88%A9%E7%94%A8Ghost%E4%BD%9C%E4%B8%BA%E5%9B%BE%E5%BA%8A/</id>
+    <published>2019-05-20T19:39:31.000Z</published>
+    <updated>2020-07-17T19:58:55.576Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;strong&gt;龙云尧个人博客，转载请注明出处。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;CSDN地址：&lt;a href=&quot;http://blog.csdn.net/Michael753951/article/details/70307694&quot; target=&quot;_blank&quot; rel
+      
+    
+    </summary>
+    
+    
+      <category term="blog" scheme="https://yaoyl.cn/categories/blog/"/>
+    
+    
+      <category term="Ghost" scheme="https://yaoyl.cn/tags/Ghost/"/>
+    
+      <category term="图床" scheme="https://yaoyl.cn/tags/%E5%9B%BE%E5%BA%8A/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>虚拟驾驶环境搭建（一）</title>
+    <link href="https://yaoyl.cn/2017/07/13/%E8%99%9A%E6%8B%9F%E9%A9%BE%E9%A9%B6%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+    <id>https://yaoyl.cn/2017/07/13/%E8%99%9A%E6%8B%9F%E9%A9%BE%E9%A9%B6%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%EF%BC%88%E4%B8%80%EF%BC%89/</id>
+    <published>2017-07-13T08:14:11.000Z</published>
+    <updated>2020-07-17T19:59:47.524Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;strong&gt;龙云尧个人博客，转载请注明出处。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;CSDN地址：&lt;a href=&quot;http://blog.csdn.net/michael753951/article/details/75073333&quot; target=&quot;_blank&quot; rel
+      
+    
+    </summary>
+    
+    
+      <category term="C++" scheme="https://yaoyl.cn/categories/C/"/>
+    
+    
+      <category term="OpenGL" scheme="https://yaoyl.cn/tags/OpenGL/"/>
+    
+      <category term="C++" scheme="https://yaoyl.cn/tags/C/"/>
+    
+      <category term="虚拟驾驶" scheme="https://yaoyl.cn/tags/%E8%99%9A%E6%8B%9F%E9%A9%BE%E9%A9%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>nehe学习笔记（一）</title>
+    <link href="https://yaoyl.cn/2017/06/17/nehe%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+    <id>https://yaoyl.cn/2017/06/17/nehe%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/</id>
+    <published>2017-06-17T02:10:22.000Z</published>
+    <updated>2020-07-17T19:49:08.907Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;龙云尧个人博客，转载请注明出处。&lt;/p&gt;
+&lt;p&gt;CSDN地址：&lt;a href=&quot;http://blog.csdn.net/michael753951/article/details/70254340&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http:
+      
+    
+    </summary>
+    
+    
+      <category term="C++" scheme="https://yaoyl.cn/categories/C/"/>
+    
+    
+      <category term="nehe" scheme="https://yaoyl.cn/tags/nehe/"/>
+    
+      <category term="OpenGL" scheme="https://yaoyl.cn/tags/OpenGL/"/>
+    
+      <category term="C++" scheme="https://yaoyl.cn/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Socket编程小结</title>
+    <link href="https://yaoyl.cn/2017/06/10/Socket%E7%BC%96%E7%A8%8B%E5%B0%8F%E7%BB%93/"/>
+    <id>https://yaoyl.cn/2017/06/10/Socket%E7%BC%96%E7%A8%8B%E5%B0%8F%E7%BB%93/</id>
+    <published>2017-06-10T07:36:19.000Z</published>
+    <updated>2020-07-17T19:58:42.140Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;strong&gt;龙云尧个人博客，转载请注明出处。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;CSDN地址：&lt;a href=&quot;http://blog.csdn.net/Michael753951/article/details/72990141&quot; target=&quot;_blank&quot; rel
+      
+    
+    </summary>
+    
+    
+      <category term="C++" scheme="https://yaoyl.cn/categories/C/"/>
+    
+    
+      <category term="Ubuntu" scheme="https://yaoyl.cn/tags/Ubuntu/"/>
+    
+      <category term="socket" scheme="https://yaoyl.cn/tags/socket/"/>
+    
+      <category term="网络编程" scheme="https://yaoyl.cn/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="C语言" scheme="https://yaoyl.cn/tags/C%E8%AF%AD%E8%A8%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>nehe学习笔记（三）</title>
+    <link href="https://yaoyl.cn/2017/06/03/nehe%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/"/>
+    <id>https://yaoyl.cn/2017/06/03/nehe%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/</id>
+    <published>2017-06-03T06:59:13.000Z</published>
+    <updated>2020-07-17T19:50:15.019Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;第二课和第三课内容为三角形和矩形的颜色渲染内容，通过实例告诉我们如何给实现的样例进行上色。&lt;/p&gt;
+&lt;p&gt;我们已经知道任何在OpenGL中，任何形状都将最终被分解成矩形和三角形两种形状，所以在这两课中我们将对三角形和矩形的构建和渲染进行学习。&lt;/p&gt;
+&lt;h2 id=&quot;三角形
+      
+    
+    </summary>
+    
+    
+      <category term="C++" scheme="https://yaoyl.cn/categories/C/"/>
+    
+    
+      <category term="nehe" scheme="https://yaoyl.cn/tags/nehe/"/>
+    
+      <category term="OpenGL" scheme="https://yaoyl.cn/tags/OpenGL/"/>
+    
+      <category term="C++" scheme="https://yaoyl.cn/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>nehe学习笔记（二）</title>
+    <link href="https://yaoyl.cn/2017/06/02/nehe%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
+    <id>https://yaoyl.cn/2017/06/02/nehe%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/</id>
+    <published>2017-06-02T13:41:29.000Z</published>
+    <updated>2020-07-17T19:50:24.979Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;其实这个和nehe学习没太多关系，纯粹知识记录一下VS的注释和反注释的快捷键而已。&lt;/p&gt;
+&lt;p&gt;注释：        先CTRL+K，然后CTRL+C&lt;br&gt;取消注释： 先CTRL+K，然后CTRL+U&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+      <category term="C++" scheme="https://yaoyl.cn/categories/C/"/>
+    
+    
+      <category term="C++" scheme="https://yaoyl.cn/tags/C/"/>
+    
+      <category term="VS" scheme="https://yaoyl.cn/tags/VS/"/>
+    
+      <category term="快捷键" scheme="https://yaoyl.cn/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>OpenGL学习笔记（十）</title>
+    <link href="https://yaoyl.cn/2017/05/30/OpenGL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%8D%81%EF%BC%89/"/>
+    <id>https://yaoyl.cn/2017/05/30/OpenGL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%8D%81%EF%BC%89/</id>
+    <published>2017-05-30T08:49:22.000Z</published>
+    <updated>2020-07-17T19:52:57.671Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;strong&gt;龙云尧个人博客，转载请注明出处。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;CSDN地址：&lt;a href=&quot;http://blog.csdn.net/michael753951/article/details/72810534&quot; target=&quot;_blank&quot; rel
+      
+    
+    </summary>
+    
+    
+      <category term="C++" scheme="https://yaoyl.cn/categories/C/"/>
+    
+    
+      <category term="nehe" scheme="https://yaoyl.cn/tags/nehe/"/>
+    
+      <category term="OpenGL" scheme="https://yaoyl.cn/tags/OpenGL/"/>
+    
+      <category term="C++" scheme="https://yaoyl.cn/tags/C/"/>
+    
+      <category term="Ubuntu" scheme="https://yaoyl.cn/tags/Ubuntu/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>网易初面（技术面）</title>
+    <link href="https://yaoyl.cn/2017/05/22/%E7%BD%91%E6%98%93%E5%88%9D%E9%9D%A2%EF%BC%88%E6%8A%80%E6%9C%AF%E9%9D%A2%EF%BC%89/"/>
+    <id>https://yaoyl.cn/2017/05/22/%E7%BD%91%E6%98%93%E5%88%9D%E9%9D%A2%EF%BC%88%E6%8A%80%E6%9C%AF%E9%9D%A2%EF%BC%89/</id>
+    <published>2017-05-22T15:23:02.000Z</published>
+    <updated>2020-07-17T20:00:23.092Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;昨天我正在怼RFID第三次实验的圈存，消费和查询功能，丝毫没注意有短信，直到我出门准备拿快递查短信的时候才发现。。。&lt;/p&gt;
+&lt;p&gt;于是今天什么都没准备的去猪场（网易）面试，不过还好对面两个面试官人比较好，并没有怼我什么。&lt;/p&gt;
+&lt;h1 id=&quot;笔试&quot;&gt;&lt;a href=&quot;
+      
+    
+    </summary>
+    
+    
+      <category term="杂谈" scheme="https://yaoyl.cn/categories/%E6%9D%82%E8%B0%88/"/>
+    
+    
+      <category term="杂谈" scheme="https://yaoyl.cn/tags/%E6%9D%82%E8%B0%88/"/>
+    
+      <category term="面经" scheme="https://yaoyl.cn/tags/%E9%9D%A2%E7%BB%8F/"/>
+    
+      <category term="网易" scheme="https://yaoyl.cn/tags/%E7%BD%91%E6%98%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CSDN如何转载他人文章</title>
+    <link href="https://yaoyl.cn/2017/05/21/CSDN%E5%A6%82%E4%BD%95%E8%BD%AC%E8%BD%BD%E4%BB%96%E4%BA%BA%E6%96%87%E7%AB%A0/"/>
+    <id>https://yaoyl.cn/2017/05/21/CSDN%E5%A6%82%E4%BD%95%E8%BD%AC%E8%BD%BD%E4%BB%96%E4%BA%BA%E6%96%87%E7%AB%A0/</id>
+    <published>2017-05-20T20:02:15.000Z</published>
+    <updated>2020-07-17T19:48:36.567Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;本来我一直不会在csdn中转载他人的文章的，知道有一次在网上看到一篇教程（来源已经忘记，但是原理很简答）。&lt;/p&gt;
+&lt;p&gt;利用&lt;strong&gt;Markdown可以解析html&lt;/strong&gt;的特点，我们只要在开发者模式中，将需要转载的人的博客地址的文章部分的div块整个复
+      
+    
+    </summary>
+    
+    
+      <category term="blog" scheme="https://yaoyl.cn/categories/blog/"/>
+    
+    
+      <category term="CSDN" scheme="https://yaoyl.cn/tags/CSDN/"/>
+    
+      <category term="blog" scheme="https://yaoyl.cn/tags/blog/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>RFID实验二总结</title>
+    <link href="https://yaoyl.cn/2017/05/21/RFID%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%80%BB%E7%BB%93/"/>
+    <id>https://yaoyl.cn/2017/05/21/RFID%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%80%BB%E7%BB%93/</id>
+    <published>2017-05-20T18:55:05.000Z</published>
+    <updated>2020-07-17T19:58:27.604Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;没见过debug还这么麻烦的。。。。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;龙云尧个人博客，转载请注明出处。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;CSDN地址：&lt;a href=&quot;http://blog.csdn.net/michae
+      
+    
+    </summary>
+    
+    
+      <category term="Java" scheme="https://yaoyl.cn/categories/Java/"/>
+    
+    
+      <category term="RFID" scheme="https://yaoyl.cn/tags/RFID/"/>
+    
+      <category term="java" scheme="https://yaoyl.cn/tags/java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>RFID实验一总结</title>
+    <link href="https://yaoyl.cn/2017/05/20/RFID%E5%AE%9E%E9%AA%8C%E4%B8%80%E6%80%BB%E7%BB%93/"/>
+    <id>https://yaoyl.cn/2017/05/20/RFID%E5%AE%9E%E9%AA%8C%E4%B8%80%E6%80%BB%E7%BB%93/</id>
+    <published>2017-05-20T06:11:32.000Z</published>
+    <updated>2020-07-17T19:54:23.603Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;刚接到这个课程项目的时候，是一脸懵逼的。毕竟是第一次接触JavaCard编程（其实就是自己没认真听课）。不过在围观各路大佬的博客之后，总算对整个项目有了较为深入的了解。&lt;/p&gt;
+&lt;p&gt;在实验过程中，需要不断翻阅实验课PPT之《01 Java智能卡之概述》，《02 电子钱包的
+      
+    
+    </summary>
+    
+    
+      <category term="Java" scheme="https://yaoyl.cn/categories/Java/"/>
+    
+    
+      <category term="RFID" scheme="https://yaoyl.cn/tags/RFID/"/>
+    
+      <category term="java" scheme="https://yaoyl.cn/tags/java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Ubuntu下进行Socket编程</title>
+    <link href="https://yaoyl.cn/2017/05/19/Ubuntu%E4%B8%8B%E8%BF%9B%E8%A1%8CSocket%E7%BC%96%E7%A8%8B/"/>
+    <id>https://yaoyl.cn/2017/05/19/Ubuntu%E4%B8%8B%E8%BF%9B%E8%A1%8CSocket%E7%BC%96%E7%A8%8B/</id>
+    <published>2017-05-19T11:28:45.000Z</published>
+    <updated>2020-07-17T19:58:48.448Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;strong&gt;龙云尧个人博客，转载请注明出处。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;CSDN地址：&lt;a href=&quot;http://blog.csdn.net/Michael753951/article/details/72553287&quot; target=&quot;_blank&quot; rel
+      
+    
+    </summary>
+    
+    
+      <category term="C++" scheme="https://yaoyl.cn/categories/C/"/>
+    
+    
+      <category term="Ubuntu" scheme="https://yaoyl.cn/tags/Ubuntu/"/>
+    
+      <category term="socket" scheme="https://yaoyl.cn/tags/socket/"/>
+    
+      <category term="网络编程" scheme="https://yaoyl.cn/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="C语言" scheme="https://yaoyl.cn/tags/C%E8%AF%AD%E8%A8%80/"/>
+    
+      <category term="异步通信" scheme="https://yaoyl.cn/tags/%E5%BC%82%E6%AD%A5%E9%80%9A%E4%BF%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>双系统安装Ubuntu的初始化</title>
+    <link href="https://yaoyl.cn/2017/05/19/%E5%8F%8C%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Ubuntu%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96/"/>
+    <id>https://yaoyl.cn/2017/05/19/%E5%8F%8C%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Ubuntu%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96/</id>
+    <published>2017-05-19T09:05:42.000Z</published>
+    <updated>2020-07-17T19:59:03.856Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;strong&gt;龙云尧个人博客，转载请注明出处。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;CSDN地址：&lt;a href=&quot;http://blog.csdn.net/michael753951/article/details/72547775&quot; target=&quot;_blank&quot; rel
+      
+    
+    </summary>
+    
+    
+      <category term="Ubuntu" scheme="https://yaoyl.cn/categories/Ubuntu/"/>
+    
+    
+      <category term="Ubuntu" scheme="https://yaoyl.cn/tags/Ubuntu/"/>
+    
+      <category term="双系统" scheme="https://yaoyl.cn/tags/%E5%8F%8C%E7%B3%BB%E7%BB%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>blog的文件迁移</title>
+    <link href="https://yaoyl.cn/2017/05/19/GhostBlog%E7%9A%84%E6%96%87%E4%BB%B6%E8%BF%81%E7%A7%BB/"/>
+    <id>https://yaoyl.cn/2017/05/19/GhostBlog%E7%9A%84%E6%96%87%E4%BB%B6%E8%BF%81%E7%A7%BB/</id>
+    <published>2017-05-18T18:29:18.000Z</published>
+    <updated>2020-07-17T19:48:40.543Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;因为头一次自己搭建博客服务器，对平台的选用并不清楚。知乎上误打误撞碰见了Ghost，也就用着试试看了。&lt;/p&gt;
+&lt;h2 id=&quot;事件起因&quot;&gt;&lt;a href=&quot;#事件起因&quot; class=&quot;headerlink&quot; title=&quot;事件起因&quot;&gt;&lt;/a&gt;事件起因&lt;/h2&gt;&lt;p&gt;由于我
+      
+    
+    </summary>
+    
+    
+      <category term="blog" scheme="https://yaoyl.cn/categories/blog/"/>
+    
+    
+      <category term="blog" scheme="https://yaoyl.cn/tags/blog/"/>
+    
+      <category term="Ghost" scheme="https://yaoyl.cn/tags/Ghost/"/>
+    
+      <category term="文件迁移" scheme="https://yaoyl.cn/tags/%E6%96%87%E4%BB%B6%E8%BF%81%E7%A7%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>第一次爬虫实验代码及运行结果（html文本进行适当删除以压缩版面）</title>
+    <link href="https://yaoyl.cn/2017/05/18/%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%88%AC%E8%99%AB%E5%AE%9E%E9%AA%8C%E4%BB%A3%E7%A0%81%E5%8F%8A%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%EF%BC%88html%E6%96%87%E6%9C%AC%E8%BF%9B%E8%A1%8C%E9%80%82%E5%BD%93%E5%88%A0%E9%99%A4%E4%BB%A5%E5%8E%8B%E7%BC%A9%E7%89%88%E9%9D%A2%EF%BC%89/"/>
+    <id>https://yaoyl.cn/2017/05/18/%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%88%AC%E8%99%AB%E5%AE%9E%E9%AA%8C%E4%BB%A3%E7%A0%81%E5%8F%8A%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%EF%BC%88html%E6%96%87%E6%9C%AC%E8%BF%9B%E8%A1%8C%E9%80%82%E5%BD%93%E5%88%A0%E9%99%A4%E4%BB%A5%E5%8E%8B%E7%BC%A9%E7%89%88%E9%9D%A2%EF%BC%89/</id>
+    <published>2017-05-18T11:19:04.000Z</published>
+    <updated>2020-07-17T19:53:57.571Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span clas
+      
+    
+    </summary>
+    
+    
+      <category term="Python" scheme="https://yaoyl.cn/categories/Python/"/>
+    
+    
+      <category term="Python" scheme="https://yaoyl.cn/tags/Python/"/>
+    
+      <category term="爬虫" scheme="https://yaoyl.cn/tags/%E7%88%AC%E8%99%AB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python网络爬虫学习</title>
+    <link href="https://yaoyl.cn/2017/05/17/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0/"/>
+    <id>https://yaoyl.cn/2017/05/17/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0/</id>
+    <published>2017-05-17T12:46:00.000Z</published>
+    <updated>2020-07-17T19:53:40.359Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;strong&gt;龙云尧个人博客，转载请注明出处&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;初步了解网络爬虫的工具使用和代码编写&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;学习地址见&lt;a href=&quot;http://study.163.com/course/courseMain.htm?cours
+      
+    
+    </summary>
+    
+    
+      <category term="Python" scheme="https://yaoyl.cn/categories/Python/"/>
+    
+    
+      <category term="Python" scheme="https://yaoyl.cn/tags/Python/"/>
+    
+      <category term="爬虫" scheme="https://yaoyl.cn/tags/%E7%88%AC%E8%99%AB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>OpenGL学习笔记（九）</title>
+    <link href="https://yaoyl.cn/2017/05/12/OpenGL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B9%9D%EF%BC%89/"/>
+    <id>https://yaoyl.cn/2017/05/12/OpenGL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B9%9D%EF%BC%89/</id>
+    <published>2017-05-12T10:00:15.000Z</published>
+    <updated>2020-07-17T19:52:28.063Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;strong&gt;龙云尧个人博客，转载请注明出处。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;CSDN地址：&lt;a href=&quot;http://blog.csdn.net/michael753951/article/details/71750809&quot; target=&quot;_blank&quot; rel
+      
+    
+    </summary>
+    
+    
+      <category term="C++" scheme="https://yaoyl.cn/categories/C/"/>
+    
+    
+      <category term="nehe" scheme="https://yaoyl.cn/tags/nehe/"/>
+    
+      <category term="OpenGL" scheme="https://yaoyl.cn/tags/OpenGL/"/>
+    
+      <category term="C++" scheme="https://yaoyl.cn/tags/C/"/>
+    
+      <category term="飘动" scheme="https://yaoyl.cn/tags/%E9%A3%98%E5%8A%A8/"/>
+    
+      <category term="glPolygonM" scheme="https://yaoyl.cn/tags/glPolygonM/"/>
+    
+      <category term="glGenLists" scheme="https://yaoyl.cn/tags/glGenLists/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>OpenGL学习笔记（八）</title>
+    <link href="https://yaoyl.cn/2017/05/12/OpenGL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AB%EF%BC%89/"/>
+    <id>https://yaoyl.cn/2017/05/12/OpenGL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AB%EF%BC%89/</id>
+    <published>2017-05-11T19:28:26.000Z</published>
+    <updated>2020-07-17T19:51:55.319Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;strong&gt;龙云尧个人博客，转载请注明出处。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;CSDN地址：&lt;a href=&quot;http://blog.csdn.net/michael753951/article/details/71702311&quot; target=&quot;_blank&quot; rel
+      
+    
+    </summary>
+    
+    
+      <category term="C++" scheme="https://yaoyl.cn/categories/C/"/>
+    
+    
+      <category term="nehe" scheme="https://yaoyl.cn/tags/nehe/"/>
+    
+      <category term="OpenGL" scheme="https://yaoyl.cn/tags/OpenGL/"/>
+    
+      <category term="C++" scheme="https://yaoyl.cn/tags/C/"/>
+    
+      <category term="变换" scheme="https://yaoyl.cn/tags/%E5%8F%98%E6%8D%A2/"/>
+    
+  </entry>
+  
+</feed>
