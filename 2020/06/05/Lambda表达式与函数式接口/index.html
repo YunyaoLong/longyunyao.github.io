@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="description" content="龙云尧的小角落" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    Lambda表达式与函数式接口 |  剑阁
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  <link rel="stylesheet" href="/dist/main.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+  <link rel="stylesheet" href="/css/custom.css">
+  
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+  
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="剑阁" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
+      
+      
+    <main class="content on">
+      <section class="outer">
+  <article id="post-Lambda表达式与函数式接口" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Lambda表达式与函数式接口
+</h1>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/06/05/Lambda表达式与函数式接口/" class="article-date">
+  <time datetime="2020-06-05T13:36:10.000Z" itemprop="datePublished">2020-06-05</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">3.2k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">14 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><p>[toc]</p>
+<h1 id="Lambda表达式Java函数式接口"><a href="#Lambda表达式Java函数式接口" class="headerlink" title="Lambda表达式Java函数式接口"></a>Lambda表达式Java函数式接口</h1><p>都9012年了，这篇博文代码看看5000年前4012年发布的Java 8新引入的Lambda表达式到底是个什么鬼。</p>
+<h2 id="简述Lambda表达式"><a href="#简述Lambda表达式" class="headerlink" title="简述Lambda表达式"></a>简述Lambda表达式</h2><p>Lambda表达式并不是Java 8特有的特性，其设计初衷是用于一些特定代码中，已知固定入参和固定返回值的时候，动态生成的一种函数。</p>
+<p>举个栗子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Var3 <span class="title">func</span><span class="params">(Var1 var1, Var2 var2)</span> </span>&#123;</span><br><span class="line">Var3 var3 = doSomeThing(var1, var2);</span><br><span class="line"><span class="keyword">return</span> var3;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上述代码是我们常见的Java代码格式，假如说我们已经设定这个函数只会被在特定位置被调用，或者换种说法，我们假设<code>func</code>函数仅仅只会作为<code>func2(Var3 var3)</code>的入参。同时如果我们把<code>func</code>这个函数的声明放到<code>func2</code>的入参时声明，那此时我们此时调用时，其实这个函数是叫<code>func</code>还是叫<code>funcA</code>还是叫<code>ABCD</code>已经无所谓了。</p>
+<p>因此我们就可以省略这个函数名，将其替换成<code>-&gt;</code>，由此将上述函数省略为：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Var3 (Var1 var1, Var2 var2) -&gt; &#123;</span><br><span class="line">Var3 var3 = doSomeThing(var1, var2);</span><br><span class="line"><span class="keyword">return</span> var3;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接下来由于我们已知<code>func2(Var3 var3)</code>的入参肯定为Var3类型，所以上述代码又可以进一步省略：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(Var1 var1, Var2 var2) -&gt; &#123;</span><br><span class="line">Var3 var3 = doSomeThing(var1, var2);</span><br><span class="line"><span class="keyword">return</span> var3;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>同理由于我们已知<code>func</code>的入参类型肯定为<code>Var1</code>和<code>Var2</code>，于是我们继续省略：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(var1, var2) -&gt; &#123;</span><br><span class="line">Var3 var3 = doSomeThing(var1, var2);</span><br><span class="line"><span class="keyword">return</span> var3;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后由于我们如果整个函数内部只有一行操作的话，则可以知道这个操作的返回值肯定是这一行的操作结果，因此我们继续省略：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(var1, var2) -&gt; doSomeThing(var1, var2);</span><br></pre></td></tr></table></figure>
+
+<p>最后，假如我们初始函数是：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Var3 (Var1 var1) -&gt; &#123;</span><br><span class="line"><span class="keyword">return</span> var1.doSomeThing();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在我们简写成上述常见的表达式之后：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var1 -&gt; var1.doSomeThing();</span><br></pre></td></tr></table></figure>
+
+<p>由于我们知道入参只有一个，并且操作就是调用这个参数的一个子方法，而且这个入参叫做<code>var1</code>还是<code>ABCD</code>都无所谓，这个时候我们就可以极致缩写：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Var1::doSomeThing()</span><br></pre></td></tr></table></figure>
+
+<p>意味着对这个表达式的入参直接调用<code>Var1</code>类的<code>doSomeThing</code>，然后将结果返回。</p>
+<p>到此，整个Lambda写法的产生原因我们就已经知道了，不理解的可以重新回看整个缩写过程。</p>
+<p>注意这里的推理过程是所有支持Lambda表达式的开发语言通用的精简思路，之后切换语言遇到Lambda表达式，我们需要用同样的思路面对。</p>
+<p><em>实不相瞒，上述简化过程我就是在Python教程中知道的。</em></p>
+<h2 id="Java中Lambda表达式的好处"><a href="#Java中Lambda表达式的好处" class="headerlink" title="Java中Lambda表达式的好处"></a>Java中Lambda表达式的好处</h2><p>在我们Java 8之前，我们可能暂时还没有体会到Lambda表达式的好处，但是Java 8新引入的<code>Stream</code>和<code>Optional</code>这两个类，让Java 8引入Lambda表达式成为一种趋势。</p>
+<p>继续举个栗子，假如我们现在有一个多层级的对象，我们需要获取其最底层的一个字段时，使用Optional类可以比较方便的判定，相关教程见我另一个帖子<a href="http://3ms.huawei.com/km/blogs/details/6283229?l=zh-cn" target="_blank" rel="noopener">《Optional工具类》</a>。</p>
+<p>这里我们先不要发散，假如我们使用Optional取一个中间可能存在null的多层级对象时，假设我们现在还不知道Lambda表达式这个东西，而是单纯使用Optional所有方法提供的入参直接暴力实现，那么最后的代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">package</span> com.main;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.Optional;</span><br><span class="line"><span class="keyword">import</span> java.util.function.Consumer;</span><br><span class="line"><span class="keyword">import</span> java.util.function.Function;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainFunc</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test1</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> Test2 test2;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> Test2 <span class="title">getTest2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> test2;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setTest2</span><span class="params">(Test2 test2)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.test2 = test2;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test2</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> List&lt;Test3&gt; test3;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> List&lt;Test3&gt; <span class="title">getTest3</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> test3;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setTest3</span><span class="params">(List&lt;Test3&gt; test3)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.test3 = test3;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test3</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> String str;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">getStr</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> str;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setStr</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.str = str;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test4</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Test1 test1 = <span class="keyword">new</span> Test1();</span><br><span class="line">        Test2 test2 = <span class="keyword">new</span> Test2();</span><br><span class="line">        test1.setTest2(test2);</span><br><span class="line">        List&lt;Test3&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        list.add(<span class="keyword">new</span> Test3());</span><br><span class="line">        test2.setTest3(list);</span><br><span class="line">        String str = <span class="string">"123"</span>;</span><br><span class="line">        str.concat(<span class="string">"456"</span>);</span><br><span class="line">        list.get(<span class="number">0</span>).setStr(str);</span><br><span class="line">        Optional&lt;String&gt; opt = Optional.ofNullable(test1).map(<span class="keyword">new</span> Function&lt;Test1, Test2&gt;() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> Test2 <span class="title">apply</span><span class="params">(Test1 test1)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> test1.getTest2();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;).map(<span class="keyword">new</span> Function&lt;Test2, List&lt;Test3&gt;&gt;() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> List&lt;Test3&gt; <span class="title">apply</span><span class="params">(Test2 test2)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> test2.getTest3();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;).map(<span class="keyword">new</span> Function&lt;List&lt;Test3&gt;, Test3&gt;() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> Test3 <span class="title">apply</span><span class="params">(List&lt;Test3&gt; list)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> list != <span class="keyword">null</span> &amp;&amp; list.size() &gt; <span class="number">0</span> ? list.get(<span class="number">0</span>) : <span class="keyword">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;).map(<span class="keyword">new</span> Function&lt;Test3, String&gt;() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> String <span class="title">apply</span><span class="params">(Test3 test3)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> test3.getStr();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="keyword">if</span> (opt.isPresent()) &#123;</span><br><span class="line">            System.out.println(opt.get());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>整段代码中，由于我们按照<code>Optional.map</code>的要求，通过实现Fuction接口函数，并且重写其apply函数，从而实现业务诉求。但是这种实现方式阅读费力，并且撰写辛苦，而所有map中实质的操作却仅仅只有一行，这种代码既不优雅，也不是我们引入Optional的初衷。</p>
+<p>在这种情况下，我们使用Lambda表达式替代上述代码中test4的实现：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test4</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Test1 test1 = <span class="keyword">new</span> Test1();</span><br><span class="line">    Test2 test2 = <span class="keyword">new</span> Test2();</span><br><span class="line">    test1.setTest2(test2);</span><br><span class="line">    List&lt;Test3&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    list.add(<span class="keyword">new</span> Test3());</span><br><span class="line">    test2.setTest3(list);</span><br><span class="line">    String str = <span class="string">"123"</span>;</span><br><span class="line">    str.concat(<span class="string">"456"</span>);</span><br><span class="line">    list.get(<span class="number">0</span>).setStr(str);</span><br><span class="line">    <span class="keyword">if</span> (opt.isPresent()) &#123;</span><br><span class="line">        System.out.println(opt.get());</span><br><span class="line">    &#125;</span><br><span class="line">    Optional&lt;String&gt; opt = Optional.ofNullable(test1)</span><br><span class="line">            .map(t1 -&gt; t1.getTest2())</span><br><span class="line">            .map(t2 -&gt; t2.getTest3())</span><br><span class="line">            .map(t3List -&gt; t3List != <span class="keyword">null</span> &amp;&amp; t3List.size() &gt; <span class="number">0</span> ? t3List.get(<span class="number">0</span>) : <span class="keyword">null</span>)</span><br><span class="line">            .map(t3 -&gt; t3.getStr());</span><br><span class="line">    <span class="keyword">if</span> (opt.isPresent()) &#123;</span><br><span class="line">        System.out.println(opt.get());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最后是极致简写方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test4</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Test1 test1 = <span class="keyword">new</span> Test1();</span><br><span class="line">    Test2 test2 = <span class="keyword">new</span> Test2();</span><br><span class="line">    test1.setTest2(test2);</span><br><span class="line">    List&lt;Test3&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    list.add(<span class="keyword">new</span> Test3());</span><br><span class="line">    test2.setTest3(list);</span><br><span class="line">    String str = <span class="string">"123"</span>;</span><br><span class="line">    str.concat(<span class="string">"456"</span>);</span><br><span class="line">    list.get(<span class="number">0</span>).setStr(str);</span><br><span class="line">    <span class="keyword">if</span> (opt.isPresent()) &#123;</span><br><span class="line">        System.out.println(opt.get());</span><br><span class="line">    &#125;</span><br><span class="line">    Optional&lt;String&gt; opt = Optional.ofNullable(test1)</span><br><span class="line">            .map(Test1::getTest2)</span><br><span class="line">            .map(Test2::getTest3)</span><br><span class="line">            .map(test3 -&gt; test3 != <span class="keyword">null</span> &amp;&amp; test3.size() &gt; <span class="number">0</span> ? test3.get(<span class="number">0</span>) : <span class="keyword">null</span>)</span><br><span class="line">            .map(Test3::getStr);</span><br><span class="line">    <span class="keyword">if</span> (opt.isPresent()) &#123;</span><br><span class="line">        System.out.println(opt.get());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>整个实现上瞬间清爽很多，并且代码量非常少。</p>
+<h2 id="Java中Lambda的实现原理"><a href="#Java中Lambda的实现原理" class="headerlink" title="Java中Lambda的实现原理"></a>Java中Lambda的实现原理</h2><p>其实在上述代码优化过程中，从最开始直接在map方法中实现函数接口，到直接替换成Lambda表达式，我们省略了一个推导步骤：</p>
+<p>首先尝试将函数接口的实现抽出去：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test4</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Test1 test1 = <span class="keyword">new</span> Test1();</span><br><span class="line">    Test2 test2 = <span class="keyword">new</span> Test2();</span><br><span class="line">    test1.setTest2(test2);</span><br><span class="line">    List&lt;Test3&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    list.add(<span class="keyword">new</span> Test3());</span><br><span class="line">    test2.setTest3(list);</span><br><span class="line">    String str = <span class="string">"123"</span>;</span><br><span class="line">    str.concat(<span class="string">"456"</span>);</span><br><span class="line">    list.get(<span class="number">0</span>).setStr(str);</span><br><span class="line">    Function&lt;Test1, Test2&gt; func1 = <span class="keyword">new</span> Function&lt;Test1, Test2&gt;() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> Test2 <span class="title">apply</span><span class="params">(Test1 test1)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> test1.getTest2();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    Function&lt;Test2, List&lt;Test3&gt;&gt; func2 = <span class="keyword">new</span> Function&lt;Test2, List&lt;Test3&gt;&gt;() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> List&lt;Test3&gt; <span class="title">apply</span><span class="params">(Test2 test2)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> test2.getTest3();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    Function&lt;List&lt;Test3&gt;, Test3&gt; func3 = <span class="keyword">new</span> Function&lt;List&lt;Test3&gt;, Test3&gt;() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> Test3 <span class="title">apply</span><span class="params">(List&lt;Test3&gt; list)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> list != <span class="keyword">null</span> &amp;&amp; list.size() &gt; <span class="number">0</span> ? list.get(<span class="number">0</span>) : <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    Function&lt;Test3, String&gt; func4 = <span class="keyword">new</span> Function&lt;Test3, String&gt;() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">apply</span><span class="params">(Test3 test3)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> test3.getStr();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    Optional&lt;String&gt; opt = Optional.ofNullable(test1).map(func1).map(func2).map(func3).map(func4);</span><br><span class="line">    <span class="keyword">if</span> (opt.isPresent()) &#123;</span><br><span class="line">        System.out.println(opt.get());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后我们有已经知道map中实际是可以直接填Lambda表达式的，这里我们尝试将Lambda表达式赋值给func1、func2、func3、func4：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test4</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Test1 test1 = <span class="keyword">new</span> Test1();</span><br><span class="line">    Test2 test2 = <span class="keyword">new</span> Test2();</span><br><span class="line">    test1.setTest2(test2);</span><br><span class="line">    List&lt;Test3&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    list.add(<span class="keyword">new</span> Test3());</span><br><span class="line">    test2.setTest3(list);</span><br><span class="line">    String str = <span class="string">"123"</span>;</span><br><span class="line">    str.concat(<span class="string">"456"</span>);</span><br><span class="line">    list.get(<span class="number">0</span>).setStr(str);</span><br><span class="line">    Function&lt;Test1, Test2&gt; func1 = Test1::getTest2;</span><br><span class="line">    Function&lt;Test2, List&lt;Test3&gt;&gt; func2 = Test2::getTest3;</span><br><span class="line">    Function&lt;List&lt;Test3&gt;, Test3&gt; func3 = (l) -&gt; l != <span class="keyword">null</span> &amp;&amp; l.size() &gt; <span class="number">0</span> ? l.get(<span class="number">0</span>) : <span class="keyword">null</span>;</span><br><span class="line">    Function&lt;Test3, String&gt; func4 = Test3::getStr;</span><br><span class="line">    Optional&lt;String&gt; opt = Optional.ofNullable(test1).map(func1).map(func2).map(func3).map(func4);</span><br><span class="line">    <span class="keyword">if</span> (opt.isPresent()) &#123;</span><br><span class="line">        System.out.println(opt.get());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>OK，到这里，我们可以发现发现所谓Lambda表达式，实际上就是自己帮你实现了一个函数式接口而已，这部分实现过程由Java 8之前你来完成，优化到了编译器自己完成，从而实现了代码上的优雅。</p>
+<p>这里我们引申一下，在Java中，函数接口有 3 条重要法则：</p>
+<ul>
+<li>一个函数接口只有一个抽象方法。</li>
+<li>在 Object 类中属于公共方法的抽象方法不会被视为单一抽象方法。</li>
+<li>函数接口可以有默认方法和静态方法。</li>
+</ul>
+<p>任何满足单一抽象方法法则的接口，都会被自动视为函数接口。这包括 Runnable 和 Callable 等传统接口，以及您自己构建的自定义接口。</p>
+<blockquote>
+<p>上述三原则引用自<a href="https://www.ibm.com/developerworks/cn/java/j-java8idioms7/index.html" target="_blank" rel="noopener">《Java 8 习惯用语，第 7 部分 —— 函数接口》</a></p>
+</blockquote>
+<p>接下来，让我开始尝试看看Java编译器（JDK）再给我们编译Lambda表达式时做了哪些优化动作。</p>
+<h3 id="Java1-8引入的新函数式接口"><a href="#Java1-8引入的新函数式接口" class="headerlink" title="Java1.8引入的新函数式接口"></a>Java1.8引入的新函数式接口</h3><p>所有函数式接口见java.util.function包，这里只挑取几个典型的。</p>
+<p><strong>Consumer接口</strong>：提供一个<code>void accept(T t);</code>函数，一般我们的函数只有一个入参，没有返回值时，可以实现该接口</p>
+<p><strong>Function接口</strong>：提供一个<code>R apply(T t);</code>函数，一般我们只有一个入参，同时有返回值时，可以实现该接口，标准的最常用的函数式接口</p>
+<p><strong>Predicate接口</strong>：提供一个<code>boolean test(T t);</code>函数，一般我们需要对入参做一些判断时，可以实现该接口，Stream.filter的入参就是该接口的实现类。</p>
+<p><strong>Supplier接口</strong>：提供一个<code>T get();</code>函数，如果函数没有入参，只有返回值，譬如我们的JavaBean中的get方法，可以实现该接口。</p>
+<h3 id="Java编译器自动优化实现函数接口"><a href="#Java编译器自动优化实现函数接口" class="headerlink" title="Java编译器自动优化实现函数接口"></a>Java编译器自动优化实现函数接口</h3><p>由上我们已知，其实Java 8中带来的Lambda表达式，就是一种能够减少我们实现接口函数的语法糖，Java能够通过我们的返回值，讲一个Lambda表达式合理的转换成一个函数接口的实现。</p>
+<p>在了解其本质之后，我们甚至可以自己定义一个接口函数用于接收一个Lambda表达式：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.main;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainFunc</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@FunctionalInterface</span></span><br><span class="line">    <span class="keyword">private</span> <span class="class"><span class="keyword">interface</span> <span class="title">FI</span>&lt;<span class="title">N</span>&gt; </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">run</span><span class="params">(N n)</span></span>;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">showFi</span><span class="params">(FI&lt;String&gt; n)</span> </span>&#123;</span><br><span class="line">        n.run(<span class="string">"showFi"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test4</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        showFi(s -&gt; System.out.println(s));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>java编译器的实现是一种动态实现，不受函数接口的接口名或者其抽象方法的名称的限制，由此我们也说java中的Lambda表达式是一种动态语言类型。</p>
+<h3 id="Java编译器对动态函数的优化"><a href="#Java编译器对动态函数的优化" class="headerlink" title="Java编译器对动态函数的优化"></a>Java编译器对动态函数的优化</h3><p>如果我们希望一窥JDK8在编译过程中，如何实现通过阅读反编译之后的class的代码进行查阅，指令为javap -v -p YourClass.class &gt; yourRecordFile，整个函数的编译结果如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test4</span><span class="params">()</span></span>;</span><br><span class="line">descriptor: ()V</span><br><span class="line">flags: ACC_PUBLIC</span><br><span class="line">RuntimeVisibleAnnotations:</span><br><span class="line">0: #16()</span><br><span class="line">Code:</span><br><span class="line">stack=<span class="number">4</span>, locals=<span class="number">6</span>, args_size=<span class="number">1</span></span><br><span class="line">0: new #17 // class com/main/MainFunc$Test1</span><br><span class="line"><span class="number">3</span>: dup</span><br><span class="line"><span class="number">4</span>: aload_0</span><br><span class="line">5: invokespecial #19 // Method com/main/MainFunc$Test1."&lt;init&gt;":(Lcom/main/MainFunc;)V</span><br><span class="line"><span class="number">8</span>: astore_1</span><br><span class="line">9: new #22 // class com/main/MainFunc$Test2</span><br><span class="line"><span class="number">12</span>: dup</span><br><span class="line"><span class="number">13</span>: aload_0</span><br><span class="line">14: invokespecial #24 // Method com/main/MainFunc$Test2."&lt;init&gt;":(Lcom/main/MainFunc;)V</span><br><span class="line"><span class="number">17</span>: astore_2</span><br><span class="line"><span class="number">18</span>: aload_1</span><br><span class="line"><span class="number">19</span>: aload_2</span><br><span class="line">20: invokevirtual #25 // Method com/main/MainFunc$Test1.setTest2:(Lcom/main/MainFunc$Test2;)V</span><br><span class="line">23: new #29 // class java/util/ArrayList</span><br><span class="line"><span class="number">26</span>: dup</span><br><span class="line">27: invokespecial #31 // Method java/util/ArrayList."&lt;init&gt;":()V</span><br><span class="line"><span class="number">30</span>: astore_3</span><br><span class="line"><span class="number">31</span>: aload_3</span><br><span class="line">32: new #32 // class com/main/MainFunc$Test3</span><br><span class="line"><span class="number">35</span>: dup</span><br><span class="line"><span class="number">36</span>: aload_0</span><br><span class="line">37: invokespecial #34 // Method com/main/MainFunc$Test3."&lt;init&gt;":(Lcom/main/MainFunc;)V</span><br><span class="line">40: invokeinterface #35, 2 // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z</span><br><span class="line"><span class="number">45</span>: pop</span><br><span class="line"><span class="number">46</span>: aload_2</span><br><span class="line"><span class="number">47</span>: aload_3</span><br><span class="line">48: invokevirtual #41 // Method com/main/MainFunc$Test2.setTest3:(Ljava/util/List;)V</span><br><span class="line">51: ldc #45 // String 123</span><br><span class="line"><span class="number">53</span>: astore <span class="number">4</span></span><br><span class="line"><span class="number">55</span>: aload <span class="number">4</span></span><br><span class="line">57: ldc #47 // String 456</span><br><span class="line">59: invokevirtual #49 // Method java/lang/String.concat:(Ljava/lang/String;)Ljava/lang/String;</span><br><span class="line"><span class="number">62</span>: pop</span><br><span class="line"><span class="number">63</span>: aload_3</span><br><span class="line"><span class="number">64</span>: iconst_0</span><br><span class="line">65: invokeinterface #55, 2 // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;</span><br><span class="line">70: checkcast #32 // class com/main/MainFunc$Test3</span><br><span class="line"><span class="number">73</span>: aload <span class="number">4</span></span><br><span class="line">75: invokevirtual #59 // Method com/main/MainFunc$Test3.setStr:(Ljava/lang/String;)V</span><br><span class="line"><span class="number">78</span>: aload_1</span><br><span class="line">79: invokestatic #63 // Method java/util/Optional.ofNullable:(Ljava/lang/Object;)Ljava/util/Optional;</span><br><span class="line">82: invokedynamic #72, 0 // InvokeDynamic #0:apply:()Ljava/util/function/Function;</span><br><span class="line">87: invokevirtual #73 // Method java/util/Optional.map:(Ljava/util/function/Function;)Ljava/util/Optional;</span><br><span class="line">90: invokedynamic #77, 0 // InvokeDynamic #1:apply:()Ljava/util/function/Function;</span><br><span class="line">95: invokevirtual #73 // Method java/util/Optional.map:(Ljava/util/function/Function;)Ljava/util/Optional;</span><br><span class="line">98: invokedynamic #78, 0 // InvokeDynamic #2:apply:()Ljava/util/function/Function;</span><br><span class="line">103: invokevirtual #73 // Method java/util/Optional.map:(Ljava/util/function/Function;)Ljava/util/Optional;</span><br><span class="line">106: invokedynamic #79, 0 // InvokeDynamic #3:apply:()Ljava/util/function/Function;</span><br><span class="line">111: invokevirtual #73 // Method java/util/Optional.map:(Ljava/util/function/Function;)Ljava/util/Optional;</span><br><span class="line"><span class="number">114</span>: astore <span class="number">5</span></span><br><span class="line"><span class="number">116</span>: aload <span class="number">5</span></span><br><span class="line">118: invokevirtual #80 // Method java/util/Optional.isPresent:()Z</span><br><span class="line"><span class="number">121</span>: ifeq <span class="number">138</span></span><br><span class="line">124: getstatic #84 // Field java/lang/System.out:Ljava/io/PrintStream;</span><br><span class="line"><span class="number">127</span>: aload <span class="number">5</span></span><br><span class="line">129: invokevirtual #90 // Method java/util/Optional.get:()Ljava/lang/Object;</span><br><span class="line">132: checkcast #50 // class java/lang/String</span><br><span class="line">135: invokevirtual #93 // Method java/io/PrintStream.println:(Ljava/lang/String;)V</span><br><span class="line"><span class="number">138</span>: <span class="keyword">return</span></span><br></pre></td></tr></table></figure>
+
+<p>此时我们就不难发现，其实这里我们的4个lambda表达式编译结果对应的字节码指令为invokedynamic，这也就意味着在我们只有将lambda表达式的返回值赋值给一个函数接口的时候，他的类型才能够给动态识别，由此实现了lambda表达式的动态绑定。</p>
+<p>由此lambda的外衣也就扒的差不多了，如果文中有什么表达或者理解错误的，欢迎指正。</p>
+ 
+      <!-- reward -->
+      
+      <div id="reward-btn">
+        Donate
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        Share with
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://yaoyl.cn/2020/06/05/Lambda表达式与函数式接口/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Lambda表达式/">Lambda表达式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/函数式接口/">函数式接口</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2020/06/05/Java的Integer类方法解读/" class="article-nav-link">
+        <strong class="article-nav-caption">last text</strong>
+        <div class="article-nav-title">
+          
+            Java的Integer类方法解读
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2019/05/23/RFID实验三总结/" class="article-nav-link">
+        <strong class="article-nav-caption">next text</strong>
+        <div class="article-nav-title">RFID实验三总结</div>
+      </a>
+    
+  </nav>
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "qkDBSm4o58WMY10dnnN3G3DG-gzGzoHsz",
+    app_key: "A3yKU51qb7l8hBysTQRJG0Xa",
+    path: window.location.pathname,
+    avatar: "monsterid",
+    placeholder: "给我的文章加点评论吧~",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+     
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2017-2020
+        <i class="ri-heart-fill heart_icon"></i> Yunyao Long
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        
+        Powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+        <span class="division">|</span>
+        Theme - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span></span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+        <li>
+          <a href="http://www.beian.miit.gov.cn/" target="_black">粤ICP备-17050867-1号</a>
+        </li>
+        
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src="https://v1.cnzz.com/z_stat.php?id=1279087554&amp;web_id=1279087554"></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="剑阁"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search" title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechatpay.png">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<!-- Tocbot -->
+
+<script src="/js/tocbot.min.js"></script>
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+<script src="/dist/main.js"></script>
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script>
+<script src="/js/clickBoom1.js"></script>
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+
+<link rel="stylesheet" href="/css/clipboard.css">
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+<!-- CanvasBackground -->
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="86" src="//music.163.com/outchain/player?type=2&id=447279413&auto=1&height=66"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+  </div>
+</body>
+
+</html>

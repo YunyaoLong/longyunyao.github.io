@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="description" content="龙云尧的小角落" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    虚拟驾驶环境搭建(四) |  剑阁
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  <link rel="stylesheet" href="/dist/main.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+  <link rel="stylesheet" href="/css/custom.css">
+  
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+  
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="剑阁" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
+      
+      
+    <main class="content on">
+      <section class="outer">
+  <article id="post-虚拟驾驶环境搭建(四)" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  虚拟驾驶环境搭建(四)
+</h1>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2017/07/13/虚拟驾驶环境搭建(四)/" class="article-date">
+  <time datetime="2017-07-13T08:18:07.000Z" itemprop="datePublished">2017-07-13</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/C/">C++</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">1.9k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">8 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>龙云尧个人博客，转载请注明出处。</p>
+<p>CSDN地址：<a href="http://blog.csdn.net/michael753951/article/details/75074051" target="_blank" rel="noopener">http://blog.csdn.net/michael753951/article/details/75074051</a></p>
+<p>个人blog地址：<a href="http://yaoyl.cn/huan-jing-da-jian-si-2/">http://yaoyl.cn/huan-jing-da-jian-si-2/</a></p>
+<hr>
+<h1 id="障碍物移动的改进"><a href="#障碍物移动的改进" class="headerlink" title="障碍物移动的改进"></a>障碍物移动的改进</h1><p>在之前的版本中.我们的障碍物移动和场景移动放在同一个for循环中,虽然减少了代码的操作,但是很容易出现边界问题,程序运行中往往会出现障碍物骤现,或者障碍物还未抵达车前方便突然消失的情况,为了修改这出bug,我将重写这部分代码.</p>
+<h2 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h2><p>无脑写代码的多数结果都是bug不断,并且写完后文就忘记前文.为了提高代码的清晰度和准确性,挺尸帮我们捋清思路,我们先通过写伪代码的方式整理一下我们的程序有哪些需求,以及粗略的实现方式.</p>
+<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>障碍物能够从左侧楼栋出现,到达路中央之后,将停留一小段时间(等待车撞上).</p>
+<p>对这个过程进行分解分析,我们可以大致得到如下流程: </p>
+<ul>
+<li>障碍物出现的时机: 左侧有障碍物 &amp; 距离上次消失已经有10s以上</li>
+<li>障碍静止时机: 已经达到路中间, 并且停留时间没有达到2s</li>
+<li>障碍物消失诗句时机: 停留2s之后,障碍物消失</li>
+</ul>
+<h3 id="伪代码"><a href="#伪代码" class="headerlink" title="伪代码"></a>伪代码</h3><ul>
+<li>首先判断障碍物是否已经消失,然后判断左侧是否有障碍物,然后检查消失时间是否已经达到10s,如果满足条件,就更新appear标志, 让障碍物开始移动</li>
+<li>开始步进障碍物, 直到达到边界, 此时更新appear_tmp, 更新appear标志, 记录下当前时间</li>
+<li>如果当前状态为静止, 并且停留时间还未到达2s,保持pos不变</li>
+<li>否则如果停留时间超过2s,就将appear更新为消失, 让障碍物消失, 同时用appear_tmp记录下消失的时间, 方便之后判断障碍物的出现时机</li>
+</ul>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 先获取左侧建筑情况</span></span><br><span class="line"><span class="keyword">int</span> left_temp = building_left_flag;</span><br><span class="line"><span class="comment">// bdw_appear有3个值, 0表示已经消失, 1表示正在进行移动, 2表示移动到边界,已经静止</span></span><br><span class="line"><span class="keyword">if</span>(bdw_appear == <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span>(left_temp &gt;&gt; <span class="number">11</span> &amp; <span class="number">0b1</span> == <span class="number">1</span>) &#123;</span><br><span class="line">        time(&amp;appear);</span><br><span class="line">        <span class="comment">// 如果距离上次出现已经5s,就更新记录,同时更新flag</span></span><br><span class="line">        <span class="keyword">if</span>(appear - appear_tmp &gt;= <span class="number">5</span>)&#123;</span><br><span class="line">            appear_tmp = appear;</span><br><span class="line">            bdw_appear = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(bdw_appear == <span class="number">1</span>)&#123;</span><br><span class="line">    glBindTexture(GL_TEXTURE_2D, texture[<span class="number">4</span>]);</span><br><span class="line">    glLoadIdentity();</span><br><span class="line">    glTranslatef(child_run_len, <span class="number">-1.0f</span>, <span class="number">-7.0f</span>);</span><br><span class="line">    glCallList(children);</span><br><span class="line">    <span class="keyword">if</span>(child_run_len &gt;= <span class="number">-0.5</span>) &#123;</span><br><span class="line">        <span class="comment">//child_run_len = -3.0f;</span></span><br><span class="line">        <span class="comment">//bdw_appear = false;</span></span><br><span class="line">        <span class="comment">// 刚移动到边界</span></span><br><span class="line">        <span class="keyword">if</span>(bdw_appear == <span class="number">1</span>)&#123;</span><br><span class="line">            time(&amp;appear_tmp);</span><br><span class="line">            child_pos = <span class="number">-7.0f</span>;</span><br><span class="line">            bdw_appear = <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        child_run_len = <span class="number">-0.5f</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="comment">// 小孩的速度恒定</span></span><br><span class="line">        child_run_len += <span class="number">0.1f</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    time(&amp;appear);</span><br><span class="line">    <span class="comment">// 如果距离上次出现已经5s,就更新记录,同时更新flag</span></span><br><span class="line">    <span class="keyword">if</span>(appear - appear_tmp &gt;= <span class="number">2</span>)&#123;</span><br><span class="line">        appear_tmp = appear;</span><br><span class="line">        child_run_len = <span class="number">-3.0f</span>;</span><br><span class="line">        bdw_appear = <span class="number">0</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        glBindTexture(GL_TEXTURE_2D, texture[<span class="number">4</span>]);</span><br><span class="line">        glLoadIdentity();</span><br><span class="line">        <span class="comment">// 障碍物的pos还要加上run_len, 这样能够让障碍物在达到路中央静止之后, 和周围物体一起移动,产生向人靠近的感觉</span></span><br><span class="line">        glTranslatef(child_run_len, <span class="number">-1.0f</span>, child_pos+run_len);</span><br><span class="line">        glCallList(children);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="实现障碍物从两侧随机出现"><a href="#实现障碍物从两侧随机出现" class="headerlink" title="实现障碍物从两侧随机出现"></a>实现障碍物从两侧随机出现</h1><p>为了和真实驾驶更加相似,我们不应该让障碍物只从单侧出现,而是因该让其两侧都有可能出现.因此,我们需要在原来的代码上进行进一步的修改.</p>
+<h2 id="需求分析-1"><a href="#需求分析-1" class="headerlink" title="需求分析"></a>需求分析</h2><h3 id="需求-1"><a href="#需求-1" class="headerlink" title="需求"></a>需求</h3><p>首先我们暂时让不倒翁的出现有两种情况, 情况一, 从左侧出现, 情况二, 从两侧随机出现. 通过按键’c’来控制模式的转换(改变appear_mode的值).</p>
+<p>因此, 当我们按下’c’键时, 需要对模式进行转换. 接下来在DrawGLScene中将根据appear_mode的值进行一系列操作. 如果appear_mode为默认的0, 就让障碍物从左侧出现, 如果appear_mode为1, 就让障碍物从两侧出现. </p>
+<p>如果障碍物从两侧出现的话, 每次障碍物<em>将要出现</em>的时候, 我们需要用一个flag标志保存障碍物本次出现是从左侧出现还是右侧出现. 在绘制障碍物的时候, 我们将通过这个flag来判断物体是如何运动.</p>
+<ul>
+<li>障碍物出现的时机: 本身已经消失, 距离上次消失已经有10s以上, 决定好从哪一侧出现, 并且该侧有楼栋</li>
+<li>障碍物移动的时机: 本身已经出现, 根据上一步已经得到的flag判定是向左还是向右, 直到到临界点</li>
+<li>障碍物静止的时机: 已经达到路中间,并且停留时间并未超过2s</li>
+<li>障碍物消失的时机: 已经静止超过2s</li>
+</ul>
+<h3 id="伪代码-1"><a href="#伪代码-1" class="headerlink" title="伪代码"></a>伪代码</h3><ul>
+<li>首先我们需要在KeyPressed函数中, 添加按键’c’的控制事件, 另其对appear_mode进行修改.</li>
+<li>接下来在DrawGLScene中, 我们将对这个appear_mode进行判断. 如果appear_mode为0,就按照之前的代码执行. 如果appear_mode为1, 则进入两侧出现事件.</li>
+<li>当appear_mode为1时, 如果当前状态为消失, 如果当前已经消失10s以上, 则随机决定在哪应该出现障碍物, 然后检查该侧是否有楼栋, 如果有楼栋, 则保存裁决位置(左或者右), 同时更新当前状态为移动</li>
+<li>当appear_mode为1时, 当前状态为移动时, 根据裁决, 如果裁决决定从左侧出来, 则起点设置为左侧, 同时,不断增加child_run_len,直到到达边界; 如果裁决决定从右侧出来, 则起点设置为1.0f位置, 同时不断减小, 直到到达-0.5f位置停止.</li>
+<li>停止时, 将appear_mode设置为2, 记录开始时间, 在原地停留两秒之后, 消失.</li>
+</ul>
+<h2 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> left_temp = building_left_flag;</span><br><span class="line"><span class="keyword">int</span> right_temp = building_right_flag;</span><br><span class="line"><span class="keyword">if</span>(appear_mode == <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="comment">// bdw_appear有3个值, 0表示已经消失, 1表示正在进行移动, 2表示移动到边界,已经静止</span></span><br><span class="line">    <span class="keyword">if</span>(bdw_appear == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span>(left_temp &gt;&gt; <span class="number">11</span> &amp; <span class="number">0b1</span> == <span class="number">1</span>) &#123;</span><br><span class="line">            time(&amp;appear);</span><br><span class="line">            <span class="comment">// 如果距离上次出现已经5s,就更新记录,同时更新flag</span></span><br><span class="line">            <span class="keyword">if</span>(appear - appear_tmp &gt;= <span class="number">5</span>) &#123;</span><br><span class="line">                appear_tmp = appear;</span><br><span class="line">                bdw_appear = <span class="number">1</span>;</span><br><span class="line">                child_run_len = <span class="number">-3.0f</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span>(bdw_appear == <span class="number">1</span>) &#123;</span><br><span class="line">        glBindTexture(GL_TEXTURE_2D, texture[<span class="number">4</span>]);</span><br><span class="line">        glLoadIdentity();</span><br><span class="line">        glTranslatef(child_run_len, <span class="number">-1.0f</span>, <span class="number">-7.0f</span>);</span><br><span class="line">        glCallList(children);</span><br><span class="line">        <span class="keyword">if</span>(child_run_len &gt;= <span class="number">-0.5</span>) &#123;</span><br><span class="line">            <span class="comment">//child_run_len = -3.0f;</span></span><br><span class="line">            <span class="comment">//bdw_appear = false;</span></span><br><span class="line">            <span class="comment">// 刚移动到边界</span></span><br><span class="line">            <span class="keyword">if</span>(bdw_appear == <span class="number">1</span>) &#123;</span><br><span class="line">                time(&amp;appear_tmp);</span><br><span class="line">                child_pos = <span class="number">-7.0f</span>;</span><br><span class="line">                bdw_appear = <span class="number">2</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            child_run_len = <span class="number">-0.5f</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 小孩的速度恒定</span></span><br><span class="line">            child_run_len += <span class="number">0.1f</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        time(&amp;appear);</span><br><span class="line">        <span class="comment">// 如果距离上次出现已经5s,就更新记录,同时更新flag</span></span><br><span class="line">        <span class="keyword">if</span>(appear - appear_tmp &gt;= <span class="number">2</span>) &#123;</span><br><span class="line">            appear_tmp = appear;</span><br><span class="line">            child_run_len = <span class="number">-3.0f</span>;</span><br><span class="line">            bdw_appear = <span class="number">0</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            glBindTexture(GL_TEXTURE_2D, texture[<span class="number">4</span>]);</span><br><span class="line">            glLoadIdentity();</span><br><span class="line">            glTranslatef(child_run_len, <span class="number">-1.0f</span>, child_pos+run_len);</span><br><span class="line">            glCallList(children);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(appear_mode == <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span>(bdw_appear == <span class="number">0</span>) &#123;</span><br><span class="line">        time(&amp;appear);</span><br><span class="line">        <span class="keyword">if</span>(appear - appear_tmp &gt;= <span class="number">5</span>)&#123;</span><br><span class="line">            <span class="comment">// 奇数为左侧, 偶数为右侧</span></span><br><span class="line">            <span class="keyword">if</span>(rand() &amp; <span class="number">0b1</span> == <span class="number">1</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span>(left_temp &gt;&gt; <span class="number">11</span> &amp; <span class="number">0b1</span> == <span class="number">1</span>) &#123;</span><br><span class="line">                    time(&amp;appear);</span><br><span class="line">                    appear_tmp = appear;</span><br><span class="line">                    bdw_appear = <span class="number">1</span>;</span><br><span class="line">                    left_or_right_flag = <span class="number">1</span>;</span><br><span class="line">                    child_run_len = <span class="number">-3.0f</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">if</span>(right_temp &gt;&gt; <span class="number">11</span> &amp; <span class="number">0b1</span> == <span class="number">1</span>) &#123;</span><br><span class="line">                    time(&amp;appear);</span><br><span class="line">                    appear_tmp = appear;</span><br><span class="line">                    bdw_appear = <span class="number">1</span>;</span><br><span class="line">                    left_or_right_flag = <span class="number">0</span>;</span><br><span class="line">                    child_run_len = <span class="number">1.0f</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span>(bdw_appear == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span>(left_or_right_flag == <span class="number">1</span>)&#123;</span><br><span class="line">            glBindTexture(GL_TEXTURE_2D, texture[<span class="number">4</span>]);</span><br><span class="line">            glLoadIdentity();</span><br><span class="line">            glTranslatef(child_run_len, <span class="number">-1.0f</span>, <span class="number">-7.0f</span>);</span><br><span class="line">            glCallList(children);</span><br><span class="line">            <span class="keyword">if</span>(child_run_len &gt;= <span class="number">-0.5</span>) &#123;</span><br><span class="line">                <span class="comment">//child_run_len = -3.0f;</span></span><br><span class="line">                <span class="comment">//bdw_appear = false;</span></span><br><span class="line">                <span class="comment">// 刚移动到边界</span></span><br><span class="line">                <span class="keyword">if</span>(bdw_appear == <span class="number">1</span>) &#123;</span><br><span class="line">                    time(&amp;appear_tmp);</span><br><span class="line">                    child_pos = <span class="number">-7.0f</span>;</span><br><span class="line">                    bdw_appear = <span class="number">2</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                child_run_len = <span class="number">-0.5f</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">// 小孩的速度恒定</span></span><br><span class="line">                child_run_len += <span class="number">0.1f</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            glBindTexture(GL_TEXTURE_2D, texture[<span class="number">4</span>]);</span><br><span class="line">            glLoadIdentity();</span><br><span class="line">            glTranslatef(child_run_len, <span class="number">-1.0f</span>, <span class="number">-7.0f</span>);</span><br><span class="line">            glCallList(children);</span><br><span class="line">            <span class="keyword">if</span>(child_run_len &lt;= <span class="number">-0.5f</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span>(bdw_appear == <span class="number">1</span>) &#123;</span><br><span class="line">                    time(&amp;appear_tmp);</span><br><span class="line">                    child_pos = <span class="number">-7.0f</span>;</span><br><span class="line">                    bdw_appear = <span class="number">2</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                child_run_len -= <span class="number">0.1f</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        time(&amp;appear);</span><br><span class="line">        <span class="comment">// 如果距离上次出现已经5s,就更新记录,同时更新flag</span></span><br><span class="line">        <span class="keyword">if</span>(appear - appear_tmp &gt;= <span class="number">2</span>) &#123;</span><br><span class="line">            appear_tmp = appear;</span><br><span class="line">            child_run_len = <span class="number">-3.0f</span>;</span><br><span class="line">            bdw_appear = <span class="number">0</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            glBindTexture(GL_TEXTURE_2D, texture[<span class="number">4</span>]);</span><br><span class="line">            glLoadIdentity();</span><br><span class="line">            glTranslatef(child_run_len, <span class="number">-1.0f</span>, child_pos+run_len);</span><br><span class="line">            glCallList(children);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+ 
+      <!-- reward -->
+      
+      <div id="reward-btn">
+        Donate
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        Share with
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://yaoyl.cn/2017/07/13/虚拟驾驶环境搭建(四)/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL/">OpenGL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/虚拟驾驶/">虚拟驾驶</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2017/09/16/2018网易校招运营开发工程师编程第一题/" class="article-nav-link">
+        <strong class="article-nav-caption">last text</strong>
+        <div class="article-nav-title">
+          
+            2018网易校招运营开发工程师编程第一题
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2017/07/13/虚拟驾驶环境搭建(三)/" class="article-nav-link">
+        <strong class="article-nav-caption">next text</strong>
+        <div class="article-nav-title">虚拟驾驶环境搭建(三)</div>
+      </a>
+    
+  </nav>
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "qkDBSm4o58WMY10dnnN3G3DG-gzGzoHsz",
+    app_key: "A3yKU51qb7l8hBysTQRJG0Xa",
+    path: window.location.pathname,
+    avatar: "monsterid",
+    placeholder: "给我的文章加点评论吧~",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+     
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2017-2020
+        <i class="ri-heart-fill heart_icon"></i> Yunyao Long
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        
+        Powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+        <span class="division">|</span>
+        Theme - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span></span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+        <li>
+          <a href="http://www.beian.miit.gov.cn/" target="_black">粤ICP备-17050867-1号</a>
+        </li>
+        
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src="https://v1.cnzz.com/z_stat.php?id=1279087554&amp;web_id=1279087554"></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="剑阁"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search" title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechatpay.png">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<!-- Tocbot -->
+
+<script src="/js/tocbot.min.js"></script>
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+<script src="/dist/main.js"></script>
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script>
+<script src="/js/clickBoom1.js"></script>
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+
+<link rel="stylesheet" href="/css/clipboard.css">
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+<!-- CanvasBackground -->
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="86" src="//music.163.com/outchain/player?type=2&id=447279413&auto=1&height=66"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+  </div>
+</body>
+
+</html>
