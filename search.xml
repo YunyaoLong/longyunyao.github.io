@@ -117,7 +117,7 @@
   </entry>
   <entry>
     <title>Java的Integer类方法解读</title>
-    <url>/2020/06/05/Java%E7%9A%84Integer%E7%B1%BB%E6%96%B9%E6%B3%95%E8%A7%A3%E8%AF%BB/</url>
+    <url>/2019/07/19/Java%E7%9A%84Integer%E7%B1%BB%E6%96%B9%E6%B3%95%E8%A7%A3%E8%AF%BB/</url>
     <content><![CDATA[<h1 id="highestOneBit"><a href="#highestOneBit" class="headerlink" title="highestOneBit"></a>highestOneBit</h1><p>获取一个int类型的二进制取整</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">highestOneBit</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">	<span class="comment">// HD, Figure 3-1</span></span><br><span class="line">	i |= (i &gt;&gt; <span class="number">1</span>);</span><br><span class="line">	i |= (i &gt;&gt; <span class="number">2</span>);</span><br><span class="line">	i |= (i &gt;&gt; <span class="number">4</span>);</span><br><span class="line">	i |= (i &gt;&gt; <span class="number">8</span>);</span><br><span class="line">	i |= (i &gt;&gt; <span class="number">16</span>);</span><br><span class="line">	<span class="keyword">return</span> i - (i &gt;&gt;&gt; <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -144,7 +144,7 @@
   </entry>
   <entry>
     <title>Lambda表达式与函数式接口</title>
-    <url>/2020/06/05/Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E5%87%BD%E6%95%B0%E5%BC%8F%E6%8E%A5%E5%8F%A3/</url>
+    <url>/2019/08/02/Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E5%87%BD%E6%95%B0%E5%BC%8F%E6%8E%A5%E5%8F%A3/</url>
     <content><![CDATA[<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><p>[toc]</p>
 <h1 id="Lambda表达式Java函数式接口"><a href="#Lambda表达式Java函数式接口" class="headerlink" title="Lambda表达式Java函数式接口"></a>Lambda表达式Java函数式接口</h1><p>都9012年了，这篇博文代码看看5000年前4012年发布的Java 8新引入的Lambda表达式到底是个什么鬼。</p>
 <h2 id="简述Lambda表达式"><a href="#简述Lambda表达式" class="headerlink" title="简述Lambda表达式"></a>简述Lambda表达式</h2><p>Lambda表达式并不是Java 8特有的特性，其设计初衷是用于一些特定代码中，已知固定入参和固定返回值的时候，动态生成的一种函数。</p>
@@ -2156,39 +2156,6 @@
       </tags>
   </entry>
   <entry>
-    <title>虚拟驾驶环境搭建（一）</title>
-    <url>/2017/07/13/%E8%99%9A%E6%8B%9F%E9%A9%BE%E9%A9%B6%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%EF%BC%88%E4%B8%80%EF%BC%89/</url>
-    <content><![CDATA[<p><strong>龙云尧个人博客，转载请注明出处。</strong></p>
-<p>CSDN地址：<a href="http://blog.csdn.net/michael753951/article/details/75073333" target="_blank" rel="noopener">http://blog.csdn.net/michael753951/article/details/75073333</a></p>
-<p>个人blog地址：<a href="http://yaoyl.cn/huan_jing_da_jian_yi/">http://yaoyl.cn/huan_jing_da_jian_yi/</a></p>
-<hr>
-<h1 id="综述"><a href="#综述" class="headerlink" title="综述"></a>综述</h1><p>本篇博客将对整个虚拟环境的搭建进行一个综述,后续将会对环境中各个功能的实现进行一一解释分析.</p>
-<h1 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h1><p>整个pro实现了模仿一辆车在街道上进行奔驰的场景(目前实现的是在直道上行驶,后续会加入转弯功能).项目的运行效果如图所示.</p>
-<p><img src="http://img.blog.csdn.net/20170713161253561?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="驾驶状态"></p>
-<h1 id="简单描述"><a href="#简单描述" class="headerlink" title="简单描述"></a>简单描述</h1><p>为了实现上述功能,我将整个项目大致分为如下几块.</p>
-<ul>
-<li>基本素材和环境的准备</li>
-<li>草地环境的搭建</li>
-<li>两侧楼房的搭建</li>
-<li>实现前进动作</li>
-<li>完成障碍物的出现动作</li>
-<li>其他系统优化</li>
-</ul>
-<p>其中,本次项目是基于OpenGL学习(十)的项目代码进行的修改扩充,库头文件依然一致.</p>
-<p>纹理渲染等方式和以前如出一辙.为了提高渲染速度,我使用纹理列表将图片在程序编译的时候提前进行传渲染,以达到最快的渲染速度,提高程序时间控制的稳定性.</p>
-<p>事物移动方式和以前一致,通过在DrawGLScene中绘笔的起点位置,来实现物体的移动.</p>
-<p>后续章节我将进行详细的解释说明.</p>
-]]></content>
-      <categories>
-        <category>C++</category>
-      </categories>
-      <tags>
-        <tag>C++</tag>
-        <tag>OpenGL</tag>
-        <tag>虚拟驾驶</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>随笔(2020.07.18)</title>
     <url>/2020/07/18/%E9%9A%8F%E7%AC%94(2020.07.18)/</url>
     <content><![CDATA[<h2 id="近况"><a href="#近况" class="headerlink" title="近况"></a>近况</h2><p>已经很久没有时间好好整理一下个人的知识经验总结，加上事业的压力和个人状态调整问题，让自己一直兜兜转转在工作和会议中。</p>
@@ -2388,6 +2355,39 @@
       <tags>
         <tag>Python</tag>
         <tag>爬虫</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>虚拟驾驶环境搭建(一)</title>
+    <url>/2017/07/13/%E8%99%9A%E6%8B%9F%E9%A9%BE%E9%A9%B6%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA(%E4%B8%80)/</url>
+    <content><![CDATA[<p><strong>龙云尧个人博客，转载请注明出处。</strong></p>
+<p>CSDN地址：<a href="http://blog.csdn.net/michael753951/article/details/75073333" target="_blank" rel="noopener">http://blog.csdn.net/michael753951/article/details/75073333</a></p>
+<p>个人blog地址：<a href="http://yaoyl.cn/huan_jing_da_jian_yi/">http://yaoyl.cn/huan_jing_da_jian_yi/</a></p>
+<hr>
+<h1 id="综述"><a href="#综述" class="headerlink" title="综述"></a>综述</h1><p>本篇博客将对整个虚拟环境的搭建进行一个综述,后续将会对环境中各个功能的实现进行一一解释分析.</p>
+<h1 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h1><p>整个pro实现了模仿一辆车在街道上进行奔驰的场景(目前实现的是在直道上行驶,后续会加入转弯功能).项目的运行效果如图所示.</p>
+<p><img src="http://img.blog.csdn.net/20170713161253561?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="驾驶状态"></p>
+<h1 id="简单描述"><a href="#简单描述" class="headerlink" title="简单描述"></a>简单描述</h1><p>为了实现上述功能,我将整个项目大致分为如下几块.</p>
+<ul>
+<li>基本素材和环境的准备</li>
+<li>草地环境的搭建</li>
+<li>两侧楼房的搭建</li>
+<li>实现前进动作</li>
+<li>完成障碍物的出现动作</li>
+<li>其他系统优化</li>
+</ul>
+<p>其中,本次项目是基于OpenGL学习(十)的项目代码进行的修改扩充,库头文件依然一致.</p>
+<p>纹理渲染等方式和以前如出一辙.为了提高渲染速度,我使用纹理列表将图片在程序编译的时候提前进行传渲染,以达到最快的渲染速度,提高程序时间控制的稳定性.</p>
+<p>事物移动方式和以前一致,通过在DrawGLScene中绘笔的起点位置,来实现物体的移动.</p>
+<p>后续章节我将进行详细的解释说明.</p>
+]]></content>
+      <categories>
+        <category>C++</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+        <tag>OpenGL</tag>
+        <tag>虚拟驾驶</tag>
       </tags>
   </entry>
 </search>
