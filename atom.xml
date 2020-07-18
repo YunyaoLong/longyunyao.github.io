@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://yaoyl.cn/"/>
-  <updated>2020-07-17T21:53:00.094Z</updated>
+  <updated>2020-07-18T14:39:51.441Z</updated>
   <id>https://yaoyl.cn/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>随笔(2020.07.18)</title>
+    <link href="https://yaoyl.cn/2020/07/18/%E9%9A%8F%E7%AC%94(2020.07.18)/"/>
+    <id>https://yaoyl.cn/2020/07/18/%E9%9A%8F%E7%AC%94(2020.07.18)/</id>
+    <published>2020-07-18T14:34:55.000Z</published>
+    <updated>2020-07-18T14:39:51.441Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;近况&quot;&gt;&lt;a href=&quot;#近况&quot; class=&quot;headerlink&quot; title=&quot;近况&quot;&gt;&lt;/a&gt;近况&lt;/h2&gt;&lt;p&gt;已经很久没有时间好好整理一下个人的知识经验总结，加上事业的压力和个人状态调整问题，让自己一直兜兜转转在工作和会议中。&lt;/p&gt;
+&lt;p&gt;前段时间
+      
+    
+    </summary>
+    
+    
+      <category term="随笔" scheme="https://yaoyl.cn/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="随笔" scheme="https://yaoyl.cn/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Spring的Bean管理</title>
     <link href="https://yaoyl.cn/2020/06/20/Spring%E7%9A%84Bean%E7%AE%A1%E7%90%86/"/>
     <id>https://yaoyl.cn/2020/06/20/Spring%E7%9A%84Bean%E7%AE%A1%E7%90%86/</id>
     <published>2020-06-20T07:45:49.000Z</published>
-    <updated>2020-07-17T21:53:00.094Z</updated>
+    <updated>2020-07-17T21:53:07.918Z</updated>
     
     <summary type="html">
     
@@ -166,37 +191,6 @@
   </entry>
   
   <entry>
-    <title>RFID实验三总结</title>
-    <link href="https://yaoyl.cn/2019/05/23/RFID%E5%AE%9E%E9%AA%8C%E4%B8%89%E6%80%BB%E7%BB%93/"/>
-    <id>https://yaoyl.cn/2019/05/23/RFID%E5%AE%9E%E9%AA%8C%E4%B8%89%E6%80%BB%E7%BB%93/</id>
-    <published>2019-05-22T17:19:42.000Z</published>
-    <updated>2020-07-17T19:58:34.448Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;p&gt;一次debug到哭泣的经历。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;龙云尧个人博客，转载请注明出处。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;CSDN地址：&lt;/p&gt;
-&lt;p&gt;个人blog地址：&lt;a href=&quot;http://123.207
-      
-    
-    </summary>
-    
-    
-      <category term="Java" scheme="https://yaoyl.cn/categories/Java/"/>
-    
-    
-      <category term="RFID" scheme="https://yaoyl.cn/tags/RFID/"/>
-    
-      <category term="java" scheme="https://yaoyl.cn/tags/java/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Ubuntu下使用CodeBlocks进行多线程编程</title>
     <link href="https://yaoyl.cn/2018/02/19/Ubuntu%E4%B8%8B%E4%BD%BF%E7%94%A8CodeBlocks%E8%BF%9B%E8%A1%8C%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/"/>
     <id>https://yaoyl.cn/2018/02/19/Ubuntu%E4%B8%8B%E4%BD%BF%E7%94%A8CodeBlocks%E8%BF%9B%E8%A1%8C%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/</id>
@@ -257,7 +251,7 @@
     <link href="https://yaoyl.cn/2017/10/12/%E5%8D%8E%E4%B8%BA%E5%88%9D%E9%9D%A2+%E7%BB%BC%E5%90%88%E9%9D%A2%E8%AF%95%EF%BC%88%E6%8A%80%E6%9C%AF%E9%9D%A2%EF%BC%89/"/>
     <id>https://yaoyl.cn/2017/10/12/%E5%8D%8E%E4%B8%BA%E5%88%9D%E9%9D%A2+%E7%BB%BC%E5%90%88%E9%9D%A2%E8%AF%95%EF%BC%88%E6%8A%80%E6%9C%AF%E9%9D%A2%EF%BC%89/</id>
     <published>2017-10-11T18:28:17.000Z</published>
-    <updated>2020-07-17T21:27:55.159Z</updated>
+    <updated>2020-07-18T14:23:24.506Z</updated>
     
     <summary type="html">
     
@@ -269,12 +263,10 @@
     </summary>
     
     
-      <category term="杂谈" scheme="https://yaoyl.cn/categories/%E6%9D%82%E8%B0%88/"/>
+      <category term="面试" scheme="https://yaoyl.cn/categories/%E9%9D%A2%E8%AF%95/"/>
     
     
       <category term="面经" scheme="https://yaoyl.cn/tags/%E9%9D%A2%E7%BB%8F/"/>
-    
-      <category term="杂谈" scheme="https://yaoyl.cn/tags/%E6%9D%82%E8%B0%88/"/>
     
       <category term="校招" scheme="https://yaoyl.cn/tags/%E6%A0%A1%E6%8B%9B/"/>
     
@@ -287,7 +279,7 @@
     <link href="https://yaoyl.cn/2017/10/11/%E8%85%BE%E8%AE%AF%E5%88%9D%E8%AF%95%EF%BC%88%E6%8A%80%E6%9C%AF%E9%9D%A2%EF%BC%89/"/>
     <id>https://yaoyl.cn/2017/10/11/%E8%85%BE%E8%AE%AF%E5%88%9D%E8%AF%95%EF%BC%88%E6%8A%80%E6%9C%AF%E9%9D%A2%EF%BC%89/</id>
     <published>2017-10-10T17:45:58.000Z</published>
-    <updated>2020-07-17T21:38:09.718Z</updated>
+    <updated>2020-07-18T14:23:06.218Z</updated>
     
     <summary type="html">
     
@@ -301,12 +293,10 @@
     </summary>
     
     
-      <category term="杂谈" scheme="https://yaoyl.cn/categories/%E6%9D%82%E8%B0%88/"/>
+      <category term="面试" scheme="https://yaoyl.cn/categories/%E9%9D%A2%E8%AF%95/"/>
     
     
       <category term="面经" scheme="https://yaoyl.cn/tags/%E9%9D%A2%E7%BB%8F/"/>
-    
-      <category term="杂谈" scheme="https://yaoyl.cn/tags/%E6%9D%82%E8%B0%88/"/>
     
       <category term="校招" scheme="https://yaoyl.cn/tags/%E6%A0%A1%E6%8B%9B/"/>
     
@@ -319,7 +309,7 @@
     <link href="https://yaoyl.cn/2017/09/16/2018%E7%BD%91%E6%98%93%E6%A0%A1%E6%8B%9B%E8%BF%90%E8%90%A5%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%BC%96%E7%A8%8B%E7%AC%AC%E4%B8%80%E9%A2%98/"/>
     <id>https://yaoyl.cn/2017/09/16/2018%E7%BD%91%E6%98%93%E6%A0%A1%E6%8B%9B%E8%BF%90%E8%90%A5%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%BC%96%E7%A8%8B%E7%AC%AC%E4%B8%80%E9%A2%98/</id>
     <published>2017-09-16T14:38:56.000Z</published>
-    <updated>2020-07-17T21:25:39.638Z</updated>
+    <updated>2020-07-18T14:22:54.918Z</updated>
     
     <summary type="html">
     
@@ -332,12 +322,10 @@
     </summary>
     
     
-      <category term="杂谈" scheme="https://yaoyl.cn/categories/%E6%9D%82%E8%B0%88/"/>
+      <category term="面试" scheme="https://yaoyl.cn/categories/%E9%9D%A2%E8%AF%95/"/>
     
     
       <category term="面经" scheme="https://yaoyl.cn/tags/%E9%9D%A2%E7%BB%8F/"/>
-    
-      <category term="杂谈" scheme="https://yaoyl.cn/tags/%E6%9D%82%E8%B0%88/"/>
     
       <category term="网易" scheme="https://yaoyl.cn/tags/%E7%BD%91%E6%98%93/"/>
     
@@ -495,6 +483,37 @@
   </entry>
   
   <entry>
+    <title>RFID实验三总结</title>
+    <link href="https://yaoyl.cn/2017/05/23/RFID%E5%AE%9E%E9%AA%8C%E4%B8%89%E6%80%BB%E7%BB%93/"/>
+    <id>https://yaoyl.cn/2017/05/23/RFID%E5%AE%9E%E9%AA%8C%E4%B8%89%E6%80%BB%E7%BB%93/</id>
+    <published>2017-05-22T17:19:42.000Z</published>
+    <updated>2020-07-18T14:14:50.707Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;一次debug到哭泣的经历。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;龙云尧个人博客，转载请注明出处。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;CSDN地址：&lt;/p&gt;
+&lt;p&gt;个人blog地址：&lt;a href=&quot;http://123.207
+      
+    
+    </summary>
+    
+    
+      <category term="Java" scheme="https://yaoyl.cn/categories/Java/"/>
+    
+    
+      <category term="RFID" scheme="https://yaoyl.cn/tags/RFID/"/>
+    
+      <category term="java" scheme="https://yaoyl.cn/tags/java/"/>
+    
+  </entry>
+  
+  <entry>
     <title>RFID实验二总结</title>
     <link href="https://yaoyl.cn/2017/05/21/RFID%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%80%BB%E7%BB%93/"/>
     <id>https://yaoyl.cn/2017/05/21/RFID%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%80%BB%E7%BB%93/</id>
@@ -581,33 +600,6 @@
       <category term="C语言" scheme="https://yaoyl.cn/tags/C%E8%AF%AD%E8%A8%80/"/>
     
       <category term="异步通信" scheme="https://yaoyl.cn/tags/%E5%BC%82%E6%AD%A5%E9%80%9A%E4%BF%A1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>双系统安装Ubuntu的初始化</title>
-    <link href="https://yaoyl.cn/2017/05/19/%E5%8F%8C%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Ubuntu%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96/"/>
-    <id>https://yaoyl.cn/2017/05/19/%E5%8F%8C%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Ubuntu%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96/</id>
-    <published>2017-05-19T09:05:46.000Z</published>
-    <updated>2020-07-17T21:20:25.429Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;strong&gt;龙云尧个人博客，转载请注明出处。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;CSDN地址：&lt;a href=&quot;http://blog.csdn.net/michael753951/article/details/72547775&quot; target=&quot;_blank&quot; rel
-      
-    
-    </summary>
-    
-    
-      <category term="Ubuntu" scheme="https://yaoyl.cn/categories/Ubuntu/"/>
-    
-    
-      <category term="Ubuntu" scheme="https://yaoyl.cn/tags/Ubuntu/"/>
-    
-      <category term="双系统" scheme="https://yaoyl.cn/tags/%E5%8F%8C%E7%B3%BB%E7%BB%9F/"/>
     
   </entry>
   
