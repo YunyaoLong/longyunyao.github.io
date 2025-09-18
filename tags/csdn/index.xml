@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CSDN on Clarity</title>
+    <link>https://example.com/tags/csdn/</link>
+    <description>Recent content in CSDN on Clarity</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>Copyright © 2017–2025, Yunyao Long and the Hugo Authors; 粤ICP备-17050867-1号</copyright>
+    <lastBuildDate>Fri, 21 Apr 2017 04:01:16 +0000</lastBuildDate><atom:link href="https://example.com/tags/csdn/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CSDN如何转载他人文章</title>
+      <link>https://example.com/post/%E5%8E%86%E5%8F%B2/csdn%E5%A6%82%E4%BD%95%E8%BD%AC%E8%BD%BD%E4%BB%96%E4%BA%BA%E6%96%87%E7%AB%A0/</link>
+      <pubDate>Fri, 21 Apr 2017 04:01:16 +0000</pubDate>
+      
+      <guid>https://example.com/post/%E5%8E%86%E5%8F%B2/csdn%E5%A6%82%E4%BD%95%E8%BD%AC%E8%BD%BD%E4%BB%96%E4%BA%BA%E6%96%87%E7%AB%A0/</guid>
+      <description>
+        
+          
+            &lt;p&gt;本来我一直不会在csdn中转载他人的文章的，知道有一次在网上看到一篇教程（来源已经忘记，但是原理很简答）。&lt;/p&gt;
+&lt;p&gt;利用&lt;strong&gt;Markdown可以解析html&lt;/strong&gt;的特点，我们只要在开发者模式中，将需要转载的人的博客地址的文章部分的div块整个复制下来就行了。&lt;/p&gt;
+&lt;p&gt;下面我将演示一下如何操作。&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+  &lt;picture&gt;
+
+    
+      
+        
+        
+        
+        
+        
+        
+    &lt;img
+      loading=&#34;lazy&#34;
+      decoding=&#34;async&#34;
+      alt=&#34;开发者模式&#34;
+      
+        class=&#34;image_figure image_internal image_unprocessed&#34;
+        src=&#34;https://example.com/content/images/2017/04/temp2.png&#34;
+      
+      
+    /&gt;
+
+    &lt;/picture&gt;
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;打开浏览器的&lt;strong&gt;开发者模式&lt;/strong&gt;（Chrome为F12，其他的从设置中一般能够找到），点一下开发者模式&lt;strong&gt;左上角的小指针图标&lt;/strong&gt;，这个时候，浏览器就能够通过你鼠标点击的位置定位到相应的html结构中了。&lt;/p&gt;
+&lt;p&gt;在本次操作中，我发现我的正文都被放在一个class为“markdown_views”的div块中了。&lt;/p&gt;
+&lt;p&gt;我们右键单击这个div块，然后选择&lt;code&gt;Copy-&amp;gt;copy element&lt;/code&gt;，就能够将这个块内的元素全部提取下来啦。接下来的事情就是转回自己的博客，使用&lt;strong&gt;markdown编辑器&lt;/strong&gt;，将元素复制进来。标明出处和原始博客地址，就可以发表啦。（如果不小心复制了广告或者“上一篇”之类的元素，删掉就行了）。&lt;/p&gt;
+&lt;p&gt;这种方式对转载其他出处的文章一样可用。&lt;strong&gt;不过，记得无论怎么转载，都要注明“转载”并且说明出处就是咯。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;下面是我从我另一篇博客中复制过来的内容，可以看看。&lt;/p&gt;
+&lt;hr&gt;
+&lt;div class=&#34;markdown_views&#34;&gt;&lt;p&gt;&lt;strong&gt;龙云尧个人博客，转载请注明出处。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;CSDN地址：&lt;a href=&#34;http://blog.csdn.net/Michael753951/article/details/70307694&#34;&gt;http://blog.csdn.net/Michael753951/article/details/70307694&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;个人博客地址：&lt;a href=&#34;http://123.207.243.115:81/li-yong-ghostzuo-wei-tu-chuang/&#34;&gt;http://123.207.243.115:81/li-yong-ghostzuo-wei-tu-chuang/&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;起源&#34;&gt;&lt;a name=&#34;t0&#34;&gt;&lt;/a&gt;起源&lt;/h1&gt;
+&lt;p&gt;图床一直是一个很让我头疼的问题，在去年开始，我就有用markdown写项目总结的习惯，贴图的时候，怎么找一个好用的图床这个问题却一直没有解决。&lt;/p&gt;
+&lt;p&gt;目前我是用过的图床包括网易&lt;code&gt;LOFTER&lt;/code&gt;，&lt;code&gt;github&lt;/code&gt;，&lt;code&gt;CSDN&lt;/code&gt;以及自己搭建的&lt;code&gt;Ghost博客服务器&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;前三种方式中，&lt;code&gt;LOFTER&lt;/code&gt;和&lt;code&gt;github&lt;/code&gt;直接将图片拖进去，然后右键图片，复制源地址就行了。但是美中不足的是&lt;code&gt;LOFTER&lt;/code&gt;的源在其他网站上显示并不是很友好，&lt;code&gt;github&lt;/code&gt;在虽然图片显示很清楚，但是上传图片的时候总是会出问题。&lt;code&gt;CSDN&lt;/code&gt;和&lt;code&gt;github&lt;/code&gt;一样，上传文件时总是会出问题。&lt;/p&gt;
+&lt;p&gt;这迫使我有了再重新寻找一个图床的想法。&lt;/p&gt;
+&lt;h1 id=&#34;解决&#34;&gt;&lt;a name=&#34;t1&#34;&gt;&lt;/a&gt;解决&lt;/h1&gt;
+&lt;p&gt;今晚（2017/4/21）凌晨在写项目总结的时候，我突然意识到我&lt;strong&gt;可以利用自己的博客服务器&lt;/strong&gt;作为图床。而且服务器ip地址在公网中，地理地质位于华南，作为图床应该会比较稳定。&lt;/p&gt;
+&lt;p&gt;果然，在稍微折腾一下之后，我在ghost官网中找到一篇&lt;a href=&#34;https://help.ghost.org/hc/en-us/articles/223237408-Upload-Images&#34;&gt;【Upload Images】&lt;/a&gt;的教程，有告诉我们怎么向服务器传文件并且在博客中显示。&lt;/p&gt;
+&lt;p&gt;我就可以利用这个原理，将Ghost服务器作为图床啦。&lt;/p&gt;
+&lt;h1 id=&#34;实际操作&#34;&gt;&lt;a name=&#34;t2&#34;&gt;&lt;/a&gt;实际操作&lt;/h1&gt;
+&lt;p&gt;操作过程比较简单。&lt;/p&gt;
+&lt;p&gt;首先我们进入后台新建一篇文章(&lt;code&gt;New Post&lt;/code&gt;)。然后在正文空白部分输入&lt;code&gt;![]()&lt;/code&gt;，右侧就会出现一个提示框。如下图所示。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://123.207.243.115:81/content/images/2017/04/temp.png&#34; alt=&#34;&#34; title=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;点击&lt;code&gt;Update an image&lt;/code&gt;，我们就能从本地文件中选取一张图片上传上服务器，同时之前&lt;code&gt;![]()&lt;/code&gt;中的括号中出现了一个相对路径，比如我的就是&lt;code&gt;/content/images/2017/04/temp.png&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;注意，相对路径是不能在其他地方打开的，只能在本服务器才能打开&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;但是&lt;strong&gt;我们的目的是将该图片用在其他&lt;/strong&gt;，将本服务器作为图床。所以我们这是就需要&lt;strong&gt;右键单击右侧显示的图片&lt;/strong&gt;，选择&lt;strong&gt;&lt;code&gt;“复制图片地址”&lt;/code&gt;&lt;/strong&gt;，然后将这个地址粘贴到其他地方，这样这张图片在其他地方也就能够正常显示啦。&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;本篇博客就是使用这个原理实现的图像显示。&lt;/em&gt;&lt;/p&gt;&lt;/div&gt;
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>
