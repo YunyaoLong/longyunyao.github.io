@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Java on Clarity</title>
-    <link>https://example.com/categories/java/</link>
+    <link>https://yunyaolong.github.io/longyunyao.github.io/categories/java/</link>
     <description>Recent content in Java on Clarity</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright © 2017–2025, Yunyao Long and the Hugo Authors; 粤ICP备-17050867-1号</copyright>
-    <lastBuildDate>Thu, 02 Jul 2020 22:30:10 +0000</lastBuildDate><atom:link href="https://example.com/categories/java/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 02 Jul 2020 22:30:10 +0000</lastBuildDate><atom:link href="https://yunyaolong.github.io/longyunyao.github.io/categories/java/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Lambda表达式与函数式接口</title>
-      <link>https://example.com/post/%E5%8E%86%E5%8F%B2/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/</link>
+      <link>https://yunyaolong.github.io/longyunyao.github.io/post/%E5%8E%86%E5%8F%B2/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/</link>
       <pubDate>Thu, 02 Jul 2020 22:30:10 +0000</pubDate>
       
-      <guid>https://example.com/post/%E5%8E%86%E5%8F%B2/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/</guid>
+      <guid>https://yunyaolong.github.io/longyunyao.github.io/post/%E5%8E%86%E5%8F%B2/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/</guid>
       <description>
         
           
@@ -73,10 +73,10 @@
     
     <item>
       <title>Spring的Bean管理</title>
-      <link>https://example.com/post/%E5%8E%86%E5%8F%B2/spring%E7%9A%84bean%E7%AE%A1%E7%90%86/</link>
+      <link>https://yunyaolong.github.io/longyunyao.github.io/post/%E5%8E%86%E5%8F%B2/spring%E7%9A%84bean%E7%AE%A1%E7%90%86/</link>
       <pubDate>Sat, 20 Jun 2020 15:45:49 +0000</pubDate>
       
-      <guid>https://example.com/post/%E5%8E%86%E5%8F%B2/spring%E7%9A%84bean%E7%AE%A1%E7%90%86/</guid>
+      <guid>https://yunyaolong.github.io/longyunyao.github.io/post/%E5%8E%86%E5%8F%B2/spring%E7%9A%84bean%E7%AE%A1%E7%90%86/</guid>
       <description>
         
           
@@ -150,10 +150,10 @@
     
     <item>
       <title>一点点手写Spring</title>
-      <link>https://example.com/post/%E5%8E%86%E5%8F%B2/%E4%B8%80%E7%82%B9%E7%82%B9%E6%89%8B%E5%86%99spring/</link>
+      <link>https://yunyaolong.github.io/longyunyao.github.io/post/%E5%8E%86%E5%8F%B2/%E4%B8%80%E7%82%B9%E7%82%B9%E6%89%8B%E5%86%99spring/</link>
       <pubDate>Sat, 20 Jun 2020 10:02:28 +0000</pubDate>
       
-      <guid>https://example.com/post/%E5%8E%86%E5%8F%B2/%E4%B8%80%E7%82%B9%E7%82%B9%E6%89%8B%E5%86%99spring/</guid>
+      <guid>https://yunyaolong.github.io/longyunyao.github.io/post/%E5%8E%86%E5%8F%B2/%E4%B8%80%E7%82%B9%E7%82%B9%E6%89%8B%E5%86%99spring/</guid>
       <description>
         
           
@@ -181,10 +181,10 @@
     
     <item>
       <title>自定义注解并且进行扫描解析</title>
-      <link>https://example.com/post/%E5%8E%86%E5%8F%B2/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B3%A8%E8%A7%A3%E5%B9%B6%E4%B8%94%E8%BF%9B%E8%A1%8C%E6%89%AB%E6%8F%8F%E8%A7%A3%E6%9E%90/</link>
+      <link>https://yunyaolong.github.io/longyunyao.github.io/post/%E5%8E%86%E5%8F%B2/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B3%A8%E8%A7%A3%E5%B9%B6%E4%B8%94%E8%BF%9B%E8%A1%8C%E6%89%AB%E6%8F%8F%E8%A7%A3%E6%9E%90/</link>
       <pubDate>Fri, 05 Jun 2020 22:52:22 +0000</pubDate>
       
-      <guid>https://example.com/post/%E5%8E%86%E5%8F%B2/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B3%A8%E8%A7%A3%E5%B9%B6%E4%B8%94%E8%BF%9B%E8%A1%8C%E6%89%AB%E6%8F%8F%E8%A7%A3%E6%9E%90/</guid>
+      <guid>https://yunyaolong.github.io/longyunyao.github.io/post/%E5%8E%86%E5%8F%B2/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B3%A8%E8%A7%A3%E5%B9%B6%E4%B8%94%E8%BF%9B%E8%A1%8C%E6%89%AB%E6%8F%8F%E8%A7%A3%E6%9E%90/</guid>
       <description>
         
           
@@ -256,10 +256,10 @@
     
     <item>
       <title>Lambda表达式与函数式接口</title>
-      <link>https://example.com/post/%E5%8E%86%E5%8F%B2/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E5%87%BD%E6%95%B0%E5%BC%8F%E6%8E%A5%E5%8F%A3/</link>
+      <link>https://yunyaolong.github.io/longyunyao.github.io/post/%E5%8E%86%E5%8F%B2/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E5%87%BD%E6%95%B0%E5%BC%8F%E6%8E%A5%E5%8F%A3/</link>
       <pubDate>Fri, 02 Aug 2019 00:55:10 +0000</pubDate>
       
-      <guid>https://example.com/post/%E5%8E%86%E5%8F%B2/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E5%87%BD%E6%95%B0%E5%BC%8F%E6%8E%A5%E5%8F%A3/</guid>
+      <guid>https://yunyaolong.github.io/longyunyao.github.io/post/%E5%8E%86%E5%8F%B2/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E5%87%BD%E6%95%B0%E5%BC%8F%E6%8E%A5%E5%8F%A3/</guid>
       <description>
         
           
@@ -299,10 +299,10 @@
     
     <item>
       <title>Java的Integer类方法解读</title>
-      <link>https://example.com/post/%E5%8E%86%E5%8F%B2/java%E7%9A%84integer%E7%B1%BB%E6%96%B9%E6%B3%95%E8%A7%A3%E8%AF%BB/</link>
+      <link>https://yunyaolong.github.io/longyunyao.github.io/post/%E5%8E%86%E5%8F%B2/java%E7%9A%84integer%E7%B1%BB%E6%96%B9%E6%B3%95%E8%A7%A3%E8%AF%BB/</link>
       <pubDate>Fri, 19 Jul 2019 16:13:38 +0000</pubDate>
       
-      <guid>https://example.com/post/%E5%8E%86%E5%8F%B2/java%E7%9A%84integer%E7%B1%BB%E6%96%B9%E6%B3%95%E8%A7%A3%E8%AF%BB/</guid>
+      <guid>https://yunyaolong.github.io/longyunyao.github.io/post/%E5%8E%86%E5%8F%B2/java%E7%9A%84integer%E7%B1%BB%E6%96%B9%E6%B3%95%E8%A7%A3%E8%AF%BB/</guid>
       <description>
         
           
@@ -334,10 +334,10 @@
     
     <item>
       <title>RFID实验三总结</title>
-      <link>https://example.com/post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%B8%89%E6%80%BB%E7%BB%93/</link>
+      <link>https://yunyaolong.github.io/longyunyao.github.io/post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%B8%89%E6%80%BB%E7%BB%93/</link>
       <pubDate>Tue, 23 May 2017 01:19:42 +0000</pubDate>
       
-      <guid>https://example.com/post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%B8%89%E6%80%BB%E7%BB%93/</guid>
+      <guid>https://yunyaolong.github.io/longyunyao.github.io/post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%B8%89%E6%80%BB%E7%BB%93/</guid>
       <description>
         
           
@@ -592,10 +592,10 @@
     
     <item>
       <title>RFID实验二总结</title>
-      <link>https://example.com/post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%80%BB%E7%BB%93/</link>
+      <link>https://yunyaolong.github.io/longyunyao.github.io/post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%80%BB%E7%BB%93/</link>
       <pubDate>Sun, 21 May 2017 02:55:05 +0000</pubDate>
       
-      <guid>https://example.com/post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%80%BB%E7%BB%93/</guid>
+      <guid>https://yunyaolong.github.io/longyunyao.github.io/post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%80%BB%E7%BB%93/</guid>
       <description>
         
           
@@ -628,7 +628,7 @@
       alt=&#34;主要内容&#34;
       
         class=&#34;image_figure image_internal image_unprocessed&#34;
-        src=&#34;https://example.com/&#34;
+        src=&#34;https://yunyaolong.github.io/longyunyao.github.io&#34;
       
       
     /&gt;
@@ -658,7 +658,7 @@
       alt=&#34;过程秘钥的产生&#34;
       
         class=&#34;image_figure image_internal image_unprocessed&#34;
-        src=&#34;https://example.com/&#34;
+        src=&#34;https://yunyaolong.github.io/longyunyao.github.io&#34;
       
       
     /&gt;
@@ -683,7 +683,7 @@
       alt=&#34;3DES&#34;
       
         class=&#34;image_figure image_internal image_unprocessed&#34;
-        src=&#34;https://example.com/&#34;
+        src=&#34;https://yunyaolong.github.io/longyunyao.github.io&#34;
       
       
     /&gt;
@@ -708,7 +708,7 @@
       alt=&#34;MACorTAC&#34;
       
         class=&#34;image_figure image_internal image_unprocessed&#34;
-        src=&#34;https://example.com/&#34;
+        src=&#34;https://yunyaolong.github.io/longyunyao.github.io&#34;
       
       
     /&gt;
@@ -733,7 +733,7 @@
       alt=&#34;MACorTAC2&#34;
       
         class=&#34;image_figure image_internal image_unprocessed&#34;
-        src=&#34;https://example.com/&#34;
+        src=&#34;https://yunyaolong.github.io/longyunyao.github.io&#34;
       
       
     /&gt;
@@ -785,7 +785,7 @@
       alt=&#34;PenCipher构造函数&#34;
       
         class=&#34;image_figure image_internal image_unprocessed&#34;
-        src=&#34;https://example.com/&#34;
+        src=&#34;https://yunyaolong.github.io/longyunyao.github.io&#34;
       
       
     /&gt;
@@ -810,7 +810,7 @@
       alt=&#34;des运算函数&#34;
       
         class=&#34;image_figure image_internal image_unprocessed&#34;
-        src=&#34;https://example.com/&#34;
+        src=&#34;https://yunyaolong.github.io/longyunyao.github.io&#34;
       
       
     /&gt;
@@ -836,7 +836,7 @@
       alt=&#34;需要填充&#34;
       
         class=&#34;image_figure image_internal image_unprocessed&#34;
-        src=&#34;https://example.com/&#34;
+        src=&#34;https://yunyaolong.github.io/longyunyao.github.io&#34;
       
       
     /&gt;
@@ -855,10 +855,10 @@
     
     <item>
       <title>RFID实验一总结</title>
-      <link>https://example.com/post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%B8%80%E6%80%BB%E7%BB%93/</link>
+      <link>https://yunyaolong.github.io/longyunyao.github.io/post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%B8%80%E6%80%BB%E7%BB%93/</link>
       <pubDate>Sat, 20 May 2017 14:11:32 +0000</pubDate>
       
-      <guid>https://example.com/post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%B8%80%E6%80%BB%E7%BB%93/</guid>
+      <guid>https://yunyaolong.github.io/longyunyao.github.io/post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%B8%80%E6%80%BB%E7%BB%93/</guid>
       <description>
         
           
@@ -920,7 +920,7 @@
         class=&#34;image_figure image_external image_processed&#34;
         width=&#34;372&#34;
         height=&#34;127&#34;
-        src=&#34;https://example.com/images/e80949d0-258b-11e7-96e2-89b3087741fc_7787092408133580828.png&#34;
+        src=&#34;https://yunyaolong.github.io/longyunyao.github.io/images/e80949d0-258b-11e7-96e2-89b3087741fc_7787092408133580828.png&#34;
       
       
     /&gt;
@@ -948,7 +948,7 @@
         class=&#34;image_figure image_external image_processed&#34;
         width=&#34;509&#34;
         height=&#34;159&#34;
-        src=&#34;https://example.com/images/e7b2830c-258b-11e7-8911-d2b7e7fc9d0d_12307540848290659802.png&#34;
+        src=&#34;https://yunyaolong.github.io/longyunyao.github.io/images/e7b2830c-258b-11e7-8911-d2b7e7fc9d0d_12307540848290659802.png&#34;
       
       
     /&gt;
@@ -976,7 +976,7 @@
         class=&#34;image_figure image_external image_processed&#34;
         width=&#34;481&#34;
         height=&#34;210&#34;
-        src=&#34;https://example.com/images/e78315e0-258b-11e7-8c78-08555ef584ec_12537409608955670593.png&#34;
+        src=&#34;https://yunyaolong.github.io/longyunyao.github.io/images/e78315e0-258b-11e7-8c78-08555ef584ec_12537409608955670593.png&#34;
       
       
     /&gt;
@@ -1005,7 +1005,7 @@
         class=&#34;image_figure image_external image_processed&#34;
         width=&#34;723&#34;
         height=&#34;295&#34;
-        src=&#34;https://example.com/images/e78578a8-258b-11e7-803f-d095709449d4_3479832271068198507.png&#34;
+        src=&#34;https://yunyaolong.github.io/longyunyao.github.io/images/e78578a8-258b-11e7-803f-d095709449d4_3479832271068198507.png&#34;
       
       
     /&gt;
@@ -1032,7 +1032,7 @@
         class=&#34;image_figure image_external image_processed&#34;
         width=&#34;790&#34;
         height=&#34;367&#34;
-        src=&#34;https://example.com/images/a3f1f2b4-258c-11e7-8164-5433dd00f23e_2002550957571907844.png&#34;
+        src=&#34;https://yunyaolong.github.io/longyunyao.github.io/images/a3f1f2b4-258c-11e7-8164-5433dd00f23e_2002550957571907844.png&#34;
       
       
     /&gt;
@@ -1061,7 +1061,7 @@
         class=&#34;image_figure image_external image_processed&#34;
         width=&#34;472&#34;
         height=&#34;439&#34;
-        src=&#34;https://example.com/images/e8051338-258b-11e7-8a65-057b6f6674bf_12972044147358193561.png&#34;
+        src=&#34;https://yunyaolong.github.io/longyunyao.github.io/images/e8051338-258b-11e7-8a65-057b6f6674bf_12972044147358193561.png&#34;
       
       
     /&gt;

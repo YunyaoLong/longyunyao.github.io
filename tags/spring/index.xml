@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Spring on Clarity</title>
-    <link>https://example.com/tags/spring/</link>
+    <link>https://yunyaolong.github.io/longyunyao.github.io/tags/spring/</link>
     <description>Recent content in Spring on Clarity</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright © 2017–2025, Yunyao Long and the Hugo Authors; 粤ICP备-17050867-1号</copyright>
-    <lastBuildDate>Sat, 20 Jun 2020 15:45:49 +0000</lastBuildDate><atom:link href="https://example.com/tags/spring/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 20 Jun 2020 15:45:49 +0000</lastBuildDate><atom:link href="https://yunyaolong.github.io/longyunyao.github.io/tags/spring/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Spring的Bean管理</title>
-      <link>https://example.com/post/%E5%8E%86%E5%8F%B2/spring%E7%9A%84bean%E7%AE%A1%E7%90%86/</link>
+      <link>https://yunyaolong.github.io/longyunyao.github.io/post/%E5%8E%86%E5%8F%B2/spring%E7%9A%84bean%E7%AE%A1%E7%90%86/</link>
       <pubDate>Sat, 20 Jun 2020 15:45:49 +0000</pubDate>
       
-      <guid>https://example.com/post/%E5%8E%86%E5%8F%B2/spring%E7%9A%84bean%E7%AE%A1%E7%90%86/</guid>
+      <guid>https://yunyaolong.github.io/longyunyao.github.io/post/%E5%8E%86%E5%8F%B2/spring%E7%9A%84bean%E7%AE%A1%E7%90%86/</guid>
       <description>
         
           
@@ -87,10 +87,10 @@
     
     <item>
       <title>一点点手写Spring</title>
-      <link>https://example.com/post/%E5%8E%86%E5%8F%B2/%E4%B8%80%E7%82%B9%E7%82%B9%E6%89%8B%E5%86%99spring/</link>
+      <link>https://yunyaolong.github.io/longyunyao.github.io/post/%E5%8E%86%E5%8F%B2/%E4%B8%80%E7%82%B9%E7%82%B9%E6%89%8B%E5%86%99spring/</link>
       <pubDate>Sat, 20 Jun 2020 10:02:28 +0000</pubDate>
       
-      <guid>https://example.com/post/%E5%8E%86%E5%8F%B2/%E4%B8%80%E7%82%B9%E7%82%B9%E6%89%8B%E5%86%99spring/</guid>
+      <guid>https://yunyaolong.github.io/longyunyao.github.io/post/%E5%8E%86%E5%8F%B2/%E4%B8%80%E7%82%B9%E7%82%B9%E6%89%8B%E5%86%99spring/</guid>
       <description>
         
           
