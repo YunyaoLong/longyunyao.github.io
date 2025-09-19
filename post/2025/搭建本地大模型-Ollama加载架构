@@ -1,0 +1,107 @@
+@startuml
+
+skinparam componentStyle rectangle
+skinparam backgroundColor #F9F9F9
+skinparam defaultTextAlignment center
+
+title 应用架构：Docker 中运行 Ollama 并混合加载开源与闭源大模型
+
+package "宿主机环境" {
+  [Docker 引擎] as docker_engine
+
+  node "Ollama_contain" {
+    [Ollama 服务] as ollama_server
+    [本地模型注册表] as model_registry
+  }
+
+  docker_engine --> Ollama_contain : 启动并隔离运行
+}
+
+' 持久化存储
+database "持久化存储（Docker Volume）" as persistent_storage {
+  [已下载的本地模型] as local_models
+  [配置与缓存] as config_cache
+}
+
+' 开源模型列表
+package "本地开源大模型库" {
+  [qwen3:1.7b-q4_K_M]
+  [qwen2.5-coder:1.5b-instruct-q5_K_M]
+  [qwen3:4b-instruct]
+  [其他开源模型...]
+}
+
+' 远程闭源模型支持
+cloud "云服务商 API" as cloud_apis {
+  folder "Google Cloud" {
+    [Gemini Pro / Flash]
+  }
+  folder "Anthropic" {
+    [Claude 3 Haiku/Sonnet]
+  }
+  folder "OpenAI 兼容网关（可选）" {
+    [GPT-4o-mini 等]
+  }
+}
+
+' 外部客户端
+[终端用户] as user
+[命令行 (CLI)] as cli
+[HTTP API 客户端] as api_client
+
+user --> cli
+user --> api_client
+
+cli --> ollama_server : 请求模型（如 run qwen3:4b-instruct）
+api_client --> ollama_server : 发送推理请求
+
+ollama_server --> model_registry : 查询可用模型
+model_registry --> local_models : 加载指定模型到内存
+
+local_models --> [qwen3:1.7b-q4_K_M]
+local_models --> [qwen2.5-coder:1.5b-instruct-q5_K_M]
+local_models --> [qwen3:4b-instruct]
+local_models --> [其他开源模型...]
+
+note right of ollama_server
+  Ollama 在容器内运行，默认监听 11434 端口。
+  根据请求自动加载对应本地模型，
+  支持模型别名管理和上下文保持。
+end note
+
+note right of local_models
+  所有模型通过 Docker 卷挂载持久化，
+  路径示例：/usr/share/ollama/.ollama/models
+  避免重启后重新下载。
+end note
+
+' 闭源模型集成方案
+frame "混合模型网关（可选中间件）" as gateway {
+  [模型路由与适配器]
+}
+
+ollama_server --> gateway : 请求未本地部署的模型
+gateway --> [Gemini Pro / Flash] : 转换请求格式 + 认证转发
+gateway --> [Claude 3 Haiku/Sonnet]
+gateway --> [GPT-4o-mini 等]
+
+note right of gateway
+  提供统一接口封装：
+  - 将 Ollama 风格请求转为 REST API
+  - 添加 API Key 认证
+  - 支持响应格式归一化
+  可选技术：LiteLLM、Ollama + OpenRouter、自研代理
+end note
+
+' 数据流向
+[终端用户] --> ollama_server : 统一入口请求任意模型
+ollama_server .> [qwen3:4b-instruct] : 动态加载至内存执行（本地）
+ollama_server .> [Gemini Pro / Flash] : 转发至云端（远程）
+ollama_server .> [Claude 3 Haiku/Sonnet] : 转发至云端（远程）
+
+legend
+  实线箭头 = 直接依赖或数据流  
+  虚线箭头 = 条件性调用或逻辑路由
+end legend
+
+@enduml

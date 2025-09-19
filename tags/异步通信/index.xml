@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>异步通信 on Clarity</title>
+    <link>https://example.com/tags/%E5%BC%82%E6%AD%A5%E9%80%9A%E4%BF%A1/</link>
+    <description>Recent content in 异步通信 on Clarity</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>Copyright © 2017–2025, Yunyao Long and the Hugo Authors; 粤ICP备-17050867-1号</copyright>
+    <lastBuildDate>Fri, 19 May 2017 19:28:45 +0000</lastBuildDate><atom:link href="https://example.com/tags/%E5%BC%82%E6%AD%A5%E9%80%9A%E4%BF%A1/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ubuntu下进行Socket编程</title>
+      <link>https://example.com/post/%E5%8E%86%E5%8F%B2/ubuntu%E4%B8%8B%E8%BF%9B%E8%A1%8Csocket%E7%BC%96%E7%A8%8B/</link>
+      <pubDate>Fri, 19 May 2017 19:28:45 +0000</pubDate>
+      
+      <guid>https://example.com/post/%E5%8E%86%E5%8F%B2/ubuntu%E4%B8%8B%E8%BF%9B%E8%A1%8Csocket%E7%BC%96%E7%A8%8B/</guid>
+      <description>
+        
+          
+            &lt;p&gt;&lt;strong&gt;龙云尧个人博客，转载请注明出处。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;CSDN地址：http://blog.csdn.net/Michael753951/article/details/72553287&lt;/p&gt;
+&lt;p&gt;个人blog地址：http://yaoyl.cn/ubuntu-xia-jin-xing-socket-bian-cheng/&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;这是第一次进行网络编程，献给Ubuntu了。&lt;/p&gt;
+&lt;p&gt;由于需要结合OpenGL搭建的虚拟环境进行实验，为了将虚拟环境中的实验参数传送至另一台PC机协同工作。我们选择使用网络编程进行数据通行。本次博客先运行两个demo体会一下利用C++进行Socket编程。&lt;/p&gt;
+&lt;h1 id=&#34;实验进行&#34;&gt;实验进行&lt;/h1&gt;
+&lt;p&gt;我们在本次实验中将运行两个demo，第一个demo用来进行文件传输，第二个demo用来进行窗口对话。&lt;/p&gt;
+&lt;h2 id=&#34;demo1&#34;&gt;demo1&lt;/h2&gt;
+&lt;p&gt;本次demo采用TCP流，demo代码来自&lt;a href=&#34;http://blog.csdn.net/lisonglisonglisong/article/details/22699675&#34;&gt;【 Linux网络编程：socket文件传输范例 】&lt;/a&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;代码编写&#34;&gt;代码编写&lt;/h3&gt;
+&lt;p&gt;我们打开codeblocks，建立两个项目(project)，新建的时候选择控制台(console)程序。第一个项目命名为“TCP_client”，第二个项目命名为“TCP_server”。然后将博客中的代码拷贝进main.cpp中，ctrl+F9进行编译。&lt;/p&gt;
+&lt;p&gt;注意，在这里当我们编译到 &lt;code&gt;close(new_server_socket_fd);&lt;/code&gt; 的时候，编译器会报错 &lt;code&gt;error: ‘close’ was not declared in this scope&lt;/code&gt;。如下图所示。&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+  &lt;picture&gt;
+
+    
+      
+        
+        
+        
+        
+        
+        
+    &lt;img
+      loading=&#34;lazy&#34;
+      decoding=&#34;async&#34;
+      alt=&#34;tcp_server_error&#34;
+      
+        class=&#34;image_figure image_external image_unprocessed&#34;
+        src=&#34;http://img.blog.csdn.net/20170519192213021?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast&#34;
+      
+      
+    /&gt;
+
+    &lt;/picture&gt;
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;我参考CSDN中&lt;a href=&#34;http://blog.csdn.net/lanyang123456/article/details/40631453&#34;&gt;【‘close’ was not declared in this scope 】&lt;/a&gt;添加了unistd.h库头，编译成功。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#include&lt;/span&gt;&lt;span class=&#34;cpf&#34;&gt;&amp;lt;unistd.h&amp;gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在TCP_server编译成功之后，我们开始编译TCP_client。同样在将客户端复制下来之后，我们首先添加unistd.h库头，接着我们直接编译。&lt;/p&gt;
+&lt;p&gt;首先是在编译到&lt;code&gt;if(inet_pton(AF_INET, &amp;quot;127.0.0.1&amp;quot;, &amp;amp;server_addr.sin_addr) == 0)&lt;/code&gt;的时候，编译器报&lt;code&gt;error: ‘inet_pton’ was not declared in this scope&lt;/code&gt;错误如下图所示。&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+  &lt;picture&gt;
+
+    
+      
+        
+        
+        
+        
+        
+        
+    &lt;img
+      loading=&#34;lazy&#34;
+      decoding=&#34;async&#34;
+      alt=&#34;tcp_client_error_1&#34;
+      
+        class=&#34;image_figure image_external image_unprocessed&#34;
+        src=&#34;http://img.blog.csdn.net/20170519192313323?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast&#34;
+      
+      
+    /&gt;
+
+    &lt;/picture&gt;
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;我参考了CSDN中&lt;a href=&#34;http://blog.csdn.net/zdyueguanyun/article/details/51352453&#34;&gt;【‘inet_pton’ was not declared in this scope 】&lt;/a&gt;添加了arpa/inet.h库头。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#include&lt;/span&gt; &lt;span class=&#34;cpf&#34;&gt;&amp;lt;arpa/inet.h&amp;gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;再次编译的时候，依然遇到了报错。此时在编译到&lt;code&gt;close(fp);&lt;/code&gt;的时候报错&lt;code&gt;error: invalid conversion from ‘FILE* {aka _IO_FILE*}’ to ‘int’ [-fpermissive]&lt;/code&gt;。如下图所示。&lt;/p&gt;
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>
