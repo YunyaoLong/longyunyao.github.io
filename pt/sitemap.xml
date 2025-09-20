@@ -2,99 +2,99 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://yunyaolong.github.io/pt/</loc>
+    <loc>https://yaoyl.cn//pt/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://yunyaolong.github.io/en/"
+                href="https://yaoyl.cn//en/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="https://yunyaolong.github.io/"
+                href="https://yaoyl.cn//"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pt"
-                href="https://yunyaolong.github.io/pt/"
+                href="https://yaoyl.cn//pt/"
                 />
   </url><url>
-    <loc>https://yunyaolong.github.io/pt/post/</loc>
+    <loc>https://yaoyl.cn//pt/post/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="https://yunyaolong.github.io/post/"
+                href="https://yaoyl.cn//post/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pt"
-                href="https://yunyaolong.github.io/pt/post/"
+                href="https://yaoyl.cn//pt/post/"
                 />
   </url><url>
-    <loc>https://yunyaolong.github.io/pt/about/</loc>
+    <loc>https://yaoyl.cn//pt/about/</loc>
     <lastmod>2019-02-28T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="https://yunyaolong.github.io/about/"
+                href="https://yaoyl.cn//about/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pt"
-                href="https://yunyaolong.github.io/pt/about/"
+                href="https://yaoyl.cn//pt/about/"
                 />
   </url><url>
-    <loc>https://yunyaolong.github.io/pt/categories/</loc>
+    <loc>https://yaoyl.cn//pt/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://yunyaolong.github.io/en/categories/"
+                href="https://yaoyl.cn//en/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="https://yunyaolong.github.io/categories/"
+                href="https://yaoyl.cn//categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pt"
-                href="https://yunyaolong.github.io/pt/categories/"
+                href="https://yaoyl.cn//pt/categories/"
                 />
   </url><url>
-    <loc>https://yunyaolong.github.io/pt/series/</loc>
+    <loc>https://yaoyl.cn//pt/series/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://yunyaolong.github.io/en/series/"
+                href="https://yaoyl.cn//en/series/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="https://yunyaolong.github.io/series/"
+                href="https://yaoyl.cn//series/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pt"
-                href="https://yunyaolong.github.io/pt/series/"
+                href="https://yaoyl.cn//pt/series/"
                 />
   </url><url>
-    <loc>https://yunyaolong.github.io/pt/tags/</loc>
+    <loc>https://yaoyl.cn//pt/tags/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://yunyaolong.github.io/en/tags/"
+                href="https://yaoyl.cn//en/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="https://yunyaolong.github.io/tags/"
+                href="https://yaoyl.cn//tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pt"
-                href="https://yunyaolong.github.io/pt/tags/"
+                href="https://yaoyl.cn//pt/tags/"
                 />
   </url>
 </urlset>

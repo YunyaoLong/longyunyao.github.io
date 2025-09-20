@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Clarity</title>
-    <link>https://yunyaolong.github.io/post/</link>
+    <link>https://yaoyl.cn//post/</link>
     <description>Recent content in Posts on Clarity</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>Copyright © 2017–2025, Yunyao Long and the Hugo Authors; 粤ICP备-17050867-1号</copyright>
-    <lastBuildDate>Sun, 14 Sep 2025 20:30:00 +0000</lastBuildDate><atom:link href="https://yunyaolong.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 14 Sep 2025 20:30:00 +0000</lastBuildDate><atom:link href="https://yaoyl.cn//post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>M1芯片MacBook搭建本地大模型</title>
-      <link>https://yunyaolong.github.io/post/2025/%E5%9F%BA%E4%BA%8Econtinue%E6%8F%92%E4%BB%B6%E4%BD%BF%E7%94%A8%E5%A4%A7%E6%A8%A1%E5%9E%8B/</link>
+      <link>https://yaoyl.cn//post/2025/%E5%9F%BA%E4%BA%8Econtinue%E6%8F%92%E4%BB%B6%E4%BD%BF%E7%94%A8%E5%A4%A7%E6%A8%A1%E5%9E%8B/</link>
       <pubDate>Sun, 14 Sep 2025 20:30:00 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/2025/%E5%9F%BA%E4%BA%8Econtinue%E6%8F%92%E4%BB%B6%E4%BD%BF%E7%94%A8%E5%A4%A7%E6%A8%A1%E5%9E%8B/</guid>
+      <guid>https://yaoyl.cn//post/2025/%E5%9F%BA%E4%BA%8Econtinue%E6%8F%92%E4%BB%B6%E4%BD%BF%E7%94%A8%E5%A4%A7%E6%A8%A1%E5%9E%8B/</guid>
       <description>
         
           
@@ -31,10 +31,10 @@ CSDN地址：http://blog.csdn.net/michael753951
     
     <item>
       <title>M1芯片MacBook搭建本地大模型</title>
-      <link>https://yunyaolong.github.io/post/2025/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0%E5%A4%A7%E6%A8%A1%E5%9E%8B/</link>
+      <link>https://yaoyl.cn//post/2025/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0%E5%A4%A7%E6%A8%A1%E5%9E%8B/</link>
       <pubDate>Sun, 14 Sep 2025 20:30:00 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/2025/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0%E5%A4%A7%E6%A8%A1%E5%9E%8B/</guid>
+      <guid>https://yaoyl.cn//post/2025/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0%E5%A4%A7%E6%A8%A1%E5%9E%8B/</guid>
       <description>
         
           
@@ -120,10 +120,10 @@ CSDN地址：http://blog.csdn.net/michael753951
     
     <item>
       <title>M1芯片MacBook安装Docker</title>
-      <link>https://yunyaolong.github.io/post/2025/m1%E8%8A%AF%E7%89%87macbook%E5%AE%89%E8%A3%85docker/</link>
+      <link>https://yaoyl.cn//post/2025/m1%E8%8A%AF%E7%89%87macbook%E5%AE%89%E8%A3%85docker/</link>
       <pubDate>Thu, 11 Sep 2025 19:30:00 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/2025/m1%E8%8A%AF%E7%89%87macbook%E5%AE%89%E8%A3%85docker/</guid>
+      <guid>https://yaoyl.cn//post/2025/m1%E8%8A%AF%E7%89%87macbook%E5%AE%89%E8%A3%85docker/</guid>
       <description>
         
           
@@ -136,10 +136,10 @@ CSDN地址：http://blog.csdn.net/michael753951
     
     <item>
       <title>技术分享-前瞻</title>
-      <link>https://yunyaolong.github.io/post/2025/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB-%E5%89%8D%E7%9E%BB/</link>
+      <link>https://yaoyl.cn//post/2025/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB-%E5%89%8D%E7%9E%BB/</link>
       <pubDate>Wed, 10 Sep 2025 19:30:00 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/2025/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB-%E5%89%8D%E7%9E%BB/</guid>
+      <guid>https://yaoyl.cn//post/2025/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB-%E5%89%8D%E7%9E%BB/</guid>
       <description>
         
           
@@ -152,10 +152,10 @@ CSDN地址：http://blog.csdn.net/michael753951
     
     <item>
       <title>设计模式-观察者模式</title>
-      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/</link>
+      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/</link>
       <pubDate>Thu, 02 Jul 2020 22:30:10 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/</guid>
+      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/</guid>
       <description>
         
           
@@ -215,10 +215,10 @@ CSDN地址：http://blog.csdn.net/michael753951
     
     <item>
       <title>UML类图绘制实例</title>
-      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/uml%E7%B1%BB%E5%9B%BE%E7%BB%98%E5%88%B6%E5%AE%9E%E4%BE%8B/</link>
+      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/uml%E7%B1%BB%E5%9B%BE%E7%BB%98%E5%88%B6%E5%AE%9E%E4%BE%8B/</link>
       <pubDate>Thu, 25 Jun 2020 10:02:28 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/uml%E7%B1%BB%E5%9B%BE%E7%BB%98%E5%88%B6%E5%AE%9E%E4%BE%8B/</guid>
+      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/uml%E7%B1%BB%E5%9B%BE%E7%BB%98%E5%88%B6%E5%AE%9E%E4%BE%8B/</guid>
       <description>
         
           
@@ -244,7 +244,7 @@ CSDN地址：http://blog.csdn.net/michael753951
         class=&#34;image_figure image_external image_processed&#34;
         width=&#34;822&#34;
         height=&#34;700&#34;
-        src=&#34;https://yunyaolong.github.io/images/class-example-library-domain_2398916653974515336.png&#34;
+        src=&#34;//images/class-example-library-domain_2398916653974515336.png&#34;
       
       
     /&gt;
@@ -273,7 +273,7 @@ CSDN地址：http://blog.csdn.net/michael753951
         class=&#34;image_figure image_external image_processed&#34;
         width=&#34;827&#34;
         height=&#34;217&#34;
-        src=&#34;https://yunyaolong.github.io/images/97611489-36dc1c00-1a51-11eb-856c-cf2280df1f06_3742796301368316937.png&#34;
+        src=&#34;//images/97611489-36dc1c00-1a51-11eb-856c-cf2280df1f06_3742796301368316937.png&#34;
       
       
     /&gt;
@@ -301,7 +301,7 @@ CSDN地址：http://blog.csdn.net/michael753951
         class=&#34;image_figure image_external image_processed&#34;
         width=&#34;1039&#34;
         height=&#34;306&#34;
-        src=&#34;https://yunyaolong.github.io/images/97611044-a1408c80-1a50-11eb-8013-273235d04c70_13782265216704952398.png&#34;
+        src=&#34;//images/97611044-a1408c80-1a50-11eb-8013-273235d04c70_13782265216704952398.png&#34;
       
       
     /&gt;
@@ -332,7 +332,7 @@ CSDN地址：http://blog.csdn.net/michael753951
         class=&#34;image_figure image_external image_processed&#34;
         width=&#34;1053&#34;
         height=&#34;448&#34;
-        src=&#34;https://yunyaolong.github.io/images/97615370-2ed2ab00-1a56-11eb-838e-df7262399d9e_9832865924313917040.png&#34;
+        src=&#34;//images/97615370-2ed2ab00-1a56-11eb-838e-df7262399d9e_9832865924313917040.png&#34;
       
       
     /&gt;
@@ -364,7 +364,7 @@ CSDN地址：http://blog.csdn.net/michael753951
         class=&#34;image_figure image_external image_processed&#34;
         width=&#34;1026&#34;
         height=&#34;558&#34;
-        src=&#34;https://yunyaolong.github.io/images/97619039-b3bfc380-1a5a-11eb-8346-d96986ebd9c6_5740602031243574121.png&#34;
+        src=&#34;//images/97619039-b3bfc380-1a5a-11eb-8346-d96986ebd9c6_5740602031243574121.png&#34;
       
       
     /&gt;
@@ -395,7 +395,7 @@ CSDN地址：http://blog.csdn.net/michael753951
         class=&#34;image_figure image_external image_processed&#34;
         width=&#34;1069&#34;
         height=&#34;668&#34;
-        src=&#34;https://yunyaolong.github.io/images/97621925-8543e780-1a5e-11eb-868e-cf053d39d649_8578078723728345691.png&#34;
+        src=&#34;//images/97621925-8543e780-1a5e-11eb-868e-cf053d39d649_8578078723728345691.png&#34;
       
       
     /&gt;
@@ -414,10 +414,10 @@ CSDN地址：http://blog.csdn.net/michael753951
     
     <item>
       <title>Spring的Bean管理</title>
-      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/spring%E7%9A%84bean%E7%AE%A1%E7%90%86/</link>
+      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/spring%E7%9A%84bean%E7%AE%A1%E7%90%86/</link>
       <pubDate>Sat, 20 Jun 2020 15:45:49 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/spring%E7%9A%84bean%E7%AE%A1%E7%90%86/</guid>
+      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/spring%E7%9A%84bean%E7%AE%A1%E7%90%86/</guid>
       <description>
         
           
@@ -491,10 +491,10 @@ CSDN地址：http://blog.csdn.net/michael753951
     
     <item>
       <title>一点点手写Spring</title>
-      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/%E4%B8%80%E7%82%B9%E7%82%B9%E6%89%8B%E5%86%99spring/</link>
+      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E4%B8%80%E7%82%B9%E7%82%B9%E6%89%8B%E5%86%99spring/</link>
       <pubDate>Sat, 20 Jun 2020 10:02:28 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/%E4%B8%80%E7%82%B9%E7%82%B9%E6%89%8B%E5%86%99spring/</guid>
+      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E4%B8%80%E7%82%B9%E7%82%B9%E6%89%8B%E5%86%99spring/</guid>
       <description>
         
           
@@ -522,10 +522,10 @@ CSDN地址：http://blog.csdn.net/michael753951
     
     <item>
       <title>自定义注解并且进行扫描解析</title>
-      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B3%A8%E8%A7%A3%E5%B9%B6%E4%B8%94%E8%BF%9B%E8%A1%8C%E6%89%AB%E6%8F%8F%E8%A7%A3%E6%9E%90/</link>
+      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B3%A8%E8%A7%A3%E5%B9%B6%E4%B8%94%E8%BF%9B%E8%A1%8C%E6%89%AB%E6%8F%8F%E8%A7%A3%E6%9E%90/</link>
       <pubDate>Fri, 05 Jun 2020 22:52:22 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B3%A8%E8%A7%A3%E5%B9%B6%E4%B8%94%E8%BF%9B%E8%A1%8C%E6%89%AB%E6%8F%8F%E8%A7%A3%E6%9E%90/</guid>
+      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B3%A8%E8%A7%A3%E5%B9%B6%E4%B8%94%E8%BF%9B%E8%A1%8C%E6%89%AB%E6%8F%8F%E8%A7%A3%E6%9E%90/</guid>
       <description>
         
           
@@ -597,10 +597,10 @@ CSDN地址：http://blog.csdn.net/michael753951
     
     <item>
       <title>Lambda表达式与函数式接口</title>
-      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E5%87%BD%E6%95%B0%E5%BC%8F%E6%8E%A5%E5%8F%A3/</link>
+      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E5%87%BD%E6%95%B0%E5%BC%8F%E6%8E%A5%E5%8F%A3/</link>
       <pubDate>Fri, 02 Aug 2019 00:55:10 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E5%87%BD%E6%95%B0%E5%BC%8F%E6%8E%A5%E5%8F%A3/</guid>
+      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E5%87%BD%E6%95%B0%E5%BC%8F%E6%8E%A5%E5%8F%A3/</guid>
       <description>
         
           
@@ -640,10 +640,10 @@ CSDN地址：http://blog.csdn.net/michael753951
     
     <item>
       <title>Java的Integer类方法解读</title>
-      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/java%E7%9A%84integer%E7%B1%BB%E6%96%B9%E6%B3%95%E8%A7%A3%E8%AF%BB/</link>
+      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/java%E7%9A%84integer%E7%B1%BB%E6%96%B9%E6%B3%95%E8%A7%A3%E8%AF%BB/</link>
       <pubDate>Fri, 19 Jul 2019 16:13:38 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/java%E7%9A%84integer%E7%B1%BB%E6%96%B9%E6%B3%95%E8%A7%A3%E8%AF%BB/</guid>
+      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/java%E7%9A%84integer%E7%B1%BB%E6%96%B9%E6%B3%95%E8%A7%A3%E8%AF%BB/</guid>
       <description>
         
           
@@ -675,10 +675,10 @@ CSDN地址：http://blog.csdn.net/michael753951
     
     <item>
       <title>毕业旅行规划</title>
-      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/%E6%AF%95%E4%B8%9A%E6%97%85%E8%A1%8C%E8%A7%84%E5%88%92/</link>
+      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E6%AF%95%E4%B8%9A%E6%97%85%E8%A1%8C%E8%A7%84%E5%88%92/</link>
       <pubDate>Tue, 15 May 2018 17:06:00 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/%E6%AF%95%E4%B8%9A%E6%97%85%E8%A1%8C%E8%A7%84%E5%88%92/</guid>
+      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E6%AF%95%E4%B8%9A%E6%97%85%E8%A1%8C%E8%A7%84%E5%88%92/</guid>
       <description>
         
           
@@ -705,10 +705,10 @@ CSDN地址：http://blog.csdn.net/michael753951
     
     <item>
       <title>Ubuntu下使用CodeBlocks进行多线程编程</title>
-      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/ubuntu%E4%B8%8B%E4%BD%BF%E7%94%A8codeblocks%E8%BF%9B%E8%A1%8C%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/</link>
+      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/ubuntu%E4%B8%8B%E4%BD%BF%E7%94%A8codeblocks%E8%BF%9B%E8%A1%8C%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/</link>
       <pubDate>Mon, 19 Feb 2018 14:19:04 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/ubuntu%E4%B8%8B%E4%BD%BF%E7%94%A8codeblocks%E8%BF%9B%E8%A1%8C%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/</guid>
+      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/ubuntu%E4%B8%8B%E4%BD%BF%E7%94%A8codeblocks%E8%BF%9B%E8%A1%8C%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/</guid>
       <description>
         
           
@@ -778,10 +778,10 @@ CSDN地址：http://blog.csdn.net/michael753951
     
     <item>
       <title>关于Apache HTTPD 2.2.15的部分漏洞修复建议</title>
-      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/%E5%85%B3%E4%BA%8Eapache-httpd-2.2.15%E7%9A%84%E9%83%A8%E5%88%86%E6%BC%8F%E6%B4%9E%E4%BF%AE%E5%A4%8D%E5%BB%BA%E8%AE%AE/</link>
+      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E5%85%B3%E4%BA%8Eapache-httpd-2.2.15%E7%9A%84%E9%83%A8%E5%88%86%E6%BC%8F%E6%B4%9E%E4%BF%AE%E5%A4%8D%E5%BB%BA%E8%AE%AE/</link>
       <pubDate>Thu, 21 Dec 2017 11:35:49 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/%E5%85%B3%E4%BA%8Eapache-httpd-2.2.15%E7%9A%84%E9%83%A8%E5%88%86%E6%BC%8F%E6%B4%9E%E4%BF%AE%E5%A4%8D%E5%BB%BA%E8%AE%AE/</guid>
+      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E5%85%B3%E4%BA%8Eapache-httpd-2.2.15%E7%9A%84%E9%83%A8%E5%88%86%E6%BC%8F%E6%B4%9E%E4%BF%AE%E5%A4%8D%E5%BB%BA%E8%AE%AE/</guid>
       <description>
         
           
@@ -817,7 +817,7 @@ CSDN地址：http://blog.csdn.net/michael753951
         class=&#34;image_figure image_external image_processed&#34;
         width=&#34;467&#34;
         height=&#34;446&#34;
-        src=&#34;https://yunyaolong.github.io/images/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcxMjIxMTEwMDQ1Njk5_8918633681367883446.png&#34;
+        src=&#34;//images/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcxMjIxMTEwMDQ1Njk5_8918633681367883446.png&#34;
       
       
     /&gt;
@@ -850,10 +850,10 @@ CSDN地址：http://blog.csdn.net/michael753951
     
     <item>
       <title>华为初面&#43;综合面试（技术面）</title>
-      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/%E5%8D%8E%E4%B8%BA%E5%88%9D%E9%9D%A2&#43;%E7%BB%BC%E5%90%88%E9%9D%A2%E8%AF%95%E6%8A%80%E6%9C%AF%E9%9D%A2/</link>
+      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E5%8D%8E%E4%B8%BA%E5%88%9D%E9%9D%A2&#43;%E7%BB%BC%E5%90%88%E9%9D%A2%E8%AF%95%E6%8A%80%E6%9C%AF%E9%9D%A2/</link>
       <pubDate>Thu, 12 Oct 2017 02:28:17 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/%E5%8D%8E%E4%B8%BA%E5%88%9D%E9%9D%A2&#43;%E7%BB%BC%E5%90%88%E9%9D%A2%E8%AF%95%E6%8A%80%E6%9C%AF%E9%9D%A2/</guid>
+      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E5%8D%8E%E4%B8%BA%E5%88%9D%E9%9D%A2&#43;%E7%BB%BC%E5%90%88%E9%9D%A2%E8%AF%95%E6%8A%80%E6%9C%AF%E9%9D%A2/</guid>
       <description>
         
           
@@ -903,10 +903,10 @@ CSDN地址：http://blog.csdn.net/michael753951
     
     <item>
       <title>腾讯初试（技术面）</title>
-      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/%E8%85%BE%E8%AE%AF%E5%88%9D%E8%AF%95%E6%8A%80%E6%9C%AF%E9%9D%A2/</link>
+      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E8%85%BE%E8%AE%AF%E5%88%9D%E8%AF%95%E6%8A%80%E6%9C%AF%E9%9D%A2/</link>
       <pubDate>Wed, 11 Oct 2017 01:45:58 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/%E8%85%BE%E8%AE%AF%E5%88%9D%E8%AF%95%E6%8A%80%E6%9C%AF%E9%9D%A2/</guid>
+      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E8%85%BE%E8%AE%AF%E5%88%9D%E8%AF%95%E6%8A%80%E6%9C%AF%E9%9D%A2/</guid>
       <description>
         
           
@@ -964,10 +964,10 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
     
     <item>
       <title>2018网易校招运营开发工程师编程第一题</title>
-      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/2018%E7%BD%91%E6%98%93%E6%A0%A1%E6%8B%9B%E8%BF%90%E8%90%A5%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%BC%96%E7%A8%8B%E7%AC%AC%E4%B8%80%E9%A2%98/</link>
+      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/2018%E7%BD%91%E6%98%93%E6%A0%A1%E6%8B%9B%E8%BF%90%E8%90%A5%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%BC%96%E7%A8%8B%E7%AC%AC%E4%B8%80%E9%A2%98/</link>
       <pubDate>Sat, 16 Sep 2017 22:38:56 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/2018%E7%BD%91%E6%98%93%E6%A0%A1%E6%8B%9B%E8%BF%90%E8%90%A5%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%BC%96%E7%A8%8B%E7%AC%AC%E4%B8%80%E9%A2%98/</guid>
+      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/2018%E7%BD%91%E6%98%93%E6%A0%A1%E6%8B%9B%E8%BF%90%E8%90%A5%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%BC%96%E7%A8%8B%E7%AC%AC%E4%B8%80%E9%A2%98/</guid>
       <description>
         
           
@@ -1035,10 +1035,10 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
     
     <item>
       <title>虚拟驾驶环境搭建(四)</title>
-      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/%E8%99%9A%E6%8B%9F%E9%A9%BE%E9%A9%B6%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%9B%9B/</link>
+      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E8%99%9A%E6%8B%9F%E9%A9%BE%E9%A9%B6%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%9B%9B/</link>
       <pubDate>Thu, 13 Jul 2017 16:18:07 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/%E8%99%9A%E6%8B%9F%E9%A9%BE%E9%A9%B6%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%9B%9B/</guid>
+      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E8%99%9A%E6%8B%9F%E9%A9%BE%E9%A9%B6%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%9B%9B/</guid>
       <description>
         
           
@@ -1122,10 +1122,10 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
     
     <item>
       <title>虚拟驾驶环境搭建(三)</title>
-      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/%E8%99%9A%E6%8B%9F%E9%A9%BE%E9%A9%B6%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%89/</link>
+      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E8%99%9A%E6%8B%9F%E9%A9%BE%E9%A9%B6%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%89/</link>
       <pubDate>Thu, 13 Jul 2017 16:17:12 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/%E8%99%9A%E6%8B%9F%E9%A9%BE%E9%A9%B6%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%89/</guid>
+      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E8%99%9A%E6%8B%9F%E9%A9%BE%E9%A9%B6%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%89/</guid>
       <description>
         
           
@@ -1181,10 +1181,10 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
     
     <item>
       <title>虚拟驾驶环境搭建(二)</title>
-      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/%E8%99%9A%E6%8B%9F%E9%A9%BE%E9%A9%B6%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%BA%8C/</link>
+      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E8%99%9A%E6%8B%9F%E9%A9%BE%E9%A9%B6%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%BA%8C/</link>
       <pubDate>Thu, 13 Jul 2017 16:15:53 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/%E8%99%9A%E6%8B%9F%E9%A9%BE%E9%A9%B6%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%BA%8C/</guid>
+      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E8%99%9A%E6%8B%9F%E9%A9%BE%E9%A9%B6%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%BA%8C/</guid>
       <description>
         
           
@@ -1241,10 +1241,10 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
     
     <item>
       <title>虚拟驾驶环境搭建(一)</title>
-      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/%E8%99%9A%E6%8B%9F%E9%A9%BE%E9%A9%B6%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%80/</link>
+      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E8%99%9A%E6%8B%9F%E9%A9%BE%E9%A9%B6%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%80/</link>
       <pubDate>Thu, 13 Jul 2017 16:14:11 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/%E8%99%9A%E6%8B%9F%E9%A9%BE%E9%A9%B6%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%80/</guid>
+      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E8%99%9A%E6%8B%9F%E9%A9%BE%E9%A9%B6%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%80/</guid>
       <description>
         
           
@@ -1303,10 +1303,10 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
     
     <item>
       <title>Socket编程小结</title>
-      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/socket%E7%BC%96%E7%A8%8B%E5%B0%8F%E7%BB%93/</link>
+      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/socket%E7%BC%96%E7%A8%8B%E5%B0%8F%E7%BB%93/</link>
       <pubDate>Sat, 10 Jun 2017 15:36:19 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/socket%E7%BC%96%E7%A8%8B%E5%B0%8F%E7%BB%93/</guid>
+      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/socket%E7%BC%96%E7%A8%8B%E5%B0%8F%E7%BB%93/</guid>
       <description>
         
           
@@ -1338,7 +1338,7 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
         class=&#34;image_figure image_external image_processed&#34;
         width=&#34;554&#34;
         height=&#34;327&#34;
-        src=&#34;https://yunyaolong.github.io/images/05232335-fb19fc7527e944d4845ef40831da4ec2_17119697933846672127.png&#34;
+        src=&#34;//images/05232335-fb19fc7527e944d4845ef40831da4ec2_17119697933846672127.png&#34;
       
       
     /&gt;
@@ -1430,10 +1430,10 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
     
     <item>
       <title>RFID实验三总结</title>
-      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%B8%89%E6%80%BB%E7%BB%93/</link>
+      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%B8%89%E6%80%BB%E7%BB%93/</link>
       <pubDate>Tue, 23 May 2017 01:19:42 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%B8%89%E6%80%BB%E7%BB%93/</guid>
+      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%B8%89%E6%80%BB%E7%BB%93/</guid>
       <description>
         
           
@@ -1688,10 +1688,10 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
     
     <item>
       <title>RFID实验二总结</title>
-      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%80%BB%E7%BB%93/</link>
+      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%80%BB%E7%BB%93/</link>
       <pubDate>Sun, 21 May 2017 02:55:05 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%80%BB%E7%BB%93/</guid>
+      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%80%BB%E7%BB%93/</guid>
       <description>
         
           
@@ -1724,7 +1724,7 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
       alt=&#34;主要内容&#34;
       
         class=&#34;image_figure image_internal image_unprocessed&#34;
-        src=&#34;https://yunyaolong.github.io/&#34;
+        src=&#34;https://yaoyl.cn/&#34;
       
       
     /&gt;
@@ -1754,7 +1754,7 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
       alt=&#34;过程秘钥的产生&#34;
       
         class=&#34;image_figure image_internal image_unprocessed&#34;
-        src=&#34;https://yunyaolong.github.io/&#34;
+        src=&#34;https://yaoyl.cn/&#34;
       
       
     /&gt;
@@ -1779,7 +1779,7 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
       alt=&#34;3DES&#34;
       
         class=&#34;image_figure image_internal image_unprocessed&#34;
-        src=&#34;https://yunyaolong.github.io/&#34;
+        src=&#34;https://yaoyl.cn/&#34;
       
       
     /&gt;
@@ -1804,7 +1804,7 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
       alt=&#34;MACorTAC&#34;
       
         class=&#34;image_figure image_internal image_unprocessed&#34;
-        src=&#34;https://yunyaolong.github.io/&#34;
+        src=&#34;https://yaoyl.cn/&#34;
       
       
     /&gt;
@@ -1829,7 +1829,7 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
       alt=&#34;MACorTAC2&#34;
       
         class=&#34;image_figure image_internal image_unprocessed&#34;
-        src=&#34;https://yunyaolong.github.io/&#34;
+        src=&#34;https://yaoyl.cn/&#34;
       
       
     /&gt;
@@ -1881,7 +1881,7 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
       alt=&#34;PenCipher构造函数&#34;
       
         class=&#34;image_figure image_internal image_unprocessed&#34;
-        src=&#34;https://yunyaolong.github.io/&#34;
+        src=&#34;https://yaoyl.cn/&#34;
       
       
     /&gt;
@@ -1906,7 +1906,7 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
       alt=&#34;des运算函数&#34;
       
         class=&#34;image_figure image_internal image_unprocessed&#34;
-        src=&#34;https://yunyaolong.github.io/&#34;
+        src=&#34;https://yaoyl.cn/&#34;
       
       
     /&gt;
@@ -1932,7 +1932,7 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
       alt=&#34;需要填充&#34;
       
         class=&#34;image_figure image_internal image_unprocessed&#34;
-        src=&#34;https://yunyaolong.github.io/&#34;
+        src=&#34;https://yaoyl.cn/&#34;
       
       
     /&gt;
@@ -1951,10 +1951,10 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
     
     <item>
       <title>RFID实验一总结</title>
-      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%B8%80%E6%80%BB%E7%BB%93/</link>
+      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%B8%80%E6%80%BB%E7%BB%93/</link>
       <pubDate>Sat, 20 May 2017 14:11:32 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%B8%80%E6%80%BB%E7%BB%93/</guid>
+      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%B8%80%E6%80%BB%E7%BB%93/</guid>
       <description>
         
           
@@ -2016,7 +2016,7 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
         class=&#34;image_figure image_external image_processed&#34;
         width=&#34;372&#34;
         height=&#34;127&#34;
-        src=&#34;https://yunyaolong.github.io/images/e80949d0-258b-11e7-96e2-89b3087741fc_7787092408133580828.png&#34;
+        src=&#34;//images/e80949d0-258b-11e7-96e2-89b3087741fc_7787092408133580828.png&#34;
       
       
     /&gt;
@@ -2044,7 +2044,7 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
         class=&#34;image_figure image_external image_processed&#34;
         width=&#34;509&#34;
         height=&#34;159&#34;
-        src=&#34;https://yunyaolong.github.io/images/e7b2830c-258b-11e7-8911-d2b7e7fc9d0d_12307540848290659802.png&#34;
+        src=&#34;//images/e7b2830c-258b-11e7-8911-d2b7e7fc9d0d_12307540848290659802.png&#34;
       
       
     /&gt;
@@ -2072,7 +2072,7 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
         class=&#34;image_figure image_external image_processed&#34;
         width=&#34;481&#34;
         height=&#34;210&#34;
-        src=&#34;https://yunyaolong.github.io/images/e78315e0-258b-11e7-8c78-08555ef584ec_12537409608955670593.png&#34;
+        src=&#34;//images/e78315e0-258b-11e7-8c78-08555ef584ec_12537409608955670593.png&#34;
       
       
     /&gt;
@@ -2101,7 +2101,7 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
         class=&#34;image_figure image_external image_processed&#34;
         width=&#34;723&#34;
         height=&#34;295&#34;
-        src=&#34;https://yunyaolong.github.io/images/e78578a8-258b-11e7-803f-d095709449d4_3479832271068198507.png&#34;
+        src=&#34;//images/e78578a8-258b-11e7-803f-d095709449d4_3479832271068198507.png&#34;
       
       
     /&gt;
@@ -2128,7 +2128,7 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
         class=&#34;image_figure image_external image_processed&#34;
         width=&#34;790&#34;
         height=&#34;367&#34;
-        src=&#34;https://yunyaolong.github.io/images/a3f1f2b4-258c-11e7-8164-5433dd00f23e_2002550957571907844.png&#34;
+        src=&#34;//images/a3f1f2b4-258c-11e7-8164-5433dd00f23e_2002550957571907844.png&#34;
       
       
     /&gt;
@@ -2157,7 +2157,7 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
         class=&#34;image_figure image_external image_processed&#34;
         width=&#34;472&#34;
         height=&#34;439&#34;
-        src=&#34;https://yunyaolong.github.io/images/e8051338-258b-11e7-8a65-057b6f6674bf_12972044147358193561.png&#34;
+        src=&#34;//images/e8051338-258b-11e7-8a65-057b6f6674bf_12972044147358193561.png&#34;
       
       
     /&gt;
@@ -2184,10 +2184,10 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
     
     <item>
       <title>Ubuntu下进行Socket编程</title>
-      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/ubuntu%E4%B8%8B%E8%BF%9B%E8%A1%8Csocket%E7%BC%96%E7%A8%8B/</link>
+      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/ubuntu%E4%B8%8B%E8%BF%9B%E8%A1%8Csocket%E7%BC%96%E7%A8%8B/</link>
       <pubDate>Fri, 19 May 2017 19:28:45 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/ubuntu%E4%B8%8B%E8%BF%9B%E8%A1%8Csocket%E7%BC%96%E7%A8%8B/</guid>
+      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/ubuntu%E4%B8%8B%E8%BF%9B%E8%A1%8Csocket%E7%BC%96%E7%A8%8B/</guid>
       <description>
         
           
@@ -2269,10 +2269,10 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
     
     <item>
       <title>双系统安装Ubuntu的初始化</title>
-      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/%E5%8F%8C%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85ubuntu%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96/</link>
+      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E5%8F%8C%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85ubuntu%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96/</link>
       <pubDate>Fri, 19 May 2017 17:05:46 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/%E5%8F%8C%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85ubuntu%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96/</guid>
+      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E5%8F%8C%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85ubuntu%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96/</guid>
       <description>
         
           
@@ -2336,10 +2336,10 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
     
     <item>
       <title>blog的文件迁移</title>
-      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/ghostblog%E7%9A%84%E6%96%87%E4%BB%B6%E8%BF%81%E7%A7%BB/</link>
+      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/ghostblog%E7%9A%84%E6%96%87%E4%BB%B6%E8%BF%81%E7%A7%BB/</link>
       <pubDate>Fri, 19 May 2017 02:29:18 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/ghostblog%E7%9A%84%E6%96%87%E4%BB%B6%E8%BF%81%E7%A7%BB/</guid>
+      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/ghostblog%E7%9A%84%E6%96%87%E4%BB%B6%E8%BF%81%E7%A7%BB/</guid>
       <description>
         
           
@@ -2367,10 +2367,10 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
     
     <item>
       <title>OpenGL学习笔记（十）</title>
-      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%8D%81/</link>
+      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%8D%81/</link>
       <pubDate>Sat, 13 May 2017 16:49:22 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%8D%81/</guid>
+      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%8D%81/</guid>
       <description>
         
           
@@ -2476,10 +2476,10 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
     
     <item>
       <title>OpenGL学习笔记（九）</title>
-      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%9D/</link>
+      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%9D/</link>
       <pubDate>Fri, 12 May 2017 18:00:15 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%9D/</guid>
+      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%9D/</guid>
       <description>
         
           
@@ -2616,10 +2616,10 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
     
     <item>
       <title>OpenGL学习笔记（八）</title>
-      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%85%AB/</link>
+      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%85%AB/</link>
       <pubDate>Fri, 12 May 2017 03:28:48 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%85%AB/</guid>
+      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%85%AB/</guid>
       <description>
         
           
@@ -2710,10 +2710,10 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
     
     <item>
       <title>OpenGL学习笔记（七）</title>
-      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%83/</link>
+      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%83/</link>
       <pubDate>Tue, 09 May 2017 20:59:35 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%83/</guid>
+      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%83/</guid>
       <description>
         
           
@@ -2780,10 +2780,10 @@ glColor4f(1.0f,1.0f,1.0f,0.5f);
     
     <item>
       <title>OpenGL学习笔记（六）</title>
-      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%85%AD/</link>
+      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%85%AD/</link>
       <pubDate>Mon, 08 May 2017 13:54:19 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%85%AD/</guid>
+      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%85%AD/</guid>
       <description>
         
           
@@ -2838,10 +2838,10 @@ glColor4f(1.0f,1.0f,1.0f,0.5f);
     
     <item>
       <title>OpenGL学习笔记（五）</title>
-      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%94/</link>
+      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%94/</link>
       <pubDate>Sun, 07 May 2017 12:21:47 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%94/</guid>
+      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%94/</guid>
       <description>
         
           
@@ -2922,10 +2922,10 @@ glColor4f(1.0f,1.0f,1.0f,0.5f);
     
     <item>
       <title>OpenGL学习笔记（四）</title>
-      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%9B%9B/</link>
+      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%9B%9B/</link>
       <pubDate>Sun, 07 May 2017 12:20:57 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%9B%9B/</guid>
+      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%9B%9B/</guid>
       <description>
         
           
@@ -2985,10 +2985,10 @@ glColor4f(1.0f,1.0f,1.0f,0.5f);
     
     <item>
       <title>OpenGL学习笔记（三）</title>
-      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%89/</link>
+      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%89/</link>
       <pubDate>Wed, 03 May 2017 15:14:09 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%89/</guid>
+      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%89/</guid>
       <description>
         
           
@@ -3040,7 +3040,7 @@ glColor4f(1.0f,1.0f,1.0f,0.5f);
       alt=&#34;&#34;
       
         class=&#34;image_figure image_internal image_unprocessed&#34;
-        src=&#34;https://yunyaolong.github.io/&#34;
+        src=&#34;https://yaoyl.cn/&#34;
       
       
     /&gt;
@@ -3056,10 +3056,10 @@ glColor4f(1.0f,1.0f,1.0f,0.5f);
     
     <item>
       <title>OpenGL学习笔记（二）</title>
-      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%8C/</link>
+      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%8C/</link>
       <pubDate>Mon, 01 May 2017 10:14:47 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%8C/</guid>
+      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%8C/</guid>
       <description>
         
           
@@ -3074,10 +3074,10 @@ glColor4f(1.0f,1.0f,1.0f,0.5f);
     
     <item>
       <title>OpenGL学习笔记（一）</title>
-      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%80/</link>
+      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%80/</link>
       <pubDate>Mon, 01 May 2017 10:08:09 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%80/</guid>
+      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%80/</guid>
       <description>
         
           
@@ -3117,7 +3117,7 @@ glColor4f(1.0f,1.0f,1.0f,0.5f);
       alt=&#34;&#34;
       
         class=&#34;image_figure image_internal image_unprocessed&#34;
-        src=&#34;https://yunyaolong.github.io/&#34;
+        src=&#34;https://yaoyl.cn/&#34;
       
       
     /&gt;
@@ -3144,7 +3144,7 @@ glColor4f(1.0f,1.0f,1.0f,0.5f);
       alt=&#34;实验一截图&#34;
       
         class=&#34;image_figure image_internal image_unprocessed&#34;
-        src=&#34;https://yunyaolong.github.io/&#34;
+        src=&#34;https://yaoyl.cn/&#34;
       
       
     /&gt;
@@ -3160,10 +3160,10 @@ glColor4f(1.0f,1.0f,1.0f,0.5f);
     
     <item>
       <title>网易复试（技术面）</title>
-      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/%E7%BD%91%E6%98%93%E5%A4%8D%E8%AF%95%E6%8A%80%E6%9C%AF%E9%9D%A2/</link>
+      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E7%BD%91%E6%98%93%E5%A4%8D%E8%AF%95%E6%8A%80%E6%9C%AF%E9%9D%A2/</link>
       <pubDate>Thu, 27 Apr 2017 03:33:47 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/%E7%BD%91%E6%98%93%E5%A4%8D%E8%AF%95%E6%8A%80%E6%9C%AF%E9%9D%A2/</guid>
+      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E7%BD%91%E6%98%93%E5%A4%8D%E8%AF%95%E6%8A%80%E6%9C%AF%E9%9D%A2/</guid>
       <description>
         
           
@@ -3220,10 +3220,10 @@ glColor4f(1.0f,1.0f,1.0f,0.5f);
     
     <item>
       <title>网易初面（技术面）</title>
-      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/%E7%BD%91%E6%98%93%E5%88%9D%E9%9D%A2%E6%8A%80%E6%9C%AF%E9%9D%A2/</link>
+      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E7%BD%91%E6%98%93%E5%88%9D%E9%9D%A2%E6%8A%80%E6%9C%AF%E9%9D%A2/</link>
       <pubDate>Sat, 22 Apr 2017 23:22:08 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/%E7%BD%91%E6%98%93%E5%88%9D%E9%9D%A2%E6%8A%80%E6%9C%AF%E9%9D%A2/</guid>
+      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E7%BD%91%E6%98%93%E5%88%9D%E9%9D%A2%E6%8A%80%E6%9C%AF%E9%9D%A2/</guid>
       <description>
         
           
@@ -3293,10 +3293,10 @@ glColor4f(1.0f,1.0f,1.0f,0.5f);
     
     <item>
       <title>CSDN如何转载他人文章</title>
-      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/csdn%E5%A6%82%E4%BD%95%E8%BD%AC%E8%BD%BD%E4%BB%96%E4%BA%BA%E6%96%87%E7%AB%A0/</link>
+      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/csdn%E5%A6%82%E4%BD%95%E8%BD%AC%E8%BD%BD%E4%BB%96%E4%BA%BA%E6%96%87%E7%AB%A0/</link>
       <pubDate>Fri, 21 Apr 2017 04:01:16 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/csdn%E5%A6%82%E4%BD%95%E8%BD%AC%E8%BD%BD%E4%BB%96%E4%BA%BA%E6%96%87%E7%AB%A0/</guid>
+      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/csdn%E5%A6%82%E4%BD%95%E8%BD%AC%E8%BD%BD%E4%BB%96%E4%BA%BA%E6%96%87%E7%AB%A0/</guid>
       <description>
         
           
@@ -3320,7 +3320,7 @@ glColor4f(1.0f,1.0f,1.0f,0.5f);
       alt=&#34;开发者模式&#34;
       
         class=&#34;image_figure image_internal image_unprocessed&#34;
-        src=&#34;https://yunyaolong.github.io/content/images/2017/04/temp2.png&#34;
+        src=&#34;https://yaoyl.cn/content/images/2017/04/temp2.png&#34;
       
       
     /&gt;
@@ -3362,10 +3362,10 @@ glColor4f(1.0f,1.0f,1.0f,0.5f);
     
     <item>
       <title>利用Ghost作为图床</title>
-      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/%E5%88%A9%E7%94%A8ghost%E4%BD%9C%E4%B8%BA%E5%9B%BE%E5%BA%8A/</link>
+      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E5%88%A9%E7%94%A8ghost%E4%BD%9C%E4%B8%BA%E5%9B%BE%E5%BA%8A/</link>
       <pubDate>Wed, 19 Apr 2017 12:14:03 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/%E5%88%A9%E7%94%A8ghost%E4%BD%9C%E4%B8%BA%E5%9B%BE%E5%BA%8A/</guid>
+      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E5%88%A9%E7%94%A8ghost%E4%BD%9C%E4%B8%BA%E5%9B%BE%E5%BA%8A/</guid>
       <description>
         
           
@@ -3401,7 +3401,7 @@ glColor4f(1.0f,1.0f,1.0f,0.5f);
       alt=&#34;&#34;
       
         class=&#34;image_figure image_internal image_unprocessed&#34;
-        src=&#34;https://yunyaolong.github.io/&#34;
+        src=&#34;https://yaoyl.cn/&#34;
       
       
     /&gt;
@@ -3421,10 +3421,10 @@ glColor4f(1.0f,1.0f,1.0f,0.5f);
     
     <item>
       <title>第一次爬虫实验代码及运行结果（html文本进行适当删除以压缩版面）</title>
-      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%88%AC%E8%99%AB%E5%AE%9E%E9%AA%8C%E4%BB%A3%E7%A0%81%E5%8F%8A%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9Chtml%E6%96%87%E6%9C%AC%E8%BF%9B%E8%A1%8C%E9%80%82%E5%BD%93%E5%88%A0%E9%99%A4%E4%BB%A5%E5%8E%8B%E7%BC%A9%E7%89%88%E9%9D%A2/</link>
+      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%88%AC%E8%99%AB%E5%AE%9E%E9%AA%8C%E4%BB%A3%E7%A0%81%E5%8F%8A%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9Chtml%E6%96%87%E6%9C%AC%E8%BF%9B%E8%A1%8C%E9%80%82%E5%BD%93%E5%88%A0%E9%99%A4%E4%BB%A5%E5%8E%8B%E7%BC%A9%E7%89%88%E9%9D%A2/</link>
       <pubDate>Wed, 19 Apr 2017 01:28:43 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%88%AC%E8%99%AB%E5%AE%9E%E9%AA%8C%E4%BB%A3%E7%A0%81%E5%8F%8A%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9Chtml%E6%96%87%E6%9C%AC%E8%BF%9B%E8%A1%8C%E9%80%82%E5%BD%93%E5%88%A0%E9%99%A4%E4%BB%A5%E5%8E%8B%E7%BC%A9%E7%89%88%E9%9D%A2/</guid>
+      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%88%AC%E8%99%AB%E5%AE%9E%E9%AA%8C%E4%BB%A3%E7%A0%81%E5%8F%8A%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9Chtml%E6%96%87%E6%9C%AC%E8%BF%9B%E8%A1%8C%E9%80%82%E5%BD%93%E5%88%A0%E9%99%A4%E4%BB%A5%E5%8E%8B%E7%BC%A9%E7%89%88%E9%9D%A2/</guid>
       <description>
         
           
@@ -3671,10 +3671,10 @@ glColor4f(1.0f,1.0f,1.0f,0.5f);
     
     <item>
       <title>Python网络爬虫学习</title>
-      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0/</link>
+      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0/</link>
       <pubDate>Wed, 19 Apr 2017 01:22:18 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0/</guid>
+      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0/</guid>
       <description>
         
           
@@ -3737,10 +3737,10 @@ glColor4f(1.0f,1.0f,1.0f,0.5f);
     
     <item>
       <title>囚笼</title>
-      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/%E5%9B%9A%E7%AC%BC/</link>
+      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E5%9B%9A%E7%AC%BC/</link>
       <pubDate>Fri, 14 Apr 2017 17:06:00 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/%E5%9B%9A%E7%AC%BC/</guid>
+      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E5%9B%9A%E7%AC%BC/</guid>
       <description>
         
           
@@ -3826,10 +3826,10 @@ glColor4f(1.0f,1.0f,1.0f,0.5f);
     
     <item>
       <title></title>
-      <link>https://yunyaolong.github.io/post/2025/ai-agent%E6%A2%B3%E7%90%86/</link>
+      <link>https://yaoyl.cn//post/2025/ai-agent%E6%A2%B3%E7%90%86/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/2025/ai-agent%E6%A2%B3%E7%90%86/</guid>
+      <guid>https://yaoyl.cn//post/2025/ai-agent%E6%A2%B3%E7%90%86/</guid>
       <description>
         
           

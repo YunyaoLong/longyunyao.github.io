@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>多线程 on Clarity</title>
-    <link>https://yunyaolong.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/</link>
+    <link>https://yaoyl.cn//tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/</link>
     <description>Recent content in 多线程 on Clarity</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>Copyright © 2017–2025, Yunyao Long and the Hugo Authors; 粤ICP备-17050867-1号</copyright>
-    <lastBuildDate>Mon, 19 Feb 2018 14:19:04 +0000</lastBuildDate><atom:link href="https://yunyaolong.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 19 Feb 2018 14:19:04 +0000</lastBuildDate><atom:link href="https://yaoyl.cn//tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Ubuntu下使用CodeBlocks进行多线程编程</title>
-      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/ubuntu%E4%B8%8B%E4%BD%BF%E7%94%A8codeblocks%E8%BF%9B%E8%A1%8C%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/</link>
+      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/ubuntu%E4%B8%8B%E4%BD%BF%E7%94%A8codeblocks%E8%BF%9B%E8%A1%8C%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/</link>
       <pubDate>Mon, 19 Feb 2018 14:19:04 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/ubuntu%E4%B8%8B%E4%BD%BF%E7%94%A8codeblocks%E8%BF%9B%E8%A1%8C%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/</guid>
+      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/ubuntu%E4%B8%8B%E4%BD%BF%E7%94%A8codeblocks%E8%BF%9B%E8%A1%8C%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/</guid>
       <description>
         
           

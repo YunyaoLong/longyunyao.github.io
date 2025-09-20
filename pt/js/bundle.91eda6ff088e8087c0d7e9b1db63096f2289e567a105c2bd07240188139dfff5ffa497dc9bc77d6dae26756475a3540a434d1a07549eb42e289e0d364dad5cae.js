@@ -10,18 +10,18 @@ const imageAltClass = 'img_alt';
 
 
 const defaultSiteLanguage = 'en';
-const baseURL = 'https://yunyaolong.github.io/';
+const baseURL = 'https://yaoyl.cn//';
 const searchFieldClass = '.search_field';
 const searchClass = '.search';
 const goBackClass = 'button_back';
 const lineClass = '.line';
 
 // defined in i18n / translation files
-const quickLinks = '搜索到的结果';
-const searchResultsLabel = '搜索到的结果';
-const shortSearchQuery = '搜索字符太短'
-const typeToSearch = '请输入内容查找';
-const noMatchesFound = '未找到结果';
+const quickLinks = 'Resultados';
+const searchResultsLabel = 'Resultados da pesquisa';
+const shortSearchQuery = 'A consulta é muito curta'
+const typeToSearch = 'Digite para pesquisar';
+const noMatchesFound = 'Nenhum resultado encontrado';
 
 ;
 // global variables

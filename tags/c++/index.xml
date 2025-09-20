@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>C&#43;&#43; on Clarity</title>
-    <link>https://yunyaolong.github.io/tags/c&#43;&#43;/</link>
+    <link>https://yaoyl.cn//tags/c&#43;&#43;/</link>
     <description>Recent content in C&#43;&#43; on Clarity</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>Copyright © 2017–2025, Yunyao Long and the Hugo Authors; 粤ICP备-17050867-1号</copyright>
-    <lastBuildDate>Mon, 19 Feb 2018 14:19:04 +0000</lastBuildDate><atom:link href="https://yunyaolong.github.io/tags/c++/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 19 Feb 2018 14:19:04 +0000</lastBuildDate><atom:link href="https://yaoyl.cn//tags/c++/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Ubuntu下使用CodeBlocks进行多线程编程</title>
-      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/ubuntu%E4%B8%8B%E4%BD%BF%E7%94%A8codeblocks%E8%BF%9B%E8%A1%8C%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/</link>
+      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/ubuntu%E4%B8%8B%E4%BD%BF%E7%94%A8codeblocks%E8%BF%9B%E8%A1%8C%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/</link>
       <pubDate>Mon, 19 Feb 2018 14:19:04 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/ubuntu%E4%B8%8B%E4%BD%BF%E7%94%A8codeblocks%E8%BF%9B%E8%A1%8C%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/</guid>
+      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/ubuntu%E4%B8%8B%E4%BD%BF%E7%94%A8codeblocks%E8%BF%9B%E8%A1%8C%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/</guid>
       <description>
         
           
@@ -83,10 +83,10 @@
     
     <item>
       <title>2018网易校招运营开发工程师编程第一题</title>
-      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/2018%E7%BD%91%E6%98%93%E6%A0%A1%E6%8B%9B%E8%BF%90%E8%90%A5%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%BC%96%E7%A8%8B%E7%AC%AC%E4%B8%80%E9%A2%98/</link>
+      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/2018%E7%BD%91%E6%98%93%E6%A0%A1%E6%8B%9B%E8%BF%90%E8%90%A5%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%BC%96%E7%A8%8B%E7%AC%AC%E4%B8%80%E9%A2%98/</link>
       <pubDate>Sat, 16 Sep 2017 22:38:56 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/2018%E7%BD%91%E6%98%93%E6%A0%A1%E6%8B%9B%E8%BF%90%E8%90%A5%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%BC%96%E7%A8%8B%E7%AC%AC%E4%B8%80%E9%A2%98/</guid>
+      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/2018%E7%BD%91%E6%98%93%E6%A0%A1%E6%8B%9B%E8%BF%90%E8%90%A5%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%BC%96%E7%A8%8B%E7%AC%AC%E4%B8%80%E9%A2%98/</guid>
       <description>
         
           
@@ -154,10 +154,10 @@
     
     <item>
       <title>虚拟驾驶环境搭建(四)</title>
-      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/%E8%99%9A%E6%8B%9F%E9%A9%BE%E9%A9%B6%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%9B%9B/</link>
+      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E8%99%9A%E6%8B%9F%E9%A9%BE%E9%A9%B6%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%9B%9B/</link>
       <pubDate>Thu, 13 Jul 2017 16:18:07 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/%E8%99%9A%E6%8B%9F%E9%A9%BE%E9%A9%B6%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%9B%9B/</guid>
+      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E8%99%9A%E6%8B%9F%E9%A9%BE%E9%A9%B6%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%9B%9B/</guid>
       <description>
         
           
@@ -241,10 +241,10 @@
     
     <item>
       <title>虚拟驾驶环境搭建(三)</title>
-      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/%E8%99%9A%E6%8B%9F%E9%A9%BE%E9%A9%B6%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%89/</link>
+      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E8%99%9A%E6%8B%9F%E9%A9%BE%E9%A9%B6%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%89/</link>
       <pubDate>Thu, 13 Jul 2017 16:17:12 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/%E8%99%9A%E6%8B%9F%E9%A9%BE%E9%A9%B6%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%89/</guid>
+      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E8%99%9A%E6%8B%9F%E9%A9%BE%E9%A9%B6%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%89/</guid>
       <description>
         
           
@@ -300,10 +300,10 @@
     
     <item>
       <title>虚拟驾驶环境搭建(二)</title>
-      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/%E8%99%9A%E6%8B%9F%E9%A9%BE%E9%A9%B6%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%BA%8C/</link>
+      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E8%99%9A%E6%8B%9F%E9%A9%BE%E9%A9%B6%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%BA%8C/</link>
       <pubDate>Thu, 13 Jul 2017 16:15:53 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/%E8%99%9A%E6%8B%9F%E9%A9%BE%E9%A9%B6%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%BA%8C/</guid>
+      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E8%99%9A%E6%8B%9F%E9%A9%BE%E9%A9%B6%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%BA%8C/</guid>
       <description>
         
           
@@ -360,10 +360,10 @@
     
     <item>
       <title>虚拟驾驶环境搭建(一)</title>
-      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/%E8%99%9A%E6%8B%9F%E9%A9%BE%E9%A9%B6%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%80/</link>
+      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E8%99%9A%E6%8B%9F%E9%A9%BE%E9%A9%B6%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%80/</link>
       <pubDate>Thu, 13 Jul 2017 16:14:11 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/%E8%99%9A%E6%8B%9F%E9%A9%BE%E9%A9%B6%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%80/</guid>
+      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E8%99%9A%E6%8B%9F%E9%A9%BE%E9%A9%B6%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%80/</guid>
       <description>
         
           
@@ -422,10 +422,10 @@
     
     <item>
       <title>OpenGL学习笔记（十）</title>
-      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%8D%81/</link>
+      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%8D%81/</link>
       <pubDate>Sat, 13 May 2017 16:49:22 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%8D%81/</guid>
+      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%8D%81/</guid>
       <description>
         
           
@@ -531,10 +531,10 @@
     
     <item>
       <title>OpenGL学习笔记（九）</title>
-      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%9D/</link>
+      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%9D/</link>
       <pubDate>Fri, 12 May 2017 18:00:15 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%9D/</guid>
+      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%9D/</guid>
       <description>
         
           
@@ -671,10 +671,10 @@
     
     <item>
       <title>OpenGL学习笔记（八）</title>
-      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%85%AB/</link>
+      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%85%AB/</link>
       <pubDate>Fri, 12 May 2017 03:28:48 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%85%AB/</guid>
+      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%85%AB/</guid>
       <description>
         
           
@@ -765,10 +765,10 @@
     
     <item>
       <title>OpenGL学习笔记（七）</title>
-      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%83/</link>
+      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%83/</link>
       <pubDate>Tue, 09 May 2017 20:59:35 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%83/</guid>
+      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%83/</guid>
       <description>
         
           
@@ -835,10 +835,10 @@ glColor4f(1.0f,1.0f,1.0f,0.5f);
     
     <item>
       <title>OpenGL学习笔记（六）</title>
-      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%85%AD/</link>
+      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%85%AD/</link>
       <pubDate>Mon, 08 May 2017 13:54:19 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%85%AD/</guid>
+      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%85%AD/</guid>
       <description>
         
           
@@ -893,10 +893,10 @@ glColor4f(1.0f,1.0f,1.0f,0.5f);
     
     <item>
       <title>OpenGL学习笔记（五）</title>
-      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%94/</link>
+      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%94/</link>
       <pubDate>Sun, 07 May 2017 12:21:47 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%94/</guid>
+      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%94/</guid>
       <description>
         
           
@@ -977,10 +977,10 @@ glColor4f(1.0f,1.0f,1.0f,0.5f);
     
     <item>
       <title>OpenGL学习笔记（四）</title>
-      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%9B%9B/</link>
+      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%9B%9B/</link>
       <pubDate>Sun, 07 May 2017 12:20:57 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%9B%9B/</guid>
+      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%9B%9B/</guid>
       <description>
         
           
@@ -1040,10 +1040,10 @@ glColor4f(1.0f,1.0f,1.0f,0.5f);
     
     <item>
       <title>OpenGL学习笔记（三）</title>
-      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%89/</link>
+      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%89/</link>
       <pubDate>Wed, 03 May 2017 15:14:09 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%89/</guid>
+      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%89/</guid>
       <description>
         
           
@@ -1095,7 +1095,7 @@ glColor4f(1.0f,1.0f,1.0f,0.5f);
       alt=&#34;&#34;
       
         class=&#34;image_figure image_internal image_unprocessed&#34;
-        src=&#34;https://yunyaolong.github.io/&#34;
+        src=&#34;https://yaoyl.cn/&#34;
       
       
     /&gt;
@@ -1111,10 +1111,10 @@ glColor4f(1.0f,1.0f,1.0f,0.5f);
     
     <item>
       <title>OpenGL学习笔记（二）</title>
-      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%8C/</link>
+      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%8C/</link>
       <pubDate>Mon, 01 May 2017 10:14:47 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%8C/</guid>
+      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%8C/</guid>
       <description>
         
           
@@ -1129,10 +1129,10 @@ glColor4f(1.0f,1.0f,1.0f,0.5f);
     
     <item>
       <title>OpenGL学习笔记（一）</title>
-      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%80/</link>
+      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%80/</link>
       <pubDate>Mon, 01 May 2017 10:08:09 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%80/</guid>
+      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%80/</guid>
       <description>
         
           
@@ -1172,7 +1172,7 @@ glColor4f(1.0f,1.0f,1.0f,0.5f);
       alt=&#34;&#34;
       
         class=&#34;image_figure image_internal image_unprocessed&#34;
-        src=&#34;https://yunyaolong.github.io/&#34;
+        src=&#34;https://yaoyl.cn/&#34;
       
       
     /&gt;
@@ -1199,7 +1199,7 @@ glColor4f(1.0f,1.0f,1.0f,0.5f);
       alt=&#34;实验一截图&#34;
       
         class=&#34;image_figure image_internal image_unprocessed&#34;
-        src=&#34;https://yunyaolong.github.io/&#34;
+        src=&#34;https://yaoyl.cn/&#34;
       
       
     /&gt;
