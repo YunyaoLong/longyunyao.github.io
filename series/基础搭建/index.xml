@@ -17,7 +17,11 @@
       <description>
         
           
-            &lt;p&gt;有了Docker之后，就可以在电脑上干很多事情，就比如搭建一个参数不大的LLM为我们提供服务~~&lt;/p&gt;
+            &lt;blockquote&gt;
+&lt;p&gt;龙云尧个人博客，转载请注明出处。
+CSDN地址：http://blog.csdn.net/michael753951
+个人blog地址：http://yaoyl.cn&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;有了Docker之后，就可以在电脑上干很多事情，就比如搭建一个参数不大的LLM为我们提供服务~~&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;我已经在github上创建了一个仓库，方便大家使用，如需交流学习，可以clone到本地：https://github.com/YunyaoLong/qwen-coder&lt;/p&gt;&lt;/blockquote&gt;
 &lt;h1 id=&#34;安装ollama&#34;&gt;安装Ollama&lt;/h1&gt;

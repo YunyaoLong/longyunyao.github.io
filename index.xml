@@ -17,7 +17,11 @@
       <description>
         
           
-            &lt;p&gt;有了Docker之后，就可以在电脑上干很多事情，就比如搭建一个参数不大的LLM为我们提供服务~~&lt;/p&gt;
+            &lt;blockquote&gt;
+&lt;p&gt;龙云尧个人博客，转载请注明出处。
+CSDN地址：http://blog.csdn.net/michael753951
+个人blog地址：http://yaoyl.cn&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;有了Docker之后，就可以在电脑上干很多事情，就比如搭建一个参数不大的LLM为我们提供服务~~&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;我已经在github上创建了一个仓库，方便大家使用，如需交流学习，可以clone到本地：https://github.com/YunyaoLong/qwen-coder&lt;/p&gt;&lt;/blockquote&gt;
 &lt;h1 id=&#34;安装ollama&#34;&gt;安装Ollama&lt;/h1&gt;
@@ -3808,7 +3812,11 @@ glColor4f(1.0f,1.0f,1.0f,0.5f);
       <description>
         
           
-            &lt;h1 id=&#34;代码合并的prompt&#34;&gt;代码合并的prompt&lt;/h1&gt;
+            &lt;blockquote&gt;
+&lt;p&gt;龙云尧个人博客，转载请注明出处。
+CSDN地址：http://blog.csdn.net/michael753951
+个人blog地址：http://yaoyl.cn&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h1 id=&#34;代码合并的prompt&#34;&gt;代码合并的prompt&lt;/h1&gt;
 &lt;blockquote&gt;
 &lt;p&gt;(http ) &amp;amp;&amp;amp; (tcp.dstport == 11434)&lt;/p&gt;&lt;/blockquote&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-gdscript3&#34; data-lang=&#34;gdscript3&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;|&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;im_start&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;user&lt;/span&gt;\&lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;```&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;python&lt;/span&gt;\&lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;# 本文件实现一个基于 MQTT 的智能家居控制方案\n# 包含传感器数据解析、设备联动控制、语音交互逻辑\n# 需要安装依赖库：paho-mqtt（用于 MQTT 通信）\n\nimport os\nimport json\nimport logging\nimport time\nimport mqtt\nimport yaml\n\n# 定义设备信息\nDEVICE_INFO = {\n    \&amp;#34;central_gateway\&amp;#34;: {\n        \&amp;#34;topic\&amp;#34;: \&amp;#34;homeassistant\&amp;#34;,\n        \&amp;#34;username\&amp;#34;: \&amp;#34;homeassistant\&amp;#34;,\n        \&amp;#34;password\&amp;#34;: \&amp;#34;your_password\&amp;#34;\n    },\n    \&amp;#34;multi_mod_gateway\&amp;#34;: {\n        \&amp;#34;topic\&amp;#34;: \&amp;#34;multi_mod\&amp;#34;,\n        \&amp;#34;username\&amp;#34;: \&amp;#34;multi_mod\&amp;#34;,\n        \&amp;#34;password\&amp;#34;: \&amp;#34;your_password\&amp;#34;\n    },\n    \&amp;#34;alexa_devices\&amp;#34;: [\n        {\&amp;#34;name\&amp;#34;: \&amp;#34;小爱同学1\&amp;#34;, \&amp;#34;topic\&amp;#34;: \&amp;#34;alexa/1\&amp;#34;},\n        {\&amp;#34;name\&amp;#34;: \&amp;#34;小爱同学2\&amp;#34;, \&amp;#34;topic\&amp;#34;: \&amp;#34;alexa/2\&amp;#34;},\n        {\&amp;#34;name\&amp;#34;: \&amp;#34;小爱同学3\&amp;#34;, \&amp;#34;topic\&amp;#34;: \&amp;#34;alexa/3\&amp;#34;}\n    ]\n}\n\n# 读取日志文件\ndef parse_log_file(log_file_path):\n    sensors = {\n        \&amp;#34;door_sensor\&amp;#34;: {\&amp;#34;state\&amp;#34;: \&amp;#34;closed\&amp;#34;},\n        \&amp;#34;light\&amp;#34;: {\&amp;#34;state\&amp;#34;: \&amp;#34;off\&amp;#34;, \&amp;#34;brightness\&amp;#34;: 100, \&amp;#34;color_temp\&amp;#34;: 2700}\n    }\n    with open(log_file_path, &amp;#39;r&amp;#39;) as f:\n        for line in f:\n            if \&amp;#34;switch\&amp;#34; in line:\n                sensors[\&amp;#34;light\&amp;#34;][\&amp;#34;state\&amp;#34;] = line.split(\&amp;#34; \&amp;#34;)[1]\n            elif \&amp;#34;brightness\&amp;#34; in line:\n                sensors[\&amp;#34;light\&amp;#34;][\&amp;#34;brightness\&amp;#34;] = int(line.split(\&amp;#34; \&amp;#34;)[1])\n            elif \&amp;#34;color_temp\&amp;#34; in line:\n                sensors[\&amp;#34;light\&amp;#34;][\&amp;#34;color_temp\&amp;#34;] = int(line.split(\&amp;#34; \&amp;#34;)[1])\n    return sensors\n\n# 通过MQTT控制设备\ndef call_device_api(device_name, action, payload=None):\n    client = mqtt.Client(f\&amp;#34;{device_name}/1\&amp;#34;)\n    client.connect(DEVICE_INFO[device_name][\&amp;#34;topic\&amp;#34;])\n    client.publish(f\&amp;#34;{device_name}/{action}\&amp;#34;, str(payload).encode())\n    client.disconnect()\n\n# 主程序\ndef main():\n    log_file_path = \&amp;#34;sensor_log.txt\&amp;#34;  # 替换为您的日志文件路径\n    sensors = parse_log_file(log_file_path)\n    \n    # 模拟传感器数据（实际应从日志文件读取）\n    print(\&amp;#34;当前传感器状态：\&amp;#34;)\n    for key, value in sensors.items():\n        print(f\&amp;#34;{key}: {value}\&amp;#34;)\n    \n    # 自动化规则（示例）\n    if sensors[\&amp;#34;door_sensor\&amp;#34;][\&amp;#34;state\&amp;#34;] == \&amp;#34;closed\&amp;#34;:\n        call_device_api(\&amp;#34;light\&amp;#34;, \&amp;#34;off\&amp;#34;)\n    elif sensors[\&amp;#34;light\&amp;#34;][\&amp;#34;brightness\&amp;#34;] &amp;lt; 100:\n        call_device_api(\&amp;#34;light\&amp;#34;, \&amp;#34;dim\&amp;#34;, {\&amp;#34;brightness\&amp;#34;: 100})\n    \n    # 语音交互（示例）\n    if input(\&amp;#34;输入语音指令（如：开灯）：\&amp;#34;) == \&amp;#34;开灯\&amp;#34;:\n        call_device_api(\&amp;#34;light\&amp;#34;, \&amp;#34;on\&amp;#34;)\n\nif __name__ == \&amp;#34;__main__\&amp;#34;:\n    main()\n```\n\nThis code block includes the necessary imports, device information, log file parsing, MQTT control functions, and a main program that reads sensor data from a log file, applies automation rules based on the sensor states, and handles voice interactions.\n\n\n```\n\nPlease rewrite the entire code block above in order to satisfy the following request: \&amp;#34;The following code was suggested as an edit:\n```\n# 设备信息配置\n# 用于通过 MQTT 与中枢网关、多模网关及小爱同学设备通信\nDEVICE_INFO = {\n    \&amp;#34;central_gateway\&amp;#34;: {\n        \&amp;#34;topic\&amp;#34;: \&amp;#34;homeassistant\&amp;#34;,  # MQTT 主题\n        \&amp;#34;username\&amp;#34;: \&amp;#34;homeassistant\&amp;#34;,  # 认证用户名\n        \&amp;#34;password\&amp;#34;: \&amp;#34;your_password\&amp;#34;  # 认证密码（需替换为实际值）\n    },\n    \&amp;#34;multi_mod_gateway\&amp;#34;: {\n        \&amp;#34;topic\&amp;#34;: \&amp;#34;multi_mod\&amp;#34;,  # 多模网关主题\n        \&amp;#34;username\&amp;#34;: \&amp;#34;multi_mod\&amp;#34;,  # 认证用户名\n        \&amp;#34;password\&amp;#34;: \&amp;#34;your_password\&amp;#34;  # 认证密码\n    },\n    \&amp;#34;alexa_devices\&amp;#34;: [\n        {\&amp;#34;name\&amp;#34;: \&amp;#34;小爱同学1\&amp;#34;, \&amp;#34;topic\&amp;#34;: \&amp;#34;alexa/1\&amp;#34;},  # 小爱同学设备主题\n        {\&amp;#34;name\&amp;#34;: \&amp;#34;小爱同学2\&amp;#34;, \&amp;#34;topic\&amp;#34;: \&amp;#34;alexa/2\&amp;#34;},\n        {\&amp;#34;name\&amp;#34;: \&amp;#34;小爱同学3\&amp;#34;, \&amp;#34;topic\&amp;#34;: \&amp;#34;alexa/3\&amp;#34;}\n    ]\n}\n```\nPlease apply it to the previous code.\&amp;#34;. You should rewrite the entire code block without leaving placeholders, even if the code is the same as before.&amp;lt;|im_end|&amp;gt;\n&amp;lt;|im_start|&amp;gt;assistant\nSure! Here&amp;#39;s the entire rewritten code block:\n```python\n&lt;/span&gt;
@@ -3832,7 +3840,11 @@ glColor4f(1.0f,1.0f,1.0f,0.5f);
       <description>
         
           
-            &lt;h1 id=&#34;continue插件配置参考&#34;&gt;continue插件配置参考&lt;/h1&gt;
+            &lt;blockquote&gt;
+&lt;p&gt;龙云尧个人博客，转载请注明出处。
+CSDN地址：http://blog.csdn.net/michael753951
+个人blog地址：http://yaoyl.cn&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h1 id=&#34;continue插件配置参考&#34;&gt;continue插件配置参考&lt;/h1&gt;
 &lt;p&gt;&lt;a href=&#34;https://hub.continue.dev/ollama/qwen2.5-coder-1.5b?view=config&#34;&gt;https://hub.continue.dev/ollama/qwen2.5-coder-1.5b?view=config&lt;/a&gt;&lt;/p&gt;
           
           
