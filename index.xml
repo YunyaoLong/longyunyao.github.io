@@ -2,27 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Chinese</title>
-    <link>https://yaoyl.cn//</link>
+    <link>https://yaoyl.cn/</link>
     <description>Recent content on Chinese</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>Copyright © 2017–2025, Yunyao Long and the Hugo Authors; 粤ICP备-17050867-1号</copyright>
-    <lastBuildDate>Thu, 18 Sep 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://yaoyl.cn//index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 18 Sep 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://yaoyl.cn/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>M1芯片MacBook搭建本地大模型</title>
-      <link>https://yaoyl.cn//post/2025/%E5%9F%BA%E4%BA%8Econtinue%E6%8F%92%E4%BB%B6%E4%BD%BF%E7%94%A8%E5%A4%A7%E6%A8%A1%E5%9E%8B/</link>
-      <pubDate>Sun, 14 Sep 2025 20:30:00 +0000</pubDate>
+      <title>基于Continue插件使用大模型</title>
+      <link>https://yaoyl.cn/post/2025/%E5%9F%BA%E4%BA%8Econtinue%E6%8F%92%E4%BB%B6%E4%BD%BF%E7%94%A8%E5%A4%A7%E6%A8%A1%E5%9E%8B/</link>
+      <pubDate>Tue, 16 Sep 2025 20:30:00 +0000</pubDate>
       
-      <guid>https://yaoyl.cn//post/2025/%E5%9F%BA%E4%BA%8Econtinue%E6%8F%92%E4%BB%B6%E4%BD%BF%E7%94%A8%E5%A4%A7%E6%A8%A1%E5%9E%8B/</guid>
+      <guid>https://yaoyl.cn/post/2025/%E5%9F%BA%E4%BA%8Econtinue%E6%8F%92%E4%BB%B6%E4%BD%BF%E7%94%A8%E5%A4%A7%E6%A8%A1%E5%9E%8B/</guid>
       <description>
         
           
-            &lt;blockquote&gt;
-&lt;p&gt;龙云尧个人博客，转载请注明出处。
-CSDN地址：http://blog.csdn.net/michael753951
-个人blog地址：http://yaoyl.cn&lt;/p&gt;&lt;/blockquote&gt;
-&lt;h1 id=&#34;continue插件配置参考&#34;&gt;continue插件配置参考&lt;/h1&gt;
-&lt;p&gt;&lt;a href=&#34;https://hub.continue.dev/ollama/qwen2.5-coder-1.5b?view=config&#34;&gt;https://hub.continue.dev/ollama/qwen2.5-coder-1.5b?view=config&lt;/a&gt;&lt;/p&gt;
+            基于Continue插件调用本地大模型
           
           
         
@@ -31,87 +26,14 @@ CSDN地址：http://blog.csdn.net/michael753951
     
     <item>
       <title>M1芯片MacBook搭建本地大模型</title>
-      <link>https://yaoyl.cn//post/2025/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0%E5%A4%A7%E6%A8%A1%E5%9E%8B/</link>
-      <pubDate>Sun, 14 Sep 2025 20:30:00 +0000</pubDate>
+      <link>https://yaoyl.cn/post/2025/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0%E5%A4%A7%E6%A8%A1%E5%9E%8B/</link>
+      <pubDate>Sun, 14 Sep 2025 00:00:00 +0000</pubDate>
       
-      <guid>https://yaoyl.cn//post/2025/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0%E5%A4%A7%E6%A8%A1%E5%9E%8B/</guid>
+      <guid>https://yaoyl.cn/post/2025/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0%E5%A4%A7%E6%A8%A1%E5%9E%8B/</guid>
       <description>
         
           
-            &lt;blockquote&gt;
-&lt;p&gt;龙云尧个人博客，转载请注明出处。
-CSDN地址：http://blog.csdn.net/michael753951
-个人blog地址：http://yaoyl.cn&lt;/p&gt;&lt;/blockquote&gt;
-&lt;p&gt;有了Docker之后，就可以在电脑上干很多事情，就比如搭建一个参数不大的LLM为我们提供服务~~&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;我已经在github上创建了一个仓库，方便大家使用，如需交流学习，可以clone到本地：https://github.com/YunyaoLong/qwen-coder&lt;/p&gt;&lt;/blockquote&gt;
-&lt;h1 id=&#34;安装ollama&#34;&gt;安装Ollama&lt;/h1&gt;
-&lt;p&gt;为了能够在本地直接运行大模型，最简单和常见的方式就是使用Ollama。&lt;/p&gt;
-
-&lt;div class=&#34;notices warning&#34;&gt;
-    &lt;div class=&#34;label&#34;&gt;Warning&lt;/div&gt;
-    &lt;p&gt;Ollama支持运行在Docker中，安装的时候需要留意一下自己的内存大小是否满足你所选取的模型需求。&lt;/p&gt;
-&lt;p&gt;例如我的 16G 内存可以运行 &lt;code&gt;qwen2.5-coder:1.5b-instruct-q5_K_M&lt;/code&gt; 和 &lt;code&gt;qwen3:1.7b-q4_K_M&lt;/code&gt;，运行更大参数的模型时，会直接提示内存不足，Ollama启动失败。&lt;/p&gt;
-
-  &lt;/div&gt;
-
-&lt;p&gt;下面是我的docker-compose.yml文件，可以参考：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;# docker-compose.yml&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;services&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;ollama&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 4&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;image&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;ollama/ollama:latest&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 5&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;ports&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 6&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;- &lt;span class=&#34;s2&#34;&gt;&amp;#34;11434:11434&amp;#34;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;                  &lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# 端口映射&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 7&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;volumes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 8&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;- &lt;span class=&#34;l&#34;&gt;./models:/root/.ollama/models &lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# 指定Ollama的卷目录，这样就不需要频繁拉取LLM的二进制文件了&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 9&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;environment&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;- &lt;span class=&#34;l&#34;&gt;OLLAMA_HOST=0.0.0.0&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;- &lt;span class=&#34;l&#34;&gt;OLLAMA_MAX_LOADED_MODELS=1    &lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# 只加载一个模型，防止内存占用过多导致Ollama启动失败&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;- &lt;span class=&#34;l&#34;&gt;OLLAMA_KEEP_ALIVE=5m          &lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# 模型常驻内存，避免反复加载&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;13&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;deploy&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;14&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;resources&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;15&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;limits&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;16&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;          &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;memory&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;12G  &lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# 显式限制，防止超用&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;17&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;restart&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;unless-stopped&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;18&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# 设置 entrypoint 为 shell，并传入命令&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;19&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;entrypoint&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;/bin/sh&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;-c&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;command&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;sd&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;21&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sd&#34;&gt;      &amp;#34;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;22&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sd&#34;&gt;      # 启动 Ollama 服务（后台）
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;23&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sd&#34;&gt;      ollama serve &amp;amp;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;24&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sd&#34;&gt;      
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;25&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sd&#34;&gt;      # 等待服务启动
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;26&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sd&#34;&gt;      sleep 5
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;27&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sd&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;28&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sd&#34;&gt;      # 拉取模型
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;29&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sd&#34;&gt;      echo &amp;#39;📥 开始下载 qwen:7b-chat-q4_K_M...&amp;#39;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;30&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sd&#34;&gt;      ollama pull qwen:7b-chat-q4_K_M || echo &amp;#39;⚠️ 下载失败&amp;#39;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;31&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sd&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;32&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sd&#34;&gt;      echo &amp;#39;📥 开始下载 qwen3:4b-instruct-2507-q4_K_M...&amp;#39;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;33&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sd&#34;&gt;      ollama pull qwen3:4b-instruct-2507-q4_K_M || echo &amp;#39;⚠️ 下载失败&amp;#39;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;34&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sd&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;35&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sd&#34;&gt;      echo &amp;#39;📥 开始下载 qwen3:4b-instruct...&amp;#39;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;36&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sd&#34;&gt;      ollama pull qwen3:4b-instruct || echo &amp;#39;⚠️ 下载失败&amp;#39;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;37&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sd&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;38&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sd&#34;&gt;      echo &amp;#39;📥 开始下载 qwen2.5-coder:3b...&amp;#39;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;39&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sd&#34;&gt;      ollama pull qwen2.5-coder:3b || echo &amp;#39;⚠️ 下载失败&amp;#39;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;40&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sd&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;41&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sd&#34;&gt;      echo &amp;#39;📥 开始下载 qwen3:1.7b-fp16...&amp;#39;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;42&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sd&#34;&gt;      ollama pull qwen3:1.7b-fp16 || echo &amp;#39;⚠️ 下载失败&amp;#39;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;43&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sd&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;44&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sd&#34;&gt;      echo &amp;#39;📥 开始下载 qwen3:1.7b-q4_K_M...&amp;#39;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;45&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sd&#34;&gt;      ollama pull qwen3:1.7b-q4_K_M || echo &amp;#39;⚠️ 下载失败&amp;#39;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;46&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sd&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;47&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sd&#34;&gt;      echo &amp;#39;📥 开始下载 qwen2.5-coder:1.5b-instruct-q5_K_M...&amp;#39;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;48&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sd&#34;&gt;      ollama pull qwen2.5-coder:1.5b-instruct-q5_K_M || echo &amp;#39;⚠️ 下载失败&amp;#39;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;49&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sd&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;50&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sd&#34;&gt;      echo &amp;#39;✅ 所有模型下载完成！服务持续运行中...&amp;#39;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;51&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sd&#34;&gt;      
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;52&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sd&#34;&gt;      # 保持容器不退出（等待 Ollama serve）
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;53&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sd&#34;&gt;      wait
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;54&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sd&#34;&gt;      &amp;#34;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;启动方式1&#34;&gt;启动方式1&lt;/h2&gt;
-&lt;p&gt;接着在 docker-compose.yml 所在的工作目录启动：&lt;/p&gt;
+            M1芯片MacBook，在Docker中使用Ollama运行本地大模型
           
           
         
@@ -120,10 +42,10 @@ CSDN地址：http://blog.csdn.net/michael753951
     
     <item>
       <title>M1芯片MacBook安装Docker</title>
-      <link>https://yaoyl.cn//post/2025/m1%E8%8A%AF%E7%89%87macbook%E5%AE%89%E8%A3%85docker/</link>
+      <link>https://yaoyl.cn/post/2025/m1%E8%8A%AF%E7%89%87macbook%E5%AE%89%E8%A3%85docker/</link>
       <pubDate>Thu, 11 Sep 2025 19:30:00 +0000</pubDate>
       
-      <guid>https://yaoyl.cn//post/2025/m1%E8%8A%AF%E7%89%87macbook%E5%AE%89%E8%A3%85docker/</guid>
+      <guid>https://yaoyl.cn/post/2025/m1%E8%8A%AF%E7%89%87macbook%E5%AE%89%E8%A3%85docker/</guid>
       <description>
         
           
@@ -136,10 +58,10 @@ CSDN地址：http://blog.csdn.net/michael753951
     
     <item>
       <title>技术分享-前瞻</title>
-      <link>https://yaoyl.cn//post/2025/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB-%E5%89%8D%E7%9E%BB/</link>
+      <link>https://yaoyl.cn/post/2025/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB-%E5%89%8D%E7%9E%BB/</link>
       <pubDate>Wed, 10 Sep 2025 19:30:00 +0000</pubDate>
       
-      <guid>https://yaoyl.cn//post/2025/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB-%E5%89%8D%E7%9E%BB/</guid>
+      <guid>https://yaoyl.cn/post/2025/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB-%E5%89%8D%E7%9E%BB/</guid>
       <description>
         
           
@@ -152,10 +74,10 @@ CSDN地址：http://blog.csdn.net/michael753951
     
     <item>
       <title>设计模式-观察者模式</title>
-      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/</link>
-      <pubDate>Thu, 02 Jul 2020 22:30:10 +0000</pubDate>
+      <link>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Mon, 20 Jul 2020 10:02:28 +0000</pubDate>
       
-      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/</guid>
+      <guid>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/</guid>
       <description>
         
           
@@ -215,10 +137,10 @@ CSDN地址：http://blog.csdn.net/michael753951
     
     <item>
       <title>UML类图绘制实例</title>
-      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/uml%E7%B1%BB%E5%9B%BE%E7%BB%98%E5%88%B6%E5%AE%9E%E4%BE%8B/</link>
-      <pubDate>Thu, 25 Jun 2020 10:02:28 +0000</pubDate>
+      <link>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/uml%E7%B1%BB%E5%9B%BE%E7%BB%98%E5%88%B6%E5%AE%9E%E4%BE%8B/</link>
+      <pubDate>Sun, 19 Jul 2020 16:28:45 +0000</pubDate>
       
-      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/uml%E7%B1%BB%E5%9B%BE%E7%BB%98%E5%88%B6%E5%AE%9E%E4%BE%8B/</guid>
+      <guid>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/uml%E7%B1%BB%E5%9B%BE%E7%BB%98%E5%88%B6%E5%AE%9E%E4%BE%8B/</guid>
       <description>
         
           
@@ -244,7 +166,7 @@ CSDN地址：http://blog.csdn.net/michael753951
         class=&#34;image_figure image_external image_processed&#34;
         width=&#34;822&#34;
         height=&#34;700&#34;
-        src=&#34;//images/class-example-library-domain_2398916653974515336.png&#34;
+        src=&#34;https://yaoyl.cn/images/class-example-library-domain_2398916653974515336.png&#34;
       
       
     /&gt;
@@ -273,7 +195,7 @@ CSDN地址：http://blog.csdn.net/michael753951
         class=&#34;image_figure image_external image_processed&#34;
         width=&#34;827&#34;
         height=&#34;217&#34;
-        src=&#34;//images/97611489-36dc1c00-1a51-11eb-856c-cf2280df1f06_3742796301368316937.png&#34;
+        src=&#34;https://yaoyl.cn/images/97611489-36dc1c00-1a51-11eb-856c-cf2280df1f06_3742796301368316937.png&#34;
       
       
     /&gt;
@@ -301,7 +223,7 @@ CSDN地址：http://blog.csdn.net/michael753951
         class=&#34;image_figure image_external image_processed&#34;
         width=&#34;1039&#34;
         height=&#34;306&#34;
-        src=&#34;//images/97611044-a1408c80-1a50-11eb-8013-273235d04c70_13782265216704952398.png&#34;
+        src=&#34;https://yaoyl.cn/images/97611044-a1408c80-1a50-11eb-8013-273235d04c70_13782265216704952398.png&#34;
       
       
     /&gt;
@@ -332,7 +254,7 @@ CSDN地址：http://blog.csdn.net/michael753951
         class=&#34;image_figure image_external image_processed&#34;
         width=&#34;1053&#34;
         height=&#34;448&#34;
-        src=&#34;//images/97615370-2ed2ab00-1a56-11eb-838e-df7262399d9e_9832865924313917040.png&#34;
+        src=&#34;https://yaoyl.cn/images/97615370-2ed2ab00-1a56-11eb-838e-df7262399d9e_9832865924313917040.png&#34;
       
       
     /&gt;
@@ -364,7 +286,7 @@ CSDN地址：http://blog.csdn.net/michael753951
         class=&#34;image_figure image_external image_processed&#34;
         width=&#34;1026&#34;
         height=&#34;558&#34;
-        src=&#34;//images/97619039-b3bfc380-1a5a-11eb-8346-d96986ebd9c6_5740602031243574121.png&#34;
+        src=&#34;https://yaoyl.cn/images/97619039-b3bfc380-1a5a-11eb-8346-d96986ebd9c6_5740602031243574121.png&#34;
       
       
     /&gt;
@@ -395,7 +317,7 @@ CSDN地址：http://blog.csdn.net/michael753951
         class=&#34;image_figure image_external image_processed&#34;
         width=&#34;1069&#34;
         height=&#34;668&#34;
-        src=&#34;//images/97621925-8543e780-1a5e-11eb-868e-cf053d39d649_8578078723728345691.png&#34;
+        src=&#34;https://yaoyl.cn/images/97621925-8543e780-1a5e-11eb-868e-cf053d39d649_8578078723728345691.png&#34;
       
       
     /&gt;
@@ -414,10 +336,10 @@ CSDN地址：http://blog.csdn.net/michael753951
     
     <item>
       <title>Spring的Bean管理</title>
-      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/spring%E7%9A%84bean%E7%AE%A1%E7%90%86/</link>
+      <link>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/spring%E7%9A%84bean%E7%AE%A1%E7%90%86/</link>
       <pubDate>Sat, 20 Jun 2020 15:45:49 +0000</pubDate>
       
-      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/spring%E7%9A%84bean%E7%AE%A1%E7%90%86/</guid>
+      <guid>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/spring%E7%9A%84bean%E7%AE%A1%E7%90%86/</guid>
       <description>
         
           
@@ -491,10 +413,10 @@ CSDN地址：http://blog.csdn.net/michael753951
     
     <item>
       <title>一点点手写Spring</title>
-      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E4%B8%80%E7%82%B9%E7%82%B9%E6%89%8B%E5%86%99spring/</link>
+      <link>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/%E4%B8%80%E7%82%B9%E7%82%B9%E6%89%8B%E5%86%99spring/</link>
       <pubDate>Sat, 20 Jun 2020 10:02:28 +0000</pubDate>
       
-      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E4%B8%80%E7%82%B9%E7%82%B9%E6%89%8B%E5%86%99spring/</guid>
+      <guid>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/%E4%B8%80%E7%82%B9%E7%82%B9%E6%89%8B%E5%86%99spring/</guid>
       <description>
         
           
@@ -522,10 +444,10 @@ CSDN地址：http://blog.csdn.net/michael753951
     
     <item>
       <title>自定义注解并且进行扫描解析</title>
-      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B3%A8%E8%A7%A3%E5%B9%B6%E4%B8%94%E8%BF%9B%E8%A1%8C%E6%89%AB%E6%8F%8F%E8%A7%A3%E6%9E%90/</link>
+      <link>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B3%A8%E8%A7%A3%E5%B9%B6%E4%B8%94%E8%BF%9B%E8%A1%8C%E6%89%AB%E6%8F%8F%E8%A7%A3%E6%9E%90/</link>
       <pubDate>Fri, 05 Jun 2020 22:52:22 +0000</pubDate>
       
-      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B3%A8%E8%A7%A3%E5%B9%B6%E4%B8%94%E8%BF%9B%E8%A1%8C%E6%89%AB%E6%8F%8F%E8%A7%A3%E6%9E%90/</guid>
+      <guid>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B3%A8%E8%A7%A3%E5%B9%B6%E4%B8%94%E8%BF%9B%E8%A1%8C%E6%89%AB%E6%8F%8F%E8%A7%A3%E6%9E%90/</guid>
       <description>
         
           
@@ -597,10 +519,10 @@ CSDN地址：http://blog.csdn.net/michael753951
     
     <item>
       <title>Lambda表达式与函数式接口</title>
-      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E5%87%BD%E6%95%B0%E5%BC%8F%E6%8E%A5%E5%8F%A3/</link>
+      <link>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E5%87%BD%E6%95%B0%E5%BC%8F%E6%8E%A5%E5%8F%A3/</link>
       <pubDate>Fri, 02 Aug 2019 00:55:10 +0000</pubDate>
       
-      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E5%87%BD%E6%95%B0%E5%BC%8F%E6%8E%A5%E5%8F%A3/</guid>
+      <guid>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E5%87%BD%E6%95%B0%E5%BC%8F%E6%8E%A5%E5%8F%A3/</guid>
       <description>
         
           
@@ -640,10 +562,10 @@ CSDN地址：http://blog.csdn.net/michael753951
     
     <item>
       <title>Java的Integer类方法解读</title>
-      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/java%E7%9A%84integer%E7%B1%BB%E6%96%B9%E6%B3%95%E8%A7%A3%E8%AF%BB/</link>
+      <link>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/java%E7%9A%84integer%E7%B1%BB%E6%96%B9%E6%B3%95%E8%A7%A3%E8%AF%BB/</link>
       <pubDate>Fri, 19 Jul 2019 16:13:38 +0000</pubDate>
       
-      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/java%E7%9A%84integer%E7%B1%BB%E6%96%B9%E6%B3%95%E8%A7%A3%E8%AF%BB/</guid>
+      <guid>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/java%E7%9A%84integer%E7%B1%BB%E6%96%B9%E6%B3%95%E8%A7%A3%E8%AF%BB/</guid>
       <description>
         
           
@@ -675,10 +597,10 @@ CSDN地址：http://blog.csdn.net/michael753951
     
     <item>
       <title>毕业旅行规划</title>
-      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E6%AF%95%E4%B8%9A%E6%97%85%E8%A1%8C%E8%A7%84%E5%88%92/</link>
+      <link>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/%E6%AF%95%E4%B8%9A%E6%97%85%E8%A1%8C%E8%A7%84%E5%88%92/</link>
       <pubDate>Tue, 15 May 2018 17:06:00 +0000</pubDate>
       
-      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E6%AF%95%E4%B8%9A%E6%97%85%E8%A1%8C%E8%A7%84%E5%88%92/</guid>
+      <guid>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/%E6%AF%95%E4%B8%9A%E6%97%85%E8%A1%8C%E8%A7%84%E5%88%92/</guid>
       <description>
         
           
@@ -705,10 +627,10 @@ CSDN地址：http://blog.csdn.net/michael753951
     
     <item>
       <title>Ubuntu下使用CodeBlocks进行多线程编程</title>
-      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/ubuntu%E4%B8%8B%E4%BD%BF%E7%94%A8codeblocks%E8%BF%9B%E8%A1%8C%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/</link>
+      <link>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/ubuntu%E4%B8%8B%E4%BD%BF%E7%94%A8codeblocks%E8%BF%9B%E8%A1%8C%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/</link>
       <pubDate>Mon, 19 Feb 2018 14:19:04 +0000</pubDate>
       
-      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/ubuntu%E4%B8%8B%E4%BD%BF%E7%94%A8codeblocks%E8%BF%9B%E8%A1%8C%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/</guid>
+      <guid>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/ubuntu%E4%B8%8B%E4%BD%BF%E7%94%A8codeblocks%E8%BF%9B%E8%A1%8C%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/</guid>
       <description>
         
           
@@ -778,10 +700,10 @@ CSDN地址：http://blog.csdn.net/michael753951
     
     <item>
       <title>关于Apache HTTPD 2.2.15的部分漏洞修复建议</title>
-      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E5%85%B3%E4%BA%8Eapache-httpd-2.2.15%E7%9A%84%E9%83%A8%E5%88%86%E6%BC%8F%E6%B4%9E%E4%BF%AE%E5%A4%8D%E5%BB%BA%E8%AE%AE/</link>
+      <link>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/%E5%85%B3%E4%BA%8Eapache-httpd-2.2.15%E7%9A%84%E9%83%A8%E5%88%86%E6%BC%8F%E6%B4%9E%E4%BF%AE%E5%A4%8D%E5%BB%BA%E8%AE%AE/</link>
       <pubDate>Thu, 21 Dec 2017 11:35:49 +0000</pubDate>
       
-      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E5%85%B3%E4%BA%8Eapache-httpd-2.2.15%E7%9A%84%E9%83%A8%E5%88%86%E6%BC%8F%E6%B4%9E%E4%BF%AE%E5%A4%8D%E5%BB%BA%E8%AE%AE/</guid>
+      <guid>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/%E5%85%B3%E4%BA%8Eapache-httpd-2.2.15%E7%9A%84%E9%83%A8%E5%88%86%E6%BC%8F%E6%B4%9E%E4%BF%AE%E5%A4%8D%E5%BB%BA%E8%AE%AE/</guid>
       <description>
         
           
@@ -817,7 +739,7 @@ CSDN地址：http://blog.csdn.net/michael753951
         class=&#34;image_figure image_external image_processed&#34;
         width=&#34;467&#34;
         height=&#34;446&#34;
-        src=&#34;//images/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcxMjIxMTEwMDQ1Njk5_8918633681367883446.png&#34;
+        src=&#34;https://yaoyl.cn/images/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcxMjIxMTEwMDQ1Njk5_8918633681367883446.png&#34;
       
       
     /&gt;
@@ -850,10 +772,10 @@ CSDN地址：http://blog.csdn.net/michael753951
     
     <item>
       <title>华为初面&#43;综合面试（技术面）</title>
-      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E5%8D%8E%E4%B8%BA%E5%88%9D%E9%9D%A2&#43;%E7%BB%BC%E5%90%88%E9%9D%A2%E8%AF%95%E6%8A%80%E6%9C%AF%E9%9D%A2/</link>
+      <link>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/%E5%8D%8E%E4%B8%BA%E5%88%9D%E9%9D%A2&#43;%E7%BB%BC%E5%90%88%E9%9D%A2%E8%AF%95%E6%8A%80%E6%9C%AF%E9%9D%A2/</link>
       <pubDate>Thu, 12 Oct 2017 02:28:17 +0000</pubDate>
       
-      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E5%8D%8E%E4%B8%BA%E5%88%9D%E9%9D%A2&#43;%E7%BB%BC%E5%90%88%E9%9D%A2%E8%AF%95%E6%8A%80%E6%9C%AF%E9%9D%A2/</guid>
+      <guid>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/%E5%8D%8E%E4%B8%BA%E5%88%9D%E9%9D%A2&#43;%E7%BB%BC%E5%90%88%E9%9D%A2%E8%AF%95%E6%8A%80%E6%9C%AF%E9%9D%A2/</guid>
       <description>
         
           
@@ -903,10 +825,10 @@ CSDN地址：http://blog.csdn.net/michael753951
     
     <item>
       <title>腾讯初试（技术面）</title>
-      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E8%85%BE%E8%AE%AF%E5%88%9D%E8%AF%95%E6%8A%80%E6%9C%AF%E9%9D%A2/</link>
+      <link>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/%E8%85%BE%E8%AE%AF%E5%88%9D%E8%AF%95%E6%8A%80%E6%9C%AF%E9%9D%A2/</link>
       <pubDate>Wed, 11 Oct 2017 01:45:58 +0000</pubDate>
       
-      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E8%85%BE%E8%AE%AF%E5%88%9D%E8%AF%95%E6%8A%80%E6%9C%AF%E9%9D%A2/</guid>
+      <guid>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/%E8%85%BE%E8%AE%AF%E5%88%9D%E8%AF%95%E6%8A%80%E6%9C%AF%E9%9D%A2/</guid>
       <description>
         
           
@@ -964,10 +886,10 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
     
     <item>
       <title>2018网易校招运营开发工程师编程第一题</title>
-      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/2018%E7%BD%91%E6%98%93%E6%A0%A1%E6%8B%9B%E8%BF%90%E8%90%A5%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%BC%96%E7%A8%8B%E7%AC%AC%E4%B8%80%E9%A2%98/</link>
+      <link>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/2018%E7%BD%91%E6%98%93%E6%A0%A1%E6%8B%9B%E8%BF%90%E8%90%A5%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%BC%96%E7%A8%8B%E7%AC%AC%E4%B8%80%E9%A2%98/</link>
       <pubDate>Sat, 16 Sep 2017 22:38:56 +0000</pubDate>
       
-      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/2018%E7%BD%91%E6%98%93%E6%A0%A1%E6%8B%9B%E8%BF%90%E8%90%A5%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%BC%96%E7%A8%8B%E7%AC%AC%E4%B8%80%E9%A2%98/</guid>
+      <guid>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/2018%E7%BD%91%E6%98%93%E6%A0%A1%E6%8B%9B%E8%BF%90%E8%90%A5%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%BC%96%E7%A8%8B%E7%AC%AC%E4%B8%80%E9%A2%98/</guid>
       <description>
         
           
@@ -1035,10 +957,10 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
     
     <item>
       <title>虚拟驾驶环境搭建(四)</title>
-      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E8%99%9A%E6%8B%9F%E9%A9%BE%E9%A9%B6%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%9B%9B/</link>
+      <link>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/%E8%99%9A%E6%8B%9F%E9%A9%BE%E9%A9%B6%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%9B%9B/</link>
       <pubDate>Thu, 13 Jul 2017 16:18:07 +0000</pubDate>
       
-      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E8%99%9A%E6%8B%9F%E9%A9%BE%E9%A9%B6%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%9B%9B/</guid>
+      <guid>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/%E8%99%9A%E6%8B%9F%E9%A9%BE%E9%A9%B6%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%9B%9B/</guid>
       <description>
         
           
@@ -1122,10 +1044,10 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
     
     <item>
       <title>虚拟驾驶环境搭建(三)</title>
-      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E8%99%9A%E6%8B%9F%E9%A9%BE%E9%A9%B6%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%89/</link>
+      <link>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/%E8%99%9A%E6%8B%9F%E9%A9%BE%E9%A9%B6%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%89/</link>
       <pubDate>Thu, 13 Jul 2017 16:17:12 +0000</pubDate>
       
-      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E8%99%9A%E6%8B%9F%E9%A9%BE%E9%A9%B6%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%89/</guid>
+      <guid>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/%E8%99%9A%E6%8B%9F%E9%A9%BE%E9%A9%B6%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%89/</guid>
       <description>
         
           
@@ -1181,10 +1103,10 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
     
     <item>
       <title>虚拟驾驶环境搭建(二)</title>
-      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E8%99%9A%E6%8B%9F%E9%A9%BE%E9%A9%B6%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%BA%8C/</link>
+      <link>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/%E8%99%9A%E6%8B%9F%E9%A9%BE%E9%A9%B6%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%BA%8C/</link>
       <pubDate>Thu, 13 Jul 2017 16:15:53 +0000</pubDate>
       
-      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E8%99%9A%E6%8B%9F%E9%A9%BE%E9%A9%B6%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%BA%8C/</guid>
+      <guid>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/%E8%99%9A%E6%8B%9F%E9%A9%BE%E9%A9%B6%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%BA%8C/</guid>
       <description>
         
           
@@ -1241,10 +1163,10 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
     
     <item>
       <title>虚拟驾驶环境搭建(一)</title>
-      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E8%99%9A%E6%8B%9F%E9%A9%BE%E9%A9%B6%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%80/</link>
+      <link>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/%E8%99%9A%E6%8B%9F%E9%A9%BE%E9%A9%B6%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%80/</link>
       <pubDate>Thu, 13 Jul 2017 16:14:11 +0000</pubDate>
       
-      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E8%99%9A%E6%8B%9F%E9%A9%BE%E9%A9%B6%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%80/</guid>
+      <guid>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/%E8%99%9A%E6%8B%9F%E9%A9%BE%E9%A9%B6%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%80/</guid>
       <description>
         
           
@@ -1272,8 +1194,8 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
       decoding=&#34;async&#34;
       alt=&#34;驾驶状态&#34;
       
-        class=&#34;image_figure image_external image_unprocessed&#34;
-        src=&#34;http://img.blog.csdn.net/20170713161253561?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast&#34;
+        class=&#34;image_figure image_internal image_unprocessed&#34;
+        src=&#34;https://yaoyl.cn/&#34;
       
       
     /&gt;
@@ -1303,10 +1225,10 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
     
     <item>
       <title>Socket编程小结</title>
-      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/socket%E7%BC%96%E7%A8%8B%E5%B0%8F%E7%BB%93/</link>
+      <link>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/socket%E7%BC%96%E7%A8%8B%E5%B0%8F%E7%BB%93/</link>
       <pubDate>Sat, 10 Jun 2017 15:36:19 +0000</pubDate>
       
-      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/socket%E7%BC%96%E7%A8%8B%E5%B0%8F%E7%BB%93/</guid>
+      <guid>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/socket%E7%BC%96%E7%A8%8B%E5%B0%8F%E7%BB%93/</guid>
       <description>
         
           
@@ -1338,7 +1260,7 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
         class=&#34;image_figure image_external image_processed&#34;
         width=&#34;554&#34;
         height=&#34;327&#34;
-        src=&#34;//images/05232335-fb19fc7527e944d4845ef40831da4ec2_17119697933846672127.png&#34;
+        src=&#34;https://yaoyl.cn/images/05232335-fb19fc7527e944d4845ef40831da4ec2_17119697933846672127.png&#34;
       
       
     /&gt;
@@ -1430,18 +1352,19 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
     
     <item>
       <title>RFID实验三总结</title>
-      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%B8%89%E6%80%BB%E7%BB%93/</link>
+      <link>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%B8%89%E6%80%BB%E7%BB%93/</link>
       <pubDate>Tue, 23 May 2017 01:19:42 +0000</pubDate>
       
-      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%B8%89%E6%80%BB%E7%BB%93/</guid>
+      <guid>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%B8%89%E6%80%BB%E7%BB%93/</guid>
       <description>
         
           
             &lt;blockquote&gt;
 &lt;p&gt;一次debug到哭泣的经历。&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;龙云尧个人博客，转载请注明出处。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;CSDN地址：&lt;/p&gt;
-&lt;p&gt;个人blog地址：http://123.207.243.115:81/rfidshi-yan-san-zong-jie/&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;CSDN地址：http://blog.csdn.net/michael753951
+个人blog地址：http://yaoyl.cn&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;在实验过程中，需要不断翻阅实验课PPT之**《04 电子钱包的功能》&lt;strong&gt;，word之&lt;/strong&gt;《实验3文档》**，以及不知名大佬的&lt;a href=&#34;http://www.tqcto.com/article/software/83894.html&#34;&gt;课程总代码&lt;/a&gt;，CSDN大佬吕浪的&lt;a href=&#34;http://blog.csdn.net/lv_victor/article/details/51028930&#34;&gt;Java card开发系列文章&lt;/a&gt;。&lt;/p&gt;
 &lt;p&gt;本次实验和前两次实验相比，代码量多&lt;strong&gt;很多&lt;/strong&gt;，并且&lt;strong&gt;实验思路稍有区别&lt;/strong&gt;。实验之前可以不太懂实验流程（主要是因为流程本身就太复杂了），但是一定要&lt;strong&gt;一遍又一遍阅读源代码&lt;/strong&gt;，只有在读源码的过程中，才能体会整个验证过程，对项目中涉及到的函数方法的使用才能有一个更加深入的了解。接着自己不断重写代码，理解整个实现过程，才能对这个课程实验有较为深入的了解。&lt;/p&gt;
 &lt;p&gt;最终的代码地址：https://github.com/LongyunYao/RFID_lab/&lt;/p&gt;
@@ -1472,8 +1395,8 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
       decoding=&#34;async&#34;
       alt=&#34;圈存流程&#34;
       
-        class=&#34;image_figure image_external image_unprocessed&#34;
-        src=&#34;http://img.blog.csdn.net/20170423014034933?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast&#34;
+        class=&#34;image_figure image_internal image_unprocessed&#34;
+        src=&#34;https://yaoyl.cn/&#34;
       
       
     /&gt;
@@ -1505,8 +1428,8 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
       decoding=&#34;async&#34;
       alt=&#34;圈存初始化命令&#34;
       
-        class=&#34;image_figure image_external image_unprocessed&#34;
-        src=&#34;http://img.blog.csdn.net/20170423013823877?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast&#34;
+        class=&#34;image_figure image_internal image_unprocessed&#34;
+        src=&#34;https://yaoyl.cn/&#34;
       
       
     /&gt;
@@ -1531,8 +1454,8 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
       decoding=&#34;async&#34;
       alt=&#34;IC卡响应圈存初始化命令&#34;
       
-        class=&#34;image_figure image_external image_unprocessed&#34;
-        src=&#34;http://img.blog.csdn.net/20170423014006004?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast&#34;
+        class=&#34;image_figure image_internal image_unprocessed&#34;
+        src=&#34;https://yaoyl.cn/&#34;
       
       
     /&gt;
@@ -1556,8 +1479,8 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
       decoding=&#34;async&#34;
       alt=&#34;IC卡处理圈存初始化信息流程&#34;
       
-        class=&#34;image_figure image_external image_unprocessed&#34;
-        src=&#34;http://img.blog.csdn.net/20170423020343856?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast&#34;
+        class=&#34;image_figure image_internal image_unprocessed&#34;
+        src=&#34;https://yaoyl.cn/&#34;
       
       
     /&gt;
@@ -1588,8 +1511,8 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
       decoding=&#34;async&#34;
       alt=&#34;圈存指令&#34;
       
-        class=&#34;image_figure image_external image_unprocessed&#34;
-        src=&#34;http://img.blog.csdn.net/20170423014058551?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast&#34;
+        class=&#34;image_figure image_internal image_unprocessed&#34;
+        src=&#34;https://yaoyl.cn/&#34;
       
       
     /&gt;
@@ -1613,8 +1536,8 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
       decoding=&#34;async&#34;
       alt=&#34;圈存指令流程&#34;
       
-        class=&#34;image_figure image_external image_unprocessed&#34;
-        src=&#34;http://img.blog.csdn.net/20170423025731193?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast&#34;
+        class=&#34;image_figure image_internal image_unprocessed&#34;
+        src=&#34;https://yaoyl.cn/&#34;
       
       
     /&gt;
@@ -1644,8 +1567,8 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
       decoding=&#34;async&#34;
       alt=&#34;圈存TAC&#34;
       
-        class=&#34;image_figure image_external image_unprocessed&#34;
-        src=&#34;http://img.blog.csdn.net/20170423030729769?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast&#34;
+        class=&#34;image_figure image_internal image_unprocessed&#34;
+        src=&#34;https://yaoyl.cn/&#34;
       
       
     /&gt;
@@ -1669,8 +1592,8 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
       decoding=&#34;async&#34;
       alt=&#34;TAC&#34;
       
-        class=&#34;image_figure image_external image_unprocessed&#34;
-        src=&#34;http://img.blog.csdn.net/20170423124717634?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast&#34;
+        class=&#34;image_figure image_internal image_unprocessed&#34;
+        src=&#34;https://yaoyl.cn/&#34;
       
       
     /&gt;
@@ -1679,7 +1602,6 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
 &lt;/figure&gt;
 &lt;/p&gt;
 &lt;p&gt;step4：&lt;strong&gt;IC使用同样的算法计算MAC2，如果计算结果和终端返回的MAC2一致，就说明终端的身份合法。IC卡就会执行圈存命令。同时返回TAC。其中TAC计算时，输入数据为[电子钱包余额（交易后）||电子钱包联机交易序号（加１前）||交易金额||交易类型标识||终端机编号||交易日期（主机）||交易时间（主机）]，密钥为TAC密码最左8个字节与TAC密码最右8个字节异或的结果。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;到这里整个圈存过程就结束了。消费以及查询和圈存的实现原理一致，这里就不赘述了。&lt;/p&gt;
           
           
         
@@ -1688,10 +1610,10 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
     
     <item>
       <title>RFID实验二总结</title>
-      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%80%BB%E7%BB%93/</link>
+      <link>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%80%BB%E7%BB%93/</link>
       <pubDate>Sun, 21 May 2017 02:55:05 +0000</pubDate>
       
-      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%80%BB%E7%BB%93/</guid>
+      <guid>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%80%BB%E7%BB%93/</guid>
       <description>
         
           
@@ -1951,10 +1873,10 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
     
     <item>
       <title>RFID实验一总结</title>
-      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%B8%80%E6%80%BB%E7%BB%93/</link>
+      <link>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%B8%80%E6%80%BB%E7%BB%93/</link>
       <pubDate>Sat, 20 May 2017 14:11:32 +0000</pubDate>
       
-      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%B8%80%E6%80%BB%E7%BB%93/</guid>
+      <guid>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%B8%80%E6%80%BB%E7%BB%93/</guid>
       <description>
         
           
@@ -2016,7 +1938,7 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
         class=&#34;image_figure image_external image_processed&#34;
         width=&#34;372&#34;
         height=&#34;127&#34;
-        src=&#34;//images/e80949d0-258b-11e7-96e2-89b3087741fc_7787092408133580828.png&#34;
+        src=&#34;https://yaoyl.cn/images/e80949d0-258b-11e7-96e2-89b3087741fc_7787092408133580828.png&#34;
       
       
     /&gt;
@@ -2044,7 +1966,7 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
         class=&#34;image_figure image_external image_processed&#34;
         width=&#34;509&#34;
         height=&#34;159&#34;
-        src=&#34;//images/e7b2830c-258b-11e7-8911-d2b7e7fc9d0d_12307540848290659802.png&#34;
+        src=&#34;https://yaoyl.cn/images/e7b2830c-258b-11e7-8911-d2b7e7fc9d0d_12307540848290659802.png&#34;
       
       
     /&gt;
@@ -2072,7 +1994,7 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
         class=&#34;image_figure image_external image_processed&#34;
         width=&#34;481&#34;
         height=&#34;210&#34;
-        src=&#34;//images/e78315e0-258b-11e7-8c78-08555ef584ec_12537409608955670593.png&#34;
+        src=&#34;https://yaoyl.cn/images/e78315e0-258b-11e7-8c78-08555ef584ec_12537409608955670593.png&#34;
       
       
     /&gt;
@@ -2101,7 +2023,7 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
         class=&#34;image_figure image_external image_processed&#34;
         width=&#34;723&#34;
         height=&#34;295&#34;
-        src=&#34;//images/e78578a8-258b-11e7-803f-d095709449d4_3479832271068198507.png&#34;
+        src=&#34;https://yaoyl.cn/images/e78578a8-258b-11e7-803f-d095709449d4_3479832271068198507.png&#34;
       
       
     /&gt;
@@ -2128,7 +2050,7 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
         class=&#34;image_figure image_external image_processed&#34;
         width=&#34;790&#34;
         height=&#34;367&#34;
-        src=&#34;//images/a3f1f2b4-258c-11e7-8164-5433dd00f23e_2002550957571907844.png&#34;
+        src=&#34;https://yaoyl.cn/images/a3f1f2b4-258c-11e7-8164-5433dd00f23e_2002550957571907844.png&#34;
       
       
     /&gt;
@@ -2157,7 +2079,7 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
         class=&#34;image_figure image_external image_processed&#34;
         width=&#34;472&#34;
         height=&#34;439&#34;
-        src=&#34;//images/e8051338-258b-11e7-8a65-057b6f6674bf_12972044147358193561.png&#34;
+        src=&#34;https://yaoyl.cn/images/e8051338-258b-11e7-8a65-057b6f6674bf_12972044147358193561.png&#34;
       
       
     /&gt;
@@ -2184,10 +2106,10 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
     
     <item>
       <title>Ubuntu下进行Socket编程</title>
-      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/ubuntu%E4%B8%8B%E8%BF%9B%E8%A1%8Csocket%E7%BC%96%E7%A8%8B/</link>
+      <link>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/ubuntu%E4%B8%8B%E8%BF%9B%E8%A1%8Csocket%E7%BC%96%E7%A8%8B/</link>
       <pubDate>Fri, 19 May 2017 19:28:45 +0000</pubDate>
       
-      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/ubuntu%E4%B8%8B%E8%BF%9B%E8%A1%8Csocket%E7%BC%96%E7%A8%8B/</guid>
+      <guid>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/ubuntu%E4%B8%8B%E8%BF%9B%E8%A1%8Csocket%E7%BC%96%E7%A8%8B/</guid>
       <description>
         
           
@@ -2220,8 +2142,8 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
       decoding=&#34;async&#34;
       alt=&#34;tcp_server_error&#34;
       
-        class=&#34;image_figure image_external image_unprocessed&#34;
-        src=&#34;http://img.blog.csdn.net/20170519192213021?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast&#34;
+        class=&#34;image_figure image_internal image_unprocessed&#34;
+        src=&#34;https://yaoyl.cn/&#34;
       
       
     /&gt;
@@ -2249,8 +2171,8 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
       decoding=&#34;async&#34;
       alt=&#34;tcp_client_error_1&#34;
       
-        class=&#34;image_figure image_external image_unprocessed&#34;
-        src=&#34;http://img.blog.csdn.net/20170519192313323?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast&#34;
+        class=&#34;image_figure image_internal image_unprocessed&#34;
+        src=&#34;https://yaoyl.cn/&#34;
       
       
     /&gt;
@@ -2269,10 +2191,10 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
     
     <item>
       <title>双系统安装Ubuntu的初始化</title>
-      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E5%8F%8C%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85ubuntu%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96/</link>
+      <link>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/%E5%8F%8C%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85ubuntu%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96/</link>
       <pubDate>Fri, 19 May 2017 17:05:46 +0000</pubDate>
       
-      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E5%8F%8C%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85ubuntu%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96/</guid>
+      <guid>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/%E5%8F%8C%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85ubuntu%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96/</guid>
       <description>
         
           
@@ -2309,8 +2231,8 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
       decoding=&#34;async&#34;
       alt=&#34;网卡&#34;
       
-        class=&#34;image_figure image_external image_unprocessed&#34;
-        src=&#34;http://img.blog.csdn.net/20170519170710308?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast&#34;
+        class=&#34;image_figure image_internal image_unprocessed&#34;
+        src=&#34;https://yaoyl.cn/&#34;
       
       
     /&gt;
@@ -2336,10 +2258,10 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
     
     <item>
       <title>blog的文件迁移</title>
-      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/ghostblog%E7%9A%84%E6%96%87%E4%BB%B6%E8%BF%81%E7%A7%BB/</link>
+      <link>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/ghostblog%E7%9A%84%E6%96%87%E4%BB%B6%E8%BF%81%E7%A7%BB/</link>
       <pubDate>Fri, 19 May 2017 02:29:18 +0000</pubDate>
       
-      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/ghostblog%E7%9A%84%E6%96%87%E4%BB%B6%E8%BF%81%E7%A7%BB/</guid>
+      <guid>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/ghostblog%E7%9A%84%E6%96%87%E4%BB%B6%E8%BF%81%E7%A7%BB/</guid>
       <description>
         
           
@@ -2367,10 +2289,10 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
     
     <item>
       <title>OpenGL学习笔记（十）</title>
-      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%8D%81/</link>
+      <link>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%8D%81/</link>
       <pubDate>Sat, 13 May 2017 16:49:22 +0000</pubDate>
       
-      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%8D%81/</guid>
+      <guid>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%8D%81/</guid>
       <description>
         
           
@@ -2408,8 +2330,8 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
       decoding=&#34;async&#34;
       alt=&#34;进度条代码&#34;
       
-        class=&#34;image_figure image_external image_unprocessed&#34;
-        src=&#34;http://img.blog.csdn.net/20170530163934393?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast&#34;
+        class=&#34;image_figure image_internal image_unprocessed&#34;
+        src=&#34;https://yaoyl.cn/&#34;
       
       
     /&gt;
@@ -2437,8 +2359,8 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
       decoding=&#34;async&#34;
       alt=&#34;键值&#34;
       
-        class=&#34;image_figure image_external image_unprocessed&#34;
-        src=&#34;http://img.blog.csdn.net/20170530164000862?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast&#34;
+        class=&#34;image_figure image_internal image_unprocessed&#34;
+        src=&#34;https://yaoyl.cn/&#34;
       
       
     /&gt;
@@ -2476,10 +2398,10 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
     
     <item>
       <title>OpenGL学习笔记（九）</title>
-      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%9D/</link>
+      <link>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%9D/</link>
       <pubDate>Fri, 12 May 2017 18:00:15 +0000</pubDate>
       
-      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%9D/</guid>
+      <guid>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%9D/</guid>
       <description>
         
           
@@ -2530,8 +2452,8 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
       decoding=&#34;async&#34;
       alt=&#34;section9.1&#34;
       
-        class=&#34;image_figure image_external image_unprocessed&#34;
-        src=&#34;http://img.blog.csdn.net/20170531220200082?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast&#34;
+        class=&#34;image_figure image_internal image_unprocessed&#34;
+        src=&#34;https://yaoyl.cn/&#34;
       
       
     /&gt;
@@ -2556,8 +2478,8 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
       decoding=&#34;async&#34;
       alt=&#34;section9.2&#34;
       
-        class=&#34;image_figure image_external image_unprocessed&#34;
-        src=&#34;http://img.blog.csdn.net/20170531220237426?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast&#34;
+        class=&#34;image_figure image_internal image_unprocessed&#34;
+        src=&#34;https://yaoyl.cn/&#34;
       
       
     /&gt;
@@ -2582,8 +2504,8 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
       decoding=&#34;async&#34;
       alt=&#34;section9.3&#34;
       
-        class=&#34;image_figure image_external image_unprocessed&#34;
-        src=&#34;http://img.blog.csdn.net/20170531220401739?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast&#34;
+        class=&#34;image_figure image_internal image_unprocessed&#34;
+        src=&#34;https://yaoyl.cn/&#34;
       
       
     /&gt;
@@ -2616,10 +2538,10 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
     
     <item>
       <title>OpenGL学习笔记（八）</title>
-      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%85%AB/</link>
+      <link>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%85%AB/</link>
       <pubDate>Fri, 12 May 2017 03:28:48 +0000</pubDate>
       
-      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%85%AB/</guid>
+      <guid>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%85%AB/</guid>
       <description>
         
           
@@ -2657,8 +2579,8 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
       decoding=&#34;async&#34;
       alt=&#34;坐标系&#34;
       
-        class=&#34;image_figure image_external image_unprocessed&#34;
-        src=&#34;http://img.blog.csdn.net/20170512032715582?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast&#34;
+        class=&#34;image_figure image_internal image_unprocessed&#34;
+        src=&#34;https://yaoyl.cn/&#34;
       
       
     /&gt;
@@ -2687,8 +2609,8 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
       decoding=&#34;async&#34;
       alt=&#34;up&amp;amp;amp;amp;down&#34;
       
-        class=&#34;image_figure image_external image_unprocessed&#34;
-        src=&#34;http://img.blog.csdn.net/20170512032741089?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast&#34;
+        class=&#34;image_figure image_internal image_unprocessed&#34;
+        src=&#34;https://yaoyl.cn/&#34;
       
       
     /&gt;
@@ -2710,10 +2632,10 @@ A男士说现在我也知道了&lt;/p&gt;&lt;/blockquote&gt;
     
     <item>
       <title>OpenGL学习笔记（七）</title>
-      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%83/</link>
+      <link>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%83/</link>
       <pubDate>Tue, 09 May 2017 20:59:35 +0000</pubDate>
       
-      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%83/</guid>
+      <guid>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%83/</guid>
       <description>
         
           
@@ -2780,10 +2702,10 @@ glColor4f(1.0f,1.0f,1.0f,0.5f);
     
     <item>
       <title>OpenGL学习笔记（六）</title>
-      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%85%AD/</link>
+      <link>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%85%AD/</link>
       <pubDate>Mon, 08 May 2017 13:54:19 +0000</pubDate>
       
-      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%85%AD/</guid>
+      <guid>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%85%AD/</guid>
       <description>
         
           
@@ -2838,10 +2760,10 @@ glColor4f(1.0f,1.0f,1.0f,0.5f);
     
     <item>
       <title>OpenGL学习笔记（五）</title>
-      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%94/</link>
+      <link>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%94/</link>
       <pubDate>Sun, 07 May 2017 12:21:47 +0000</pubDate>
       
-      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%94/</guid>
+      <guid>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%94/</guid>
       <description>
         
           
@@ -2922,10 +2844,10 @@ glColor4f(1.0f,1.0f,1.0f,0.5f);
     
     <item>
       <title>OpenGL学习笔记（四）</title>
-      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%9B%9B/</link>
+      <link>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%9B%9B/</link>
       <pubDate>Sun, 07 May 2017 12:20:57 +0000</pubDate>
       
-      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%9B%9B/</guid>
+      <guid>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%9B%9B/</guid>
       <description>
         
           
@@ -2985,10 +2907,10 @@ glColor4f(1.0f,1.0f,1.0f,0.5f);
     
     <item>
       <title>OpenGL学习笔记（三）</title>
-      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%89/</link>
+      <link>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%89/</link>
       <pubDate>Wed, 03 May 2017 15:14:09 +0000</pubDate>
       
-      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%89/</guid>
+      <guid>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%89/</guid>
       <description>
         
           
@@ -3056,10 +2978,10 @@ glColor4f(1.0f,1.0f,1.0f,0.5f);
     
     <item>
       <title>OpenGL学习笔记（二）</title>
-      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%8C/</link>
+      <link>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%8C/</link>
       <pubDate>Mon, 01 May 2017 10:14:47 +0000</pubDate>
       
-      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%8C/</guid>
+      <guid>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%8C/</guid>
       <description>
         
           
@@ -3074,10 +2996,10 @@ glColor4f(1.0f,1.0f,1.0f,0.5f);
     
     <item>
       <title>OpenGL学习笔记（一）</title>
-      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%80/</link>
+      <link>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%80/</link>
       <pubDate>Mon, 01 May 2017 10:08:09 +0000</pubDate>
       
-      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%80/</guid>
+      <guid>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%80/</guid>
       <description>
         
           
@@ -3160,10 +3082,10 @@ glColor4f(1.0f,1.0f,1.0f,0.5f);
     
     <item>
       <title>网易复试（技术面）</title>
-      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E7%BD%91%E6%98%93%E5%A4%8D%E8%AF%95%E6%8A%80%E6%9C%AF%E9%9D%A2/</link>
+      <link>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/%E7%BD%91%E6%98%93%E5%A4%8D%E8%AF%95%E6%8A%80%E6%9C%AF%E9%9D%A2/</link>
       <pubDate>Thu, 27 Apr 2017 03:33:47 +0000</pubDate>
       
-      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E7%BD%91%E6%98%93%E5%A4%8D%E8%AF%95%E6%8A%80%E6%9C%AF%E9%9D%A2/</guid>
+      <guid>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/%E7%BD%91%E6%98%93%E5%A4%8D%E8%AF%95%E6%8A%80%E6%9C%AF%E9%9D%A2/</guid>
       <description>
         
           
@@ -3220,10 +3142,10 @@ glColor4f(1.0f,1.0f,1.0f,0.5f);
     
     <item>
       <title>网易初面（技术面）</title>
-      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E7%BD%91%E6%98%93%E5%88%9D%E9%9D%A2%E6%8A%80%E6%9C%AF%E9%9D%A2/</link>
+      <link>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/%E7%BD%91%E6%98%93%E5%88%9D%E9%9D%A2%E6%8A%80%E6%9C%AF%E9%9D%A2/</link>
       <pubDate>Sat, 22 Apr 2017 23:22:08 +0000</pubDate>
       
-      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E7%BD%91%E6%98%93%E5%88%9D%E9%9D%A2%E6%8A%80%E6%9C%AF%E9%9D%A2/</guid>
+      <guid>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/%E7%BD%91%E6%98%93%E5%88%9D%E9%9D%A2%E6%8A%80%E6%9C%AF%E9%9D%A2/</guid>
       <description>
         
           
@@ -3293,10 +3215,10 @@ glColor4f(1.0f,1.0f,1.0f,0.5f);
     
     <item>
       <title>CSDN如何转载他人文章</title>
-      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/csdn%E5%A6%82%E4%BD%95%E8%BD%AC%E8%BD%BD%E4%BB%96%E4%BA%BA%E6%96%87%E7%AB%A0/</link>
+      <link>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/csdn%E5%A6%82%E4%BD%95%E8%BD%AC%E8%BD%BD%E4%BB%96%E4%BA%BA%E6%96%87%E7%AB%A0/</link>
       <pubDate>Fri, 21 Apr 2017 04:01:16 +0000</pubDate>
       
-      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/csdn%E5%A6%82%E4%BD%95%E8%BD%AC%E8%BD%BD%E4%BB%96%E4%BA%BA%E6%96%87%E7%AB%A0/</guid>
+      <guid>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/csdn%E5%A6%82%E4%BD%95%E8%BD%AC%E8%BD%BD%E4%BB%96%E4%BA%BA%E6%96%87%E7%AB%A0/</guid>
       <description>
         
           
@@ -3362,10 +3284,10 @@ glColor4f(1.0f,1.0f,1.0f,0.5f);
     
     <item>
       <title>利用Ghost作为图床</title>
-      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E5%88%A9%E7%94%A8ghost%E4%BD%9C%E4%B8%BA%E5%9B%BE%E5%BA%8A/</link>
+      <link>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/%E5%88%A9%E7%94%A8ghost%E4%BD%9C%E4%B8%BA%E5%9B%BE%E5%BA%8A/</link>
       <pubDate>Wed, 19 Apr 2017 12:14:03 +0000</pubDate>
       
-      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E5%88%A9%E7%94%A8ghost%E4%BD%9C%E4%B8%BA%E5%9B%BE%E5%BA%8A/</guid>
+      <guid>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/%E5%88%A9%E7%94%A8ghost%E4%BD%9C%E4%B8%BA%E5%9B%BE%E5%BA%8A/</guid>
       <description>
         
           
@@ -3421,10 +3343,10 @@ glColor4f(1.0f,1.0f,1.0f,0.5f);
     
     <item>
       <title>第一次爬虫实验代码及运行结果（html文本进行适当删除以压缩版面）</title>
-      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%88%AC%E8%99%AB%E5%AE%9E%E9%AA%8C%E4%BB%A3%E7%A0%81%E5%8F%8A%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9Chtml%E6%96%87%E6%9C%AC%E8%BF%9B%E8%A1%8C%E9%80%82%E5%BD%93%E5%88%A0%E9%99%A4%E4%BB%A5%E5%8E%8B%E7%BC%A9%E7%89%88%E9%9D%A2/</link>
+      <link>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%88%AC%E8%99%AB%E5%AE%9E%E9%AA%8C%E4%BB%A3%E7%A0%81%E5%8F%8A%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9Chtml%E6%96%87%E6%9C%AC%E8%BF%9B%E8%A1%8C%E9%80%82%E5%BD%93%E5%88%A0%E9%99%A4%E4%BB%A5%E5%8E%8B%E7%BC%A9%E7%89%88%E9%9D%A2/</link>
       <pubDate>Wed, 19 Apr 2017 01:28:43 +0000</pubDate>
       
-      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%88%AC%E8%99%AB%E5%AE%9E%E9%AA%8C%E4%BB%A3%E7%A0%81%E5%8F%8A%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9Chtml%E6%96%87%E6%9C%AC%E8%BF%9B%E8%A1%8C%E9%80%82%E5%BD%93%E5%88%A0%E9%99%A4%E4%BB%A5%E5%8E%8B%E7%BC%A9%E7%89%88%E9%9D%A2/</guid>
+      <guid>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%88%AC%E8%99%AB%E5%AE%9E%E9%AA%8C%E4%BB%A3%E7%A0%81%E5%8F%8A%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9Chtml%E6%96%87%E6%9C%AC%E8%BF%9B%E8%A1%8C%E9%80%82%E5%BD%93%E5%88%A0%E9%99%A4%E4%BB%A5%E5%8E%8B%E7%BC%A9%E7%89%88%E9%9D%A2/</guid>
       <description>
         
           
@@ -3671,10 +3593,10 @@ glColor4f(1.0f,1.0f,1.0f,0.5f);
     
     <item>
       <title>Python网络爬虫学习</title>
-      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0/</link>
+      <link>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0/</link>
       <pubDate>Wed, 19 Apr 2017 01:22:18 +0000</pubDate>
       
-      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0/</guid>
+      <guid>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0/</guid>
       <description>
         
           
@@ -3737,10 +3659,10 @@ glColor4f(1.0f,1.0f,1.0f,0.5f);
     
     <item>
       <title>囚笼</title>
-      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E5%9B%9A%E7%AC%BC/</link>
+      <link>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/%E5%9B%9A%E7%AC%BC/</link>
       <pubDate>Fri, 14 Apr 2017 17:06:00 +0000</pubDate>
       
-      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E5%9B%9A%E7%AC%BC/</guid>
+      <guid>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/%E5%9B%9A%E7%AC%BC/</guid>
       <description>
         
           
@@ -3818,34 +3740,6 @@ glColor4f(1.0f,1.0f,1.0f,0.5f);
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;18&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;免疫力那么差，万一不小心交叉感染就很容易出事
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;19&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;了……”
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;终于，病房中一直捂着头的大爷打断了我们对这个病房的探视，他有点不耐烦的比划着让我们离开。&lt;/p&gt;
-          
-          
-        
-      </description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://yaoyl.cn//post/2025/ai-agent%E6%A2%B3%E7%90%86/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yaoyl.cn//post/2025/ai-agent%E6%A2%B3%E7%90%86/</guid>
-      <description>
-        
-          
-            &lt;blockquote&gt;
-&lt;p&gt;龙云尧个人博客，转载请注明出处。
-CSDN地址：http://blog.csdn.net/michael753951
-个人blog地址：http://yaoyl.cn&lt;/p&gt;&lt;/blockquote&gt;
-&lt;h1 id=&#34;代码合并的prompt&#34;&gt;代码合并的prompt&lt;/h1&gt;
-&lt;blockquote&gt;
-&lt;p&gt;(http ) &amp;amp;&amp;amp; (tcp.dstport == 11434)&lt;/p&gt;&lt;/blockquote&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-gdscript3&#34; data-lang=&#34;gdscript3&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;|&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;im_start&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;user&lt;/span&gt;\&lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;```&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;python&lt;/span&gt;\&lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;# 本文件实现一个基于 MQTT 的智能家居控制方案\n# 包含传感器数据解析、设备联动控制、语音交互逻辑\n# 需要安装依赖库：paho-mqtt（用于 MQTT 通信）\n\nimport os\nimport json\nimport logging\nimport time\nimport mqtt\nimport yaml\n\n# 定义设备信息\nDEVICE_INFO = {\n    \&amp;#34;central_gateway\&amp;#34;: {\n        \&amp;#34;topic\&amp;#34;: \&amp;#34;homeassistant\&amp;#34;,\n        \&amp;#34;username\&amp;#34;: \&amp;#34;homeassistant\&amp;#34;,\n        \&amp;#34;password\&amp;#34;: \&amp;#34;your_password\&amp;#34;\n    },\n    \&amp;#34;multi_mod_gateway\&amp;#34;: {\n        \&amp;#34;topic\&amp;#34;: \&amp;#34;multi_mod\&amp;#34;,\n        \&amp;#34;username\&amp;#34;: \&amp;#34;multi_mod\&amp;#34;,\n        \&amp;#34;password\&amp;#34;: \&amp;#34;your_password\&amp;#34;\n    },\n    \&amp;#34;alexa_devices\&amp;#34;: [\n        {\&amp;#34;name\&amp;#34;: \&amp;#34;小爱同学1\&amp;#34;, \&amp;#34;topic\&amp;#34;: \&amp;#34;alexa/1\&amp;#34;},\n        {\&amp;#34;name\&amp;#34;: \&amp;#34;小爱同学2\&amp;#34;, \&amp;#34;topic\&amp;#34;: \&amp;#34;alexa/2\&amp;#34;},\n        {\&amp;#34;name\&amp;#34;: \&amp;#34;小爱同学3\&amp;#34;, \&amp;#34;topic\&amp;#34;: \&amp;#34;alexa/3\&amp;#34;}\n    ]\n}\n\n# 读取日志文件\ndef parse_log_file(log_file_path):\n    sensors = {\n        \&amp;#34;door_sensor\&amp;#34;: {\&amp;#34;state\&amp;#34;: \&amp;#34;closed\&amp;#34;},\n        \&amp;#34;light\&amp;#34;: {\&amp;#34;state\&amp;#34;: \&amp;#34;off\&amp;#34;, \&amp;#34;brightness\&amp;#34;: 100, \&amp;#34;color_temp\&amp;#34;: 2700}\n    }\n    with open(log_file_path, &amp;#39;r&amp;#39;) as f:\n        for line in f:\n            if \&amp;#34;switch\&amp;#34; in line:\n                sensors[\&amp;#34;light\&amp;#34;][\&amp;#34;state\&amp;#34;] = line.split(\&amp;#34; \&amp;#34;)[1]\n            elif \&amp;#34;brightness\&amp;#34; in line:\n                sensors[\&amp;#34;light\&amp;#34;][\&amp;#34;brightness\&amp;#34;] = int(line.split(\&amp;#34; \&amp;#34;)[1])\n            elif \&amp;#34;color_temp\&amp;#34; in line:\n                sensors[\&amp;#34;light\&amp;#34;][\&amp;#34;color_temp\&amp;#34;] = int(line.split(\&amp;#34; \&amp;#34;)[1])\n    return sensors\n\n# 通过MQTT控制设备\ndef call_device_api(device_name, action, payload=None):\n    client = mqtt.Client(f\&amp;#34;{device_name}/1\&amp;#34;)\n    client.connect(DEVICE_INFO[device_name][\&amp;#34;topic\&amp;#34;])\n    client.publish(f\&amp;#34;{device_name}/{action}\&amp;#34;, str(payload).encode())\n    client.disconnect()\n\n# 主程序\ndef main():\n    log_file_path = \&amp;#34;sensor_log.txt\&amp;#34;  # 替换为您的日志文件路径\n    sensors = parse_log_file(log_file_path)\n    \n    # 模拟传感器数据（实际应从日志文件读取）\n    print(\&amp;#34;当前传感器状态：\&amp;#34;)\n    for key, value in sensors.items():\n        print(f\&amp;#34;{key}: {value}\&amp;#34;)\n    \n    # 自动化规则（示例）\n    if sensors[\&amp;#34;door_sensor\&amp;#34;][\&amp;#34;state\&amp;#34;] == \&amp;#34;closed\&amp;#34;:\n        call_device_api(\&amp;#34;light\&amp;#34;, \&amp;#34;off\&amp;#34;)\n    elif sensors[\&amp;#34;light\&amp;#34;][\&amp;#34;brightness\&amp;#34;] &amp;lt; 100:\n        call_device_api(\&amp;#34;light\&amp;#34;, \&amp;#34;dim\&amp;#34;, {\&amp;#34;brightness\&amp;#34;: 100})\n    \n    # 语音交互（示例）\n    if input(\&amp;#34;输入语音指令（如：开灯）：\&amp;#34;) == \&amp;#34;开灯\&amp;#34;:\n        call_device_api(\&amp;#34;light\&amp;#34;, \&amp;#34;on\&amp;#34;)\n\nif __name__ == \&amp;#34;__main__\&amp;#34;:\n    main()\n```\n\nThis code block includes the necessary imports, device information, log file parsing, MQTT control functions, and a main program that reads sensor data from a log file, applies automation rules based on the sensor states, and handles voice interactions.\n\n\n```\n\nPlease rewrite the entire code block above in order to satisfy the following request: \&amp;#34;The following code was suggested as an edit:\n```\n# 设备信息配置\n# 用于通过 MQTT 与中枢网关、多模网关及小爱同学设备通信\nDEVICE_INFO = {\n    \&amp;#34;central_gateway\&amp;#34;: {\n        \&amp;#34;topic\&amp;#34;: \&amp;#34;homeassistant\&amp;#34;,  # MQTT 主题\n        \&amp;#34;username\&amp;#34;: \&amp;#34;homeassistant\&amp;#34;,  # 认证用户名\n        \&amp;#34;password\&amp;#34;: \&amp;#34;your_password\&amp;#34;  # 认证密码（需替换为实际值）\n    },\n    \&amp;#34;multi_mod_gateway\&amp;#34;: {\n        \&amp;#34;topic\&amp;#34;: \&amp;#34;multi_mod\&amp;#34;,  # 多模网关主题\n        \&amp;#34;username\&amp;#34;: \&amp;#34;multi_mod\&amp;#34;,  # 认证用户名\n        \&amp;#34;password\&amp;#34;: \&amp;#34;your_password\&amp;#34;  # 认证密码\n    },\n    \&amp;#34;alexa_devices\&amp;#34;: [\n        {\&amp;#34;name\&amp;#34;: \&amp;#34;小爱同学1\&amp;#34;, \&amp;#34;topic\&amp;#34;: \&amp;#34;alexa/1\&amp;#34;},  # 小爱同学设备主题\n        {\&amp;#34;name\&amp;#34;: \&amp;#34;小爱同学2\&amp;#34;, \&amp;#34;topic\&amp;#34;: \&amp;#34;alexa/2\&amp;#34;},\n        {\&amp;#34;name\&amp;#34;: \&amp;#34;小爱同学3\&amp;#34;, \&amp;#34;topic\&amp;#34;: \&amp;#34;alexa/3\&amp;#34;}\n    ]\n}\n```\nPlease apply it to the previous code.\&amp;#34;. You should rewrite the entire code block without leaving placeholders, even if the code is the same as before.&amp;lt;|im_end|&amp;gt;\n&amp;lt;|im_start|&amp;gt;assistant\nSure! Here&amp;#39;s the entire rewritten code block:\n```python\n&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;agent模式下的qpi请求&#34;&gt;agent模式下的qpi请求&lt;/h1&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;model&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;qwen3:1.7b-q4_K_M&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;messages&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:[{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;role&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;system&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;content&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;lt;important_rules&amp;gt;\n  You are in agent mode.\n\n  If you need to use multiple tools, you can call multiple read only tools simultaneously.\n\n  Always include the language and file name in the info string when you write code blocks.\n  If you are editing \&amp;#34;src/main.py\&amp;#34; for example, your code block should start with &amp;#39;```python src/main.py&amp;#39;\n\n\nFor larger codeblocks (&amp;gt;20 lines), use brief language-appropriate placeholders for unmodified sections, e.g. &amp;#39;// ... existing code ...&amp;#39;\n\nHowever, only output codeblocks for suggestion and demonstration purposes, for example, when enumerating multiple hypothetical options. For implementing changes, use the edit tools.\n\n&amp;lt;/important_rules&amp;gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;},{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;role&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;user&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;content&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;This is the currently open file:\n\n```README.md\n# 💡 Qwen3 AI 编程助手（Docker 化部署）\n\n一个轻量、隐私友好、无需本地依赖的 AI 编程环境，通过 Docker 快速启动 [Qwen3](https://github.com/QwenLM) 模型服务，替代 GitHub Copilot，在 VSCode 中实现智能代码补全、生成和解释。\n\n&amp;gt; 🔥 特点：\n&amp;gt; - ✅ 不在本地安装任何 AI 框架（Ollama / PyTorch / llama.cpp）\n&amp;gt; - ✅ 所有运行都在容器中完成\n&amp;gt; - ✅ 支持中文注释、函数生成、单元测试\n&amp;gt; - ✅ 无额度限制，完全可控\n&amp;gt; - ✅ 可搭配 GPU 加速（NVIDIA 用户）\n\n---\n\n## 🚀 快速开始\n\n### 1. 安装依赖\n\n确保你已安装：\n- [Docker Engine](https://docs.docker.com/get-docker/)\n- [Docker Compose](https://docs.docker.com/compose/install/)（v2.23+）\n- [VSCode](https://code.visualstudio.com/)\n- [Continue 插件](https://marketplace.visualstudio.com/items?itemName=continue.continue)\n\n&amp;gt; 💡 推荐使用 Linux/macOS 或 WSL2（Windows）\n\n### 2. 克隆项目\n\n```bash\ngit clone https://github.com/yourname/qwen-coder.git\ncd qwen-coder\n\n\n```\n\n```docker-compose.yml\n# docker-compose.yml\nservices:\n  ollama:\n    image: ollama/ollama:latest\n    ports:\n      - \&amp;#34;11434:11434\&amp;#34;\n    volumes:\n      - ./models:/root/.ollama/models\n    environment:\n      - OLLAMA_HOST=0.0.0.0\n      - OLLAMA_MAX_LOADED_MODELS=1     # 只加载一个模型\n      - OLLAMA_KEEP_ALIVE=5m           # 模型常驻内存，避免反复加载\n    deploy:\n      resources:\n        limits:\n          memory: 12G   # 显式限制，防止超用\n    restart: unless-stopped\n    # 彻底重置 entrypoint 为 shell，并传入命令\n    entrypoint: [\&amp;#34;/bin/sh\&amp;#34;, \&amp;#34;-c\&amp;#34;]\n    command: |\n      \&amp;#34;\n      # 启动 ollama 服务（后台）\n      ollama serve &amp;amp;\n      \n      # 等待服务启动\n      sleep 5\n\n      # 拉取模型\n      echo &amp;#39;📥 开始下载 qwen:7b-chat-q4_K_M...&amp;#39;\n      ollama pull qwen:7b-chat-q4_K_M || echo &amp;#39;⚠️ 下载失败&amp;#39;\n\n      echo &amp;#39;📥 开始下载 qwen3:4b-instruct-2507-q4_K_M...&amp;#39;\n      ollama pull qwen3:4b-instruct-2507-q4_K_M || echo &amp;#39;⚠️ 下载失败&amp;#39;\n\n      echo &amp;#39;📥 开始下载 qwen3:4b-instruct...&amp;#39;\n      ollama pull qwen3:4b-instruct || echo &amp;#39;⚠️ 下载失败&amp;#39;\n\n      echo &amp;#39;📥 开始下载 qwen2.5-coder:3b...&amp;#39;\n      ollama pull qwen2.5-coder:3b || echo &amp;#39;⚠️ 下载失败&amp;#39;\n\n      echo &amp;#39;📥 开始下载 qwen3:1.7b-fp16...&amp;#39;\n      ollama pull qwen3:1.7b-fp16 || echo &amp;#39;⚠️ 下载失败&amp;#39;\n\n      echo &amp;#39;📥 开始下载 qwen3:1.7b-q4_K_M...&amp;#39;\n      ollama pull qwen3:1.7b-q4_K_M || echo &amp;#39;⚠️ 下载失败&amp;#39;\n\n      echo &amp;#39;📥 开始下载 qwen2.5-coder:1.5b-instruct-q5_K_M...&amp;#39;\n      ollama pull qwen2.5-coder:1.5b-instruct-q5_K_M || echo &amp;#39;⚠️ 下载失败&amp;#39;\n\n      echo &amp;#39;✅ 所有模型下载完成！服务持续运行中...&amp;#39;\n      \n      # 保持容器不退出（等待 ollama serve）\n      wait\n      \&amp;#34;\n```\n\n```.continue/config.json\n{\n  \&amp;#34;models\&amp;#34;: [\n    {\n      \&amp;#34;title\&amp;#34;: \&amp;#34;qwen2.5-1.5b-instruct\&amp;#34;,\n      \&amp;#34;name\&amp;#34;: \&amp;#34;qwen2.5-1.5b-instruct\&amp;#34;,\n      \&amp;#34;model\&amp;#34;: \&amp;#34;qwen2.5-coder:1.5b-instruct-q5_K_M\&amp;#34;,\n      \&amp;#34;apiBase\&amp;#34;: \&amp;#34;http://localhost:11434\&amp;#34;,\n      \&amp;#34;contextLength\&amp;#34;: 32768,\n      \&amp;#34;maxContextTokens\&amp;#34;: 4096,\n      \&amp;#34;temperature\&amp;#34;: 0.7,\n      \&amp;#34;topP\&amp;#34;: 0.9,\n      \&amp;#34;type\&amp;#34;: \&amp;#34;ollama\&amp;#34;,\n      \&amp;#34;provider\&amp;#34;: \&amp;#34;ollama\&amp;#34;\n    },\n    {\n      \&amp;#34;title\&amp;#34;: \&amp;#34;qwen3_1.7b-q4\&amp;#34;,\n      \&amp;#34;name\&amp;#34;: \&amp;#34;qwen3_1.7b-q4\&amp;#34;,\n      \&amp;#34;model\&amp;#34;: \&amp;#34;qwen3:1.7b-q4_K_M\&amp;#34;,\n      \&amp;#34;apiBase\&amp;#34;: \&amp;#34;http://localhost:11434\&amp;#34;,\n      \&amp;#34;contextLength\&amp;#34;: 32768,\n      \&amp;#34;maxContextTokens\&amp;#34;: 4096,\n      \&amp;#34;temperature\&amp;#34;: 0.7,\n      \&amp;#34;topP\&amp;#34;: 0.9,\n      \&amp;#34;type\&amp;#34;: \&amp;#34;ollama\&amp;#34;,\n      \&amp;#34;provider\&amp;#34;: \&amp;#34;ollama\&amp;#34;\n    }\n  ],\n  \&amp;#34;tabAutocompleteModel\&amp;#34;: {\n    \&amp;#34;model\&amp;#34;: \&amp;#34;qwen2.5-coder:1.5b-instruct-q5_K_M\&amp;#34;,\n    \&amp;#34;apiBase\&amp;#34;: \&amp;#34;http://localhost:11434\&amp;#34;,\n    \&amp;#34;provider\&amp;#34;: \&amp;#34;ollama\&amp;#34;,\n    \&amp;#34;title\&amp;#34;: \&amp;#34;qwen2.5-1.5b-instruct\&amp;#34;\n  },\n  \&amp;#34;autocomplete\&amp;#34;: {\n    \&amp;#34;prefixLines\&amp;#34;: 20,\n    \&amp;#34;suffixLines\&amp;#34;: 5,\n    \&amp;#34;debounceTime\&amp;#34;: 150,\n    \&amp;#34;timeout\&amp;#34;: 6000,\n    \&amp;#34;maxContextTokens\&amp;#34;: 2048\n  }\n}\n```\n\ndocker-compose.yml config.json \n请根据当前ollama的启动配置，刷新一下README.md文件&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}],&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;options&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;num_predict&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;4096&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;stop&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;lt;|im_start|&amp;gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;lt;|im_end|&amp;gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;num_ctx&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;32768&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;keep_alive&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1800&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;tools&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:[{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;function&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;function&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;read_file&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Use this tool if you need to view the contents of an existing file.&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;parameters&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;object&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;required&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;filepath&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;properties&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;filepath&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;string&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;The path of the file to read, relative to the root of the workspace (NOT uri or absolute path)&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}}}}},{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;function&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;function&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;create_new_file&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Create a new file. Only use this when a file doesn&amp;#39;t exist and should be created&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;parameters&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;object&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;required&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;filepath&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;contents&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;properties&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;filepath&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;string&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;The path where the new file should be created, relative to the root of the workspace&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;contents&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;string&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;The contents to write to the new file&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}}}}},{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;function&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;function&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;run_terminal_command&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Run a terminal command in the current directory.\nThe shell is not stateful and will not remember any previous commands.      When a command is run in the background ALWAYS suggest using shell commands to stop it; NEVER suggest using Ctrl+C.      When suggesting subsequent shell commands ALWAYS format them in shell command blocks.      Do NOT perform actions requiring special/admin privileges.      Choose terminal commands and scripts optimized for darwin and arm64 and shell /bin/zsh.&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;parameters&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;object&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;required&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;command&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;properties&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;command&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;string&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;The command to run. This will be passed directly into the IDE shell.&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;waitForCompletion&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;boolean&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Whether to wait for the command to complete before returning. Default is true. Set to false to run the command in the background. Set to true to run the command in the foreground and wait to collect the output.&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}}}}},{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;function&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;function&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;file_glob_search&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Search for files recursively in the project using glob patterns. Supports ** for recursive directory search. Output may be truncated; use targeted patterns&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;parameters&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;object&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;required&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;pattern&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;properties&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;pattern&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;string&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Glob pattern for file path matching&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}}}}},{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;function&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;function&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;view_diff&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;View the current diff of working changes&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;parameters&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;object&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;properties&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{}}}},{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;function&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;function&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;read_currently_open_file&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Read the currently open file in the IDE. If the user seems to be referring to a file that you can&amp;#39;t see, or is requesting an action on content that seems missing, try using this tool.&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;parameters&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;object&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;properties&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{}}}},{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;function&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;function&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;ls&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;List files and folders in a given directory&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;parameters&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;object&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;properties&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;dirPath&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;string&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;The directory path relative to the root of the project. Use forward slash paths like &amp;#39;/&amp;#39;. rather than e.g. &amp;#39;.&amp;#39;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;recursive&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;boolean&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;If true, lists files and folders recursively. To prevent unexpected large results, use this sparingly&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}}}}},{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;function&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;function&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;create_rule_block&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Creates a \&amp;#34;rule\&amp;#34; that can be referenced in future conversations. This should be used whenever you want to establish code standards / preferences that should be applied consistently, or when you want to avoid making a mistake again. To modify existing rules, use the edit tool instead.\n\nRule Types:\n- Always: Include only \&amp;#34;rule\&amp;#34; (always included in model context)\n- Auto Attached: Include \&amp;#34;rule\&amp;#34;, \&amp;#34;globs\&amp;#34;, and/or \&amp;#34;regex\&amp;#34; (included when files match patterns)\n- Agent Requested: Include \&amp;#34;rule\&amp;#34; and \&amp;#34;description\&amp;#34; (AI decides when to apply based on description)\n- Manual: Include only \&amp;#34;rule\&amp;#34; (only included when explicitly mentioned using @ruleName)&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;parameters&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;object&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;required&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;rule&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;properties&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;string&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Short, descriptive name summarizing the rule&amp;#39;s purpose (e.g. &amp;#39;React Standards&amp;#39;, &amp;#39;Type Hints&amp;#39;)&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;rule&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;string&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Clear, imperative instruction for future code generation (e.g. &amp;#39;Use named exports&amp;#39;, &amp;#39;Add Python type hints&amp;#39;). Each rule should focus on one specific standard.&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;string&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Description of when this rule should be applied. Required for Agent Requested rules (AI decides when to apply). Optional for other types.&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;globs&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;string&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Optional file patterns to which this rule applies (e.g. [&amp;#39;**/*.{ts,tsx}&amp;#39;] or [&amp;#39;src/**/*.ts&amp;#39;, &amp;#39;tests/**/*.ts&amp;#39;])&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;regex&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;string&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Optional regex patterns to match against file content. Rule applies only to files whose content matches the pattern (e.g. &amp;#39;useEffect&amp;#39; for React hooks or &amp;#39;\\bclass\\b&amp;#39; for class definitions)&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;alwaysApply&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;boolean&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Whether this rule should always be applied. Set to false for Agent Requested and Manual rules. Omit or set to true for Always and Auto Attached rules.&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}}}}},{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;function&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;function&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;fetch_url_content&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Can be used to view the contents of a website using a URL. Do NOT use this for files.&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;parameters&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;object&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;required&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;url&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;properties&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;url&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;string&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;The URL to read&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}}}}},{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;function&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;function&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;single_find_and_replace&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Performs exact string replacements in files.\n\nUsage:\n\n- You must use your `read_file` tool at least once in the conversation before\nediting. This tool will error if you attempt an edit without reading the file.\n\n- When editing text from read_file tool output, ensure you preserve the exact\nindentation (tabs/spaces) as it appears AFTER the line number prefix. The line\nnumber prefix format is: spaces + line number + tab. Everything after that tab\nis the actual file content to match. Never include any part of the line number\nprefix in the old_string or new_string.\n\n- ALWAYS prefer editing existing files in the codebase. NEVER write new files\nunless explicitly required.\n\n- Only use emojis if the user explicitly requests it. Avoid adding emojis to\nfiles unless asked.\n\n- Note this tool CANNOT be called in parallel with other tools.\n\n- The edit will FAIL if `old_string` is not unique in the file. Either provide\na larger string with more surrounding context to make it unique or use\n`replace_all` to change every instance of `old_string`.\n\n- Use `replace_all` for replacing and renaming strings across the file. This\nparameter is useful if you want to rename a variable for instance.&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;parameters&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;object&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;required&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;filepath&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;old_string&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;new_string&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;properties&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;filepath&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;string&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;The path to the file to modify, relative to the root of the workspace&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;old_string&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;string&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;The text to replace&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;new_string&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;string&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;The text to replace it with (must be different from old_string)&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;replace_all&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;boolean&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Replace all occurrences of old_string (default false)&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}}}}},{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;function&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;function&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;search_web&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Performs a web search, returning top results. Use this tool sparingly - only for questions that require specialized, external, and/or up-to-date knowledege. Common programming questions do not require web search.&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;parameters&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;object&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;required&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;query&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;properties&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;query&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;string&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;The natural language search query&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}}}}},{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;function&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;function&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;edit_existing_file&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Use this tool to edit an existing file. If you don&amp;#39;t know the contents of the file, read it first.\n  When addressing code modification requests, present a concise code snippet that\n  emphasizes only the necessary changes and uses abbreviated placeholders for\n  unmodified sections. For example:\n\n  ```language /path/to/file\n  // ... existing code ...\n\n  {{ modified code here }}\n\n  // ... existing code ...\n\n  {{ another modification }}\n\n  // ... rest of code ...\n  ```\n\n  In existing files, you should always restate the function or class that the snippet belongs to:\n\n  ```language /path/to/file\n  // ... existing code ...\n\n  function exampleFunction() {\n    // ... existing code ...\n\n    {{ modified code here }}\n\n    // ... rest of function ...\n  }\n\n  // ... rest of code ...\n  ```\n\n  Since users have access to their complete file, they prefer reading only the\n  relevant modifications. It&amp;#39;s perfectly acceptable to omit unmodified portions\n  at the beginning, middle, or end of files using these \&amp;#34;lazy\&amp;#34; comments. Only\n  provide the complete file when explicitly requested. Include a concise explanation\n  of changes unless the user specifically asks for code only.\n\nNote this tool CANNOT be called in parallel with other tools.&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;parameters&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;object&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;required&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;filepath&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;changes&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;properties&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;filepath&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;string&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;The path of the file to edit, relative to the root of the workspace.&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;changes&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;string&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Any modifications to the file, showing only needed changes. Do NOT wrap this in a codeblock or write anything besides the code changes. In larger files, use brief language-appropriate placeholders for large unmodified sections, e.g. &amp;#39;// ... existing code ...&amp;#39;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}}}}},{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;function&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;function&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;grep_search&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Perform a search over the repository using ripgrep. Output may be truncated, so use targeted queries&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;parameters&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;object&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;required&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;query&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;properties&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;query&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;string&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;The search query to use. Must be a valid ripgrep regex expression, escaped where needed&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}}}}}]}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;chat-模式下的请求&#34;&gt;chat 模式下的请求&lt;/h1&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;model&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;qwen3:1.7b-q4_K_M&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;messages&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:[{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;role&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;system&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;content&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;lt;important_rules&amp;gt;\n  You are in chat mode.\n\n  If the user asks to make changes to files offer that they can use the Apply Button on the code block, or switch to Agent Mode to make the suggested updates automatically.\n  If needed concisely explain to the user they can switch to agent mode using the Mode Selector dropdown and provide no other details.\n\n  Always include the language and file name in the info string when you write code blocks.\n  If you are editing \&amp;#34;src/main.py\&amp;#34; for example, your code block should start with &amp;#39;```python src/main.py&amp;#39;\n\n  When addressing code modification requests, present a concise code snippet that\n  emphasizes only the necessary changes and uses abbreviated placeholders for\n  unmodified sections. For example:\n\n  ```language /path/to/file\n  // ... existing code ...\n\n  {{ modified code here }}\n\n  // ... existing code ...\n\n  {{ another modification }}\n\n  // ... rest of code ...\n  ```\n\n  In existing files, you should always restate the function or class that the snippet belongs to:\n\n  ```language /path/to/file\n  // ... existing code ...\n\n  function exampleFunction() {\n    // ... existing code ...\n\n    {{ modified code here }}\n\n    // ... rest of function ...\n  }\n\n  // ... rest of code ...\n  ```\n\n  Since users have access to their complete file, they prefer reading only the\n  relevant modifications. It&amp;#39;s perfectly acceptable to omit unmodified portions\n  at the beginning, middle, or end of files using these \&amp;#34;lazy\&amp;#34; comments. Only\n  provide the complete file when explicitly requested. Include a concise explanation\n  of changes unless the user specifically asks for code only.\n\n&amp;lt;/important_rules&amp;gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;},{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;role&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;user&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;content&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;接下来我会与你进行多轮对话，请你做好准备&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;},{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;role&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;assistant&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;content&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;I&amp;#39;m ready to assist with any programming tasks or development work you&amp;#39;d like to tackle. Please let me know what specific problem or feature you&amp;#39;d like to address, and I&amp;#39;ll follow the rules for code modifications and communication as outlined. For example, if you want to implement a feature in src/main.py, I&amp;#39;ll format the code changes properly with file paths and concise explanations. Just share your request and I&amp;#39;ll prepare the response accordingly.&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;},{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;role&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;user&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;content&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;首先请介绍一些你自己&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;},{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;role&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;assistant&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;content&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;I&amp;#39;m a large language model developed by Alibaba Cloud, designed to assist with programming tasks, provide technical support, and offer helpful information. I can help with coding, debugging, explaining concepts, and more. However, I cannot replace human experts and should be used as a complementary tool. Let me know if you need assistance with any specific task!&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;},{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;role&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;user&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;content&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;接着用英语、法语、俄语 分别翻译一下“你好”&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}],&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;options&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;num_predict&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;4096&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;stop&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;lt;|im_start|&amp;gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;lt;|im_end|&amp;gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;num_ctx&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;32768&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;keep_alive&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1800&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
           
           
         

@@ -2,72 +2,72 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://yaoyl.cn//en/categories/</loc>
+    <loc>https://yaoyl.cn/en/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="pt"
-                href="https://yaoyl.cn//pt/categories/"
+                href="https://yaoyl.cn/pt/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="https://yaoyl.cn//categories/"
+                href="https://yaoyl.cn/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://yaoyl.cn//en/categories/"
+                href="https://yaoyl.cn/en/categories/"
                 />
   </url><url>
-    <loc>https://yaoyl.cn//en/</loc>
+    <loc>https://yaoyl.cn/en/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="pt"
-                href="https://yaoyl.cn//pt/"
+                href="https://yaoyl.cn/pt/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="https://yaoyl.cn//"
+                href="https://yaoyl.cn/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://yaoyl.cn//en/"
+                href="https://yaoyl.cn/en/"
                 />
   </url><url>
-    <loc>https://yaoyl.cn//en/series/</loc>
+    <loc>https://yaoyl.cn/en/series/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="pt"
-                href="https://yaoyl.cn//pt/series/"
+                href="https://yaoyl.cn/pt/series/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="https://yaoyl.cn//series/"
+                href="https://yaoyl.cn/series/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://yaoyl.cn//en/series/"
+                href="https://yaoyl.cn/en/series/"
                 />
   </url><url>
-    <loc>https://yaoyl.cn//en/tags/</loc>
+    <loc>https://yaoyl.cn/en/tags/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="pt"
-                href="https://yaoyl.cn//pt/tags/"
+                href="https://yaoyl.cn/pt/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="https://yaoyl.cn//tags/"
+                href="https://yaoyl.cn/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://yaoyl.cn//en/tags/"
+                href="https://yaoyl.cn/en/tags/"
                 />
   </url>
 </urlset>

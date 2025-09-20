@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ubuntu on Chinese</title>
-    <link>https://yaoyl.cn//tags/ubuntu/</link>
+    <link>https://yaoyl.cn/tags/ubuntu/</link>
     <description>Recent content in Ubuntu on Chinese</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>Copyright © 2017–2025, Yunyao Long and the Hugo Authors; 粤ICP备-17050867-1号</copyright>
-    <lastBuildDate>Mon, 19 Feb 2018 14:19:04 +0000</lastBuildDate><atom:link href="https://yaoyl.cn//tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 19 Feb 2018 14:19:04 +0000</lastBuildDate><atom:link href="https://yaoyl.cn/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Ubuntu下使用CodeBlocks进行多线程编程</title>
-      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/ubuntu%E4%B8%8B%E4%BD%BF%E7%94%A8codeblocks%E8%BF%9B%E8%A1%8C%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/</link>
+      <link>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/ubuntu%E4%B8%8B%E4%BD%BF%E7%94%A8codeblocks%E8%BF%9B%E8%A1%8C%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/</link>
       <pubDate>Mon, 19 Feb 2018 14:19:04 +0000</pubDate>
       
-      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/ubuntu%E4%B8%8B%E4%BD%BF%E7%94%A8codeblocks%E8%BF%9B%E8%A1%8C%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/</guid>
+      <guid>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/ubuntu%E4%B8%8B%E4%BD%BF%E7%94%A8codeblocks%E8%BF%9B%E8%A1%8C%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/</guid>
       <description>
         
           
@@ -83,10 +83,10 @@
     
     <item>
       <title>Socket编程小结</title>
-      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/socket%E7%BC%96%E7%A8%8B%E5%B0%8F%E7%BB%93/</link>
+      <link>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/socket%E7%BC%96%E7%A8%8B%E5%B0%8F%E7%BB%93/</link>
       <pubDate>Sat, 10 Jun 2017 15:36:19 +0000</pubDate>
       
-      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/socket%E7%BC%96%E7%A8%8B%E5%B0%8F%E7%BB%93/</guid>
+      <guid>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/socket%E7%BC%96%E7%A8%8B%E5%B0%8F%E7%BB%93/</guid>
       <description>
         
           
@@ -118,7 +118,7 @@
         class=&#34;image_figure image_external image_processed&#34;
         width=&#34;554&#34;
         height=&#34;327&#34;
-        src=&#34;//images/05232335-fb19fc7527e944d4845ef40831da4ec2_17119697933846672127.png&#34;
+        src=&#34;https://yaoyl.cn/images/05232335-fb19fc7527e944d4845ef40831da4ec2_17119697933846672127.png&#34;
       
       
     /&gt;
@@ -210,10 +210,10 @@
     
     <item>
       <title>Ubuntu下进行Socket编程</title>
-      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/ubuntu%E4%B8%8B%E8%BF%9B%E8%A1%8Csocket%E7%BC%96%E7%A8%8B/</link>
+      <link>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/ubuntu%E4%B8%8B%E8%BF%9B%E8%A1%8Csocket%E7%BC%96%E7%A8%8B/</link>
       <pubDate>Fri, 19 May 2017 19:28:45 +0000</pubDate>
       
-      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/ubuntu%E4%B8%8B%E8%BF%9B%E8%A1%8Csocket%E7%BC%96%E7%A8%8B/</guid>
+      <guid>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/ubuntu%E4%B8%8B%E8%BF%9B%E8%A1%8Csocket%E7%BC%96%E7%A8%8B/</guid>
       <description>
         
           
@@ -246,8 +246,8 @@
       decoding=&#34;async&#34;
       alt=&#34;tcp_server_error&#34;
       
-        class=&#34;image_figure image_external image_unprocessed&#34;
-        src=&#34;http://img.blog.csdn.net/20170519192213021?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast&#34;
+        class=&#34;image_figure image_internal image_unprocessed&#34;
+        src=&#34;https://yaoyl.cn/&#34;
       
       
     /&gt;
@@ -275,8 +275,8 @@
       decoding=&#34;async&#34;
       alt=&#34;tcp_client_error_1&#34;
       
-        class=&#34;image_figure image_external image_unprocessed&#34;
-        src=&#34;http://img.blog.csdn.net/20170519192313323?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast&#34;
+        class=&#34;image_figure image_internal image_unprocessed&#34;
+        src=&#34;https://yaoyl.cn/&#34;
       
       
     /&gt;
@@ -295,10 +295,10 @@
     
     <item>
       <title>双系统安装Ubuntu的初始化</title>
-      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E5%8F%8C%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85ubuntu%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96/</link>
+      <link>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/%E5%8F%8C%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85ubuntu%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96/</link>
       <pubDate>Fri, 19 May 2017 17:05:46 +0000</pubDate>
       
-      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/%E5%8F%8C%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85ubuntu%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96/</guid>
+      <guid>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/%E5%8F%8C%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85ubuntu%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96/</guid>
       <description>
         
           
@@ -335,8 +335,8 @@
       decoding=&#34;async&#34;
       alt=&#34;网卡&#34;
       
-        class=&#34;image_figure image_external image_unprocessed&#34;
-        src=&#34;http://img.blog.csdn.net/20170519170710308?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast&#34;
+        class=&#34;image_figure image_internal image_unprocessed&#34;
+        src=&#34;https://yaoyl.cn/&#34;
       
       
     /&gt;
@@ -362,10 +362,10 @@
     
     <item>
       <title>OpenGL学习笔记（十）</title>
-      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%8D%81/</link>
+      <link>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%8D%81/</link>
       <pubDate>Sat, 13 May 2017 16:49:22 +0000</pubDate>
       
-      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%8D%81/</guid>
+      <guid>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%8D%81/</guid>
       <description>
         
           
@@ -403,8 +403,8 @@
       decoding=&#34;async&#34;
       alt=&#34;进度条代码&#34;
       
-        class=&#34;image_figure image_external image_unprocessed&#34;
-        src=&#34;http://img.blog.csdn.net/20170530163934393?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast&#34;
+        class=&#34;image_figure image_internal image_unprocessed&#34;
+        src=&#34;https://yaoyl.cn/&#34;
       
       
     /&gt;
@@ -432,8 +432,8 @@
       decoding=&#34;async&#34;
       alt=&#34;键值&#34;
       
-        class=&#34;image_figure image_external image_unprocessed&#34;
-        src=&#34;http://img.blog.csdn.net/20170530164000862?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast&#34;
+        class=&#34;image_figure image_internal image_unprocessed&#34;
+        src=&#34;https://yaoyl.cn/&#34;
       
       
     /&gt;

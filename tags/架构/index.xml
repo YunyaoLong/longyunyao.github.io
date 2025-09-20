@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>架构 on Chinese</title>
-    <link>https://yaoyl.cn//tags/%E6%9E%B6%E6%9E%84/</link>
+    <link>https://yaoyl.cn/tags/%E6%9E%B6%E6%9E%84/</link>
     <description>Recent content in 架构 on Chinese</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>Copyright © 2017–2025, Yunyao Long and the Hugo Authors; 粤ICP备-17050867-1号</copyright>
-    <lastBuildDate>Thu, 25 Jun 2020 10:02:28 +0000</lastBuildDate><atom:link href="https://yaoyl.cn//tags/%E6%9E%B6%E6%9E%84/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 19 Jul 2020 16:28:45 +0000</lastBuildDate><atom:link href="https://yaoyl.cn/tags/%E6%9E%B6%E6%9E%84/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>UML类图绘制实例</title>
-      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/uml%E7%B1%BB%E5%9B%BE%E7%BB%98%E5%88%B6%E5%AE%9E%E4%BE%8B/</link>
-      <pubDate>Thu, 25 Jun 2020 10:02:28 +0000</pubDate>
+      <link>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/uml%E7%B1%BB%E5%9B%BE%E7%BB%98%E5%88%B6%E5%AE%9E%E4%BE%8B/</link>
+      <pubDate>Sun, 19 Jul 2020 16:28:45 +0000</pubDate>
       
-      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/uml%E7%B1%BB%E5%9B%BE%E7%BB%98%E5%88%B6%E5%AE%9E%E4%BE%8B/</guid>
+      <guid>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/uml%E7%B1%BB%E5%9B%BE%E7%BB%98%E5%88%B6%E5%AE%9E%E4%BE%8B/</guid>
       <description>
         
           
@@ -39,7 +39,7 @@
         class=&#34;image_figure image_external image_processed&#34;
         width=&#34;822&#34;
         height=&#34;700&#34;
-        src=&#34;//images/class-example-library-domain_2398916653974515336.png&#34;
+        src=&#34;https://yaoyl.cn/images/class-example-library-domain_2398916653974515336.png&#34;
       
       
     /&gt;
@@ -68,7 +68,7 @@
         class=&#34;image_figure image_external image_processed&#34;
         width=&#34;827&#34;
         height=&#34;217&#34;
-        src=&#34;//images/97611489-36dc1c00-1a51-11eb-856c-cf2280df1f06_3742796301368316937.png&#34;
+        src=&#34;https://yaoyl.cn/images/97611489-36dc1c00-1a51-11eb-856c-cf2280df1f06_3742796301368316937.png&#34;
       
       
     /&gt;
@@ -96,7 +96,7 @@
         class=&#34;image_figure image_external image_processed&#34;
         width=&#34;1039&#34;
         height=&#34;306&#34;
-        src=&#34;//images/97611044-a1408c80-1a50-11eb-8013-273235d04c70_13782265216704952398.png&#34;
+        src=&#34;https://yaoyl.cn/images/97611044-a1408c80-1a50-11eb-8013-273235d04c70_13782265216704952398.png&#34;
       
       
     /&gt;
@@ -127,7 +127,7 @@
         class=&#34;image_figure image_external image_processed&#34;
         width=&#34;1053&#34;
         height=&#34;448&#34;
-        src=&#34;//images/97615370-2ed2ab00-1a56-11eb-838e-df7262399d9e_9832865924313917040.png&#34;
+        src=&#34;https://yaoyl.cn/images/97615370-2ed2ab00-1a56-11eb-838e-df7262399d9e_9832865924313917040.png&#34;
       
       
     /&gt;
@@ -159,7 +159,7 @@
         class=&#34;image_figure image_external image_processed&#34;
         width=&#34;1026&#34;
         height=&#34;558&#34;
-        src=&#34;//images/97619039-b3bfc380-1a5a-11eb-8346-d96986ebd9c6_5740602031243574121.png&#34;
+        src=&#34;https://yaoyl.cn/images/97619039-b3bfc380-1a5a-11eb-8346-d96986ebd9c6_5740602031243574121.png&#34;
       
       
     /&gt;
@@ -190,7 +190,7 @@
         class=&#34;image_figure image_external image_processed&#34;
         width=&#34;1069&#34;
         height=&#34;668&#34;
-        src=&#34;//images/97621925-8543e780-1a5e-11eb-868e-cf053d39d649_8578078723728345691.png&#34;
+        src=&#34;https://yaoyl.cn/images/97621925-8543e780-1a5e-11eb-868e-cf053d39d649_8578078723728345691.png&#34;
       
       
     /&gt;

@@ -2,26 +2,27 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>RFID on Chinese</title>
-    <link>https://yaoyl.cn//tags/rfid/</link>
+    <link>https://yaoyl.cn/tags/rfid/</link>
     <description>Recent content in RFID on Chinese</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>Copyright © 2017–2025, Yunyao Long and the Hugo Authors; 粤ICP备-17050867-1号</copyright>
-    <lastBuildDate>Tue, 23 May 2017 01:19:42 +0000</lastBuildDate><atom:link href="https://yaoyl.cn//tags/rfid/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 23 May 2017 01:19:42 +0000</lastBuildDate><atom:link href="https://yaoyl.cn/tags/rfid/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>RFID实验三总结</title>
-      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%B8%89%E6%80%BB%E7%BB%93/</link>
+      <link>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%B8%89%E6%80%BB%E7%BB%93/</link>
       <pubDate>Tue, 23 May 2017 01:19:42 +0000</pubDate>
       
-      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%B8%89%E6%80%BB%E7%BB%93/</guid>
+      <guid>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%B8%89%E6%80%BB%E7%BB%93/</guid>
       <description>
         
           
             &lt;blockquote&gt;
 &lt;p&gt;一次debug到哭泣的经历。&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;龙云尧个人博客，转载请注明出处。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;CSDN地址：&lt;/p&gt;
-&lt;p&gt;个人blog地址：http://123.207.243.115:81/rfidshi-yan-san-zong-jie/&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;CSDN地址：http://blog.csdn.net/michael753951
+个人blog地址：http://yaoyl.cn&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;在实验过程中，需要不断翻阅实验课PPT之**《04 电子钱包的功能》&lt;strong&gt;，word之&lt;/strong&gt;《实验3文档》**，以及不知名大佬的&lt;a href=&#34;http://www.tqcto.com/article/software/83894.html&#34;&gt;课程总代码&lt;/a&gt;，CSDN大佬吕浪的&lt;a href=&#34;http://blog.csdn.net/lv_victor/article/details/51028930&#34;&gt;Java card开发系列文章&lt;/a&gt;。&lt;/p&gt;
 &lt;p&gt;本次实验和前两次实验相比，代码量多&lt;strong&gt;很多&lt;/strong&gt;，并且&lt;strong&gt;实验思路稍有区别&lt;/strong&gt;。实验之前可以不太懂实验流程（主要是因为流程本身就太复杂了），但是一定要&lt;strong&gt;一遍又一遍阅读源代码&lt;/strong&gt;，只有在读源码的过程中，才能体会整个验证过程，对项目中涉及到的函数方法的使用才能有一个更加深入的了解。接着自己不断重写代码，理解整个实现过程，才能对这个课程实验有较为深入的了解。&lt;/p&gt;
 &lt;p&gt;最终的代码地址：https://github.com/LongyunYao/RFID_lab/&lt;/p&gt;
@@ -52,8 +53,8 @@
       decoding=&#34;async&#34;
       alt=&#34;圈存流程&#34;
       
-        class=&#34;image_figure image_external image_unprocessed&#34;
-        src=&#34;http://img.blog.csdn.net/20170423014034933?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast&#34;
+        class=&#34;image_figure image_internal image_unprocessed&#34;
+        src=&#34;https://yaoyl.cn/&#34;
       
       
     /&gt;
@@ -85,8 +86,8 @@
       decoding=&#34;async&#34;
       alt=&#34;圈存初始化命令&#34;
       
-        class=&#34;image_figure image_external image_unprocessed&#34;
-        src=&#34;http://img.blog.csdn.net/20170423013823877?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast&#34;
+        class=&#34;image_figure image_internal image_unprocessed&#34;
+        src=&#34;https://yaoyl.cn/&#34;
       
       
     /&gt;
@@ -111,8 +112,8 @@
       decoding=&#34;async&#34;
       alt=&#34;IC卡响应圈存初始化命令&#34;
       
-        class=&#34;image_figure image_external image_unprocessed&#34;
-        src=&#34;http://img.blog.csdn.net/20170423014006004?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast&#34;
+        class=&#34;image_figure image_internal image_unprocessed&#34;
+        src=&#34;https://yaoyl.cn/&#34;
       
       
     /&gt;
@@ -136,8 +137,8 @@
       decoding=&#34;async&#34;
       alt=&#34;IC卡处理圈存初始化信息流程&#34;
       
-        class=&#34;image_figure image_external image_unprocessed&#34;
-        src=&#34;http://img.blog.csdn.net/20170423020343856?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast&#34;
+        class=&#34;image_figure image_internal image_unprocessed&#34;
+        src=&#34;https://yaoyl.cn/&#34;
       
       
     /&gt;
@@ -168,8 +169,8 @@
       decoding=&#34;async&#34;
       alt=&#34;圈存指令&#34;
       
-        class=&#34;image_figure image_external image_unprocessed&#34;
-        src=&#34;http://img.blog.csdn.net/20170423014058551?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast&#34;
+        class=&#34;image_figure image_internal image_unprocessed&#34;
+        src=&#34;https://yaoyl.cn/&#34;
       
       
     /&gt;
@@ -193,8 +194,8 @@
       decoding=&#34;async&#34;
       alt=&#34;圈存指令流程&#34;
       
-        class=&#34;image_figure image_external image_unprocessed&#34;
-        src=&#34;http://img.blog.csdn.net/20170423025731193?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast&#34;
+        class=&#34;image_figure image_internal image_unprocessed&#34;
+        src=&#34;https://yaoyl.cn/&#34;
       
       
     /&gt;
@@ -224,8 +225,8 @@
       decoding=&#34;async&#34;
       alt=&#34;圈存TAC&#34;
       
-        class=&#34;image_figure image_external image_unprocessed&#34;
-        src=&#34;http://img.blog.csdn.net/20170423030729769?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast&#34;
+        class=&#34;image_figure image_internal image_unprocessed&#34;
+        src=&#34;https://yaoyl.cn/&#34;
       
       
     /&gt;
@@ -249,8 +250,8 @@
       decoding=&#34;async&#34;
       alt=&#34;TAC&#34;
       
-        class=&#34;image_figure image_external image_unprocessed&#34;
-        src=&#34;http://img.blog.csdn.net/20170423124717634?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast&#34;
+        class=&#34;image_figure image_internal image_unprocessed&#34;
+        src=&#34;https://yaoyl.cn/&#34;
       
       
     /&gt;
@@ -259,7 +260,6 @@
 &lt;/figure&gt;
 &lt;/p&gt;
 &lt;p&gt;step4：&lt;strong&gt;IC使用同样的算法计算MAC2，如果计算结果和终端返回的MAC2一致，就说明终端的身份合法。IC卡就会执行圈存命令。同时返回TAC。其中TAC计算时，输入数据为[电子钱包余额（交易后）||电子钱包联机交易序号（加１前）||交易金额||交易类型标识||终端机编号||交易日期（主机）||交易时间（主机）]，密钥为TAC密码最左8个字节与TAC密码最右8个字节异或的结果。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;到这里整个圈存过程就结束了。消费以及查询和圈存的实现原理一致，这里就不赘述了。&lt;/p&gt;
           
           
         
@@ -268,10 +268,10 @@
     
     <item>
       <title>RFID实验二总结</title>
-      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%80%BB%E7%BB%93/</link>
+      <link>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%80%BB%E7%BB%93/</link>
       <pubDate>Sun, 21 May 2017 02:55:05 +0000</pubDate>
       
-      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%80%BB%E7%BB%93/</guid>
+      <guid>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%80%BB%E7%BB%93/</guid>
       <description>
         
           
@@ -531,10 +531,10 @@
     
     <item>
       <title>RFID实验一总结</title>
-      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%B8%80%E6%80%BB%E7%BB%93/</link>
+      <link>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%B8%80%E6%80%BB%E7%BB%93/</link>
       <pubDate>Sat, 20 May 2017 14:11:32 +0000</pubDate>
       
-      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%B8%80%E6%80%BB%E7%BB%93/</guid>
+      <guid>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%B8%80%E6%80%BB%E7%BB%93/</guid>
       <description>
         
           
@@ -596,7 +596,7 @@
         class=&#34;image_figure image_external image_processed&#34;
         width=&#34;372&#34;
         height=&#34;127&#34;
-        src=&#34;//images/e80949d0-258b-11e7-96e2-89b3087741fc_7787092408133580828.png&#34;
+        src=&#34;https://yaoyl.cn/images/e80949d0-258b-11e7-96e2-89b3087741fc_7787092408133580828.png&#34;
       
       
     /&gt;
@@ -624,7 +624,7 @@
         class=&#34;image_figure image_external image_processed&#34;
         width=&#34;509&#34;
         height=&#34;159&#34;
-        src=&#34;//images/e7b2830c-258b-11e7-8911-d2b7e7fc9d0d_12307540848290659802.png&#34;
+        src=&#34;https://yaoyl.cn/images/e7b2830c-258b-11e7-8911-d2b7e7fc9d0d_12307540848290659802.png&#34;
       
       
     /&gt;
@@ -652,7 +652,7 @@
         class=&#34;image_figure image_external image_processed&#34;
         width=&#34;481&#34;
         height=&#34;210&#34;
-        src=&#34;//images/e78315e0-258b-11e7-8c78-08555ef584ec_12537409608955670593.png&#34;
+        src=&#34;https://yaoyl.cn/images/e78315e0-258b-11e7-8c78-08555ef584ec_12537409608955670593.png&#34;
       
       
     /&gt;
@@ -681,7 +681,7 @@
         class=&#34;image_figure image_external image_processed&#34;
         width=&#34;723&#34;
         height=&#34;295&#34;
-        src=&#34;//images/e78578a8-258b-11e7-803f-d095709449d4_3479832271068198507.png&#34;
+        src=&#34;https://yaoyl.cn/images/e78578a8-258b-11e7-803f-d095709449d4_3479832271068198507.png&#34;
       
       
     /&gt;
@@ -708,7 +708,7 @@
         class=&#34;image_figure image_external image_processed&#34;
         width=&#34;790&#34;
         height=&#34;367&#34;
-        src=&#34;//images/a3f1f2b4-258c-11e7-8164-5433dd00f23e_2002550957571907844.png&#34;
+        src=&#34;https://yaoyl.cn/images/a3f1f2b4-258c-11e7-8164-5433dd00f23e_2002550957571907844.png&#34;
       
       
     /&gt;
@@ -737,7 +737,7 @@
         class=&#34;image_figure image_external image_processed&#34;
         width=&#34;472&#34;
         height=&#34;439&#34;
-        src=&#34;//images/e8051338-258b-11e7-8a65-057b6f6674bf_12972044147358193561.png&#34;
+        src=&#34;https://yaoyl.cn/images/e8051338-258b-11e7-8a65-057b6f6674bf_12972044147358193561.png&#34;
       
       
     /&gt;

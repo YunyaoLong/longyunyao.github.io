@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>变换 on Chinese</title>
-    <link>https://yaoyl.cn//tags/%E5%8F%98%E6%8D%A2/</link>
+    <link>https://yaoyl.cn/tags/%E5%8F%98%E6%8D%A2/</link>
     <description>Recent content in 变换 on Chinese</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>Copyright © 2017–2025, Yunyao Long and the Hugo Authors; 粤ICP备-17050867-1号</copyright>
-    <lastBuildDate>Fri, 12 May 2017 03:28:48 +0000</lastBuildDate><atom:link href="https://yaoyl.cn//tags/%E5%8F%98%E6%8D%A2/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 12 May 2017 03:28:48 +0000</lastBuildDate><atom:link href="https://yaoyl.cn/tags/%E5%8F%98%E6%8D%A2/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>OpenGL学习笔记（八）</title>
-      <link>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%85%AB/</link>
+      <link>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%85%AB/</link>
       <pubDate>Fri, 12 May 2017 03:28:48 +0000</pubDate>
       
-      <guid>https://yaoyl.cn//post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%85%AB/</guid>
+      <guid>https://yaoyl.cn/post/%E5%8E%86%E5%8F%B2/opengl%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%85%AB/</guid>
       <description>
         
           
@@ -51,8 +51,8 @@
       decoding=&#34;async&#34;
       alt=&#34;坐标系&#34;
       
-        class=&#34;image_figure image_external image_unprocessed&#34;
-        src=&#34;http://img.blog.csdn.net/20170512032715582?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast&#34;
+        class=&#34;image_figure image_internal image_unprocessed&#34;
+        src=&#34;https://yaoyl.cn/&#34;
       
       
     /&gt;
@@ -81,8 +81,8 @@
       decoding=&#34;async&#34;
       alt=&#34;up&amp;amp;amp;amp;down&#34;
       
-        class=&#34;image_figure image_external image_unprocessed&#34;
-        src=&#34;http://img.blog.csdn.net/20170512032741089?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWljaGFlbDc1Mzk1MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast&#34;
+        class=&#34;image_figure image_internal image_unprocessed&#34;
+        src=&#34;https://yaoyl.cn/&#34;
       
       
     /&gt;
