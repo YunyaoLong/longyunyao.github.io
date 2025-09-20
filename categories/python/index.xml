@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Python on Clarity</title>
-    <link>https://yunyaolong.github.io/longyunyao.github.io/categories/python/</link>
+    <link>https://yunyaolong.github.io/categories/python/</link>
     <description>Recent content in Python on Clarity</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>Copyright © 2017–2025, Yunyao Long and the Hugo Authors; 粤ICP备-17050867-1号</copyright>
-    <lastBuildDate>Wed, 19 Apr 2017 01:28:43 +0000</lastBuildDate><atom:link href="https://yunyaolong.github.io/longyunyao.github.io/categories/python/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 19 Apr 2017 01:28:43 +0000</lastBuildDate><atom:link href="https://yunyaolong.github.io/categories/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>第一次爬虫实验代码及运行结果（html文本进行适当删除以压缩版面）</title>
-      <link>https://yunyaolong.github.io/longyunyao.github.io/post/%E5%8E%86%E5%8F%B2/%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%88%AC%E8%99%AB%E5%AE%9E%E9%AA%8C%E4%BB%A3%E7%A0%81%E5%8F%8A%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9Chtml%E6%96%87%E6%9C%AC%E8%BF%9B%E8%A1%8C%E9%80%82%E5%BD%93%E5%88%A0%E9%99%A4%E4%BB%A5%E5%8E%8B%E7%BC%A9%E7%89%88%E9%9D%A2/</link>
+      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%88%AC%E8%99%AB%E5%AE%9E%E9%AA%8C%E4%BB%A3%E7%A0%81%E5%8F%8A%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9Chtml%E6%96%87%E6%9C%AC%E8%BF%9B%E8%A1%8C%E9%80%82%E5%BD%93%E5%88%A0%E9%99%A4%E4%BB%A5%E5%8E%8B%E7%BC%A9%E7%89%88%E9%9D%A2/</link>
       <pubDate>Wed, 19 Apr 2017 01:28:43 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/longyunyao.github.io/post/%E5%8E%86%E5%8F%B2/%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%88%AC%E8%99%AB%E5%AE%9E%E9%AA%8C%E4%BB%A3%E7%A0%81%E5%8F%8A%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9Chtml%E6%96%87%E6%9C%AC%E8%BF%9B%E8%A1%8C%E9%80%82%E5%BD%93%E5%88%A0%E9%99%A4%E4%BB%A5%E5%8E%8B%E7%BC%A9%E7%89%88%E9%9D%A2/</guid>
+      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%88%AC%E8%99%AB%E5%AE%9E%E9%AA%8C%E4%BB%A3%E7%A0%81%E5%8F%8A%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9Chtml%E6%96%87%E6%9C%AC%E8%BF%9B%E8%A1%8C%E9%80%82%E5%BD%93%E5%88%A0%E9%99%A4%E4%BB%A5%E5%8E%8B%E7%BC%A9%E7%89%88%E9%9D%A2/</guid>
       <description>
         
           
@@ -260,10 +260,10 @@
     
     <item>
       <title>Python网络爬虫学习</title>
-      <link>https://yunyaolong.github.io/longyunyao.github.io/post/%E5%8E%86%E5%8F%B2/python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0/</link>
+      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0/</link>
       <pubDate>Wed, 19 Apr 2017 01:22:18 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/longyunyao.github.io/post/%E5%8E%86%E5%8F%B2/python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0/</guid>
+      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0/</guid>
       <description>
         
           

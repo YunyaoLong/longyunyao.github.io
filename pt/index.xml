@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Claridade</title>
-    <link>https://yunyaolong.github.io/longyunyao.github.io/pt/</link>
+    <link>https://yunyaolong.github.io/pt/</link>
     <description>Recent content on Claridade</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pt</language>
     <copyright>Copyright © 2017–2025, Yunyao Long and the Hugo Authors; 粤ICP备-17050867-1号</copyright>
-    <lastBuildDate>Mon, 11 Mar 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://yunyaolong.github.io/longyunyao.github.io/pt/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 11 Mar 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://yunyaolong.github.io/pt/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

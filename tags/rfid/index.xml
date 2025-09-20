@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>RFID on Clarity</title>
-    <link>https://yunyaolong.github.io/longyunyao.github.io/tags/rfid/</link>
+    <link>https://yunyaolong.github.io/tags/rfid/</link>
     <description>Recent content in RFID on Clarity</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>Copyright © 2017–2025, Yunyao Long and the Hugo Authors; 粤ICP备-17050867-1号</copyright>
-    <lastBuildDate>Tue, 23 May 2017 01:19:42 +0000</lastBuildDate><atom:link href="https://yunyaolong.github.io/longyunyao.github.io/tags/rfid/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 23 May 2017 01:19:42 +0000</lastBuildDate><atom:link href="https://yunyaolong.github.io/tags/rfid/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>RFID实验三总结</title>
-      <link>https://yunyaolong.github.io/longyunyao.github.io/post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%B8%89%E6%80%BB%E7%BB%93/</link>
+      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%B8%89%E6%80%BB%E7%BB%93/</link>
       <pubDate>Tue, 23 May 2017 01:19:42 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/longyunyao.github.io/post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%B8%89%E6%80%BB%E7%BB%93/</guid>
+      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%B8%89%E6%80%BB%E7%BB%93/</guid>
       <description>
         
           
@@ -268,10 +268,10 @@
     
     <item>
       <title>RFID实验二总结</title>
-      <link>https://yunyaolong.github.io/longyunyao.github.io/post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%80%BB%E7%BB%93/</link>
+      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%80%BB%E7%BB%93/</link>
       <pubDate>Sun, 21 May 2017 02:55:05 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/longyunyao.github.io/post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%80%BB%E7%BB%93/</guid>
+      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%80%BB%E7%BB%93/</guid>
       <description>
         
           
@@ -304,7 +304,7 @@
       alt=&#34;主要内容&#34;
       
         class=&#34;image_figure image_internal image_unprocessed&#34;
-        src=&#34;https://yunyaolong.github.io/longyunyao.github.io&#34;
+        src=&#34;https://yunyaolong.github.io/&#34;
       
       
     /&gt;
@@ -334,7 +334,7 @@
       alt=&#34;过程秘钥的产生&#34;
       
         class=&#34;image_figure image_internal image_unprocessed&#34;
-        src=&#34;https://yunyaolong.github.io/longyunyao.github.io&#34;
+        src=&#34;https://yunyaolong.github.io/&#34;
       
       
     /&gt;
@@ -359,7 +359,7 @@
       alt=&#34;3DES&#34;
       
         class=&#34;image_figure image_internal image_unprocessed&#34;
-        src=&#34;https://yunyaolong.github.io/longyunyao.github.io&#34;
+        src=&#34;https://yunyaolong.github.io/&#34;
       
       
     /&gt;
@@ -384,7 +384,7 @@
       alt=&#34;MACorTAC&#34;
       
         class=&#34;image_figure image_internal image_unprocessed&#34;
-        src=&#34;https://yunyaolong.github.io/longyunyao.github.io&#34;
+        src=&#34;https://yunyaolong.github.io/&#34;
       
       
     /&gt;
@@ -409,7 +409,7 @@
       alt=&#34;MACorTAC2&#34;
       
         class=&#34;image_figure image_internal image_unprocessed&#34;
-        src=&#34;https://yunyaolong.github.io/longyunyao.github.io&#34;
+        src=&#34;https://yunyaolong.github.io/&#34;
       
       
     /&gt;
@@ -461,7 +461,7 @@
       alt=&#34;PenCipher构造函数&#34;
       
         class=&#34;image_figure image_internal image_unprocessed&#34;
-        src=&#34;https://yunyaolong.github.io/longyunyao.github.io&#34;
+        src=&#34;https://yunyaolong.github.io/&#34;
       
       
     /&gt;
@@ -486,7 +486,7 @@
       alt=&#34;des运算函数&#34;
       
         class=&#34;image_figure image_internal image_unprocessed&#34;
-        src=&#34;https://yunyaolong.github.io/longyunyao.github.io&#34;
+        src=&#34;https://yunyaolong.github.io/&#34;
       
       
     /&gt;
@@ -512,7 +512,7 @@
       alt=&#34;需要填充&#34;
       
         class=&#34;image_figure image_internal image_unprocessed&#34;
-        src=&#34;https://yunyaolong.github.io/longyunyao.github.io&#34;
+        src=&#34;https://yunyaolong.github.io/&#34;
       
       
     /&gt;
@@ -531,10 +531,10 @@
     
     <item>
       <title>RFID实验一总结</title>
-      <link>https://yunyaolong.github.io/longyunyao.github.io/post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%B8%80%E6%80%BB%E7%BB%93/</link>
+      <link>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%B8%80%E6%80%BB%E7%BB%93/</link>
       <pubDate>Sat, 20 May 2017 14:11:32 +0000</pubDate>
       
-      <guid>https://yunyaolong.github.io/longyunyao.github.io/post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%B8%80%E6%80%BB%E7%BB%93/</guid>
+      <guid>https://yunyaolong.github.io/post/%E5%8E%86%E5%8F%B2/rfid%E5%AE%9E%E9%AA%8C%E4%B8%80%E6%80%BB%E7%BB%93/</guid>
       <description>
         
           
@@ -596,7 +596,7 @@
         class=&#34;image_figure image_external image_processed&#34;
         width=&#34;372&#34;
         height=&#34;127&#34;
-        src=&#34;https://yunyaolong.github.io/longyunyao.github.io/images/e80949d0-258b-11e7-96e2-89b3087741fc_7787092408133580828.png&#34;
+        src=&#34;https://yunyaolong.github.io/images/e80949d0-258b-11e7-96e2-89b3087741fc_7787092408133580828.png&#34;
       
       
     /&gt;
@@ -624,7 +624,7 @@
         class=&#34;image_figure image_external image_processed&#34;
         width=&#34;509&#34;
         height=&#34;159&#34;
-        src=&#34;https://yunyaolong.github.io/longyunyao.github.io/images/e7b2830c-258b-11e7-8911-d2b7e7fc9d0d_12307540848290659802.png&#34;
+        src=&#34;https://yunyaolong.github.io/images/e7b2830c-258b-11e7-8911-d2b7e7fc9d0d_12307540848290659802.png&#34;
       
       
     /&gt;
@@ -652,7 +652,7 @@
         class=&#34;image_figure image_external image_processed&#34;
         width=&#34;481&#34;
         height=&#34;210&#34;
-        src=&#34;https://yunyaolong.github.io/longyunyao.github.io/images/e78315e0-258b-11e7-8c78-08555ef584ec_12537409608955670593.png&#34;
+        src=&#34;https://yunyaolong.github.io/images/e78315e0-258b-11e7-8c78-08555ef584ec_12537409608955670593.png&#34;
       
       
     /&gt;
@@ -681,7 +681,7 @@
         class=&#34;image_figure image_external image_processed&#34;
         width=&#34;723&#34;
         height=&#34;295&#34;
-        src=&#34;https://yunyaolong.github.io/longyunyao.github.io/images/e78578a8-258b-11e7-803f-d095709449d4_3479832271068198507.png&#34;
+        src=&#34;https://yunyaolong.github.io/images/e78578a8-258b-11e7-803f-d095709449d4_3479832271068198507.png&#34;
       
       
     /&gt;
@@ -708,7 +708,7 @@
         class=&#34;image_figure image_external image_processed&#34;
         width=&#34;790&#34;
         height=&#34;367&#34;
-        src=&#34;https://yunyaolong.github.io/longyunyao.github.io/images/a3f1f2b4-258c-11e7-8164-5433dd00f23e_2002550957571907844.png&#34;
+        src=&#34;https://yunyaolong.github.io/images/a3f1f2b4-258c-11e7-8164-5433dd00f23e_2002550957571907844.png&#34;
       
       
     /&gt;
@@ -737,7 +737,7 @@
         class=&#34;image_figure image_external image_processed&#34;
         width=&#34;472&#34;
         height=&#34;439&#34;
-        src=&#34;https://yunyaolong.github.io/longyunyao.github.io/images/e8051338-258b-11e7-8a65-057b6f6674bf_12972044147358193561.png&#34;
+        src=&#34;https://yunyaolong.github.io/images/e8051338-258b-11e7-8a65-057b6f6674bf_12972044147358193561.png&#34;
       
       
     /&gt;
