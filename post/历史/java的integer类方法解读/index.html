@@ -9,7 +9,7 @@
   
   >
   <head>
-<title>Java的Integer类方法解读 | Clarity</title>
+<title>Java的Integer类方法解读 | Chinese</title>
 <meta charset="utf-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -50,7 +50,7 @@
       "@context": "http://schema.org",
       "@type": "BlogPosting",
       "mainEntityOfPage":"https:\/\/yaoyl.cn\/\/post\/%E5%8E%86%E5%8F%B2\/java%E7%9A%84integer%E7%B1%BB%E6%96%B9%E6%B3%95%E8%A7%A3%E8%AF%BB\/",
-      "name": "Clarity",
+      "name": "Chinese",
       "headline": "Java的Integer类方法解读",
       "description": "\u003ch1 id=\"highestonebit\"\u003ehighestOneBit\u003c/h1\u003e\n\u003cp\u003e获取一个int类型的二进制取整\u003c/p\u003e\n\u003cdiv class=\"highlight\"\u003e\u003cpre tabindex=\"0\" class=\"chroma\"\u003e\u003ccode class=\"language-java\" data-lang=\"java\"\u003e\u003cspan class=\"line\"\u003e\u003cspan class=\"ln\"\u003e1\u003c/span\u003e\u003cspan class=\"cl\"\u003e\u003cspan class=\"kd\"\u003epublic\u003c/span\u003e\u003cspan class=\"w\"\u003e \u003c/span\u003e\u003cspan class=\"kd\"\u003estatic\u003c/span\u003e\u003cspan class=\"w\"\u003e \u003c/span\u003e\u003cspan class=\"kt\"\u003eint\u003c/span\u003e\u003cspan class=\"w\"\u003e \u003c/span\u003e\u003cspan class=\"nf\"\u003ehighestOneBit\u003c/span\u003e\u003cspan class=\"p\"\u003e(\u003c/span\u003e\u003cspan class=\"kt\"\u003eint\u003c/span\u003e\u003cspan class=\"w\"\u003e \u003c/span\u003e\u003cspan class=\"n\"\u003ei\u003c/span\u003e\u003cspan class=\"p\"\u003e)\u003c/span\u003e\u003cspan class=\"w\"\u003e \u003c/span\u003e\u003cspan class=\"p\"\u003e{\u003c/span\u003e\u003cspan class=\"w\"\u003e\n\u003c/span\u003e\u003c/span\u003e\u003c/span\u003e\u003cspan class=\"line\"\u003e\u003cspan class=\"ln\"\u003e2\u003c/span\u003e\u003cspan class=\"cl\"\u003e\u003cspan class=\"w\"\u003e\t\u003c/span\u003e\u003cspan class=\"c1\"\u003e// HD, Figure 3-1\u003c/span\u003e\u003cspan class=\"w\"\u003e\n\u003c/span\u003e\u003c/span\u003e\u003c/span\u003e\u003cspan class=\"line\"\u003e\u003cspan class=\"ln\"\u003e3\u003c/span\u003e\u003cspan class=\"cl\"\u003e\u003cspan class=\"w\"\u003e\t\u003c/span\u003e\u003cspan class=\"n\"\u003ei\u003c/span\u003e\u003cspan class=\"w\"\u003e \u003c/span\u003e\u003cspan class=\"o\"\u003e|=\u003c/span\u003e\u003cspan class=\"w\"\u003e \u003c/span\u003e\u003cspan class=\"p\"\u003e(\u003c/span\u003e\u003cspan class=\"n\"\u003ei\u003c/span\u003e\u003cspan class=\"w\"\u003e \u003c/span\u003e\u003cspan class=\"o\"\u003e\u0026gt;\u0026gt;\u003c/span\u003e\u003cspan class=\"w\"\u003e \u003c/span\u003e\u003cspan class=\"n\"\u003e1\u003c/span\u003e\u003cspan class=\"p\"\u003e);\u003c/span\u003e\u003cspan class=\"w\"\u003e\n\u003c/span\u003e\u003c/span\u003e\u003c/span\u003e\u003cspan class=\"line\"\u003e\u003cspan class=\"ln\"\u003e4\u003c/span\u003e\u003cspan class=\"cl\"\u003e\u003cspan class=\"w\"\u003e\t\u003c/span\u003e\u003cspan class=\"n\"\u003ei\u003c/span\u003e\u003cspan class=\"w\"\u003e \u003c/span\u003e\u003cspan class=\"o\"\u003e|=\u003c/span\u003e\u003cspan class=\"w\"\u003e \u003c/span\u003e\u003cspan class=\"p\"\u003e(\u003c/span\u003e\u003cspan class=\"n\"\u003ei\u003c/span\u003e\u003cspan class=\"w\"\u003e \u003c/span\u003e\u003cspan class=\"o\"\u003e\u0026gt;\u0026gt;\u003c/span\u003e\u003cspan class=\"w\"\u003e \u003c/span\u003e\u003cspan class=\"n\"\u003e2\u003c/span\u003e\u003cspan class=\"p\"\u003e);\u003c/span\u003e\u003cspan class=\"w\"\u003e\n\u003c/span\u003e\u003c/span\u003e\u003c/span\u003e\u003cspan class=\"line\"\u003e\u003cspan class=\"ln\"\u003e5\u003c/span\u003e\u003cspan class=\"cl\"\u003e\u003cspan class=\"w\"\u003e\t\u003c/span\u003e\u003cspan class=\"n\"\u003ei\u003c/span\u003e\u003cspan class=\"w\"\u003e \u003c/span\u003e\u003cspan class=\"o\"\u003e|=\u003c/span\u003e\u003cspan class=\"w\"\u003e \u003c/span\u003e\u003cspan class=\"p\"\u003e(\u003c/span\u003e\u003cspan class=\"n\"\u003ei\u003c/span\u003e\u003cspan class=\"w\"\u003e \u003c/span\u003e\u003cspan class=\"o\"\u003e\u0026gt;\u0026gt;\u003c/span\u003e\u003cspan class=\"w\"\u003e \u003c/span\u003e\u003cspan class=\"n\"\u003e4\u003c/span\u003e\u003cspan class=\"p\"\u003e); …\u003c/span\u003e\u003c/span\u003e\u003c/span\u003e\u003c/span\u003e\u003c/span\u003e\u003c/span\u003e\u003c/span\u003e\u003c/span\u003e\u003c/span\u003e\u003c/span\u003e\u003c/span\u003e\u003c/code\u003e\u003c/pre\u003e\u003c/div\u003e",
       "url": "https:\/\/yaoyl.cn\/\/post\/%E5%8E%86%E5%8F%B2\/java%E7%9A%84integer%E7%B1%BB%E6%96%B9%E6%B3%95%E8%A7%A3%E8%AF%BB\/",
@@ -72,7 +72,7 @@
           "@type":"ImageObject",
           "url": "https:\/\/yaoyl.cn\/logos\/logo.png"
         },
-        "name": "Clarity"
+        "name": "Chinese"
       }
     }
   </script>
@@ -104,8 +104,8 @@
   >
 
 <header class="nav_header" >
-  <nav class="nav"><a href='https://yaoyl.cn/' class="nav_brand nav_item" title="Clarity">
-  <img src="https://yaoyl.cn/logos/logo.png" class="logo" alt="Clarity">
+  <nav class="nav"><a href='https://yaoyl.cn/' class="nav_brand nav_item" title="Chinese">
+  <img src="https://yaoyl.cn/logos/logo.png" class="logo" alt="Chinese">
   <div class="nav_close">
     <div><svg class="icon">
   <title>open-menu</title>
