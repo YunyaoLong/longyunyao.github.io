@@ -10,6 +10,27 @@
     <lastBuildDate>Sun, 14 Sep 2025 20:30:00 +0000</lastBuildDate><atom:link href="https://yunyaolong.github.io/tags/m1/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>M1芯片MacBook搭建本地大模型</title>
+      <link>https://yunyaolong.github.io/post/2025/%E5%9F%BA%E4%BA%8Econtinue%E6%8F%92%E4%BB%B6%E4%BD%BF%E7%94%A8%E5%A4%A7%E6%A8%A1%E5%9E%8B/</link>
+      <pubDate>Sun, 14 Sep 2025 20:30:00 +0000</pubDate>
+      
+      <guid>https://yunyaolong.github.io/post/2025/%E5%9F%BA%E4%BA%8Econtinue%E6%8F%92%E4%BB%B6%E4%BD%BF%E7%94%A8%E5%A4%A7%E6%A8%A1%E5%9E%8B/</guid>
+      <description>
+        
+          
+            &lt;blockquote&gt;
+&lt;p&gt;龙云尧个人博客，转载请注明出处。
+CSDN地址：http://blog.csdn.net/michael753951
+个人blog地址：http://yaoyl.cn&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h1 id=&#34;continue插件配置参考&#34;&gt;continue插件配置参考&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;https://hub.continue.dev/ollama/qwen2.5-coder-1.5b?view=config&#34;&gt;https://hub.continue.dev/ollama/qwen2.5-coder-1.5b?view=config&lt;/a&gt;&lt;/p&gt;
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>M1芯片MacBook搭建本地大模型</title>
       <link>https://yunyaolong.github.io/post/2025/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0%E5%A4%A7%E6%A8%A1%E5%9E%8B/</link>
       <pubDate>Sun, 14 Sep 2025 20:30:00 +0000</pubDate>
       

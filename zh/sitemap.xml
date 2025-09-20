@@ -51,13 +51,22 @@
                 href="https://yunyaolong.github.io/categories/"
                 />
   </url><url>
+    <loc>https://yunyaolong.github.io/tags/continue%E6%8F%92%E4%BB%B6/</loc>
+    <lastmod>2025-09-14T20:30:00+00:00</lastmod>
+  </url><url>
     <loc>https://yunyaolong.github.io/tags/docker/</loc>
     <lastmod>2025-09-14T20:30:00+00:00</lastmod>
   </url><url>
     <loc>https://yunyaolong.github.io/tags/index/</loc>
     <lastmod>2025-09-14T20:30:00+00:00</lastmod>
   </url><url>
+    <loc>https://yunyaolong.github.io/tags/llm/</loc>
+    <lastmod>2025-09-14T20:30:00+00:00</lastmod>
+  </url><url>
     <loc>https://yunyaolong.github.io/tags/m1/</loc>
+    <lastmod>2025-09-14T20:30:00+00:00</lastmod>
+  </url><url>
+    <loc>https://yunyaolong.github.io/post/2025/%E5%9F%BA%E4%BA%8Econtinue%E6%8F%92%E4%BB%B6%E4%BD%BF%E7%94%A8%E5%A4%A7%E6%A8%A1%E5%9E%8B/</loc>
     <lastmod>2025-09-14T20:30:00+00:00</lastmod>
   </url><url>
     <loc>https://yunyaolong.github.io/post/2025/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0%E5%A4%A7%E6%A8%A1%E5%9E%8B/</loc>
@@ -78,6 +87,9 @@
                 hreflang="zh"
                 href="https://yunyaolong.github.io/post/"
                 />
+  </url><url>
+    <loc>https://yunyaolong.github.io/tags/qwen/</loc>
+    <lastmod>2025-09-14T20:30:00+00:00</lastmod>
   </url><url>
     <loc>https://yunyaolong.github.io/series/</loc>
     <lastmod>2025-09-14T20:30:00+00:00</lastmod>
@@ -437,8 +449,6 @@
     <lastmod>2017-04-14T17:06:00+00:00</lastmod>
   </url><url>
     <loc>https://yunyaolong.github.io/post/2025/ai-agent%E6%A2%B3%E7%90%86/</loc>
-  </url><url>
-    <loc>https://yunyaolong.github.io/post/2025/%E5%9F%BA%E4%BA%8Econtinue%E6%8F%92%E4%BB%B6%E4%BD%BF%E7%94%A8%E5%A4%A7%E6%A8%A1%E5%9E%8B/</loc>
   </url><url>
     <loc>https://yunyaolong.github.io/search/</loc>
   </url>
