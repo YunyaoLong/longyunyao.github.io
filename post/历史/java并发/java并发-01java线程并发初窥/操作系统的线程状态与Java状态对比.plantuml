@@ -1,0 +1,83 @@
+@startuml 操作系统线程状态与Java线程状态对应关系
+
+package "操作系统线程状态" {
+  [新建态\n(NEW)] as os_new
+  [就绪态\n(READY)] as os_ready
+  [运行态\n(RUNNING)] as os_running
+  [阻塞态\n(BLOCKED/WAITING)] as os_blocked
+  [终止态\n(TERMINATED)] as os_terminated
+}
+
+package "Java线程状态" {
+  [NEW] as java_new
+  [RUNNABLE] as java_runnable
+  [BLOCKED] as java_blocked
+  [WAITING] as java_waiting
+  [TIMED_WAITING] as java_timed_waiting
+  [TERMINATED] as java_terminated
+}
+
+os_new --> java_new : 1:1映射
+os_ready --> java_runnable : 包含在RUNNABLE中
+os_running --> java_runnable : 包含在RUNNABLE中
+os_blocked --> java_blocked : 锁等待
+os_blocked --> java_waiting : 条件等待
+os_blocked --> java_timed_waiting : 超时等待
+
+os_terminated --> java_terminated : 1:1映射
+
+note top of os_new
+  线程刚创建
+  尚未启动
+end note
+
+note top of os_ready
+  线程准备就绪
+  等待CPU分配
+end note
+
+note top of os_running
+  线程正在执行
+end note
+
+note top of os_blocked
+  等待资源、锁或条件
+  (包括Java的BLOCKED/WAITING/TIMED_WAITING)
+end note
+
+note top of os_terminated
+  线程执行结束
+end note
+
+note bottom of java_new
+  Thread对象已创建但未调用start()
+end note
+
+note bottom of java_runnable
+  可运行状态（包括OS的ready和running）
+end note
+
+note bottom of java_blocked
+  等待监视器锁进入synchronized块/方法
+end note
+
+note bottom of java_waiting
+  无限期等待，需其他线程显式唤醒
+  (Object.wait(), Thread.join()等)
+end note
+
+note bottom of java_timed_waiting
+  限期等待，超时或被唤醒
+  (Thread.sleep(), Object.wait(timeout)等)
+end note
+
+note bottom of java_terminated
+  线程执行完成或异常终止
+end note
+
+legend bottom
+  Java线程状态比操作系统更细化
+  OS的阻塞/等待状态在Java中分为多种状态
+end legend
+
+@enduml

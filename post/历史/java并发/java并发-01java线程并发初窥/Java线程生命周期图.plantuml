@@ -1,0 +1,51 @@
+@startuml Java线程完整生命周期
+
+[*] --> NEW : 创建Thread对象
+NEW --> RUNNABLE : start()
+RUNNABLE --> RUNNING : 获得CPU时间片
+RUNNING --> RUNNABLE : yield()或时间片结束
+RUNNING --> WAITING : Object.wait()
+RUNNING --> TIMED_WAITING : Thread.sleep()或Object.wait(timeout)
+RUNNING --> BLOCKED : 等待进入synchronized块/方法
+WAITING --> RUNNABLE : notify()/notifyAll()
+TIMED_WAITING --> RUNNABLE : 超时或notify()/notifyAll()
+BLOCKED --> RUNNABLE : 获得锁
+RUNNING --> TERMINATED : run()执行完成或异常
+TERMINATED --> [*]
+
+note right of NEW
+  Thread对象已创建
+  但尚未启动
+end note
+
+note right of RUNNABLE
+  线程正在JVM中执行
+  可能正在等待OS资源
+end note
+
+note right of RUNNING
+  线程正在执行代码
+  (RUNNABLE的子状态)
+end note
+
+note right of BLOCKED
+  线程被阻塞等待监视器锁
+  以进入synchronized代码块
+end note
+
+note right of WAITING
+  线程无限期等待
+  需要其他线程显式唤醒
+end note
+
+note right of TIMED_WAITING
+  线程等待指定时间
+  超时后自动恢复
+end note
+
+note right of TERMINATED
+  线程执行完成
+  或异常终止
+end note
+
+@enduml

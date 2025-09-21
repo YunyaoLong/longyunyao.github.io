@@ -1,0 +1,51 @@
+@startuml 线程调度时序图
+title Java Thread Creation Sequence Diagram
+
+actor "Java Developer" as developer
+participant "Java Application" as java
+participant "JVM (HotSpot)" as jvm
+participant "Linux Kernel" as linux
+participant "pthread Library" as pthread
+
+developer -> java: Create new Thread object
+java -> java: new Thread()
+
+developer -> java: Call thread.start()
+java -> jvm: Thread.start() (Java)
+jvm -> jvm: Thread.start0() (native method)
+jvm -> jvm: JVM_StartThread() (JVM_ENTRY)
+
+jvm -> jvm: new JavaThread()
+jvm -> jvm: os::create_thread()
+jvm -> linux: System call for thread creation
+linux -> pthread: pthread_create()
+pthread -> linux: Create kernel thread
+linux --> pthread: Thread created
+pthread --> jvm: Return thread handle
+
+jvm -> jvm: native_thread->prepare()
+jvm -> jvm: Thread::set_priority()
+jvm -> linux: os::set_priority()
+linux --> jvm: Priority set
+
+jvm -> jvm: Threads::add()
+jvm -> jvm: Thread::start()
+jvm -> jvm: os::start_thread()
+jvm -> linux: Set thread state to RUNNABLE
+linux --> jvm: Thread state updated
+
+jvm --> java: Thread started successfully
+java -> java: Thread runs in background
+
+note right of linux
+  Thread scheduling and execution
+  happens in kernel space
+end note
+
+note left of jvm
+  JVM acts as intermediary
+  between Java application
+  and OS thread management
+end note
+
+@enduml

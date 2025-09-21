@@ -1,0 +1,62 @@
+@startuml Pthread与Java Thread API对比
+
+package "POSIX线程(Pthreads)" {
+  [pthread_create()] as pthread_create
+  [pthread_exit()] as pthread_exit
+  [pthread_join()] as pthread_join
+  [pthread_cancel()] as pthread_cancel
+  [pthread_kill()] as pthread_kill
+  [pthread_mutex_lock()] as pthread_mutex
+}
+
+package "Java Thread API" {
+  [new Thread().start()] as java_start
+  [Thread.currentThread()] as java_current
+  [thread.join()] as java_join
+  [thread.interrupt()] as java_interrupt
+  [System.exit()] as java_exit
+  [synchronized] as java_synchronized
+}
+
+pthread_create --> java_start : 功能相似
+pthread_exit --> java_exit : 功能相似
+pthread_join --> java_join : 功能相似
+pthread_cancel --> java_interrupt : 功能相似
+pthread_kill --> java_interrupt : 部分功能相似
+pthread_mutex --> java_synchronized : 锁机制对应
+
+note top of pthread_create
+  创建一个新线程
+end note
+
+note top of pthread_join
+  等待线程终止
+end note
+
+note top of pthread_mutex
+  互斥锁机制
+  对应Java的BLOCKED状态
+end note
+
+note top of pthread_cancel
+  请求取消线程
+end note
+
+note bottom of java_start
+  创建并启动新线程
+end note
+
+note bottom of java_join
+  等待线程死亡
+end note
+
+note bottom of java_synchronized
+  synchronized关键字
+  导致线程进入BLOCKED状态
+end note
+
+note bottom of java_interrupt
+  中断线程
+end note
+
+@enduml
